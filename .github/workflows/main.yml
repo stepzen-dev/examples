@@ -1,0 +1,44 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  file_existence:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+
+      - name: Check README and index existence
+        id: check_files1
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "README.md, index.graphql"
+          
+      - name: Check for config.yaml
+        id: check_files2
+        uses: andstor/file-existence-action@v1
+        with:
+          files: "config.yaml"
+
+      - name: Check for config.yaml
+        if: steps.check_files2.outputs.files_exists == 'true'
+        # Only runs if all of the files exists
+        run: echo config.yaml detected, are you sure you want to merge to main?
+        
+      - name: Check README and index existence
+        if: steps.check_files1.outputs.files_exists == 'true'
+        # Only runs if all of the files exists
+        run: echo README.md, index.graphql present
