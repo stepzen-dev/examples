@@ -1,0 +1,15 @@
+type Author {
+  id: ID!
+  name: String!
+  isPseudonym: Boolean!
+}
+type Query {
+  author(id: ID!): Author
+        @dbquery(type: "mysql", table: "authors", configuration: "MySQL_config")
+  authors(isPseudonym: Boolean!): [Author]
+        @dbquery(
+            type: "mysql",
+            query: "SELECT * FROM authors WHERE isPseudonym = ?",
+            configuration: "MySQL_config"
+        )
+}
