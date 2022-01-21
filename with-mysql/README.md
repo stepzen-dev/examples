@@ -1,6 +1,6 @@
 # Overview 
 
-## This project builds a GraphQL API connected to your MySQL database using StepZen. We will use the @dbquery directive to generate our GraphQL schema. 
+#### This project builds a GraphQL API connected to your MySQL database using StepZen. We will use the @dbquery directive to generate our GraphQL schema. 
 
 # Project Setup Commands To Run First
 
