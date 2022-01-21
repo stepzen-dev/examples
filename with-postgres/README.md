@@ -1,8 +1,16 @@
 # Setting up Postgres
 
-## Creating a local database
+## Create a database in the cloud
 
-The best way to run this Postgres Database is by using our Docker. This requires you to have Docker installed (no prior knowledge needed) and using ngrok to create a TCP tunnel so you can link it to StepZen.
+Alternatively you can create a Postgres database in the cloud, for this you can choose from a whole range of cloud providers
+
+
+// List options here
+
+
+## Creating a local database with Docker
+
+The best way to run this Postgres Database is by using our Docker script. This requires you to have Docker installed (no prior knowledge needed) and using ngrok to create a TCP tunnel so you can link it to StepZen.
 
 ### Prerequisites
 
@@ -21,7 +29,6 @@ ngrok authtoken [YOUR_AUTH_TOKEN]
 After doing so start the Docker container with the Postgres database from this directory:
 
 ```bash
-cd postgres
 docker-compose up -d
 ```
 
@@ -43,8 +50,3 @@ configurationset:
       name: postgresql_config
       uri: postgresql://stepzen:stepzenpasswd@0.tcp.ngrok.io:15650/stepzen_demo
 ```
-
-
-## Create a database in the cloud
-
-Alternatively you can create a Postgres database in the cloud, for this you can choose from a whole range of cloud providers
