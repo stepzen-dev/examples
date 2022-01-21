@@ -1,0 +1,58 @@
+.subscribe-block {
+  background-color: var(--color7);
+  color: #fff;
+}
+
+.subscribe-block {
+  color: #fff;
+}
+
+.register-block,
+.subscribe-block {
+  padding-right: 80px;
+  border-radius: 0 130px 0 0;
+}
+
+.register-block {
+  background-color: var(--color13);
+}
+
+.subscribe-block form,
+.register-block form {
+  margin-top: var(--spacer);
+}
+
+.register-block input,
+.subscribe-block input {
+  border: none;
+}
+
+.sidebar-newsletter .newsletter-heading {
+  font-size: 1.65rem;
+}
+
+.sidebar-newsletter .social-nav a {
+  color: var(--color7);
+}
+
+.sidebar-newsletter .social-nav a:hover {
+  color: var(--color8);
+}
+
+@media (min-width: 1100px) {
+  .register-block {
+    border-radius: 0 260px 0 0;
+    background-image: url(/images/journey.svg);
+    background-repeat: no-repeat;
+    background-position: right 14vw center;
+    background-size: 400px;
+  }
+
+  .join-block {
+    border-radius: 130px 0 130px 0;
+    background-image: url(/images/shapes.svg);
+    background-repeat: no-repeat;
+    background-position: right 14vw center;
+    background-size: 360px;
+  }
+}

@@ -1,0 +1,138 @@
+type Lob_Components {
+  address_type: String
+  carrier_route: String
+  carrier_route_type: String
+  city: String
+  county: String
+  county_fips: String
+  default_building_address: Boolean
+  delivery_point_barcode: String
+  extra_secondary_designator: String
+  extra_secondary_number: String
+  latitude: Float
+  longitude: Float
+  pmb_designator: String
+  pmb_number: String
+  primary_number: String
+  record_type: String
+  secondary_designator: String
+  secondary_number: String
+  state: String
+  street_name: String
+  street_postdirection: String
+  street_predirection: String
+  street_suffix: String
+  zip_code: String
+  zip_code_plus_4: String
+  zip_code_type: String
+}
+
+type Lob_Deliverability_Analysis {
+  dpv_active: String
+  dpv_cmra: String
+  dpv_confirmation: String
+  dpv_footnotes: [String]
+  dpv_vacant: String
+  ews_match: Boolean
+  lacs_indicator: String
+  lacs_return_code: String
+  suite_return_code: String
+}
+
+type Lob_Confidence_Score {
+  level: String
+  score: Int
+}
+
+type Lob_US_Verification {
+  components: Lob_Components
+  deliverability: String
+  deliverability_analysis: Lob_Deliverability_Analysis
+  id: String
+  last_line: String
+  lob_confidence_score: Lob_Confidence_Score
+  object: String
+  primary_line: String
+  recipient: String
+  secondary_line: String
+  urbanization: String
+}
+
+type Lob_Intl_Components {
+  city: String
+  postal_code: String
+  primary_number: String
+  state: String
+  street_name: String
+}
+
+type Lob_Intl_Verification {
+  components: Lob_Intl_Components
+  country: String
+  coverage: String
+  deliverability: String
+  id: String
+  last_line: String
+  object: String
+  primary_line: String
+  recipient: String
+  secondary_line: String
+  status: String
+}
+
+type Mutation {
+  """
+  Send the domestic address details
+  to verify if the shipment
+  will be deliverable.
+
+  Equivalent To POST /v1/us_verifications
+  """
+  lob_us_verification(
+    """The address"""
+    primary_line: String! 
+    """The city."""
+    city: String!
+    """The state in abbreviated format."""
+    state: String!
+    """The zipcode in 5 digit format."""
+    zip_code: String!
+    ): Lob_US_Verification
+    @rest(
+        method: POST
+        contenttype: "application/x-www-form-urlencoded"
+        endpoint: "https://api.lob.com/v1/us_verifications"
+        configuration: "lob_test_config"
+		)
+  """
+  Send the international address details
+  to verify if the shipment
+  will be deliverable.
+
+  Equivalent To POST /v1/intl_verifications
+  """
+  lob_intl_verification(
+    """The address"""
+    primary_line: String! 
+    """The city."""
+    city: String!
+    """The state in abbreviated format."""
+    state: String!
+    """The zipcode in 5 digit format."""
+    postal_code: String!
+    """The country that Must be a 2 letter country 
+    short-name code (ISO 3166). Does not accept US, 
+    AS, PR, FM, GU, MH, MP, PW, or VI. For these 
+    addresses, please use the US verification API. 
+    Also does not accept PS, which is not currently 
+    supported."""
+    country: String!
+    ): Lob_Intl_Verification
+    @rest(
+        method: POST
+        contenttype: "application/x-www-form-urlencoded"
+        endpoint: "https://api.lob.com/v1/intl_verifications"
+        configuration: "lob_dummy_live_config"
+		)
+}
+

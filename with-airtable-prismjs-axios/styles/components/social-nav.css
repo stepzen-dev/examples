@@ -1,0 +1,23 @@
+.social-nav {
+  --gap: 12px;
+
+  display: flex;
+  flex-flow: row wrap;
+
+  margin: 0 0 0.8rem calc(var(--gap) * -1);
+  padding: 0;
+}
+
+.social-nav li {
+  margin: 0 var(--gap) var(--gap);
+  list-style: none;
+}
+
+.social-nav a {
+  display: inline-block;
+  transition: var(--anim);
+}
+
+.social-nav .discord {
+  transform: translateY(3px); /* Discord logo is not visually centered */
+}

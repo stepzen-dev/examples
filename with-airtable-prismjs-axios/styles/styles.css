@@ -1,0 +1,136 @@
+/*
+  StepZen CSS File
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400&family=Roboto+Mono&display=swap');
+
+
+/*
+  BEGIN BASE STYLES
+*/
+
+@import url("reset.css");
+
+@import url("elements/typography.css");
+@import url("elements/button.css");
+/*@import url("elements/brand-button.css");*/
+@import url("elements/forms.css");
+@import url("elements/links.css");
+@import url("elements/icons.css");
+@import url("elements/lists.css");
+@import url("elements/misc.css");
+@import url("elements/quotes.css");
+@import url("elements/videos");
+
+@import url("skeleton/layout.css");
+@import url("skeleton/header.css");
+@import url("skeleton/footer.css");
+
+@import url("skeleton/content.css");
+
+@import url("components/alert.css");
+@import url("components/algolia-search.css");
+@import url("components/code-demo.css");
+@import url("components/convert-blocks.css");
+@import url("components/explainer-card.css");
+/* @import url("components/feature"); */
+@import url("components/hero.css");
+@import url("components/hcard.css");
+@import url("components/logo-parade");
+@import url("components/notification.css");
+@import url("components/postcard.css");
+@import url("components/snippet.css");
+@import url("components/social-nav.css");
+@import url("components/stickers.css");
+@import url("components/story-card");
+@import url("components/card.css");
+@import url("components/banner-card.css");
+@import url("components/category-card.css");
+@import url("components/media-block.css");
+@import url("components/modal.css");
+@import url("components/pagination.css");
+@import url("components/personcard.css");
+@import url("components/plan-card.css");
+@import url("components/press-block.css");
+@import url("components/social-actions.css");
+@import url("components/template-card.css");
+@import url("components/tagnav.css");
+
+@import url("pages/page-account.css");
+@import url("pages/page-campaign.css");
+@import url("pages/page-docs.css");
+@import url("pages/page-home.css");
+@import url("pages/page-post");
+@import url("pages/page-pricing.css");
+@import url("pages/page-stories.css");
+
+@import url("utilities/helpers.css");
+@import url("utilities/color.css");
+
+:root {
+  /* Grid & Spacing */
+  --max-width: 1280px;
+  --spacer: 30px;
+  --spacer-half: 15px;
+  --spacer-2: 60px;
+  --spacer-3: 90px;
+  --spacer-4: 120px;
+  --gutter: calc(var(--spacer) / 2);
+  --gap: calc(var(--spacer) * 2);
+
+  /* Max width any object should spill into gutters */
+  --extend-width: var(--gutter);
+
+  /* Typography */
+  --font-body: 'Roboto', sans-serif;
+  --font-code: 'Roboto Mono', Menlo, Consolas, Monaco, Liberation Mono, Lucida Console,
+    monospace;
+
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-bold: 700;
+  --weight-black: 900;
+
+  /* Colors */
+
+  --color1: #19253f; /* Space Cadet */
+  --color2: #193460; /* Prussian Blue */
+  --color3: #1d4e89; /* Yale Blue */
+  --color4: #00b2ca; /* Pacific Blue */
+  --color5: #00B1C9; /* Iris Blue */
+  --color6: #b6e1e4; /* Powder Blue */
+  --color7: #8b6091; /* French Lilac */
+  --color8: #907f9f; /* Mountbatten Pink */
+  --color9: #ed865a; /* Mandarin */
+  --color10: #fdc88c; /* Deep Champagne */
+  --color11: #2163ef; /* Simple Blue */
+  --color12: #b2cff9; /* Pale Cornflower */
+  --color13: #d4c2e4; /* Prelude */
+  --color14: #e2fcfe; /* Light Cyan */
+
+  --bg-color: #FFF;
+  --font-color: #292929;
+
+  /* Elements */
+  --form-spacer: 20px;
+  --input-height: 2.75rem;
+  --input-border-color: #ddd;
+  --input-border: 2px solid var(--input-border-color);
+
+  --btn-primary-color: var(--color3);
+  --btn-secondary-color: var(--btn-primary-color);
+  --btn-max-width: 24ch;
+
+  --elem-radius: 4px;
+
+  --scrollbar-color: #040D21;
+
+  /* Components */
+  --nav-spacer: 0.9rem;
+
+  --card-border: 1px solid #DADADA;
+  --card-box-shadow: 0 0 30px rgba(25, 37, 63, 0.1);
+
+  /* Effects */
+  --anim: all 0.5s;
+}

@@ -1,0 +1,72 @@
+.page-stories {
+  background-attachment: fixed;
+  background-image: url(/images/triangle.svg);
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.page-stories .hero-header {
+  margin-bottom: 0;
+}
+
+.focal-content {
+  margin-top: calc(var(--spacer) * -1);
+  padding: var(--spacer);
+  border-radius: var(--elem-radius);
+  box-shadow: var(--card-box-shadow);
+  background-color: #FFF;
+}
+
+.focal-content-header {
+  margin-bottom: var(--spacer-2);
+}
+
+.focal-content-header .lead {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 40ch;
+  font-size: 1.6rem;
+  text-align: center;
+}
+
+.biography-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacer);
+
+  margin-bottom: var(--spacer-2);
+  padding: var(--spacer);
+  background-color: var(--color14);
+  font-size: .95rem;
+}
+
+.biography-card-logo {
+  max-width: 200px;
+  max-height: 80px;
+}
+
+.biography-card-headline {
+  margin-bottom: .3rem;
+  font-size: 1.1rem;
+}
+
+.biography-card-description > *:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 768px) {
+  .focal-content {
+    padding: var(--spacer-2);
+  }
+
+  .focal-content .content {
+    padding-right: var(--spacer);
+    padding-left: var(--spacer);
+  }
+
+  .biography-card {
+    gap: var(--spacer-2);
+    flex-direction: row;
+  }
+}

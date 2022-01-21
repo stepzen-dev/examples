@@ -1,0 +1,19 @@
+.tag-nav {
+  --gap: 4px; /* ! R ! */
+}
+
+.tag-nav,
+.tag-nav ul {
+  flex: 1;
+  display: flex;
+}
+
+.tag-nav ul {
+  margin-left: calc(var(--gap) * -1);
+  padding: 0;
+}
+
+.tag-nav li {
+  margin: 0 var(--gap) var(--gap);
+  list-style: none;
+}

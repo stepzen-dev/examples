@@ -1,0 +1,14 @@
+configurationset:
+  - configuration:
+        name: airtable_config
+        Authorization: Bearer 
+        baseid: 
+  - configuration:
+        name: lob_test_config
+        Authorization: Basic
+  - configuration:
+        name: lob_live_config
+        Authorization: Basic
+  - configuration:
+        name: lob_dummy_live_config
+        Authorization: Basic

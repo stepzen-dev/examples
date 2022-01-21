@@ -1,0 +1,44 @@
+.story-card .grid {
+  gap: 0;
+}
+
+.story-card .grid .hcard {
+  margin-top: var(--spacer);
+}
+
+.story-card .card-header,
+.story-card .card-body {
+  padding: var(--spacer);
+}
+
+.story-card .grid .card-header {
+  padding-bottom: 0;
+}
+
+.story-card .card-headline {
+  font-size: 1.8rem;
+}
+
+.story-card .card-body blockquote {
+  padding: 0;
+  font-size: 1.15rem;
+  font-style: italic;
+  pointer-events: none;
+}
+
+.story-card .cover:before {
+  z-index: 10;
+}
+
+.story-card-summary {
+  font-size: .95rem;
+  opacity: .8;
+}
+
+.masonry .story-card .card-body {
+ padding-top: 0;
+}
+
+.masonry .story-card .card-footer {
+  padding: 0 var(--spacer) var(--spacer);
+}

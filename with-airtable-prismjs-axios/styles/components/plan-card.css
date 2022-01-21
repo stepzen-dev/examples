@@ -1,0 +1,101 @@
+.plan-card {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.plan-card .card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 22rem;
+}
+
+.plan-card-text {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 28ch;
+  font-size: .9rem;
+  font-weight: bold;
+  opacity: .8;
+}
+
+.plan-card-price {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 0;
+  height: 80px; /* !!! */
+}
+
+.plan-card-price-amt {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--color2);
+}
+
+.plan-card-price-amt.display-str {
+  font-size: 1.75rem;
+}
+
+.plan-card-price-terms {
+  margin-left: 1ch;
+  max-width: 12ch;
+  font-size: .9rem;
+  font-weight: 500;
+  line-height: 1.35;
+  text-align: left;
+  color: var(--color2);
+  opacity: .8;
+}
+
+.plan-card .button {
+  margin-top: auto;
+}
+
+.plan-card-primary,
+.plan-card-secondary {
+  text-align: left;
+}
+
+.plan-card-primary,
+.plan-card-secondary {
+  padding: var(--spacer-half);
+}
+
+.plan-card-primary {
+  margin-top: var(--spacer);
+  background-color: #FFF9F3;
+}
+
+.plan-card .card-footer ul {
+  margin: 0;
+  padding: 0;
+}
+
+.plan-card .card-footer li {
+  position: relative;
+  padding-left: 34px;
+  list-style: none;
+}
+
+.plan-card .card-footer li + li {
+  margin-top: 1.5rem;
+}
+
+.plan-card .card-footer li:before {
+  position: absolute;
+  top: -3px;
+  left: 0;
+  display: block;
+  width: 28px;
+  height: 28px;
+  background-image: url(/images/icons/checkbox.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  content: '';
+}
+
+.plan-card-name {
+  font-size: 2.3rem;
+}

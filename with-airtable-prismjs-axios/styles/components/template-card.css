@@ -1,0 +1,35 @@
+.template-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.template-card .card-header {
+  flex: 1;
+}
+
+.template-card .logo-parade {
+  --gap: var(--spacer);
+  margin: 0;
+  padding: 0;
+}
+
+.template-card .logo-parade > * {
+  margin: 0 var(--gap) calc(var(--gap) / 2) 0;
+}
+
+.template-card p {
+  margin-top: var(--spacer-half);
+  font-size: 0.925rem;
+}
+
+.template-card .card-footer {
+  display: flex;
+  gap: calc(var(--gap) / 1.5); /* ! R ! */
+  flex-flow: row wrap;
+  white-space: nowrap;
+}
+
+.template-card .icon-link {
+  color: var(--color3);
+  font-weight: 500;
+}

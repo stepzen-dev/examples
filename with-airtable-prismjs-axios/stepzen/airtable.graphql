@@ -1,0 +1,48 @@
+type Address_Fields {
+  firstname: String!
+  lastname: String!
+  email: String
+  address: String!
+  address2: String
+  city: String!
+  state: String!
+  postal_code: String!
+  country: String
+  receive_news: Boolean
+}
+
+type Airtable_Shipment {
+  id: String!
+  createdTime: String
+  fields: Address_Fields
+}
+
+type Query {
+  addresses(id: String!): Airtable_Shipment
+    @rest(
+      endpoint: "https://api.airtable.com/v0/$baseid/Addresses/$id"
+      configuration: "airtable_config"
+    )
+}
+
+type Mutation {
+  createShipment(
+    firstname: String!
+    lastname: String!
+    email: String
+    address: String!
+    address2: String
+    city: String!
+    state: String!
+    postal_code: String!
+    country: String
+    receive_news: Boolean!
+  ): Airtable_Shipment
+    @rest(
+      method: POST
+      resultroot: "records[]"
+      postbody: "{\"records\":[{\"fields\":{\"firstname\":\"{{.Get \"firstname\" }}\",\"lastname\":\"{{.Get \"lastname\" }}\",\"email\":\"{{.Get \"email\" }}\",\"address\":\"{{.Get \"address\" }}\",\"address2\":\"{{.Get \"address2\" }}\",\"city\":\"{{.Get \"city\" }}\",\"state\":\"{{.Get \"state\" }}\",\"postal_code\":\"{{.Get \"postal_code\" }}\",\"receive_news\":{{.Get \"receive_news\" }},\"country\":\"{{.Get \"country\" }}\"}}]}"
+      endpoint: "https://api.airtable.com/v0/$baseid/Addresses"
+      configuration: "airtable_config"
+    )
+}
