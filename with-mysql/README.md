@@ -181,23 +181,27 @@ type Book {
   originalPublishingDate: Date!
   authorID: ID!
   author: Author
-  @materializer(
-        query: "author"
-        arguments: [{ name: "id" field: "authorID"}]
-  )
+    @materializer(
+      query: "author"
+      arguments: [{ name: "id" field: "authorID"}]
+    )
 }
+
 type Query {
   book(id: ID!): Book
-        @dbquery(type: "mysql", table: "books", configuration: "MySQL_config")
+    @dbquery(
+      type: "mysql",
+      table: "books",
+      configuration: "MySQL_config"
+    )
+
   books(originalPublishingDate: Date!): [Book]
-        @dbquery(
-            type: "mysql",
-            query: "SELECT * FROM books WHERE ? >= DATE '1900-00-00'",
-            configuration: "MySQL_config"
-        )
+    @dbquery(
+      type: "mysql",
+      query: "SELECT * FROM books WHERE ? >= DATE '1900-00-00'",
+      configuration: "MySQL_config"
+    )
 }
-
-
 ```
 
 Notice the `@materializer` directive on the type. When we query `book`, we want to be able to see information on the book's `author` as well, and we're able to do this by using the materializer to query `author` and return the `name`. It will use the `authorID` field to find each `author`. 
@@ -222,15 +226,21 @@ type Author {
   name: String!
   isPseudonym: Boolean!
 }
+
 type Query {
   author(id: ID!): Author
-        @dbquery(type: "mysql", table: "authors", configuration: "MySQL_config")
+    @dbquery(
+      type: "mysql",
+      table: "authors",
+      configuration: "MySQL_config"
+    )
+
   authors(isPseudonym: Boolean!): [Author]
-        @dbquery(
-            type: "mysql",
-            query: "SELECT * FROM authors WHERE isPseudonym = ?",
-            configuration: "MySQL_config"
-        )
+    @dbquery(
+      type: "mysql",
+      query: "SELECT * FROM authors WHERE isPseudonym = ?",
+      configuration: "MySQL_config"
+    )
 }
 ```
 
