@@ -1,0 +1,20 @@
+type DevToUser {
+  github_username: String!
+  id: Int!
+  joined_at: String!
+  location: String!
+  name: String!
+  profile_image: String!
+  summary: String!
+  twitter_username: String!
+  type_of: String!
+  username: String!
+  website_url: String!
+}
+
+type Query {
+  getUser(
+    id: String!, url: String
+  ): DevToUser
+    @rest(endpoint: "https://dev.to/api/users/$id")
+}

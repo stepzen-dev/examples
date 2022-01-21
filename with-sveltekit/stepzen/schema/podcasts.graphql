@@ -1,0 +1,22 @@
+type getPodcastEpisodesResponse {
+  id: Int!
+  image_url: String!
+  path: String!
+  podcast: GetPodcastEpisodesPodcast!
+  title: String!
+}
+
+type GetPodcastEpisodesPodcast {
+  image_url: String
+  slug: String
+  title: String
+}
+
+type Query {
+  getPodcastEpisodes(
+    page: Int
+    per_page: Int
+    username: String
+  ): [getPodcastEpisodesResponse]
+    @rest(endpoint: "https://dev.to/api/podcast_episodes")
+}

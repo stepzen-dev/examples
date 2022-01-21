@@ -1,0 +1,48 @@
+type DevToOrganization {
+  name: String
+  profile_image: String
+  summary: String
+  twitter_username: String
+  url: String
+  username: String
+}
+
+type getOrgUsersResponse {
+  location: String!
+  name: String!
+  summary: String!
+  username: String!
+  website_url: String!
+}
+
+type getOrgArticlesResponse {
+  canonical_url: String!
+  cover_image: String!
+  description: String!
+  organization: DevToOrganization
+  public_reactions_count: Int!
+  published_at: String!
+  readable_publish_date: String!
+  slug: String!
+  social_image: String!
+  tags: String!
+  title: String!
+  url: String!
+}
+
+type Query {
+  getOrganization(
+    username: String!
+  ): DevToOrganization
+    @rest(endpoint: "https://dev.to/api/organizations/$username")
+
+  getOrgUsers(
+    page: Int, per_page: Int, username: String!
+  ): [getOrgUsersResponse]
+    @rest(endpoint: "https://dev.to/api/organizations/$username/users")
+
+  getOrgArticles(
+    page: Int, per_page: Int, username: String!
+  ): [getOrgArticlesResponse]
+    @rest(endpoint: "https://dev.to/api/organizations/$username/articles")
+}
