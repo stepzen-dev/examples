@@ -1,52 +1,29 @@
-<p align="center">
-  <a href="https://www.gatsbyjs.com/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter">
-    <img alt="Gatsby" src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" />
-  </a>
-</p>
-<h1 align="center">
-  Gatsby minimal starter
-</h1>
+# gatsby example
 
-## 🚀 Quick start
+## StepZen Example: with-gatsby
 
+## Introduction
 
-<a href="https://app.netlify.com/start/deploy?repository=https://github.com/stepzen-samples/netlify-gatsby-app"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify" /></a>
+This project is a Gastby starter repo connected to StepZen.
 
+## Getting Started
 
-1.  **Create a Gatsby site.**
+You'll need to create a StepZen account first. Once you've got that set up, git clone this repository onto your machine and open the working directory:
 
-    Use the Gatsby CLI to create a new site, specifying the minimal starter.
+git clone https://github.com/stepzen-dev/examples.git
 
-    ```shell
-    # create a new Gatsby site using the minimal starter
-    npm init gatsby
-    ```
+`cd with-gatsby`
 
-2.  **Start developing.**
+Run `npm install` inside `/with-gatsby` before running `npm start`.
 
-    Navigate into your new site’s directory and start it up.
+## Run StepZen
 
-    ```shell
-    cd my-gatsby-site/
-    npm run develop
-    ```
+Open your terminal and install the StepZen CLI. You need to login here using the command: `stepzen login`.
 
-3.  **Open the code and start customizing!**
+After you've followed the prompts (you can accept the suggested endpoint name-- in my case it was api/happy-bunny) and installed the CLI, run stepzen start.
 
-    Your site is now running at http://localhost:8000!
+In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example http://localhost:5001/api/happy-bunny), which you can use to explore the GraphQL API.
 
-    Edit `src/pages/index.js` to see your site update in real-time!
+## Learn More
 
-4.  **Learn more**
-
-    - [Documentation](https://www.gatsbyjs.com/docs/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Tutorials](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Guides](https://www.gatsbyjs.com/tutorial/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [API Reference](https://www.gatsbyjs.com/docs/api-reference/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Plugin Library](https://www.gatsbyjs.com/plugins?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
-
-    - [Cheat Sheet](https://www.gatsbyjs.com/docs/cheat-sheet/?utm_source=starter&utm_medium=readme&utm_campaign=minimal-starter)
+You can learn more in the StepZen [documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.com/invite/9k2VdPn2FR) or [Github Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.

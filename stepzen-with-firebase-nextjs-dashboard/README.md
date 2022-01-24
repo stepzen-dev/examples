@@ -4,7 +4,7 @@
 
 ## Introduction
 
-This project builds a GraphQL API connected to your Postgres database using StepZen. We will use the @dbquery directive to generate our GraphQL schema.
+This project builds a GraphQL API with Firebase connected to your NextJS dashboard, using StepZen.
 
 ## Getting Started
 
@@ -24,8 +24,9 @@ After you've followed the prompts (you can accept the suggested endpoint name-- 
 
 In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example http://localhost:5001/api/happy-bunny), which you can use to explore the GraphQL API.
 
-Learn More
-You can learn more in the StepZen documentation. Questions? Head over to Discord or Github Discussions to ask questions.
+## Learn More
+
+You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.com/invite/9k2VdPn2FR) or [Github Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.
 
 To watch @samuelghill demo a challenge with this repo, view:
 
