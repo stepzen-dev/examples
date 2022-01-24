@@ -1,0 +1,3 @@
+schema @sdl(files: ["queries.graphql", "types.graphql", "shopify-graphql.graphql", "mutations.graphql"]) {
+	query: Query
+}

@@ -1,0 +1,122 @@
+
+# __________________________________________________________________________________________________________________________________
+# TYPES -- for queries.graphql and mutations.graphql
+# __________________________________________________________________________________________________________________________________
+# __________________________________________________________________________________________________________________________________
+"""
+type that defines a product for StepZen including data from Agility and Shopify
+"""
+type ProductRest {
+  title: String
+  description: String
+  image: String
+  createdAt: String
+  agilityId: ID!
+  admin_graphql_api_id: String
+  hero: Boolean
+  type: String
+  slug: String
+  shopifyId: ID!
+  audience: String
+  variants: [ShopifyProductVariants]
+    @materializer(
+      query: "shopifyProductVariants"
+      arguments: [{ name: "product_id", field: "shopifyId" }]
+    )
+  images: [ShopifyProductImages]
+    @materializer(
+      query: "shopifyProductImages"
+      arguments: [{ name: "product_id", field: "shopifyId" }]
+    )
+  options: [ShopifyProductOptions]
+    @materializer(
+      query: "shopifyProductOptions"
+      arguments: [{ name: "product_id", field: "shopifyId" }]
+    )
+  productGraphql: Product
+    @materializer(
+      query: "product"
+      arguments: [{ name: "id", field: "admin_graphql_api_id" }]
+    )
+}
+
+"""
+defines Agility product type
+"""
+type AgilityProduct {
+  title: String
+  Title: String
+  description: String
+  shopifyId: ID!
+  image: String
+  createdAt: String
+  agilityId: ID!
+  audience: String
+  hero: Boolean
+  type: String
+  slug: String
+}
+
+"""
+defines Shopify product type
+"""
+type ShopifyProduct {
+  admin_graphql_api_id: String
+  createdAt: String!
+  shopifyId: ID!
+  variants: [ShopifyProductVariants]
+    @materializer(
+      query: "shopifyProductVariants"
+      arguments: [{ name: "product_id", field: "shopifyId" }]
+    )
+  images: [ShopifyProductImages]
+    @materializer(
+      query: "shopifyProductImages"
+      arguments: [{ name: "product_id", field: "shopifyId" }]
+    )
+  options: [ShopifyProductOptions]
+    @materializer(
+      query: "shopifyProductOptions"
+      arguments: [{ name: "product_id", field: "shopifyId" }]
+    )
+  productGraphql: Product
+    @materializer(
+      query: "product"
+      arguments: [{ name: "id", field: "admin_graphql_api_id" }]
+    )
+}
+
+"""
+defines Shopify product variants
+"""
+type ShopifyProductVariants {
+  id: ID!
+  product_id: ID!
+  price: String
+  position: Int!
+  inventory_quantity: Int
+  requires_shipping: Boolean
+  weight: Float
+}
+"""
+defines Shopify product images
+"""
+type ShopifyProductImages {
+  id: ID!
+  product_id: ID!
+  alt: String
+  width: Float
+  height: Float
+  src: String
+  position: String
+}
+"""
+defines Shopify product options
+"""
+type ShopifyProductOptions {
+  id: ID!
+  product_id: ID!
+  name: String
+  position: String
+  values: String
+}

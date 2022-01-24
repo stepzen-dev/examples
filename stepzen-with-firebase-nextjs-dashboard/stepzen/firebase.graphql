@@ -1,0 +1,97 @@
+type Form_field {
+  field: String
+  label: String
+  type: String
+}
+
+type Firebase_Event {
+  form_fields: [Form_field]
+  id: String
+  location: String
+  name: String
+  attendee_ids: [String]!
+  """
+  People that have attended an event.
+  """
+  attendees: [Firebase_Person]
+    @materializer(
+      query: "person_list_by_id"
+      arguments: [
+        { name: "id", field: "attendee_ids" }
+      ]
+    )
+}
+
+type Firebase_Owner {
+  id: String
+  name: String
+  email: String
+  event_ids: [String]
+  """
+  Events that a person has been to.
+  """
+  events: [Firebase_Event]
+    @materializer(
+      query: "event_list_by_id"
+      arguments: [
+        { name: "id", field: "event_ids" }
+      ]
+    )
+}
+
+type Firebase_Person {
+  address: String
+  email: String
+  event_ids: [String]
+  id: String
+  name: String
+  phone: String
+  """
+  Events that a person has been to.
+  """
+  events: [Firebase_Event]
+    @materializer(
+      query: "event_list_by_id"
+      arguments: [
+        { name: "id", field: "event_ids" }
+      ]
+    )
+}
+
+type Query {
+  """
+  Equivalent To GET /api/events
+  """
+  firebase_events: [Firebase_Event]
+    @rest(endpoint: "https://graphqlbackend.ngrok.io/api/events")
+  """
+  Equivalent To GET /api/events/id
+  """
+  firebase_event_by_id(id: String!): Firebase_Event
+    @rest(endpoint: "https://graphqlbackend.ngrok.io/api/event/$id")
+  """
+  Equivalent To GET /api/owner/id
+  """
+  firebase_owner_by_id(id: String!): Firebase_Owner
+    @rest(endpoint: "https://graphqlbackend.ngrok.io/api/owner/$id")
+  """
+  Equivalent To GET /api/person?email=$email
+  """
+  firebase_owner_by_email(email: String!): Firebase_Owner
+    @rest(endpoint: "https://graphqlbackend.ngrok.io/api/owner?email=$email")
+  """
+  Equivalent To GET /api/eventList?id=$id
+  """
+  event_list_by_id(id: [String]): [Firebase_Event]
+    @rest(endpoint: "https://graphqlbackend.ngrok.io/api/eventList?")
+  """
+  Equivalent To GET /api/personList?id=$id
+  """
+  person_list_by_id(id: [String]!): [Firebase_Person]
+    @rest(endpoint: "https://graphqlbackend.ngrok.io/api/personList?")
+  """
+  Equivalent To GET /api/person?email=$email
+  """
+  firebase_person(email: String!): Firebase_Person
+    @rest(endpoint: "https://graphqlbackend.ngrok.io/api/person?email=$email")
+}

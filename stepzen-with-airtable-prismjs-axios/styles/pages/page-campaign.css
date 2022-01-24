@@ -1,0 +1,87 @@
+.page-campaign [data-nav-toggler] {
+  background-image: url(/images/burger-white.svg);
+}
+
+.page-campaign .site-header {
+  position: absolute;
+  width: 100%;
+  background-color: transparent;
+}
+
+.page-campaign .site-header-logo {
+  width: 200px;
+  height: 36px;
+  background-image: url(/images/logo-white.svg);
+  background-size: center center;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+}
+
+.page-campaign .site-header-logo img {
+  display: none;
+}
+
+.cta-hero {
+  padding-top: calc(var(--spacer) * 3);
+  padding-bottom: var(--spacer);
+}
+
+.cta-hero {
+  background-color: var(--color1);
+  background-image: url(/images/campaign-angles.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.cta-hero .card {
+  padding: var(--spacer);
+}
+
+.page-campaign .cta-hero .hero-header,
+.page-campaign .cta-hero .eyebrow {
+  color: #FFF;
+}
+
+.cta-hero.centered {
+  padding-top: calc(var(--spacer) * 3);
+  text-align: center;
+}
+
+.cta-hero-calendar-link {
+  margin: 0 auto;
+  display: inline-block;
+}
+
+@media (min-width: 800px) {
+  .page-campaign .primary-nav a {
+    color: #FFF;
+  }
+}
+
+@media (min-width: 820px) {
+  .cta-hero .grid {
+    grid-template-columns: 50% 1fr;
+    gap: calc(var(--spacer) * 3);
+  }
+
+  .cta-hero .hero-header {
+    padding-top: var(--spacer);
+    padding-bottom: 0;
+  }
+
+  .cta-hero .hero-content {
+    position: relative;
+  }
+
+  .cta-hero .card {
+    position: absolute;
+    top: 0;
+    width: 100%;
+
+    box-shadow: var(--card-box-shadow);
+  }
+
+  .cta-hero {
+    padding-top: calc(var(--spacer) * 5);
+  }
+}

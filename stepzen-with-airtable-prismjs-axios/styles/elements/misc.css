@@ -1,0 +1,9 @@
+.focal-image {
+  display: block;
+  margin: 0 auto;
+  max-width: 380px;
+}
+
+.avatar {
+  border-radius: 50%;
+}

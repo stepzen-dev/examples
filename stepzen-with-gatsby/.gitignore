@@ -1,0 +1,8 @@
+.cache/
+node_modules/
+public/
+package-lock.json
+
+.DS_Store
+.env*
+!.env.sample

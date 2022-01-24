@@ -1,0 +1,33 @@
+type Image {
+	assetId: ID!
+	publicId: ID
+	format: String
+	bytes: Float
+}
+
+type Query {
+	cloudinaryImage(publicId: ID!): Image
+		@rest(
+			setters: [
+				{ field: "assetId", path: "resources[].asset_id" }
+				{ field: "publicId", path: "resources[].public_id" }
+				{ field: "format", path: "resources[].format" }
+				{ field: "bytes", path: "resources[].bytes" }
+			]
+			resultroot: ""
+			endpoint: "https://$api_key:$api_secret@api.cloudinary.com/v1_1/$cloud_name/resources/image?public_ids=$publicId"
+			configuration: "cloudinary_config"
+		)
+	cloudinaryImages: [Image]
+		@rest(
+			setters: [
+				{ field: "assetId", path: "resources[].asset_id" }
+				{ field: "publicId", path: "resources[].public_id" }
+				{ field: "format", path: "resources[].format" }
+				{ field: "bytes", path: "resources[].bytes" }
+			]
+			resultroot: ""
+			endpoint: "https://$api_key:$api_secret@api.cloudinary.com/v1_1/$cloud_name/resources/image"
+			configuration: "cloudinary_config"
+		)
+}

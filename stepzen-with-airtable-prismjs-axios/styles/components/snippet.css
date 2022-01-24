@@ -1,0 +1,29 @@
+.code-snippet {
+  position: relative;
+}
+
+[data-clipboard-text] {
+  position: absolute;
+  top: -12px;
+  right: -6px;
+
+  font-size: .9rem;
+}
+
+[data-clipboard-text] span {
+  --input-height: 1.8rem;
+
+  padding-right: .5rem;
+  padding-left: .5rem;
+
+  min-width: 0;
+}
+
+.code-snippet pre[class*="language-"] {
+  padding-right: 100px;
+}
+
+.code-snippet code[class*="language-"],
+.code-snippet pre[class*="language-"] {
+  font-family: var(--font-code);
+}

@@ -1,0 +1,26 @@
+type Page {
+	id: ID!
+	title: String
+	content: String
+}
+
+type Query {
+	wordpressPage(id: ID!): Page
+		@rest(
+			resultroot: ""
+			setters: [
+				{ field: "title", path: "title.rendered" }
+				{ field: "content", path: "content.rendered" }
+			]
+			endpoint: "http://143.198.12.235/wp-json/wp/v2/pages/$id?_embed"
+		)
+	wordpressPages: [Page]
+		@rest(
+			setters: [
+				{ field: "title", path: "title.rendered" }
+				{ field: "content", path: "content.rendered" }
+			]
+			resultroot: ""
+			endpoint: "http://143.198.12.235/wp-json/wp/v2/pages"
+		)
+}

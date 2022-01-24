@@ -1,0 +1,27 @@
+.hcard {
+  --avatar-size: 60px;
+  display: inline-flex;
+  align-items: center;
+  text-align: left;
+}
+
+.hcard .avatar {
+  margin-right: 1ch;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+}
+
+.hcard-details {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+}
+
+.hcard-name {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.hcard + .hcard {
+  margin-left: var(--spacer-half);
+}

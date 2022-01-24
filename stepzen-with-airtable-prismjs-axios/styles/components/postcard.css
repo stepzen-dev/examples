@@ -1,0 +1,17 @@
+.postcard {
+  display: flex;
+  flex-direction: column;
+}
+
+.postcard .by-line {
+  margin-bottom: var(--spacer);
+}
+
+.postcard .avatar {
+  --avatar-size: 40px;
+}
+
+.postcard .card-header {
+  flex: 1;
+  margin-bottom: auto;
+}

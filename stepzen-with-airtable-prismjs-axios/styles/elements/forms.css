@@ -1,0 +1,66 @@
+input[type='text'],
+select {
+  appearance: none;
+  height: var(--input-height);
+  width: 100%;
+  padding: 0.35em 0.5em;
+  border-radius: 2px;
+  border: var(--input-border);
+  color: #333;
+}
+
+input[type="search"] {
+  padding-left: calc(30px + .5em);
+  background-image: url(/images/icons/mag-glass.svg);
+  background-position: left 0.5em center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: 600;
+}
+
+.field-group,
+.field {
+  max-width: 50ch;
+}
+
+.field-group + .field,
+.field + .field {
+  margin-top: var(--form-spacer);
+}
+
+.field-group,
+.register-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.field-group .field {
+  flex: 1;
+}
+
+.field-group .field + .field {
+  margin-top: 0;
+  margin-left: var(--form-spacer);
+}
+
+.register-group {
+  margin-left: calc(var(--form-spacer) / -4);
+}
+
+.register-group > * {
+  margin: 0 calc(var(--form-spacer) / 4) calc(var(--form-spacer) / 2);
+}
+
+.register-group > input[type='email'] {
+  flex: 1 1 auto;
+  width: auto;
+}
+
+.form-focus {
+  padding: calc(var(--spacer) * 1.5);
+}

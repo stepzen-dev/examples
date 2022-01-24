@@ -1,0 +1,34 @@
+
+type User {
+  email: String!
+  familyName: String!
+  givenName: String!
+  id: String!
+  name: String!
+  photoUrl: String!
+}
+
+input UserInput {
+  email: String!
+  familyName: String!
+  givenName: String!
+  id: String!
+  name: String!
+  photoUrl: String!
+}
+
+type Mutation {
+  createUser(data: UserInput!): User!
+    @graphql(
+        endpoint: "https://graphql.us.fauna.com/graphql"
+        configuration: "fauna_config"
+        )
+}
+
+type Query {
+    findUserByID(id: ID!): User
+        @graphql (
+            endpoint: "https://graphql.us.fauna.com/graphql"
+            configuration: "fauna_config"
+        )
+}

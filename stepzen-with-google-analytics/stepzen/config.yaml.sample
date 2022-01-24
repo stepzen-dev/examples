@@ -1,0 +1,5 @@
+configurationset:
+  - configuration:
+      name: amplitude_config
+      apikey:
+      secret:

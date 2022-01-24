@@ -1,0 +1,66 @@
+/* Search */
+
+#SearchResults [class*='aa-'] {
+  border: none;
+}
+
+#SearchResults .aa-Panel--scrollable {
+  padding: 0;
+}
+
+.docs-search-result {
+  position: relative;
+  padding: var(--spacer-half);
+  transition: none;
+}
+
+.docs-search-result h1 {
+  margin: 0;
+  font-weight: var(--weight-normal);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.docs-search-result-description {
+  margin-top: .45rem;
+  margin-bottom: 0;
+  font-size: .9rem;
+  line-height: 1.4;
+  color: #454545;
+}
+
+.docs-search-result-description:empty {
+  display: none;
+}
+
+.docs-search-result mark {
+  background-color: var(--color10);
+}
+
+/* Algolia Overrides */
+
+.docs-search .aa-DetachedSearchButton {
+  padding-left: calc(30px + .5em);
+
+  border: none;
+  border: var(--input-border);
+
+  background-image: url(/images/icons/mag-glass.svg);
+  background-position: left 0.5em center;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+
+  font-family: var(--font-body);
+}
+
+.docs-search .aa-DetachedSearchButtonIcon {
+  display: none;
+}
+
+.aa-InputWrapperPrefix {
+  display: none !important;
+}
+
+.aa-InputWrapper input[type="search"] {
+  border: none;
+}

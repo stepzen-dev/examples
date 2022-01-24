@@ -1,0 +1,14 @@
+.feature h2,
+.feature h3 {
+  /* Never a H1 */
+  font-size: 1.5rem;
+}
+
+.feature .icon {
+  width: 6rem;
+  height: 6rem;
+}
+
+.feature .icon + * {
+  margin-top: var(--spacer-half);
+}

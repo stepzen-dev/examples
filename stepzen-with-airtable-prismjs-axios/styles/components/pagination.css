@@ -1,0 +1,12 @@
+.pagination {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pagination [rel='prev'] {
+  margin-right: auto;
+}
+
+.pagination [rel='next'] {
+  margin-left: auto;
+}

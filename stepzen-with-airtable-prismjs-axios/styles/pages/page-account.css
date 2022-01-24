@@ -1,0 +1,50 @@
+.account-hero {
+  padding: var(--spacer-2) 0 0;
+}
+
+.account-card {
+  margin-bottom: var(--spacer-2);
+  border: var(--card-border);
+  border-radius: var(--elem-radius);
+}
+
+.account-card-header {
+  position: relative;
+  display: flex;
+  padding: var(--spacer-half);
+  border-radius: 2px 2px 0 0;
+  border-bottom: var(--card-border);
+}
+
+.account-card-header .help-text {
+  margin-bottom: 0;
+}
+
+.account-card-heading {
+  margin-bottom: 0;
+  font-size: 1.4rem;
+}
+
+.account-card-content {
+  padding: var(--spacer);
+}
+
+.help-text {
+  font-size: .85rem;
+}
+
+.account-card-field-heading {
+  margin-bottom: 3px;
+  font-size: 1rem;
+  font-weight: var(--weight-bold);
+}
+
+.account-card-field .help-text {
+  margin: 8px 0;
+  font-size: .8rem;
+  color: #555;
+}
+
+.account-card-field + .account-card-field {
+  margin-top: var(--spacer);
+}

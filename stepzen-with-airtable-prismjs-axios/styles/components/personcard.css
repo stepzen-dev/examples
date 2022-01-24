@@ -1,0 +1,100 @@
+.personcard {
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: var(--spacer);
+  padding: var(--spacer-half);
+  border: var(--card-border);
+}
+
+.personcard-aux {
+  order: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.personcard-detail {
+  order: 1;
+  width: 100%;
+  padding-top: 0.5rem;
+}
+
+.personcard .avatar {
+  width: 180px;
+  height: 180px;
+}
+
+.personcard-name {
+  margin-bottom: 0.35rem;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.personcard-title {
+  font-size: 1.05rem;
+  font-weight: 500;
+  opacity: 0.6;
+}
+
+.personcard-name,
+.personcard-title,
+.personcard-aux {
+  text-align: center;
+}
+
+.personcard p {
+  font-size: 0.9rem;
+}
+
+.personcard .social-nav {
+  --gap: 8px;
+  margin-top: var(--spacer-half);
+  margin-bottom: 0;
+}
+
+.personcard .social-nav .icon {
+  width: 24px;
+  height: 24px;
+}
+
+@media (min-width: 600px) {
+  .personcard-detail {
+    flex: 1;
+    width: auto;
+  }
+
+  .personcard-aux {
+    margin-right: 24px;
+  }
+
+  .personcard-name,
+  .personcard-title,
+  .personcard-aux {
+    text-align: left;
+  }
+
+  .personcard .avatar {
+    width: 146px;
+    height: 146px;
+  }
+}
+
+.personcard-grid {
+  display: grid;
+  grid-template-columns: minmax(auto, 580px);
+  gap: var(--gap);
+  justify-content: center;
+}
+
+.personcard-grid .personcard {
+  margin-bottom: 0;
+  padding: 0;
+  border: none;
+}
+
+@media (min-width: 840px) {
+  .personcard-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
