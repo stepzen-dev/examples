@@ -1,7 +1,9 @@
 # StepZen modified Next.js Commerce
-This is a modified version of Next.js commerce designed as a proof-of-concept for combining Shopify's e-commerce platform with Agility CMS's headless CMS. Please read more about this example at the following blog post: [Tutorial: Building an eCommerce Solution with AgilityCMS, Shopify, and StepZen. Part 2](https://agilitycms.com/resources/posts/tutorial-building-an-ecommerce-solution-with-agilitycms-shopify-and-stepzen)
+
+This is a modified version of Next.js commerce for combining Shopify's e-commerce platform with Agility CMS's headless CMS. You can read more about this real-world example here: [Tutorial: Building an eCommerce Solution with AgilityCMS, Shopify, and StepZen. Part 2](https://agilitycms.com/resources/posts/tutorial-building-an-ecommerce-solution-with-agilitycms-shopify-and-stepzen)
 
 ## StepZen Features
+
 - Easily deployed to [Vercel](https://vercel.com/)
 - Custom StepZen query editor on localhost allows you to inspect and create queries quickly
 - Pre-connected to [Shopify](https://www.shopify.com/) and [Agility](https://agilitycms.com/) in one secure endpoint
@@ -20,7 +22,7 @@ This is a modified version of Next.js commerce designed as a proof-of-concept fo
 
 ## Integrations
 
-StepZen Commerce integrates out-of-the-box with Shopify and AgilityCMS. They plan to support all major ecommerce backends. With StepZen, you'll be able to quickly connect whatever ecommerce backends you have in mind, deployed to one GraphQL API. 
+StepZen Commerce integrates out-of-the-box with Shopify and AgilityCMS. They plan to support all major ecommerce backends. With StepZen, you'll be able to quickly connect whatever ecommerce backends you have in mind, deployed to one GraphQL API.
 
 ## Spinning Up the StepZen Endpoint
 
@@ -33,7 +35,7 @@ You'll need to go to the StepZen account, https://stepzen.com/account, and insta
 $ cd stepzen
 ```
 
-2. Add your AgilityCMS and Shopify Configurations to the `config.yaml` file.  You should already have your products set up in AgilityCMS and Shopify.  If you do not, refer to the blog, [Tutorial: Building an eCommerce Solution with AgilityCMS, Shopify, and StepZen. Part 2](https://agilitycms.com/resources/posts/tutorial-building-an-ecommerce-solution-with-agilitycms-shopify-and-stepzen).
+2. Add your AgilityCMS and Shopify Configurations to the `config.yaml` file. You should already have your products set up in AgilityCMS and Shopify. If you do not, refer to the blog, [Tutorial: Building an eCommerce Solution with AgilityCMS, Shopify, and StepZen. Part 2](https://agilitycms.com/resources/posts/tutorial-building-an-ecommerce-solution-with-agilitycms-shopify-and-stepzen).
 
 Reminder: Make sure config.yaml is in your .gitignore
 
@@ -46,7 +48,7 @@ Copy that sample to a new config.yaml like so:
 ```
 $ cd stepzen
 
-$ cp config.yaml.sample config.yaml   
+$ cp config.yaml.sample config.yaml
 ```
 
 And now edit the config.yaml file, inserting your API keys and credentials where appropriate:
@@ -81,43 +83,45 @@ configurationset:
 
 The name for each of these configurationsets represents how they are referenced in your schemas.
 
-### Agility Configuration ###
+### Agility Configuration
+
 Under `agility_config`, we enter configuration data that tells StepZen how to talk to the Agility CMS API
 
-* header.Apikey, which is where you’ll put your Agility CMS defaultpreview Apikey. Go to settings in your Agility CMS instance and copy the defaultpreview API key.
-* instance, specifying the Agility instance number. Go to settings and copy the Instance GUID under Global Security.
+- header.Apikey, which is where you’ll put your Agility CMS defaultpreview Apikey. Go to settings in your Agility CMS instance and copy the defaultpreview API key.
+- instance, specifying the Agility instance number. Go to settings and copy the Instance GUID under Global Security.
 
-### Shopify REST API Configuration ###
+### Shopify REST API Configuration
+
 Under `shopify_config` we have configuration data that tells StepZen how to talk to the Shopify REST API:
 
-* Authorization: Basic, which is where you’ll put your Shopify RestAPI authorization key.
-    * Under Apps in Shopify, select the link “Manage Private Apps”
-    * Enable Private App Development and Create Private App
-    * Name and provide Admin API Permissions to the App. The more read, write permissions you provide, the fewer permission errors to debug.
-    * Check “Allow this app to access your storefront data using the Storefront API” and Save.
-    * To generate a Base64 Basic API Key, go to Base64 Online, and paste the APIKey and Secret like so, Apikey:Secret. Click the Encode button, and paste the result in this config, Authorization: Basic. Phew, done!
-* store_name for the Shopify store name.
-    * Example: testcanonicalstore
+- Authorization: Basic, which is where you’ll put your Shopify RestAPI authorization key.
+  - Under Apps in Shopify, select the link “Manage Private Apps”
+  - Enable Private App Development and Create Private App
+  - Name and provide Admin API Permissions to the App. The more read, write permissions you provide, the fewer permission errors to debug.
+  - Check “Allow this app to access your storefront data using the Storefront API” and Save.
+  - To generate a Base64 Basic API Key, go to Base64 Online, and paste the APIKey and Secret like so, Apikey:Secret. Click the Encode button, and paste the result in this config, Authorization: Basic. Phew, done!
+- store_name for the Shopify store name.
+  - Example: testcanonicalstore
 
+### Shopify GraphQL API Configuration
 
-### Shopify GraphQL API Configuration ###
 Under shopify we have configuration data that tells StepZen how to talk to the Shopify GraphQL API:
 
-* header.X-Shopify-Access-Token, which is where you’ll put your Admin API Shopify secret from above. Do not put your Shopify access token, this a bit tricky, but how Shopify wants it. We’ll use the STOREFRONT_ACCESS_TOKEN for the .env file.
-* store_name for the Shopify store name
-
+- header.X-Shopify-Access-Token, which is where you’ll put your Admin API Shopify secret from above. Do not put your Shopify access token, this a bit tricky, but how Shopify wants it. We’ll use the STOREFRONT_ACCESS_TOKEN for the .env file.
+- store_name for the Shopify store name
 
 Note that we need both REST and GraphQL API connections to Shopify because the storefront id for the checkout process is only available via the GraphQL API.
 
 Once you have edited config.yaml to contain the required information to connect to your accounts at Agility and Shopify, we’re ready to upload the configuration to StepZen.
 
-### Upload Configuration ###
+### Upload Configuration
+
 We upload the configuration using the StepZen CLI. We can install that easily by running the following command in your terminal:
 
 ```
 $ npm install -g stepzen
 ```
-  
+
 Note: Windows support for the CLI is currently in beta. We recommend using WSL on Windows.
 
 You’ll need node to run this command as well.
@@ -155,4 +159,10 @@ NEXT_STEPZEN_API_KEY=api_key_from_your_account_here
 NEXT_STEPZEN_API_URL=https://account.stepzen.net/vercel/stepzen/__graphql
 ```
 
+## Learn More
 
+You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.com/invite/9k2VdPn2FR) or [Github Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.
+
+To watch @samuelghill demo a challenge with this repo, view:
+
+https://www.youtube.com/watch?v=QcoMqivQ3wk

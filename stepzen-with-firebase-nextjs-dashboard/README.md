@@ -1,5 +1,3 @@
-# next-auth-dashboard
-
 ## StepZen Example: with-firebase-nextjs-dashboard
 
 ## Introduction
@@ -10,9 +8,9 @@ This project builds a GraphQL API with Firebase connected to your NextJS dashboa
 
 You'll need to create a StepZen account first. Once you've got that set up, git clone this repository onto your machine and open the working directory:
 
-git clone https://github.com/stepzen-dev/examples.git
+`git clone https://github.com/stepzen-dev/examples.git`
 
-cd with-firebase-nextjs-dashboard
+`cd with-firebase-nextjs-dashboard`
 
 Run `npm install` inside `/with-firebase-nextjs-dashboard` before running `npm start`.
 

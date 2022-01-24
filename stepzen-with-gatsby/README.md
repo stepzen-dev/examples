@@ -1,5 +1,3 @@
-# gatsby example
-
 ## StepZen Example: with-gatsby
 
 ## Introduction
@@ -14,7 +12,7 @@ git clone https://github.com/stepzen-dev/examples.git
 
 `cd with-gatsby`
 
-Run `npm install` inside `/with-gatsby` before running `npm start`.
+Run `npm install` inside `/with-gatsby` before running `npm run develop`.
 
 ## Run StepZen
 
