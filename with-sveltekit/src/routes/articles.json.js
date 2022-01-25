@@ -1,13 +1,13 @@
-import 'dotenv/config'
+import 'dotenv/config';
 
-const { STEPZEN_ENDPOINT, STEPZEN_API_KEY } = process.env
+const { STEPZEN_ENDPOINT, STEPZEN_API_KEY } = process.env;
 
 export async function post() {
   const response = await fetch(STEPZEN_ENDPOINT, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `apikey ${STEPZEN_API_KEY}`
+      Authorization: `apikey ${STEPZEN_API_KEY}`,
     },
     body: JSON.stringify({
       query: `{
@@ -21,15 +21,15 @@ export async function post() {
           slug
           url
         }
-      }`
-    })
-  })
+      }`,
+    }),
+  });
 
-  const data = await response.json()
-  
+  const data = await response.json();
+
   if (data) {
     return {
-      body: data
-    }
+      body: data,
+    };
   }
 }

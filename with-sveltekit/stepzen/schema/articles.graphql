@@ -39,9 +39,7 @@ type getArticlesResponse {
 }
 
 type Query {
-  getArticleByPath(
-    slug: String!, username: String!
-  ): ArticleShow
+  getArticleByPath(slug: String!, username: String!): ArticleShow
     @rest(endpoint: "https://dev.to/api/articles/$username/$slug")
 
   getArticles(
@@ -54,6 +52,5 @@ type Query {
     tags_exclude: String
     top: Int
     username: String
-  ): [getArticlesResponse]
-    @rest(endpoint: "https://dev.to/api/articles")
+  ): [getArticlesResponse] @rest(endpoint: "https://dev.to/api/articles")
 }

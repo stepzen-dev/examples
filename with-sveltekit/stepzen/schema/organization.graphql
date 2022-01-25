@@ -31,18 +31,20 @@ type getOrgArticlesResponse {
 }
 
 type Query {
-  getOrganization(
-    username: String!
-  ): DevToOrganization
+  getOrganization(username: String!): DevToOrganization
     @rest(endpoint: "https://dev.to/api/organizations/$username")
 
   getOrgUsers(
-    page: Int, per_page: Int, username: String!
+    page: Int
+    per_page: Int
+    username: String!
   ): [getOrgUsersResponse]
     @rest(endpoint: "https://dev.to/api/organizations/$username/users")
 
   getOrgArticles(
-    page: Int, per_page: Int, username: String!
+    page: Int
+    per_page: Int
+    username: String!
   ): [getOrgArticlesResponse]
     @rest(endpoint: "https://dev.to/api/organizations/$username/articles")
 }

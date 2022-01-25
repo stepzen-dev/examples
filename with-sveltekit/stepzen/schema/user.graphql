@@ -13,8 +13,6 @@ type DevToUser {
 }
 
 type Query {
-  getUser(
-    id: String!, url: String
-  ): DevToUser
+  getUser(id: String!, url: String): DevToUser
     @rest(endpoint: "https://dev.to/api/users/$id")
 }

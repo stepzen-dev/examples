@@ -4,10 +4,10 @@ import adapter from '@sveltejs/adapter-netlify';
 const config = {
   kit: {
     adapter: adapter({
-      split: false
+      split: false,
     }),
-    target: '#svelte'
-  }
+    target: '#svelte',
+  },
 };
 
 export default config;
