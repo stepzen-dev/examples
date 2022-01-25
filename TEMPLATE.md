@@ -1,25 +1,25 @@
-# StepZen Example: `with-postgres`
+# StepZen Example: `with-[INSERT]` <!-- ADD YOUR OWN -->
 
 # Introduction
 
-This project builds a GraphQL API connected to your Postgres database using StepZen. We will use the `@dbquery` directive to generate our GraphQL schema.
+This project builds a GraphQL API... <!-- ADD YOUR OWN -->
 
 # Getting Started
 
-You'll need to create a [StepZen account](https://stepzen.com/request-invite) first. Once you've got that set up, [git clone](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-clone) this repository onto your machine and open the working directory:
+You'll need to create a [StepZen account](https://stepzen.com/signup) first. Once you've got that set up, [git clone](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-clone) this repository onto your machine and open the working directory:
+
+<!-- UPDATE THE DIRECTORY BELOW -->
 
 ```
 git clone https://github.com/stepzen-dev/examples.git
-cd with-postgres
+cd with-[INSERT]
 ```
 
-Before you can run this example, you need to have a Postgres database. Which you can either run in the cloud or set up locally with Docker.
+Before you can run this example, you need to have a ... <!-- ADD YOUR OWN -->
 
-## Run a database in the cloud
+<!-- ADD ADDITIONAL SET UP STEPS
 
-The easiest way to try out this example is by running a database in the cloud.
-
-<!-- Insert examples !-->
+EXAMPLE:
 
 ## Creating a local database with Docker
 
@@ -63,6 +63,7 @@ configurationset:
       name: postgresql_config
       uri: postgresql://stepzen:stepzenpasswd@0.tcp.ngrok.io:15650/stepzen_demo
 ```
+-->
 
 ## Run StepZen
 
