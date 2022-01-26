@@ -1,0 +1,10 @@
+schema
+  @sdl(
+    files: [
+      "enums.graphql"
+      "airtable.graphql"
+      "lob.graphql"
+    ]
+  ) {
+  query: Query
+}

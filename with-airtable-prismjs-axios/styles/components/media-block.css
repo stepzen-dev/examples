@@ -1,0 +1,35 @@
+.media-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.media-block .block-content > img {
+  margin: 0 auto;
+  width: 530px;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .media-block.media-first .block-header {
+    order: 1;
+  }
+
+  .media-block.media-first .block-content {
+    order: 0;
+  }
+
+  .media-block .grid {
+    grid-template-columns: 1fr 55%;
+  }
+
+  .media-block.media-first .grid {
+    grid-template-columns: 55% 1fr;
+  }
+
+  .media-block .block-header,
+  .media-block .block-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

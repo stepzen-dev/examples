@@ -1,0 +1,254 @@
+
+# __________________________________________________________________________________________________________________________________
+# QUERIES
+# __________________________________________________________________________________________________________________________________
+# __________________________________________________________________________________________________________________________________
+type Query {
+  #__________________
+  # AGILITY QUERIES
+  #___________________
+
+  """
+  returns a product via a sequence -- first a query to Agility, then to Shopify using the AgilityCMS field, shopifyId, then 'collect' returns all the info
+  """
+  productByAgilityId(agilityId: ID!): ProductRest
+    @sequence(
+      steps: [
+        { query: "agilityProduct" }
+        { query: "shopifyProduct" }
+        { query: "collect" }
+      ]
+    )
+
+  """
+  returns a product via a sequence -- first a query to Agility, then to Shopify using the AgilityCMS field, shopifyId, then 'collect' returns all the info
+  """
+  productByAgilitySlug(slug: String!): ProductRest
+    @sequence(
+      steps: [
+        { query: "agilityProductBySlug" }
+        { query: "shopifyProduct" }
+        { query: "collect" }
+      ]
+    )
+
+  """
+  returns a product via a sequence -- first a query to Agility by type, then to Shopify using the AgilityCMS field, shopifyId, then 'collect' returns all the info
+  """
+  productsByAgilityType(type: String!): [ProductRest]
+    @sequence(
+      steps: [
+        { query: "agilityProductsByType" }
+        { query: "shopifyProduct" }
+        { query: "collect" }
+      ]
+    )
+
+  """
+  returns a product via a sequence -- first a query to products based on whether they're at stage (0 or 1), then to Shopify using the AgilityCMS field, shopifyId, then 'collect' returns all the info
+  """
+  productsAtStage(stage: Int!): [ProductRest]
+    @sequence(
+      steps: [
+        { query: "agilityProductsAtStage" }
+        { query: "shopifyProduct" }
+        { query: "collect" }
+      ]
+    )
+
+  """
+  returns a product via a sequence -- first a query to Agility products, then to Shopify using the AgilityCMS field, shopifyId, then 'collect' returns all the info
+  """
+  productsRest: [ProductRest]
+    @sequence(
+      steps: [
+        { query: "shopifyProducts" }
+        { query: "agilityProductByShopifyId" }
+        { query: "collect" }
+      ]
+    )
+    collect(
+      title: String
+        audience: String
+        description: String
+        image: String
+        createdAt: String
+        admin_graphql_api_id: String
+        type: String
+        slug: String
+        agilityId: ID
+        shopifyId: ID
+        hero: Boolean
+              ): ProductRest @connector(type: "echo")
+
+  """
+  returns an Agility Product with all of the info from Agility CMS
+  """
+  agilityProduct(agilityId: ID!): AgilityProduct
+    @rest(
+      endpoint: "https://$instance;-api.agilitycms.cloud/preview/en-us/item/$agilityId"
+      configuration: "agility_config"
+      setters: [
+        { field: "title", path: "fields.title" }
+        { field: "audience", path: "fields.audience" }
+        { field: "description", path: "fields.description" }
+        { field: "createdAt", path: "properties.modified" }
+        { field: "agilityId", path: "contentID" }
+        { field: "shopifyId", path: "fields.shopifyId" }
+        { field: "image", path: "fields.image" }
+        { field: "hero", path: "fields.hero" }
+        { field: "type", path: "fields.type" }
+        { field: "slug", path: "fields.slug" }
+        
+      ]
+    )
+
+  """
+  queries Agility products based on shopifyId
+  """
+  agilityProductByShopifyId(shopifyId: ID!): AgilityProduct
+    @rest(
+      endpoint: "https://$instance;-api.agilitycms.cloud/preview/en-us/list/products?Filter=fields.shopifyId%5Beq%5D%22$shopifyId;%22"
+      configuration: "agility_config"
+      setters: [
+        { field: "title", path: "fields.title" }
+        { field: "audience", path: "fields.audience" }
+        { field: "description", path: "fields.description" }
+        { field: "shopifyId", path: "fields.shopifyId" }
+        { field: "title", path: "fields.title" }
+        { field: "type", path: "fields.type" }
+        { field: "slug", path: "fields.slug" }
+        { field: "createdAt", path: "properties.modified" }
+        { field: "agilityId", path: "contentID" }
+        { field: "image", path: "fields.image" }
+      ]
+      resultroot: "items[]"
+    )
+
+  """
+  queries Agility products based on shopifyId
+  """
+  agilityProductBySlug(slug: String!): AgilityProduct
+    @rest(
+      endpoint: "https://$instance;-api.agilitycms.cloud/preview/en-us/list/products?Filter=fields.slug%5Beq%5D%22$slug;%22"
+      configuration: "agility_config"
+      setters: [
+        { field: "title", path: "fields.title" }
+        { field: "audience", path: "fields.audience" }
+        { field: "description", path: "fields.description" }
+        { field: "shopifyId", path: "fields.shopifyId" }
+        { field: "title", path: "fields.title" }
+        { field: "type", path: "fields.type" }
+        { field: "slug", path: "fields.slug" }
+        { field: "createdAt", path: "properties.modified" }
+        { field: "agilityId", path: "contentID" }
+        { field: "image", path: "fields.image" }
+      ]
+      resultroot: "items[]"
+    )
+
+  """
+  queries Agility products based on type
+  """
+  agilityProductsByType(type: String!): [AgilityProduct]
+    @rest(
+      endpoint: "https://$instance;-api.agilitycms.cloud/preview/en-us/list/products?Filter=fields.type%5Beq%5D%22$type;%22"
+      configuration: "agility_config"
+      setters: [
+        { field: "title", path: "fields.title" }
+        { field: "audience", path: "fields.audience" }
+        { field: "description", path: "fields.description" }
+        { field: "createdAt", path: "properties.modified" }
+        { field: "agilityId", path: "contentID" }
+        { field: "shopifyId", path: "fields.shopifyId" }
+        { field: "image", path: "fields.image" }
+        { field: "hero", path: "fields.hero" }
+        { field: "type", path: "fields.type" }
+        { field: "slug", path: "fields.slug" }
+        
+      ]
+      resultroot: "items[]"
+    )
+
+  """
+  queries Agility products based on whether they're at stage (0 or 1)
+  """
+  agilityProductsAtStage(stage: Int!): [AgilityProduct]
+    @rest(
+      endpoint: "https://$instance;-api.agilitycms.cloud/preview/en-us/list/products?Filter=properties.state%5Beq%5D$stage"
+      configuration: "agility_config"
+      setters: [
+        { field: "title", path: "fields.title" }
+        { field: "audience", path: "fields.audience" }
+        { field: "description", path: "fields.description" }
+        { field: "createdAt", path: "properties.modified" }
+        { field: "agilityId", path: "contentID" }
+        { field: "shopifyId", path: "fields.shopifyId" }
+        { field: "image", path: "fields.image" }
+        { field: "hero", path: "fields.hero" }
+        { field: "type", path: "fields.type" }
+        { field: "slug", path: "fields.slug" }
+        
+      ]
+      resultroot: "items[]"
+    )
+    
+  """
+  returns a Shopify product, given an id
+  """
+  shopifyProduct(shopifyId: ID!): ShopifyProduct
+    @rest(
+      endpoint: "https://$store_name.myshopify.com/admin/api/2021-04/products/$shopifyId;.json"
+      resultroot: "product"
+      setters: [
+        { field: "shopifyId", path: "id" }
+        { field: "createdAt", path: "created_at" }
+      ]
+      configuration: "shopify_config"
+    )
+
+  """
+  returns all Shopify products
+  """
+  shopifyProducts: [ShopifyProduct]
+    @rest(
+      endpoint: "https://$store_name.myshopify.com/admin/api/2021-04/products.json"
+      resultroot: "products[]"
+      setters: [
+        { field: "shopifyId", path: "id" }
+        { field: "createdAt", path: "created_at" }
+      ]
+      configuration: "shopify_config"
+    )
+
+  """
+  returns Shopidy product variants by id
+  """
+  shopifyProductVariants(shopifyId: ID!): [ShopifyProductVariants]
+    @rest(
+      endpoint: "https://$store_name.myshopify.com/admin/api/2021-04/products/$shopifyId;.json"
+      resultroot: "product.variants[]"
+      configuration: "shopify_config"
+    )
+
+  """
+  returns Shopidy product images by id
+  """
+  shopifyProductImages(shopifyId: ID!): [ShopifyProductImages]
+    @rest(
+      endpoint: "https://$store_name.myshopify.com/admin/api/2021-04/products/$shopifyId;.json"
+      resultroot: "product.images[]"
+      configuration: "shopify_config"
+    )
+
+  """
+  returns Shopidy product options by id
+  """
+  shopifyProductOptions(shopifyId: ID!): [ShopifyProductOptions]
+    @rest(
+      endpoint: "https://$store_name.myshopify.com/admin/api/2021-04/products/$shopifyId;.json"
+      setters: [{ field: "values", path: "values[]" }]
+      resultroot: "product.options[]"
+      configuration: "shopify_config"
+    )
+}

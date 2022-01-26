@@ -1,0 +1,37 @@
+.page-home {
+  background-image: url(/images/big-bubble-2.svg);
+  background-position: left top 6vw;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+
+.page-home .card-headline {
+  margin: 1.5rem 0;
+  font-size: 1.45rem;
+}
+
+.page-home .banner-card {
+   margin: 0 auto;
+  padding: var(--spacer);
+  max-width: 700px;
+}
+
+.page-home .feature-block .card-header {
+  padding: 2.5rem 2.25rem;
+}
+
+.page-home .story-block {
+  background-image: url(/images/circle-bg-2.svg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.actions-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+  row-gap: calc(var(--gap) / 2); /* ! R ! */
+  column-gap: var(--gap);
+}

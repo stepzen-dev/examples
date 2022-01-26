@@ -1,0 +1,3 @@
+[submodule "plugins/netlify-plugin-stepzen"]
+	path = plugins/netlify-plugin-stepzen
+	url = https://github.com/steprz/netlify-plugin-stepzen.git

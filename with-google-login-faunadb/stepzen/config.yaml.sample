@@ -1,0 +1,4 @@
+configurationset:
+  - configuration:
+      name: fauna_config
+      Authorization: Basic {{token}}

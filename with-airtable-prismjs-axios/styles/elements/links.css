@@ -1,0 +1,60 @@
+a {
+  color: var(--color3);
+}
+
+a:hover,
+a:active {
+  color: var(--color4);
+}
+
+.link-more {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--color3);
+  transition: var(--anim);
+}
+
+.link-more:hover {
+  color: var(--color7);
+  opacity: 0.7;
+}
+
+.link-more:after {
+  display: inline-block;
+  height: 0.75rem;
+  width: 1rem;
+  margin-left: 0.5ch;
+  vertical-align: middle;
+  background-image: url(/images/caret.svg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  content: '';
+  transform: translateY(-1px);
+}
+
+p + .link-more {
+  margin-top: var(--spacer);
+}
+
+.icon-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.icon-link .icon {
+  margin-right: 1ch;
+  width: auto;
+  height: 1.8rem;
+}
+
+.icon-link:hover > span {
+  text-decoration: underline;
+}
+
+.button .icon-link:hover > span {
+  text-decoration: none;
+}

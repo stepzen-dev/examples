@@ -1,0 +1,33 @@
+.stepzen-button span {
+  --btn-border: var(--color3);
+  --btn-color: var(--color3);
+
+  padding-left: 56px;
+  min-width: 188px; /* ! R ! */
+
+  background: url(/images/mark-white.svg),
+    linear-gradient(
+      90deg,
+      var(--btn-border) 0%,
+      var(--btn-border) 42px,
+      #ffffff 42px,
+      #ffffff 100%
+    );
+  background-position: left 9px center, left center;
+  background-size: 22px 22px, 100% auto;
+  background-repeat: no-repeat, no-repeat;
+}
+
+.stepzen-button:hover span {
+  --btn-color: var(--btn-border);
+}
+
+.stepzen-button.copied span {
+  padding-left: 0.8rem;
+}
+
+.stepzen-button.copied span {
+  --btn-border: var(--color7);
+  --btn-color: #fff;
+  background: var(--btn-border);
+}

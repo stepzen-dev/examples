@@ -1,0 +1,45 @@
+.notification {
+  position: fixed;
+  left: 50%;
+  bottom: 10px;
+  z-index: 10;
+  transform: translateX(-50%);
+
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+
+  margin: 0 auto;
+  width: calc(100% - 20px);
+  max-width: var(--max-width);
+  padding: calc(var(--spacer-half) / 2) var(--gutter);
+  border-radius: 4px;
+  background: var(--color2);
+  font-size: 0.85rem;
+  color: #fff;
+}
+
+.notification > * {
+  margin-top: calc(var(--spacer-half) / 2);
+  margin-bottom: calc(var(--spacer-half) / 2);
+}
+
+.notification-message a {
+  color: #fff;
+}
+
+.notification-message a:hover {
+  text-decoration: none;
+}
+
+.notification-message > *:last-child {
+  margin-bottom: 0;
+}
+
+@media (min-width: 600px) {
+  .notification-message {
+    flex: 1;
+    margin-right: auto;
+    padding-right: var(--gap);
+  }
+}

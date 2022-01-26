@@ -1,0 +1,13 @@
+configurationset:
+  - configuration:
+      name: agility_config
+      header.Apikey: <agility defaultpreview Apikey>
+      instance: <agility instance>
+  - configuration:
+      name: shopify_config
+      Authorization: Basic <basic auth header>
+      store_name: <shopify store name>
+  - configuration:
+      name: shopify
+      header.X-Shopify-Access-Token: <shopify-access-token>
+      store_name: <shopify store name>

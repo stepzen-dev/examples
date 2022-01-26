@@ -1,0 +1,4 @@
+configurationset:
+  - configuration:
+      name: dummy_config
+      api_key: ""

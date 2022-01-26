@@ -1,0 +1,7 @@
+type HelloWorld @mock {
+   message: String! @mockfn(name: "List", values: ["Hello, world!"])
+}
+
+type Query {
+   helloWorld: HelloWorld
+}

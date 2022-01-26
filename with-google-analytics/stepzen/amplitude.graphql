@@ -1,0 +1,42 @@
+type Amplitude_Event {
+  code: Int
+  events_ingested: Int
+  payload_size_bytes: Int
+  server_upload_time: Int
+}
+
+type UserSearch {
+  id: ID!
+  lastUsed: String
+  email: String
+}
+
+type Query {
+  userSearch(email: String!): UserSearch
+    @rest(
+      setters: [
+        { field: "email", path: "user_id" }
+        { field: "id", path: "amplitude_id" }
+        { field: "lastUsed", path: "last_seen" }
+      ]
+      resultroot: "matches[]"
+      endpoint: "https://$apikey;:$secret;@amplitude.com/api/2/usersearch?user=$email"
+      configuration: "amplitude_config"
+    )
+}
+
+type Mutation {
+  amplitude_event(
+    userId: String!
+    eventType: String!
+    eventTime: String!
+    path: String!
+  ): Amplitude_Event
+    @rest(
+      endpoint: "https://api2.amplitude.com/batch"
+      postbody: "{\"api_key\":\"{{ .Get \"apikey\" }}\",\"events\":[{\"user_id\":\"{{ .Get \"userId\" }}\",\"event_type\":\"{{ .Get \"eventType\" }}\",\"event_properties\":{\"path\":\"{{ .Get \"path\" }}\"},\"event_time\":\"{{ .Get \"eventTime\" }}\"}]}"
+      method: POST
+      contenttype: "application/json"
+      configuration: "amplitude_config"
+    )
+}

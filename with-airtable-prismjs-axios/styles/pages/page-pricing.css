@@ -1,0 +1,22 @@
+.page-pricing {
+  background-image: url(/images/circle-bg.svg);
+  background-position: top 60px center;
+  background-repeat: no-repeat;
+}
+
+@media (min-width: 768px) {
+  .plan-grid {
+    padding-top: var(--spacer);
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--spacer-half);
+  }
+
+  .plan-grid .plan-card {
+    padding-top: var(--spacer-half);
+  }
+
+  .plan-card.focused {
+    margin-top: calc(var(--spacer) * -1.5);
+    padding-top: calc(var(--spacer) * 2);
+  }
+}

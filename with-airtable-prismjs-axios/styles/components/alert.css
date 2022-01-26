@@ -1,0 +1,21 @@
+.alert {
+  display: block;
+  margin: var(--spacer-half) 0;
+  padding: 0.85rem 1.5rem 0.85rem 1rem;
+  border-radius: 2px;
+  background-color: var(--color14);
+  border-left: 6px solid var(--color13);
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--font-color);
+}
+
+.alert > *:last-child {
+  margin-bottom: 0;
+}
+
+.alert.error {
+  background-color: var(--color9);
+  border-left: 6px solid #c67d70;
+}

@@ -1,0 +1,6 @@
+schema
+  @sdl(
+    files: ["fauna.graphql"]
+  ) {
+  query: Query
+}

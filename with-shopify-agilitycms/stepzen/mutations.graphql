@@ -1,0 +1,24 @@
+# __________________________________________________________________________________________________________________________________
+# MUTATIONS
+# __________________________________________________________________________________________________________________________________
+# __________________________________________________________________________________________________________________________________
+type Mutation {
+  """
+  writes Shopify title and description to Agility
+  """
+  shopifyToAgility(description: String!, Title: String!, shopifyId: ID!, image: String!): [AgilityProduct]
+      @rest(
+      endpoint: "https://us-central1-stepzen-web-staging.cloudfunctions.net/agilityCMSSDK?object=create&fields=Title:$Title;,description:$description;,shopifyId:$shopifyId;,image:$image;"
+    )
+  shopifyToAgilitySequence(
+    Title: String!
+    description: String!
+    shopifyId: ID!
+    image: String!
+  ): [AgilityProduct]
+    @sequence(
+      steps: [
+        { mutation: "shopifyToAgility" }
+      ]
+    )
+}

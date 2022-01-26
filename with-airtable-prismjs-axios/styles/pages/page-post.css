@@ -1,0 +1,59 @@
+.post-header {
+  margin-bottom: var(--spacer);
+}
+
+.post-title {
+  font-size: 2.65rem;
+}
+
+.post-meta,
+.post-subheader {
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  padding: 0;
+}
+
+.post-subheader {
+  margin-top: var(--spacer);
+}
+
+.post-subheader > * {
+  margin-bottom: var(--spacer);
+}
+
+.post-category {
+  display: block;
+  margin-bottom: .35rem;
+  font-size: .9rem;
+  text-decoration: none;
+  color: var(--font-color);
+}
+
+.post-content {
+  position: relative;
+}
+
+.post-content:after {
+  display: block;
+  height: 2px;
+  background: #ddd;
+  content: '';
+}
+
+.post-cover,
+.post-content:after,
+.post-content figure,
+.post-content iframe {
+  width: calc(100% + var(--extend-width));
+  margin: 2rem 0 2rem calc(var(--extend-width) / -2);
+}
+
+.post-content:after {
+  margin-top: var(--spacer-3);
+  margin-bottom: var(--spacer-3);
+}
+
+.post-content figcaption {
+  padding: 0.5rem 0.5rem 0.5rem calc(var(--extend-width) / 2);
+}

@@ -1,0 +1,56 @@
+.card {
+  position: relative;
+  border: var(--card-border);
+  border-radius: var(--elem-radius);
+  background-color: #fff;
+}
+
+.card.shadow,
+.card:hover {
+  box-shadow: var(--card-box-shadow);
+  transition: var(--anim);
+}
+
+.card.shadow {
+  box-shadow: var(--card-box-shadow);
+}
+
+.card.no-shadow:hover {
+  box-shadow: none;
+}
+
+.card.no-border {
+  border: none;
+}
+
+.card-header,
+.card-footer,
+.card-body {
+  padding: 1.5rem 1.5rem;
+}
+
+.card-header + .card-body {
+  padding-top: 0;
+}
+
+.card-footer {
+  /* R */
+  padding-top: 0;
+}
+
+.card-header > *:last-child,
+.card-body > *:last-child,
+.card-footer > *:last-child {
+  margin-bottom: 0;
+}
+
+.card-cta.cover {
+  /* R */
+  display: block;
+  height: 1px;
+  text-indent: -999rem;
+}
+
+.card-heading {
+  font-size: 1.4rem;
+}
