@@ -12,3 +12,4 @@ Here's a list of our current examples:
 
 - [with-mysql](https://github.com/stepzen-dev/examples/tree/main/with-mysql)
 - [with-postgresql](https://github.com/stepzen-dev/examples/tree/main/with-postgres)
+- [with-rest](https://github.com/stepzen-dev/examples/tree/main/with-rest)
