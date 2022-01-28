@@ -1,0 +1,4 @@
+configurationset:
+  - configuration:
+      name: mysql_config
+      dsn: testUserIntrospection:HurricaneStartingSample1934@tcp(db.introspection.stepzen.net)/introspection

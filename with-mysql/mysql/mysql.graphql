@@ -1,0 +1,60 @@
+type Address {
+  city: String
+  countryRegion: String
+  id: Int!
+  postalCode: String
+  stateProvince: String
+  street: String
+}
+
+type Customer {
+  email: String!
+  id: Int!
+  name: String!
+}
+
+type CustomerAddress {
+  addressId: Int!
+  customerId: Int!
+}
+
+type Lineitem {
+  orderId: Int!
+  productId: Int!
+  quantity: Int
+}
+
+type Order {
+  carrier: String!
+  createdAt: Date!
+  customerId: Int!
+  id: Int!
+  shippingCost: Float
+  trackingId: String!
+}
+
+type Product {
+  description: String
+  id: Int!
+  image: String
+  title: String
+}
+
+type Query {
+  getAddressList: [Address]
+    @dbquery(type: "mysql", table: "address", configuration: "mysql_config")
+  getCustomerList: [Customer]
+    @dbquery(type: "mysql", table: "customer", configuration: "mysql_config")
+  getCustomerAddressList: [CustomerAddress]
+    @dbquery(
+      type: "mysql"
+      table: "customerAddress"
+      configuration: "mysql_config"
+    )
+  getLineitemList: [Lineitem]
+    @dbquery(type: "mysql", table: "lineitem", configuration: "mysql_config")
+  getOrderList: [Order]
+    @dbquery(type: "mysql", table: "order", configuration: "mysql_config")
+  getProductList: [Product]
+    @dbquery(type: "mysql", table: "product", configuration: "mysql_config")
+}
