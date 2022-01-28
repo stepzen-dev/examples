@@ -1,0 +1,4 @@
+configurationset:
+  - configuration:
+      name: devto_config
+      devto_api_key: xxxx

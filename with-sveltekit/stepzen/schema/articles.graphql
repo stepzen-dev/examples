@@ -1,0 +1,56 @@
+type ArticleShow {
+  body_html: String!
+  body_markdown: String!
+  canonical_url: String!
+  comments_count: Int!
+  cover_image: String!
+  description: String!
+  organization: DevToOrganization
+  path: String!
+  public_reactions_count: Int!
+  published_at: String!
+  readable_publish_date: String!
+  slug: String!
+  tags: String!
+  tag_list: JSON
+  title: String!
+  url: String!
+}
+
+type getArticlesResponse {
+  body_html: String!
+  body_markdown: String!
+  canonical_url: String!
+  comments_count: Int!
+  cover_image: String!
+  created_at: String!
+  description: String!
+  organization: DevToOrganization
+  path: String!
+  public_reactions_count: Int!
+  published_at: String!
+  readable_publish_date: String!
+  slug: String!
+  tags: String!
+  tag_list: JSON
+  title: String!
+  url: String!
+  user: DevToUser!
+}
+
+type Query {
+  getArticleByPath(slug: String!, username: String!): ArticleShow
+    @rest(endpoint: "https://dev.to/api/articles/$username/$slug")
+
+  getArticles(
+    collection_id: Int
+    page: Int
+    per_page: Int
+    state: String
+    tag: String
+    tags: String
+    tags_exclude: String
+    top: Int
+    username: String
+  ): [getArticlesResponse] @rest(endpoint: "https://dev.to/api/articles")
+}
