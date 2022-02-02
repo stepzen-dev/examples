@@ -1,4 +1,4 @@
-# StepZen Example: with-gatsby
+# StepZen Example: with-google-login-faunadb
 
 ## Introduction
 
@@ -10,7 +10,7 @@ You'll need to create a StepZen account first. Once you've got that set up, git 
 
 ```bash
 git clone https://github.com/stepzen-dev/examples.git
-cd with-google-gatsby
+cd with-google-login-faunadb
 ```
 
 ### Setting Up StepZen
@@ -23,15 +23,6 @@ Next, you'll need the StepZen CLI in order to deploy and test your StepZen Graph
 
 ```bash
 npm install --global expo-cli
-```
-
-Initialize the new app. When prompted, select `tabs (TypeScript), several example screens and tabs using react-navigation and TypeScript`. This will install many dependencies that are designed to improve the React Native navigation experience.
-
-We'll need to
-
-```bash
-expo init faunadb-login-demo
-cd faunadb-login-demo
 ```
 
 ### Set Up a Fauna Database
@@ -74,12 +65,6 @@ type QueryUser {
 }
 ```
 
-On your local machine, go to the root of your `faunadb-login-demo` project and create a StepZen folder.
-
-```bash
-mkdir stepzen && cd stepzen
-```
-
 Create a `config.yaml` file in the folder with the following contents (replacing `Basic MY_FAUNA_KEY` with the information you copied from the GraphQL Playground in the Fauna dashboard).
 
 ```yaml
@@ -88,8 +73,6 @@ configurationset:
       name: fauna_config
       Authorization: Basic MY_FAUNA_KEY
 ```
-
-Now that we're done with the setup, we need to create our GraphQL schema code that builds our API within StepZen.
 
 ## Creating Google Sign-In Client IDs
 
@@ -145,11 +128,3 @@ Here is an example of a user added to FaunaDB.
 ```
 
 Now you successfully have a Google sign-in with a database that can store all the users. This demonstrates the ease of adding a FaunaDB to your single StepZen endpoint that can be combined with any other data source. Writing the data of the user to more than one database or API can easily be added to this configuration in the StepZen schema.
-
-## Learn More
-
-To learn more on how to use FaunaDB and mutations, check out [our GraphQL mutation docs](https://stepzen.com/docs/using-graphql/graphql-mutation-basics).
-
-The StepZen docs also hold information on connecting other backends to your endpoint like [REST APIs](https://stepzen.com/docs/connecting-backends/how-to-connect-a-rest-service) and [databases like PostGresQL](https://stepzen.com/docs/connecting-backends/how-to-connect-a-postgresql-database).
-
-If you've got more questions, [hit us up on Discord](https://discord.com/channels/768229795544170506/768229795544170509), we'd love to chat.

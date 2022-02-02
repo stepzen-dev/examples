@@ -42,11 +42,25 @@ REACT_APP_REACTGA_ID=UA-XXXXXXX-1
 
 ## Run StepZen
 
-Open your terminal and install the StepZen CLI. You need to login here using the command: `stepzen login`.
+Open your terminal and install the [install the StepZen CLI](https://stepzen.com/docs/quick-start):
 
-After you've followed the prompts (you can accept the suggested endpoint name-- in my case it was api/happy-bunny) and installed the CLI, run stepzen start.
+```bash
+npm install -g stepzen
+```
 
-In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example http://localhost:5001/api/happy-bunny), which you can use to explore the GraphQL API.
+You need to login here using the command:
+
+```bash
+stepzen login
+```
+
+After you've installed the CLI and logged in, run:
+
+```bash
+stepzen start
+```
+
+In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example http://localhost:5001/api/with-google-analytics), which you can use to explore the GraphQL API.
 
 ## Learn More
 

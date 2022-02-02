@@ -39,8 +39,6 @@ Both will run at <http://localhost:3000>
 
 ## Run StepZen
 
-Open your terminal and install the StepZen CLI. You need to login here using the command: `stepzen login`.
-
 Your `config.yaml` file inside the `./stepzen` folder will need to look like:
 
 ```yaml
@@ -57,9 +55,25 @@ configurationset:
       Authorization: Basic PLACE_KEY_HERE
 ```
 
-After you've followed the prompts (you can accept the suggested endpoint name-- in my case it was api/happy-bunny) and installed the CLI, run stepzen start.
+Open your terminal and install the [install the StepZen CLI](https://stepzen.com/docs/quick-start):
 
-In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example http://localhost:5001/api/happy-bunny), which you can use to explore the GraphQL API.
+```bash
+npm install -g stepzen
+```
+
+You need to login here using the command:
+
+```bash
+stepzen login
+```
+
+After you've installed the CLI and logged in, run:
+
+```bash
+stepzen start
+```
+
+In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example http://localhost:5001/api/with-airtable-prismjs-axios), which you can use to explore the GraphQL API.
 
 ## Learn More
 

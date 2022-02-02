@@ -15,13 +15,7 @@ cd with-shopify-agility-cms
 
 ## Spinning Up the StepZen Endpoint
 
-1. Go into the StepZen subfolder.
-
-```bash
-cd stepzen
-```
-
-2. Add your AgilityCMS and Shopify Configurations to the `config.yaml` file. You should already have your products set up in AgilityCMS and Shopify. If you do not, refer to the blog, [Tutorial: Building an eCommerce Solution with AgilityCMS, Shopify, and StepZen. Part 2](https://agilitycms.com/resources/posts/tutorial-building-an-ecommerce-solution-with-agilitycms-shopify-and-stepzen).
+Add your AgilityCMS and Shopify Configurations to the `config.yaml` file. You should already have your products set up in AgilityCMS and Shopify. If you do not, refer to the blog, [Tutorial: Building an eCommerce Solution with AgilityCMS, Shopify, and StepZen. Part 2](https://agilitycms.com/resources/posts/tutorial-building-an-ecommerce-solution-with-agilitycms-shopify-and-stepzen).
 
 Reminder: Make sure config.yaml is in your .gitignore
 

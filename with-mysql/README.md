@@ -83,21 +83,17 @@ SELECT * FROM authors
 
 ## StepZen Setup
 
-_Make sure you're in the folder you cd'd into at the start._ 
-
-### Install StepZen CLI
+Open your terminal and install the [install the StepZen CLI](https://stepzen.com/docs/quick-start):
 
 ```bash
 npm install -g stepzen
-``` 
-
-### Login to StepZen account
-
-```bash
-stepzen login -a [account name]
 ```
 
-...and enter your admin key. 
+You need to login here using the command:
+
+```bash
+stepzen login
+```
 
 ### Create .gitignore file
 
@@ -125,24 +121,8 @@ configurationset:
       name: MySQL_config
       dsn: USERNAME:PASSWORD@tcp(HOSTNAME)/DB_NAME
 ```
-What does this code do? It provides StepZen the information it needs to connect to your database.
 
-Now you just need to upload and deploy to StepZen.
-
-## Deploying to StepZen
-
-Upload your config.
-
-```bash
-stepzen upload configurationset libraryapi/config --file=./config.yaml
-```
-
-Upload your schema and deploy to StepZen.
-
-```bash
-stepzen upload schema libraryapi/schema --dir=. &&
-stepzen deploy libraryapi/api --schema=libraryapi/schema --configurationsets=libraryapi/config
-```
+This provides StepZen the information it needs to connect to your database. Now you need to upload and deploy to StepZen.
 
 ## The StepZen GraphiQL Query Editor
 

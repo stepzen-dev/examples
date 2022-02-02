@@ -1,0 +1,4 @@
+{
+  "endpoint": "api/with-google-login-faunadb",
+  "root": "stepzen"
+}
