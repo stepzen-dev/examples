@@ -2,8 +2,6 @@
 
 ## Introduction
 
-## StepZen modified Next.js Commerce
-
 This is a modified version of Next.js commerce for combining Shopify's e-commerce platform with Agility CMS's headless CMS. You can read more about this real-world example here: [Tutorial: Building an eCommerce Solution with AgilityCMS, Shopify, and StepZen. Part 2](https://agilitycms.com/resources/posts/tutorial-building-an-ecommerce-solution-with-agilitycms-shopify-and-stepzen)
 
 ## StepZen Features
@@ -35,8 +33,8 @@ You'll need to go to the StepZen account, https://stepzen.com/account, and insta
 
 1. Go into the StepZen subfolder.
 
-```
-$ cd stepzen
+```bash
+cd stepzen
 ```
 
 2. Add your AgilityCMS and Shopify Configurations to the `config.yaml` file. You should already have your products set up in AgilityCMS and Shopify. If you do not, refer to the blog, [Tutorial: Building an eCommerce Solution with AgilityCMS, Shopify, and StepZen. Part 2](https://agilitycms.com/resources/posts/tutorial-building-an-ecommerce-solution-with-agilitycms-shopify-and-stepzen).
@@ -49,39 +47,26 @@ Reminder: Make sure config.yaml is in your .gitignore
 
 Copy that sample to a new config.yaml like so:
 
-```
-$ cd stepzen
-
-$ cp config.yaml.sample config.yaml
+```bash
+cd stepzen
+cp config.yaml.sample config.yaml
 ```
 
 And now edit the config.yaml file, inserting your API keys and credentials where appropriate:
 
-```
+```yaml
 configurationset:
-
   - configuration:
-
       name: agility_config
-
       header.Apikey: <agility defaultpreview Apikey>
-
       instance: <agility instance>
-
   - configuration:
-
       name: shopify_config
-
       Authorization: Basic <basic auth header>
-
       store_name: <shopify store name>
-
   - configuration:
-
       name: shopify
-
       header.X-Shopify-Access-Token: <shopify-access-token>
-
       store_name: <shopify store name>
 ```
 
@@ -122,8 +107,8 @@ Once you have edited config.yaml to contain the required information to connect 
 
 We upload the configuration using the StepZen CLI. We can install that easily by running the following command in your terminal:
 
-```
-$ npm install -g stepzen
+```bash
+npm install -g stepzen
 ```
 
 Note: Windows support for the CLI is currently in beta. We recommend using WSL on Windows.
@@ -132,7 +117,7 @@ You’ll need node to run this command as well.
 
 Now log in to StepZen using:
 
-```
+```bash
 stepzen login -a {ACCOUNT}
 ```
 
@@ -140,8 +125,8 @@ When prompted for your admin key, enter your admin key from your My Account page
 
 3. Run StepZen start
 
-```
-$ stepzen start
+```bash
+stepzen start
 ```
 
 3. Once successfully deployed, copy the stepzen endpoint generated in your terminal to obtain your `NEXT_STEPZEN_API_URL` variable.

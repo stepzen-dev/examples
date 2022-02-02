@@ -8,9 +8,10 @@ This project is a Gastby starter repo connected to StepZen.
 
 You'll need to create a StepZen account first. Once you've got that set up, git clone this repository onto your machine and open the working directory:
 
+```bash
 git clone https://github.com/stepzen-dev/examples.git
-
-`cd with-gatsby`
+cd with-gatsby
+```
 
 Run `npm install` inside `/with-gatsby` before running `npm run develop`.
 

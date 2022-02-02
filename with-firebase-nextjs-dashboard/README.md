@@ -8,9 +8,10 @@ This project builds a GraphQL API with Firebase connected to your NextJS dashboa
 
 You'll need to create a StepZen account first. Once you've got that set up, git clone this repository onto your machine and open the working directory:
 
-`git clone https://github.com/stepzen-dev/examples.git`
-
-`cd with-firebase-nextjs-dashboard`
+```bash
+git clone https://github.com/stepzen-dev/examples.git
+cd with-firebase-nextjs-dashboard
+```
 
 Make sure your `nextjs.config.js` includes these values:
 

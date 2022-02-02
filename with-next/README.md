@@ -8,9 +8,10 @@ This project is a GraphQL API connected to StepZen within the Next framework.
 
 You'll need to create a StepZen account first. Once you've got that set up, git clone this repository onto your machine and open the working directory:
 
-`git clone https://github.com/stepzen-dev/examples.git`
-
-`cd with-next`
+```bash
+git clone https://github.com/stepzen-dev/examples.git
+cd with-next
+```
 
 Run `npm install` inside `/with-next` before running `npm run dev.
 

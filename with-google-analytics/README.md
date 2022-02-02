@@ -8,9 +8,10 @@ This project builds a GraphQL API with Firebase connected to your NextJS dashboa
 
 You'll need to create a StepZen account first. Once you've got that set up, git clone this repository onto your machine and open the working directory:
 
+```bash
 git clone https://github.com/stepzen-dev/examples.git
-
-`cd with-google-analytics`
+cd with-google-analytics
+```
 
 Run `yarn install` inside `/with-google-analytics` before running `yarn run`.
 
@@ -22,7 +23,6 @@ configurationset:
       name: amplitude_config
       apikey:PUT_KEY_HERE
       secret:PUT_KEY_HERE
-
 ```
 
 Your `.env` should look something like:

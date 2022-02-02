@@ -8,7 +8,7 @@ This project builds a GraphQL API connected to your REST API using StepZen. We w
 
 You'll need to create a [StepZen account](https://stepzen.com/request-invite) first. Once you've got that set up, [git clone](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-clone) this repository onto your machine and open the working directory:
 
-```
+```bash
 git clone https://github.com/stepzen-dev/examples.git
 cd with-rest
 ```

@@ -8,26 +8,27 @@ This project builds a GraphQL API with Firebase connected to your NextJS dashboa
 
 You'll need to create a StepZen account first. Once you've got that set up, git clone this repository onto your machine and open the working directory:
 
-`git clone https://github.com/stepzen-dev/examples.git`
-
-`cd with-firebase-nextjs-dashboard`
+```bash
+git clone https://github.com/stepzen-dev/examples.git
+cd with-firebase-nextjs-dashboard
+```
 
 To install Expo:
 
-```
+```bash
 npm install -g expo-cli
 ```
 
 Then:
 
-```
-$ cd stepzen
-$ stepzen start
+```bash
+cd stepzen
+stepzen start
 ```
 
 Manually add your admin key and uri in the App.tsx. Still working on adding .env variables to the build and development environments:
 
-```
+```jsx
 const client = new ApolloClient({
 	link: createHttpLink({
 		credentials: "same-origin",
@@ -42,7 +43,7 @@ const client = new ApolloClient({
 
 Start up the development environment
 
-```
+```bash
 npm start
 ```
 

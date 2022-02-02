@@ -2,11 +2,16 @@
 
 ## Introduction
 
-This is a demonstration of how to build a login screen for a mobile app built using Reaact Native with Google Sign-In, FaunaDB, and StepZen. If you'd like to see a live-code demo video looking at the project covered in this blog posts, [check it out on YouTube](https://www.youtube.com/watch?v=8nzJdgrZ7FQ).
+This is a demonstration of how to build a login screen for a mobile app built using React Native with Google Sign-In, FaunaDB, and StepZen. If you'd like to see a live-code demo video looking at the project covered in this blog posts, [check it out on YouTube](https://www.youtube.com/watch?v=8nzJdgrZ7FQ).
 
-## Getting Set Up
+## Getting Started
 
-Let's get you set up with the accounts and tools you'll need to build this project.
+You'll need to create a StepZen account first. Once you've got that set up, git clone this repository onto your machine and open the working directory:
+
+```bash
+git clone https://github.com/stepzen-dev/examples.git
+cd with-google-gatsby
+```
 
 ### Setting Up StepZen
 
