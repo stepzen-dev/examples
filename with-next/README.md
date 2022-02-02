@@ -24,7 +24,7 @@ npm run dev
 
 ## Run StepZen
 
-Open your terminal and install the [install the StepZen CLI](https://stepzen.com/docs/quick-start):
+Open your terminal and [install the StepZen CLI](https://stepzen.com/docs/quick-start):
 
 ```bash
 npm install -g stepzen
