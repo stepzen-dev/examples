@@ -1,4 +1,4 @@
-# StepZen Example: with-firebase-nextjs-dashboard
+# StepZen Example: with-react-native
 
 ## Introduction
 
@@ -10,7 +10,7 @@ You'll need to create a StepZen account first. Once you've got that set up, git 
 
 ```bash
 git clone https://github.com/stepzen-dev/examples.git
-cd with-firebase-nextjs-dashboard
+cd with-react-native
 ```
 
 To install Expo:
@@ -41,10 +41,14 @@ const client = new ApolloClient({
 });
 ```
 
-Start up the development environment
+
+## Install Dependencies and Start Development Server
+
+Install the dependencies:
 
 ```bash
-npm start
+yarn
+yarn start
 ```
 
 Download the expo App on your phone and scan the QR code or open it in your browser
@@ -59,4 +63,4 @@ In you terminal the endpoint at which your GraphQL API is deployed is logged. A 
 
 ## Learn More
 
-You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.com/invite/9k2VdPn2FR) or [Github Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.
+You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.com/invite/9k2VdPn2FR) or [GitHub Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.

@@ -63,8 +63,4 @@ In you terminal the endpoint at which your GraphQL API is deployed is logged. A 
 
 ## Learn More
 
-You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.com/invite/9k2VdPn2FR) or [Github Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.
-
-To watch @samuelghill demo a challenge with this repo, view:
-
-https://www.youtube.com/watch?v=QcoMqivQ3wk
+You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.com/invite/9k2VdPn2FR) or [GitHub Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.

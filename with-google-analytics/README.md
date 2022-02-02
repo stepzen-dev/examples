@@ -13,7 +13,14 @@ git clone https://github.com/stepzen-dev/examples.git
 cd with-google-analytics
 ```
 
-Run `yarn install` inside `/with-google-analytics` before running `yarn run`.
+## Install Dependencies and Start Development Server
+
+Install the dependencies using `npm` or Yarn:
+
+```bash
+npm i
+npm start
+```
 
 You'll also need to add a `config.yaml` file inside the `/stepzen` folder with this information:
 
@@ -43,4 +50,4 @@ In you terminal the endpoint at which your GraphQL API is deployed is logged. A 
 
 ## Learn More
 
-You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.com/invite/9k2VdPn2FR) or [Github Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.
+You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.com/invite/9k2VdPn2FR) or [GitHub Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.

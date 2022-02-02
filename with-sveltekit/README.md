@@ -64,4 +64,4 @@ Open `localhost:3000` to see the project.
 
 ## Learn More
 
-You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questiosn? Head over to [Discord](https://discord.gg/9k2VdPn2FR) or [Github Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.
+You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.gg/9k2VdPn2FR) or [GitHub Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.

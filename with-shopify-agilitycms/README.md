@@ -4,32 +4,16 @@
 
 This is a modified version of Next.js commerce for combining Shopify's e-commerce platform with Agility CMS's headless CMS. You can read more about this real-world example here: [Tutorial: Building an eCommerce Solution with AgilityCMS, Shopify, and StepZen. Part 2](https://agilitycms.com/resources/posts/tutorial-building-an-ecommerce-solution-with-agilitycms-shopify-and-stepzen)
 
-## StepZen Features
+## Getting Started
 
-- Easily deployed to [Vercel](https://vercel.com/)
-- Custom StepZen query editor on localhost allows you to inspect and create queries quickly
-- Pre-connected to [Shopify](https://www.shopify.com/) and [Agility](https://agilitycms.com/) in one secure endpoint
+You'll need to create a [StepZen account](https://stepzen.com/signup) first. Once you've got that set up, [git clone](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-clone) this repository onto your machine and open the working directory:
 
-## Next.js Features
-
-- Performant by default
-- SEO Ready
-- Internationalization
-- Responsive
-- UI Components
-- Theming
-- Standardized Data Hooks
-- Integrations - Integrate seamlessly with the most common ecommerce platforms.
-- Dark Mode Support
-
-## Integrations
-
-StepZen Commerce integrates out-of-the-box with Shopify and AgilityCMS. They plan to support all major ecommerce backends. With StepZen, you'll be able to quickly connect whatever ecommerce backends you have in mind, deployed to one GraphQL API.
+```bash
+git clone https://github.com/stepzen-dev/examples.git
+cd with-shopify-agility-cms
+```
 
 ## Spinning Up the StepZen Endpoint
-
-Prerequisites:
-You'll need to go to the StepZen account, https://stepzen.com/account, and install the StepZen CLI. https://stepzen.com/docs/cli
 
 1. Go into the StepZen subfolder.
 
@@ -48,11 +32,10 @@ Reminder: Make sure config.yaml is in your .gitignore
 Copy that sample to a new config.yaml like so:
 
 ```bash
-cd stepzen
 cp config.yaml.sample config.yaml
 ```
 
-And now edit the config.yaml file, inserting your API keys and credentials where appropriate:
+And now edit the `config.yaml` file, inserting your API keys and credentials where appropriate:
 
 ```yaml
 configurationset:
@@ -105,7 +88,7 @@ Once you have edited config.yaml to contain the required information to connect 
 
 ### Upload Configuration
 
-We upload the configuration using the StepZen CLI. We can install that easily by running the following command in your terminal:
+We upload the configuration using the [StepZen CLI](https://stepzen.com/docs/cli). We can install that easily by running the following command in your terminal:
 
 ```bash
 npm install -g stepzen
@@ -150,4 +133,4 @@ NEXT_STEPZEN_API_URL=https://account.stepzen.net/vercel/stepzen/__graphql
 
 ## Learn More
 
-You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.com/invite/9k2VdPn2FR) or [Github Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.
+You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.com/invite/9k2VdPn2FR) or [GitHub Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.

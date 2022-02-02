@@ -13,7 +13,14 @@ git clone https://github.com/stepzen-dev/examples.git
 cd with-next
 ```
 
-Run `npm install` inside `/with-next` before running `npm run dev.
+## Install Dependencies and Start Development Server
+
+Install the dependencies using `npm` or Yarn:
+
+```bash
+npm i
+npm run dev
+```
 
 ## Run StepZen
 
@@ -25,4 +32,4 @@ In you terminal the endpoint at which your GraphQL API is deployed is logged. A 
 
 ## Learn More
 
-You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.com/invite/9k2VdPn2FR) or [Github Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.
+You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.com/invite/9k2VdPn2FR) or [GitHub Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.
