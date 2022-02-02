@@ -1,10 +1,10 @@
 # StepZen Example: with-firebase-nextjs-dashboard
 
-# Introduction
+## Introduction
 
 This project builds a GraphQL API with Firebase connected to your NextJS dashboard, using StepZen.
 
-# Getting Started
+## Getting Started
 
 You'll need to create a StepZen account first. Once you've got that set up, git clone this repository onto your machine and open the working directory:
 
@@ -34,7 +34,7 @@ module.exports = {
 
 Run `npm install` inside `/with-firebase-nextjs-dashboard` before running `npm start`.
 
-# Run StepZen
+## Run StepZen
 
 Open your terminal and install the StepZen CLI. You need to login here using the command: `stepzen login`.
 

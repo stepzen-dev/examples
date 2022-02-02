@@ -1,10 +1,10 @@
 # StepZen Example: `with-sveltekit`
 
-# Introduction
+## Introduction
 
 This project builds a GraphQL API that is consumed by a Svelte fronted created with SvelteKit. SvelteKit is a serverless-first Svelte metaframework for building web applications with filesystem-based routing.
 
-# Getting Started
+## Getting Started
 
 You'll need to create a [StepZen account](https://stepzen.com/signup) first. Once you've got that set up, [git clone](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-clone) this repository onto your machine and open the working directory:
 

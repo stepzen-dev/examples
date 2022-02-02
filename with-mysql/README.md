@@ -1,8 +1,8 @@
 # Overview 
 
-#### This project builds a GraphQL API connected to your MySQL database using StepZen. We will use the @dbquery directive to generate our GraphQL schema. 
+This project builds a GraphQL API connected to your MySQL database using StepZen. We will use the @dbquery directive to generate our GraphQL schema. 
 
-# Project Setup Commands To Run First
+## Project Setup Commands To Run First
 
 ```bash
 git clone https://github.com/stepzen-samples/stepzen-mysql.git
@@ -216,8 +216,8 @@ In the first `@dbquery` directive, the table fields are the same as the fields i
 
 In the second directive, you'll notice the line ` query: "SELECT * FROM books WHERE ? >= DATE '1900-00-00'",` which is a custom query that returns only books written in the 1900's and beyond. This is how you can make custom queries to your database. 
 
-
 ## Author Types
+
 In `author.graphql`, we have a similar pattern, without a materializer. 
 
 ```graphql
@@ -263,7 +263,6 @@ And that's the last piece in the puzzle! :fireworks:
 Please enjoy playing around with this project and adding your own twist on our MySQL integration. 
 
 If you have questions about MySQL and StepZen, feel free to [consult the docs](https://my.stepzen.com/docs/build-a-graphql-endpoint/dbquery). 
-
 
 ## Creating a local database with Docker
 

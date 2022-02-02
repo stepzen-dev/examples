@@ -1,10 +1,10 @@
 # StepZen Example: with-gatsby
 
-# Introduction
+## Introduction
 
 This is a demonstration of how to build a login screen for a mobile app built using Reaact Native with Google Sign-In, FaunaDB, and StepZen. If you'd like to see a live-code demo video looking at the project covered in this blog posts, [check it out on YouTube](https://www.youtube.com/watch?v=8nzJdgrZ7FQ).
 
-# Getting Set Up
+## Getting Set Up
 
 Let's get you set up with the accounts and tools you'll need to build this project.
 
@@ -141,7 +141,7 @@ Here is an example of a user added to FaunaDB.
 
 Now you successfully have a Google sign-in with a database that can store all the users. This demonstrates the ease of adding a FaunaDB to your single StepZen endpoint that can be combined with any other data source. Writing the data of the user to more than one database or API can easily be added to this configuration in the StepZen schema.
 
-# Learn More
+## Learn More
 
 To learn more on how to use FaunaDB and mutations, check out [our GraphQL mutation docs](https://stepzen.com/docs/using-graphql/graphql-mutation-basics).
 

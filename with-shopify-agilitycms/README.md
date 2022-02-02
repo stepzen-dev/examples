@@ -1,8 +1,8 @@
 # StepZen Example: with-shopify-agility-cms
 
-# Introduction
+## Introduction
 
-# StepZen modified Next.js Commerce
+## StepZen modified Next.js Commerce
 
 This is a modified version of Next.js commerce for combining Shopify's e-commerce platform with Agility CMS's headless CMS. You can read more about this real-world example here: [Tutorial: Building an eCommerce Solution with AgilityCMS, Shopify, and StepZen. Part 2](https://agilitycms.com/resources/posts/tutorial-building-an-ecommerce-solution-with-agilitycms-shopify-and-stepzen)
 
@@ -163,6 +163,6 @@ NEXT_STEPZEN_API_KEY=api_key_from_your_account_here
 NEXT_STEPZEN_API_URL=https://account.stepzen.net/vercel/stepzen/__graphql
 ```
 
-# Learn More
+## Learn More
 
 You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.com/invite/9k2VdPn2FR) or [Github Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.

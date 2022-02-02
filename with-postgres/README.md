@@ -1,10 +1,10 @@
 # StepZen Example: `with-postgres`
 
-# Introduction
+## Introduction
 
 This project builds a GraphQL API connected to your Postgres database using StepZen. We will use the `@dbquery` directive to generate our GraphQL schema.
 
-# Getting Started
+## Getting Started
 
 You'll need to create a [StepZen account](https://stepzen.com/request-invite) first. Once you've got that set up, [git clone](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-clone) this repository onto your machine and open the working directory:
 
