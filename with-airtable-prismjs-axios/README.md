@@ -45,10 +45,7 @@ configurationset:
       Authorization: Bearer PLACE_KEY_HERE
       baseid: PLACE_ID_HERE
   - configuration:
-      name: lob_test_config
-      Authorization: Basic PLACE_KEY_HERE
-  - configuration:
-      name: lob_dummy_live_config
+      name: lob_config
       Authorization: Basic PLACE_KEY_HERE
 ```
 

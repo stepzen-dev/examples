@@ -1,33 +1,16 @@
-# StepZen Example: with-gatsby
+# StepZen Example: with-google-analytics
 
 # Introduction
 
 This is a demonstration of how to build a login screen for a mobile app built using Reaact Native with Google Sign-In, FaunaDB, and StepZen. If you'd like to see a live-code demo video looking at the project covered in this blog posts, [check it out on YouTube](https://www.youtube.com/watch?v=8nzJdgrZ7FQ).
 
-# Getting Set Up
+# Getting Started
 
-Let's get you set up with the accounts and tools you'll need to build this project.
+You'll need to create a StepZen account first. Once you've got that set up, git clone this repository onto your machine and open the working directory:
 
-### Setting Up StepZen
+git clone https://github.com/stepzen-dev/examples.git
 
-Create a [StepZen account](https://stepzen.com/request-invite) first, in order to get your API and admin keys (click the ["My Account"](https://stepzen.com/account) button on the top right once you log in to see where they are).
-
-Next, you'll need the StepZen CLI in order to deploy and test your StepZen GraphQL endpoint. To install the CLI, follow the [instructions in the docs](https://stepzen.com/docs/quick-start).
-
-### Setting up the Expo React Native App
-
-```bash
-npm install --global expo-cli
-```
-
-Initialize the new app. When prompted, select `tabs (TypeScript), several example screens and tabs using react-navigation and TypeScript`. This will install many dependencies that are designed to improve the React Native navigation experience.
-
-We'll need to
-
-```bash
-expo init faunadb-login-demo
-cd faunadb-login-demo
-```
+`cd with-google-login-faunadb`
 
 ### Set Up a Fauna Database
 
@@ -69,53 +52,73 @@ type QueryUser {
 }
 ```
 
-On your local machine, go to the root of your `faunadb-login-demo` project and create a StepZen folder.
-
-```bash
-mkdir stepzen && cd stepzen
-```
-
-Create a `config.yaml` file in the folder with the following contents (replacing `Basic MY_FAUNA_KEY` with the information you copied from the GraphQL Playground in the Fauna dashboard).
+Create a `config.yaml` file in the stepzen folder with the following contents (replacing `Basic MY_FAUNA_KEY` with the information you copied from the GraphQL Playground in the Fauna dashboard).
 
 ```yaml
+// stepzen/config.yaml
+
 configurationset:
   - configuration:
       name: fauna_config
       Authorization: Basic MY_FAUNA_KEY
 ```
 
-Now that we're done with the setup, we need to create our GraphQL schema code that builds our API within StepZen.
+### Set Up Google Sign In
 
-## Creating Google Sign-In Client IDs
+Create a Google Cloud account. There are free trials available.
 
-First, create a Google Cloud account. There are free trials available.
+Once created, go to "Credentials" in the Google Cloud dashboard and create two oAuth clientIds for Android and iOS applications by clicking "Create Credentials" and then "OAuth client ID".
 
-Once created, go to "Credentials" in the Google Cloud dashboard and create two oAuth clientIds for Android and iOS applications by clicking "Create Credentials" and then "OAuth client ID". Copy and save these. We'll need then when we are creating the React Native app and we install the dependency `expo-google-app-auth`.
+Add these credentials for the `LoginScreen` component.
 
-Using the StepZen CLI, run the following command.
-
-```bash
-stepzen start
+```javascript
+// screens/LoginScreen.tsx
+  const { type, accessToken, user } : any = await Google.logInAsync({
+      iosClientId: `{{ add key }}`,
+      androidClientId: `{{ add key }}`,
+  });
 ```
 
-The CLI will suggest a name for the endpoint (in the format `FOLDER_NAME/ENDPOINT_NAME`) but we can specify any name we want. Let's use `demo/native-login`. Note that the CLI will generate a file, `stepzen.config.json`, that tells StepZen the name the API endpoint so that it can skip this step on subsequent requests.
+# Run StepZen
 
-The CLI will spin up a local environment on `localhost:5000` with our endpoint now deployed!
+Open your terminal and install the StepZen CLI. You need to login here using the command: `stepzen login`.
+
+After you've followed the prompts (you can accept the suggested endpoint name-- in my case it was api/happy-bunny) and installed the CLI, run stepzen start.
+
+In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example http://localhost:5001/api/happy-bunny), which you can use to explore the GraphQL API.
+
+### Setting up the Expo React Native App
 
 ```bash
-http://localhost:5000/demo/native-login
-
-Deploying to StepZen...... done
-
-Successfully deployed demo/native-login
-
-Your endpoint is available at https://youraccountname.stepzen.net/demo/native-login/__graphql
+npm install --global expo-cli
 ```
 
-Now run:
+`cd with-google-login-faunadb`
+
+Run `npm install` inside `/with-google-login-faunadb` before running `npm run`.
+
+React Native applications require serverless functions to handle environment variables. So for this example we are going to add the endpoint and headers directly into the `App.tsx` file.
+
+```javascript
+// App.tsx
+
+const client = new ApolloClient({
+	link: createHttpLink({
+		credentials: "same-origin",
+		headers: {
+			Authorization: `Apikey {{ stepzen_api_key }}`,
+		},
+		uri: "{{ stepzen_endpoint }}",
+	}),
+	cache: new InMemoryCache(),
+});
+```
+
+Now from the root of the project, run:
 
 ```bash
-expo start
+npm install
+npm run start
 ```
 
 Download the expo app on your phone, and scan the QR code provided at `http://localhost:19002/` on your computer.
@@ -143,8 +146,4 @@ Now you successfully have a Google sign-in with a database that can store all th
 
 # Learn More
 
-To learn more on how to use FaunaDB and mutations, check out [our GraphQL mutation docs](https://stepzen.com/docs/using-graphql/graphql-mutation-basics).
-
-The StepZen docs also hold information on connecting other backends to your endpoint like [REST APIs](https://stepzen.com/docs/connecting-backends/how-to-connect-a-rest-service) and [databases like PostGresQL](https://stepzen.com/docs/connecting-backends/how-to-connect-a-postgresql-database).
-
-If you've got more questions, [hit us up on Discord](https://discord.com/channels/768229795544170506/768229795544170509), we'd love to chat.
+You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.com/invite/9k2VdPn2FR) or [Github Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.

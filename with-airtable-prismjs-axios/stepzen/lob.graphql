@@ -102,7 +102,7 @@ type Mutation {
         method: POST
         contenttype: "application/x-www-form-urlencoded"
         endpoint: "https://api.lob.com/v1/us_verifications"
-        configuration: "lob_test_config"
+        configuration: "lob_config"
 		)
   """
   Send the international address details
@@ -132,7 +132,7 @@ type Mutation {
         method: POST
         contenttype: "application/x-www-form-urlencoded"
         endpoint: "https://api.lob.com/v1/intl_verifications"
-        configuration: "lob_dummy_live_config"
+        configuration: "lob_config"
 		)
 }
 
