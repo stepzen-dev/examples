@@ -42,6 +42,15 @@ After you've installed the CLI and logged in, run:
 stepzen start
 ```
 
+In order to see the data come in from StepZen, you'll also need a `.env.local`:
+
+```
+NEXT_PUBLIC_STEPZEN_ACCOUNT={{ your username }}
+NEXT_PUBLIC_STEPZEN_ADMIN_KEY={{ your admin key }}
+NEXT_PUBLIC_STEPZEN_FOLDER={{ api/ your folder name }}
+NEXT_PUBLIC_STEPZEN_NAME={{ name of endpoint }}
+```
+
 In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example http://localhost:5001/api/with-next), which you can use to explore the GraphQL API.
 
 ## Learn More
