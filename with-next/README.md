@@ -1,27 +1,58 @@
 # StepZen Example: with-next
 
-# Introduction
+## Introduction
 
 This project is a GraphQL API connected to StepZen within the Next framework.
 
-# Getting Started
+## Getting Started
 
 You'll need to create a StepZen account first. Once you've got that set up, git clone this repository onto your machine and open the working directory:
 
-`git clone https://github.com/stepzen-dev/examples.git`
+```bash
+git clone https://github.com/stepzen-dev/examples.git
+cd with-next
+```
 
-`cd with-next`
+## Install Dependencies and Start Development Server
 
-Run `npm install` inside `/with-next` before running `npm run dev.
+Install the dependencies using `npm` or Yarn:
 
-# Run StepZen
+```bash
+npm i
+npm run dev
+```
 
-Open your terminal and install the StepZen CLI. You need to login here using the command: `stepzen login`.
+## Run StepZen
 
-After you've followed the prompts (you can accept the suggested endpoint name-- in my case it was api/happy-bunny) and installed the CLI, run stepzen start.
+Open your terminal and [install the StepZen CLI](https://stepzen.com/docs/quick-start):
 
-In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example http://localhost:5001/api/happy-bunny), which you can use to explore the GraphQL API.
+```bash
+npm install -g stepzen
+```
 
-# Learn More
+You need to login here using the command:
 
-You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.com/invite/9k2VdPn2FR) or [Github Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.
+```bash
+stepzen login
+```
+
+After you've installed the CLI and logged in, run:
+
+```bash
+stepzen start
+```
+
+In order to see the data come in from StepZen, you'll also need a `.env.local`:
+
+```
+NEXT_PUBLIC_STEPZEN_ACCOUNT={{ your username }}
+NEXT_PUBLIC_STEPZEN_ADMIN_KEY={{ your admin key }}
+NEXT_PUBLIC_STEPZEN_FOLDER={{ api/ your folder name }}
+NEXT_PUBLIC_STEPZEN_NAME={{ name of endpoint }}
+```
+
+In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example http://localhost:5001/api/with-next), which you can use to explore the GraphQL API.
+
+## Learn More
+
+You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.com/invite/9k2VdPn2FR) or [GitHub Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.

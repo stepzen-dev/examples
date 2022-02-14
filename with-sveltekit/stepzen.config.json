@@ -1,1 +1,4 @@
-{ "endpoint": "api/stepzen-sveltekit", "root": "stepzen" }
+{
+  "endpoint": "api/with-sveltekit",
+  "root": "stepzen"
+}

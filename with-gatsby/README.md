@@ -1,27 +1,49 @@
 # StepZen Example: with-gatsby
 
-# Introduction
+## Introduction
 
-This project is a Gastby starter repo connected to StepZen.
+This project is a Gatsby starter repo connected to StepZen.
 
-# Getting Started
+## Getting Started
 
 You'll need to create a StepZen account first. Once you've got that set up, git clone this repository onto your machine and open the working directory:
 
+```bash
 git clone https://github.com/stepzen-dev/examples.git
+cd with-gatsby
+```
 
-`cd with-gatsby`
+## Install Dependencies and Start Development Server
 
-Run `npm install` inside `/with-gatsby` before running `npm run develop`.
+Install the dependencies using `npm` or Yarn:
 
-# Run StepZen
+```bash
+npm i
+npm start
+```
 
-Open your terminal and install the StepZen CLI. You need to login here using the command: `stepzen login`.
+## Run StepZen
 
-After you've followed the prompts (you can accept the suggested endpoint name-- in my case it was api/happy-bunny) and installed the CLI, run stepzen start.
+Open your terminal and [install the StepZen CLI](https://stepzen.com/docs/quick-start):
 
-In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example http://localhost:5001/api/happy-bunny), which you can use to explore the GraphQL API.
+```bash
+npm install -g stepzen
+```
 
-# Learn More
+You need to login here using the command:
 
-You can learn more in the StepZen [documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.com/invite/9k2VdPn2FR) or [Github Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.
+```bash
+stepzen login
+```
+
+After you've installed the CLI and logged in, run:
+
+```bash
+stepzen start
+```
+
+In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example http://localhost:5001/api/with-gatsby), which you can use to explore the GraphQL API.
+
+## Learn More
+
+You can learn more in the StepZen [documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.com/invite/9k2VdPn2FR) or [GitHub Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.
