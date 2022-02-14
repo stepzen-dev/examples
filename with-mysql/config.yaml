@@ -1,0 +1,4 @@
+configurationset:
+  - configuration:
+      name: mysql_config
+      dsn: {{username}}:{{password}}@tcp({{host}})/{{database_name}}

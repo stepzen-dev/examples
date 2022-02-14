@@ -8,7 +8,7 @@ services:
     environment:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=rootpasswd
-      - POSTGRES_DB=stepzen_demo
+      - POSTGRES_DB=introspection
     volumes:
       - postgres:/var/lib/postgresql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql

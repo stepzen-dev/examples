@@ -7,9 +7,9 @@ services:
       - 3306:3306
     environment:
       - MYSQL_ROOT_PASSWORD=rootpasswd
-      - MYSQL_DATABASE=stepzen_demo
-      - MYSQL_USER=stepzen
-      - MYSQL_PASSWORD=stepzenpasswd
+      - MYSQL_DATABASE=introspection
+      - MYSQL_USER=testUserIntrospection
+      - MYSQL_PASSWORD=HurricaneStartingSample1934
     volumes:
       - mysql:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
