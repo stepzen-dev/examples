@@ -19,9 +19,9 @@ const client = new ApolloClient({
 	link: createHttpLink({
 		credentials: "same-origin",
 		headers: {
-			Authorization: `Apikey {{ admin_key }}`,
+			Authorization: `Apikey {{ stepzen_api_key }}`,
 		},
-		uri: "https://example.stepzen.net/demo/native-login/__graphql",
+		uri: "{{ stepzen_endpoint }}",
 	}),
 	cache: new InMemoryCache(),
 });

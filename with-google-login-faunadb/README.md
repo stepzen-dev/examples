@@ -1,29 +1,16 @@
 # StepZen Example: with-google-login-faunadb
 
-## Introduction
+# Introduction
 
 This is a demonstration of how to build a login screen for a mobile app built using React Native with Google Sign-In, FaunaDB, and StepZen. If you'd like to see a live-code demo video looking at the project covered in this blog posts, [check it out on YouTube](https://www.youtube.com/watch?v=8nzJdgrZ7FQ).
 
-## Getting Started
+# Getting Started
 
 You'll need to create a StepZen account first. Once you've got that set up, git clone this repository onto your machine and open the working directory:
 
-```bash
 git clone https://github.com/stepzen-dev/examples.git
-cd with-google-login-faunadb
-```
 
-### Setting Up StepZen
-
-Create a [StepZen account](https://stepzen.com/request-invite) first, in order to get your API and admin keys (click the ["My Account"](https://stepzen.com/account) button on the top right once you log in to see where they are).
-
-Next, you'll need the StepZen CLI in order to deploy and test your StepZen GraphQL endpoint. To install the CLI, follow the [instructions in the docs](https://stepzen.com/docs/quick-start).
-
-### Setting up the Expo React Native App
-
-```bash
-npm install --global expo-cli
-```
+`cd with-google-login-faunadb`
 
 ### Set Up a Fauna Database
 
@@ -65,45 +52,73 @@ type QueryUser {
 }
 ```
 
-Create a `config.yaml` file in the folder with the following contents (replacing `Basic MY_FAUNA_KEY` with the information you copied from the GraphQL Playground in the Fauna dashboard).
+Create a `config.yaml` file in the stepzen folder with the following contents (replacing `Basic MY_FAUNA_KEY` with the information you copied from the GraphQL Playground in the Fauna dashboard).
 
 ```yaml
+// stepzen/config.yaml
+
 configurationset:
   - configuration:
       name: fauna_config
       Authorization: Basic MY_FAUNA_KEY
 ```
 
-## Creating Google Sign-In Client IDs
+### Set Up Google Sign In
 
-First, create a Google Cloud account. There are free trials available.
+Create a Google Cloud account. There are free trials available.
 
-Once created, go to "Credentials" in the Google Cloud dashboard and create two oAuth clientIds for Android and iOS applications by clicking "Create Credentials" and then "OAuth client ID". Copy and save these. We'll need then when we are creating the React Native app and we install the dependency `expo-google-app-auth`.
+Once created, go to "Credentials" in the Google Cloud dashboard and create two oAuth clientIds for Android and iOS applications by clicking "Create Credentials" and then "OAuth client ID".
 
-Using the StepZen CLI, run the following command.
+Add these credentials for the `LoginScreen` component.
 
-```bash
-stepzen start
+```javascript
+// screens/LoginScreen.tsx
+  const { type, accessToken, user } : any = await Google.logInAsync({
+      iosClientId: `{{ add key }}`,
+      androidClientId: `{{ add key }}`,
+  });
 ```
 
-The CLI will suggest a name for the endpoint (in the format `FOLDER_NAME/ENDPOINT_NAME`) but we can specify any name we want. Let's use `demo/native-login`. Note that the CLI will generate a file, `stepzen.config.json`, that tells StepZen the name the API endpoint so that it can skip this step on subsequent requests.
+# Run StepZen
 
-The CLI will spin up a local environment on `localhost:5000` with our endpoint now deployed!
+Open your terminal and install the StepZen CLI. You need to login here using the command: `stepzen login`.
+
+After you've followed the prompts (you can accept the suggested endpoint name-- in my case it was api/happy-bunny) and installed the CLI, run stepzen start.
+
+In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example http://localhost:5001/api/happy-bunny), which you can use to explore the GraphQL API.
+
+### Setting up the Expo React Native App
 
 ```bash
-http://localhost:5000/demo/native-login
-
-Deploying to StepZen...... done
-
-Successfully deployed demo/native-login
-
-Your endpoint is available at https://youraccountname.stepzen.net/demo/native-login/__graphql
+npm install --global expo-cli
 ```
 
-Now run:
+`cd with-google-login-faunadb`
+
+Run `npm install` inside `/with-google-login-faunadb` before running `npm run`.
+
+React Native applications require serverless functions to handle environment variables. So for this example we are going to add the endpoint and headers directly into the `App.tsx` file.
+
+```javascript
+// App.tsx
+
+const client = new ApolloClient({
+	link: createHttpLink({
+		credentials: "same-origin",
+		headers: {
+			Authorization: `Apikey {{ stepzen_api_key }}`,
+		},
+		uri: "{{ stepzen_endpoint }}",
+	}),
+	cache: new InMemoryCache(),
+});
+```
+
+Now from the root of the project, run:
 
 ```bash
-expo start
+npm install
+npm run start
 ```
 
 Download the expo app on your phone, and scan the QR code provided at `http://localhost:19002/` on your computer.
@@ -128,3 +143,7 @@ Here is an example of a user added to FaunaDB.
 ```
 
 Now you successfully have a Google sign-in with a database that can store all the users. This demonstrates the ease of adding a FaunaDB to your single StepZen endpoint that can be combined with any other data source. Writing the data of the user to more than one database or API can easily be added to this configuration in the StepZen schema.
+
+# Learn More
+
+You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.com/invite/9k2VdPn2FR) or [Github Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.
