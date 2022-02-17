@@ -1,0 +1,4 @@
+configurationset:
+  - configuration:
+      name: postgresql_config
+      uri: postgresql://{{username}}:{{password}}@{{host}}/{{database_name}}

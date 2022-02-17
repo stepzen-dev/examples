@@ -1,0 +1,186 @@
+type Address {
+  city: String
+  countryRegion: String
+  id: Int!
+  postalCode: String
+  stateProvince: String
+  street: String
+}
+
+type Customer {
+  email: String!
+  id: Int!
+  name: String!
+  orders: [Order]
+    @materializer(
+      query: "getOrderListByCustomerId"
+      arguments: [{ name: "customerId", field: "id" }]
+    )
+}
+
+type CustomerAddress {
+  addressId: Int!
+  customerId: Int!
+}
+
+type Lineitem {
+  orderId: Int!
+  productId: Int!
+  quantity: Int
+}
+
+type Order {
+  carrier: String!
+  createdAt: Date!
+  customerId: Int!
+  id: Int!
+  shippingCost: Float
+  trackingId: String!
+}
+
+type Product {
+  description: String
+  id: Int!
+  image: String
+  title: String
+}
+
+type Query {
+  getAddressList: [Address]
+    @dbquery(type: "mysql", table: "address", configuration: "mysql_config")
+  """
+  This query is an example of how to simply paginate your responses.
+  """
+  getPaginatedAddressList(first: Int!, after: Int!): [Address]
+    @dbquery(
+      type: "mysql"
+      query: """
+      select * from `address` limit ? offset ?
+      """
+      configuration: "mysql_config"
+    )
+  """
+  In this example, a single query parameter is passed. If the request to the DB will
+  return at most one value you can remove the square brackets from the result.
+  """
+  getAddressById(id: Int!): [Address]
+    @dbquery(
+      type: "mysql"
+      query: """
+      select * from `address` where `id` = ?
+      """
+      configuration: "mysql_config"
+    )
+  """
+  In this example, two query parameters are passed. If the request to the DB will
+  return at most one value you can remove the square brackets from the result.
+  """
+  getAddressByIdAndCity(id: Int!, city: String!): [Address]
+    @dbquery(
+      type: "mysql"
+      query: """
+      select * from `address` where `id` = ? and `city` = ?
+      """
+      configuration: "mysql_config"
+    )
+  getCustomerList: [Customer]
+    @dbquery(type: "mysql", table: "customer", configuration: "mysql_config")
+  getPaginatedCustomerList(first: Int!, after: Int!): [Customer]
+    @dbquery(
+      type: "mysql"
+      query: """
+      select * from `customer` limit ? offset ?
+      """
+      configuration: "mysql_config"
+    )
+  getCustomerById(id: Int!): Customer
+    @dbquery(
+      type: "mysql"
+      query: """
+      select * from `customer` where `id` = ?
+      """
+      configuration: "mysql_config"
+    )
+  getCustomerByEmailAndName(email: String!, name: String!): [Customer]
+    @dbquery(
+      type: "mysql"
+      query: """
+      select * from `customer` where `email` = ? and `name` = ?
+      """
+      configuration: "mysql_config"
+    )
+  getCustomerAddressList: [CustomerAddress]
+    @dbquery(
+      type: "mysql"
+      table: "customerAddress"
+      configuration: "mysql_config"
+    )
+  getLineitemList: [Lineitem]
+    @dbquery(type: "mysql", table: "lineitem", configuration: "mysql_config")
+  getOrderList: [Order]
+    @dbquery(type: "mysql", table: "order", configuration: "mysql_config")
+  getOrderListByCustomerId(customerId: Int!): [Order]
+    @dbquery(
+      type: "mysql"
+      query: """
+      select * from `order` where `customerId` = ?
+      """
+      configuration: "mysql_config"
+    )
+  getProductList: [Product]
+    @dbquery(type: "mysql", table: "product", configuration: "mysql_config")
+}
+
+type Mutation {
+  """
+  In this mutation example you can see how to do a mutation to insert data in the database.
+  """
+  insertAddress(
+    postalCode: String!
+    city: String!
+    stateProvince: String!
+    countryRegion: String!
+    street: String!
+    id: Int!
+  ): Address
+    @dbquery(
+      type: "mysql"
+      table: "address"
+      dml: INSERT
+      configuration: "mysql_config"
+    )
+  """
+  In this mutation example you can see how to do a mutation to delete data from the database.
+  """
+  deleteAddress(
+    postalCode: String!
+    city: String!
+    stateProvince: String!
+    countryRegion: String!
+    street: String!
+    id: Int!
+  ): Address
+    @dbquery(
+      type: "mysql"
+      table: "address"
+      dml: DELETE
+      configuration: "mysql_config"
+    )
+  insertCustomer(
+    creditCard: String! = ""
+    label: String! = ""
+    street: String! = ""
+    city: String! = ""
+    postalCode: String! = ""
+    countryRegion: String! = ""
+    stateProvince: String! = ""
+    email: String!
+    name: String!
+  ): Customer
+    @dbquery(
+      type: "mysql"
+      table: "customer"
+      dml: INSERT
+      configuration: "mysql_config"
+    )
+}
