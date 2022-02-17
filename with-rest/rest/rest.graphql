@@ -1,0 +1,54 @@
+type Address {
+  city: String
+  countryRegion: String
+  id: Int
+  postalCode: String
+  stateProvince: String
+  street: String
+}
+
+type Order {
+  carrier: String
+  createdAt: String
+  customerId: Int
+  id: Int
+  shippingCost: Int
+  trackingId: String
+}
+
+type Customer {
+  address: Address
+  email: String
+  id: Int
+  name: String
+  orders: [Order]
+    @materializer(
+      query: "getOrderListByCustomerId"
+      arguments: [{ name: "customerId", field: "id" }]
+    )
+}
+
+type Query {
+  devtoArticles: JSON @rest(endpoint: "https://dev.to/api/articles")
+  getCustomerList: JSON
+    @rest(endpoint: "https://introspection.apis.stepzen.com/customers")
+  getCustomerById(id: ID!): Customer
+    @rest(endpoint: "https://introspection.apis.stepzen.com/customers/$id")
+  getCustomerByEmailAndName(email: String!, name: String = ""): [Customer]
+    @rest(
+      endpoint: "https://introspection.apis.stepzen.com/customers?q=email%20eq%20$email&q=name%20eq%20$name"
+    )
+  getOrderListByCustomerId(customerId: Int!): [Order]
+    @rest(
+      endpoint: "https://introspection.apis.stepzen.com/orders?q=customerId%20eq%20$customerId"
+    )
+}
+
+type Mutation {
+  addCustomer(name: String!, email: String!): Customer
+    @rest(
+      method: POST
+      endpoint: "https://introspection.apis.stepzen.com/customers"
+      postbody: "{\"name\": \"{{.Get \"name\"}}\", \"email\": \"{{.Get \"email\"}}\"}"
+    )
+}
