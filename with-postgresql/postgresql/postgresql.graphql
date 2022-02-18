@@ -187,13 +187,13 @@ type Mutation {
       configuration: "postgresql_config"
     )
   insertCustomer(
-    creditCard: String! = ""
-    label: String! = ""
-    street: String! = ""
-    city: String! = ""
-    postalCode: String! = ""
-    countryRegion: String! = ""
-    stateProvince: String! = ""
+    creditCard: String = ""
+    label: String = ""
+    street: String = ""
+    city: String = ""
+    postalCode: String = ""
+    countryRegion: String = ""
+    stateProvince: String = ""
     email: String!
     name: String!
   ): Customer
