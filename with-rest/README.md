@@ -13,7 +13,7 @@ git clone https://github.com/stepzen-dev/examples.git
 cd with-rest
 ```
 
-Before you can run this example, you need to have a REST API. In this example the free, mocked REST API from [JSONPlaceholder](https://jsonplaceholder.typicode.com/) is used.
+Before you can run this example, you need to have a REST API. In this example you can use the mocked REST API from StepZen [https://introspection.apis.stepzen.com](https://introspection.apis.stepzen.com) is used.
 
 ## Run StepZen
 
