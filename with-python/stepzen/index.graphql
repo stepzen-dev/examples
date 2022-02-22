@@ -1,0 +1,3 @@
+schema @sdl(files: ["rickmorty.graphql"]) {
+  query: Query
+}
