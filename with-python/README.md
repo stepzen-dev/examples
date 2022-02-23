@@ -54,7 +54,7 @@ In you terminal the endpoint at which your GraphQL API is deployed is logged. A 
 
 ## Run Python
 
-In your Python environment in your terminal, run ` /Users/YOUR_USERNAME_HERE/with-python/env/bin/python /Users/YOUR_USERNAME)HERE/with-python/main.py` to see the data coming back from your GraphQL API.
+In your Python environment and inside your `with-python` folder in your terminal, run ` /Users/YOUR_USERNAME_HERE/with-python/env/bin/python /Users/YOUR_USERNAME)HERE/with-python/main.py` to see the data coming back from your GraphQL API.
 
 ## Learn More
 
