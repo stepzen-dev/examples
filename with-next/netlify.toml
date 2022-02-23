@@ -3,7 +3,7 @@
   publish = "out"
 
 [[plugins]]
-  package = "/plugins/netlify-plugin-stepzen"
+  package = "netlify-plugin-stepzen"
 
 [template]
   incoming-hooks = ["StepZen"]
