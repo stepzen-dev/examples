@@ -1,0 +1,102 @@
+type Listing {
+  __createdtime__: Int
+  __updatedtime__: Int
+  accommodates: Int
+  amenities: [String]
+  availability_30: Int
+  availability_365: Int
+  availability_60: Int
+  availability_90: Int
+  bathrooms: JSON
+  bathrooms_text: String
+  bedrooms: Int
+  beds: Int
+  calculated_host_listings_count: Int
+  calculated_host_listings_count_entire_homes: Int
+  calculated_host_listings_count_private_rooms: Int
+  calculated_host_listings_count_shared_rooms: Int
+  calendar_last_scraped: String
+  calendar_updated: JSON
+  description: String
+  first_review: String
+  has_availability: String
+  host_about: String
+  host_acceptance_rate: String
+  host_has_profile_pic: String
+  host_id: Int
+  host_identity_verified: String
+  host_is_superhost: String
+  host_listings_count: Int
+  host_location: String
+  host_name: String
+  host_neighbourhood: String
+  host_picture_url: String
+  host_response_rate: String
+  host_response_time: String
+  host_since: String
+  host_thumbnail_url: String
+  host_total_listings_count: Int
+  host_url: String
+  host_verifications: String
+  id: Int
+  instant_bookable: String
+  last_review: String
+  last_scraped: String
+  latitude: Float
+  license: String
+  listing_url: String
+  longitude: Float
+  maximum_maximum_nights: Int
+  maximum_minimum_nights: Int
+  maximum_nights: Int
+  maximum_nights_avg_ntm: Int
+  minimum_maximum_nights: Int
+  minimum_minimum_nights: Int
+  minimum_nights: Int
+  minimum_nights_avg_ntm: Int
+  name: String
+  neighborhood_overview: String
+  neighbourhood: String
+  neighbourhood_cleansed: String
+  neighbourhood_group_cleansed: JSON
+  number_of_reviews: Int
+  number_of_reviews_l30d: Int
+  number_of_reviews_ltm: Int
+  picture_url: String
+  price: String
+  property_type: String
+  review_scores_accuracy: Float
+  review_scores_checkin: Float
+  review_scores_cleanliness: Int
+  review_scores_communication: Float
+  review_scores_location: Float
+  review_scores_rating: Float
+  review_scores_value: Float
+  reviews_per_month: Float
+  room_type: String
+  scrape_id: Int
+}
+
+type Query {
+  listings(limit: Int = 20): [Listing]
+    @rest(
+      endpoint: "https://$instanceUrl"
+      headers: [{ name: "Authorization", value: "Basic $authHeader" }]
+      postbody: "{\"operation\": \"sql\", \"sql\": \"SELECT * FROM demo.listings LIMIT {{.Get \"limit\" }}\"}"
+      configuration: "harperdbcloud_config"
+    )
+  listingsByRoomType(roomType: String!): [Listing]
+    @rest(
+      endpoint: "https://$instanceUrl"
+      headers: [{ name: "Authorization", value: "Basic $authHeader" }]
+      postbody: "{\"operation\": \"search_by_value\", \"schema\": \"demo\", \"table\": \"listings\", \"search_attribute\": \"room_type\", \"search_value\": \"{{.Get \"roomType\" }}\", \"get_attributes\": [\"id\", \"name\", \"room_type\"]}"
+      configuration: "harperdbcloud_config"
+    )
+  roomTypes: [Listing]
+    @rest(
+      endpoint: "https://$instanceUrl"
+      headers: [{ name: "Authorization", value: "Basic $authHeader" }]
+      postbody: "{\"operation\": \"sql\", \"sql\": \"SELECT DISTINCT room_type FROM demo.listings\"}"
+      configuration: "harperdbcloud_config"
+    )
+}
