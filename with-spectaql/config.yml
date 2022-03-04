@@ -1,0 +1,23 @@
+spectaql:
+  logoFile: ./logo.svg
+
+introspection:
+  url: 'REPLACE_WITH_YOUR_GRAPHQL_ENDPOINT'
+  headers:
+    Authorization: 'apikey REPLACE_WITH_YOUR_API_KEY'
+
+info:
+  title: StepZen - Frankfurter GraphQL API
+  description:
+    'Frankfurter is an open-source API for current and historical foreign exchange rates published by the European Central Bank. Using GraphQL!
+
+    [View GraphiQL playground](REPLACE_WITH_YOUR_GRAPHQL_ENDPOINT)'
+  contact:
+    name: StepZen Support
+    url: https://stepzen.com/docs
+    email: support@stepzen.com
+
+servers:
+  - url: 'REPLACE_WITH_YOUR_GRAPHQL_ENDPOINT'
+    description: Production
+    production: true

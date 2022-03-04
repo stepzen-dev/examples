@@ -1,0 +1,47 @@
+type Frankfurter_Latest_Rates {
+  amount: Float
+  base: String
+  date: Date
+  rates: JSON
+}
+
+type Frankfurter_Historical_Rates {
+  base: String
+  amount: Float
+  date: Date
+  rates: JSON
+}
+
+type Frankfurter_TimeSeries_Rates {
+  base: String
+  amount: Float
+  start_date: Date
+  end_date: Date
+  rates: JSON
+}
+
+type Query {
+  frankfurter_latest_rates(
+    from: String
+    to: String
+    amount: Float
+  ): Frankfurter_Latest_Rates
+    @rest(endpoint: "https://api.frankfurter.app/latest")
+  frankfurter_historical_rates(
+    from: String
+    to: String
+    amount: Float
+    date: Date
+  ): Frankfurter_Historical_Rates
+    @rest(endpoint: "https://api.frankfurter.app/$date")
+  frankfurter_time_series(
+    from: String
+    to: String
+    amount: Float
+    start_date: Date
+    end_date: Date
+  ): Frankfurter_TimeSeries_Rates
+    @rest(endpoint: "https://api.frankfurter.app/$start_date..$end_date")
+  frankfurter_currency_list: JSON
+    @rest(endpoint: "https://api.frankfurter.app/currencies")
+}
