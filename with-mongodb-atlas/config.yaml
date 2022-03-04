@@ -1,0 +1,5 @@
+configurationset:
+  - configuration:
+      name: mongodb
+      apikey: REPLACE_WITH_YOUR_DATA_API_KEY
+      appid: REPLACE_WITH_YOUR_DATA_API_APP_ID

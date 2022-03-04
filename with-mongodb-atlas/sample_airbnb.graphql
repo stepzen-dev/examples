@@ -1,0 +1,139 @@
+"""
+This schema is used to query data from the MongoDB Atlas sample database "sample_airbnb"
+"""
+
+scalar MongoFilter
+scalar MongoProjection
+scalar MongoSort
+
+type Query {
+  listings(
+    dataSource: String! = "Cluster0"
+    collection: String! = "listingsAndReviews"
+    database: String! = "sample_airbnb"
+    filter: MongoFilter 
+    projection: MongoProjection 
+    sort: MongoSort 
+    limit: Int
+    skip: Int 
+  ): [Listing]
+    @rest(
+      endpoint: "https://data.mongodb-api.com/app/$appid/endpoint/data/beta/action/find"
+      method: POST
+      headers: [{ name: "api-key", value: "$apikey" }{ name: "Content-Type", value: "application/json" }]
+      configuration: "mongodb"
+      resultroot: "documents[]"
+    )
+}
+
+type Location {
+  coordinates: [Float]
+  is_location_exact: Boolean
+  type: String
+}
+
+type Address {
+  country: String
+  country_code: String
+  government_area: String
+  location: Location
+  market: String
+  street: String
+  suburb: String
+}
+
+type Availability {
+  availability_30: Int
+  availability_365: Int
+  availability_60: Int
+  availability_90: Int
+}
+
+type Host {
+  host_about: String
+  host_has_profile_pic: Boolean
+  host_id: String
+  host_identity_verified: Boolean
+  host_is_superhost: Boolean
+  host_listings_count: Int
+  host_location: String
+  host_name: String
+  host_neighbourhood: String
+  host_picture_url: String
+  host_response_rate: Int
+  host_response_time: String
+  host_thumbnail_url: String
+  host_total_listings_count: Int
+  host_url: String
+  host_verifications: [String]
+}
+
+type Images {
+  medium_url: String
+  picture_url: String
+  thumbnail_url: String
+  xl_picture_url: String
+}
+
+type ReviewScores {
+  review_scores_accuracy: Int
+  review_scores_checkin: Int
+  review_scores_cleanliness: Int
+  review_scores_communication: Int
+  review_scores_location: Int
+  review_scores_rating: Int
+  review_scores_value: Int
+}
+
+type Review {
+  _id: String
+  comments: String
+  date: DateTime
+  listing_id: String
+  reviewer_id: String
+  reviewer_name: String
+}
+
+type Listing {
+  _id: String
+  access: String
+  accommodates: Int
+  address: Address
+  amenities: [String]
+  availability: Availability
+  bathrooms: JSON
+  bed_type: String
+  bedrooms: Int
+  beds: Int
+  calendar_last_scraped: DateTime
+  cancellation_policy: String
+  cleaning_fee: JSON
+  description: String
+  extra_people: JSON
+  first_review: DateTime
+  guests_included: JSON
+  host: Host
+  house_rules: String
+  images: Images
+  interaction: String
+  last_review: DateTime
+  last_scraped: DateTime
+  listing_url: String
+  maximum_nights: String
+  minimum_nights: String
+  name: String
+  neighborhood_overview: String
+  notes: String
+  number_of_reviews: Int
+  price: JSON
+  property_type: String
+  review_scores: ReviewScores
+  reviews: [Review]
+  room_type: String
+  security_deposit: JSON
+  space: String
+  summary: String
+  transit: String
+}
+
+
