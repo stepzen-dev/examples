@@ -1,0 +1,19 @@
+type OneMyQuery {
+  age: String
+  eye_color: String
+  films: [String]
+  gender: String
+  hair_color: String
+  id: String
+  name: String
+  species: String
+  url: String
+}
+
+type Query {
+  myQuery: OneMyQuery
+    @rest(
+      endpoint: "https://ghibliapi.herokuapp.com/people"
+      headers: [{ name: "", value: "" }]
+    )
+}
