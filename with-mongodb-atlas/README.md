@@ -8,7 +8,6 @@ This project builds a GraphQL API using the [MongoDB Atlas Data API](https://doc
 
 You'll need to create a [StepZen account](https://stepzen.com/signup) first. Once you've got that set up, [git clone](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-clone) this repository onto your machine and open the working directory:
 
-
 ```
 git clone https://github.com/stepzen-dev/examples.git
 cd with-mongodb-atlas

@@ -1,0 +1,3 @@
+schema @sdl(files: ["frankfurter.graphql"]) {
+  query: Query
+}
