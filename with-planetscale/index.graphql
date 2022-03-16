@@ -1,0 +1,3 @@
+schema @sdl(files: ["mysql/mysql.graphql"]) {
+  query: Query
+}
