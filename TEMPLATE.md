@@ -1,18 +1,18 @@
 # StepZen Example: `with-[INSERT]` <!-- ADD YOUR OWN -->
 
-# Introduction
+## Introduction
 
 This project builds a GraphQL API... <!-- ADD YOUR OWN -->
 
-# Getting Started
+## Getting Started
 
 You'll need to create a [StepZen account](https://stepzen.com/signup) first. Once you've got that set up, [git clone](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-clone) this repository onto your machine and open the working directory:
 
 <!-- UPDATE THE DIRECTORY BELOW -->
 
-```
+```bash
 git clone https://github.com/stepzen-dev/examples.git
-cd with-[INSERT]
+cd examples/with-[INSERT]
 ```
 
 Before you can run this example, you need to have a ... <!-- ADD YOUR OWN -->
@@ -69,7 +69,7 @@ configurationset:
 
 Open your terminal and [install the StepZen CLI](https://stepzen.com/docs/quick-start). You need to login here using the command: `stepzen login`.
 
-Start the GraphQL by running `stepzen start`. After you've followed the prompts (you can accept the suggested endpoint name or add your own), a proxy of the GraphiQL playground becomes available at `http://localhost/5001` (in example `http://localhost:5001/api/happy-bunny`), which you can use to explore the GraphQL API. Also, the endpoint at which your GraphQL API is deployed gets logged in the terminal. You can query your GraphQL API from any application, browser, or IDE by providing the API Key linked to your account.
+Start the GraphQL by running `stepzen start`. After you've followed the prompts (you can accept the suggested endpoint name or add your own), a proxy of the GraphiQL playground becomes available at `http://localhost/5001` (in example `http://localhost:5001/api/with-[INSERT]` <!-- ADD YOUR OWN -->), which you can use to explore the GraphQL API. Also, the endpoint at which your GraphQL API is deployed gets logged in the terminal. You can query your GraphQL API from any application, browser, or IDE by providing the API Key linked to your account.
 
 ## Learn More
 
