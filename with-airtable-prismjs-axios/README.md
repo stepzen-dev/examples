@@ -39,7 +39,13 @@ Both will run at <http://localhost:3000>
 
 ## Run StepZen
 
-Your `config.yaml` file inside the `./stepzen` folder will need to look like:
+You can copy the file `sample.config.yaml` to a new `config.yaml` file:
+
+```bash
+cp stepzen/sample.config.yaml stepzen/config.yaml
+```
+
+Replace the contents of `config.yaml` with your own keys.
 
 ```yaml
 # stepzen/config.yaml

@@ -31,7 +31,13 @@ If you don't have a database running in the cloud yet, you can try our read-only
 - username: `testUserIntrospection`
 - password: `HurricaneStartingSample1934`
 
-Or replace `config.yaml` with the following:
+You can copy the file `sample.config.yaml` to a new `config.yaml` file:
+
+```bash
+cp sample.config.yaml config.yaml
+```
+
+Replace the contents of `config.yaml` with the following:
 
 ```yaml
 # config.yaml

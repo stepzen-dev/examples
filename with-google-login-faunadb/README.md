@@ -53,7 +53,13 @@ type QueryUser {
 }
 ```
 
-Create a `config.yaml` file in the stepzen folder with the following contents (replacing `Basic MY_FAUNA_KEY` with the information you copied from the GraphQL Playground in the Fauna dashboard).
+You can copy the file `sample.config.yaml` to a new `config.yaml` file:
+
+```bash
+cp stepzen/sample.config.yaml stepzen/config.yaml
+```
+
+Replace the contents of `config.yaml` with the information you copied from the GraphQL Playground in the Fauna dashboard.
 
 ```yaml
 # stepzen/config.yaml
