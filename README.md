@@ -16,7 +16,7 @@ Here's a list of our current examples:
 - [with-mysql](https://github.com/stepzen-dev/examples/tree/main/with-mysql)
 - [with-next](https://github.com/stepzen-dev/examples/tree/main/with-next)
 - [with-planetscale](https://github.com/stepzen-dev/examples/tree/main/with-planetscale)
-- [with-postgresql](https://github.com/stepzen-dev/examples/tree/main/with-postgres)
+- [with-postgresql](https://github.com/stepzen-dev/examples/tree/main/with-postgresql)
 - [with-python](https://github.com/stepzen-dev/examples/tree/main/with-python)
 - [with-react-native](https://github.com/stepzen-dev/examples/tree/main/with-react-native)
 - [with-rest](https://github.com/stepzen-dev/examples/tree/main/with-rest)
