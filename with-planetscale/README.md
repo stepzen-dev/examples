@@ -10,7 +10,7 @@ You'll need to create a [StepZen account](https://stepzen.com/request-invite) fi
 
 ```bash
 git clone https://github.com/stepzen-dev/examples.git
-cd with-planetscale
+cd examples/with-planetscale
 ```
 
 Before you can run this example, you need to have a PlanetScale instance. Which you can set up in the next section.
