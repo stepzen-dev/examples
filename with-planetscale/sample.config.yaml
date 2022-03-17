@@ -1,0 +1,4 @@
+configurationset:
+  - configuration:
+      name: mysql_config
+      dsn: REPLACE_WITH_YOUR_USERNAME:REPLACE_WITH_YOUR_PASSWORD@tcp(REPLACE_WITH_YOUR_HOST)/REPLACE_WITH_YOUR_DATABASE?tls=true
