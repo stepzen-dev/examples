@@ -1,4 +1,4 @@
-# StepZen Example: with-next
+# StepZen Example: `with-next`
 
 ## Introduction
 

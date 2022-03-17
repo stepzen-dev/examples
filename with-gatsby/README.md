@@ -1,4 +1,4 @@
-# StepZen Example: with-gatsby
+# StepZen Example: `with-gatsby`
 
 ## Introduction
 

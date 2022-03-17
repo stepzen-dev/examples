@@ -1,4 +1,4 @@
-# StepZen Example: with-airtable-prismjs-axios
+# StepZen Example: `with-airtable-prismjs-axios`
 
 ## Introduction
 

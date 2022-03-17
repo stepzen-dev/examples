@@ -1,4 +1,4 @@
-# StepZen Example: with-shopify-agility-cms
+# StepZen Example: `with-shopify-agility-cms`
 
 ## Introduction
 

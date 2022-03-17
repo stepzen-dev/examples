@@ -1,4 +1,4 @@
-# StepZen Example: with-google-login-faunadb
+# StepZen Example: `with-google-login-faunadb`
 
 ## Introduction
 

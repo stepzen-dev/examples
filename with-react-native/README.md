@@ -1,4 +1,4 @@
-# StepZen Example: with-react-native
+# StepZen Example: `with-react-native`
 
 ## Introduction
 
