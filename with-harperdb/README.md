@@ -10,7 +10,7 @@ You'll need to create a [StepZen account](https://stepzen.com/request-invite) fi
 
 ```bash
 git clone https://github.com/stepzen-dev/examples.git
-cd with-harperdb
+cd examples/with-harperdb
 ```
 
 Before you can run this example, you need to have a HarperDB instance. Which you can set up in the next section.
@@ -25,19 +25,19 @@ Setting up HarperDB can be done in a few steps. First, you need to create an acc
 
 2. Create a new HarperDB instance.
 
-![Create HarperDB instance](/assets/setup-harperdb-1.png)
+![Create HarperDB instance](./assets/setup-harperdb-1.png)
 
 3. Select where you want to host your HarperDB instance. This instance can be hosted by HarperDB (on AWS or Wavelength) or self-hosted on your cloud provider of choice.
 
-![Choose hosting option](/assets/setup-harperdb-2.png)
+![Choose hosting option](./assets/setup-harperdb-2.png)
 
 4. When selecting hosted by HarperDB, you need to choose the specifications for the instance created for you on their cloud provider. You can choose to use the free plan here as well.
 
-![Select instance specs](/assets/setup-harperdb-3.png)
+![Select instance specs](./assets/setup-harperdb-3.png)
 
 5. Create credentials for the HarperDB instance deployed for you on the selected cloud instance. In this example, we've inserted `demo` for every value.
 
-![Create instance credentials](/assets/setup-harperdb-4.png)
+![Create instance credentials](./assets/setup-harperdb-4.png)
 
 6. After pressing "Instance details" you can confirm the selections from the previous steps.
 
@@ -49,13 +49,13 @@ Your HarperDB instance will get deployed on the cloud provider you previously se
 
 2. Inside the schema, you should create a new table called `listings`. For this table, you need to set a "hash attribute" or what's called a primary key in most relational databases. This table can again be created with HarperDB Studio or [via the REST API](https://studio.harperdb.io/resources/examples/QuickStart%20Examples/Create%20dog%20Table).
 
-![Create new table](/assets/setup-harperdb-5.png)
+![Create new table](./assets/setup-harperdb-5.png)
 
 3. Insert data into the new table `listings`. You can either use SQL or NoSQL to import data into HarperDB and CSV files for bulk inserts, which we'll be using this time. The CSV file we'll use for this example contains data from Airbnb, which you can get from the website [Inside Airbnb](http://insideairbnb.com/), which offers data extracted from the popular accommodation booking website.
 
     - Upload CSV via HarperDB Studio. Download the CSV file first from [here](http://data.insideairbnb.com/the-netherlands/north-holland/amsterdam/2021-12-05/data/listings.csv).
 
-    ![Import CSV data](/assets/setup-harperdb-6.png)
+    ![Import CSV data](./assets/setup-harperdb-6.png)
 
     - Import data using the REST API:
 
@@ -71,13 +71,15 @@ Your HarperDB instance will get deployed on the cloud provider you previously se
     }'
     ```
 
-When Succesful, you'll get a message like this `{"message":"Starting job with id 2bd09d70-b62d-1221-b837-17aa96b432f5"}%` stating the import job has started. Depending on the size of the CSV, this might take several minutes to complete.
+When Successful, you'll get a message like this `{"message":"Starting job with id 2bd09d70-b62d-1221-b837-17aa96b432f5"}%` stating the import job has started. Depending on the size of the CSV, this might take several minutes to complete.
 
 ### Copy credentials
 
 The instance url (without 'https://' and authentication header from HarperDB must be passed to StepZen. You can find these in you [Instance Configuration](https://harperdb.io/docs/harperdb-studio/instance-config/) and these need to be added to the file `./config.yaml`:
 
 ```yaml
+# config.yaml
+
 configurationset:
   - configuration:
       name: harperdbcloud_config

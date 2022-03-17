@@ -10,7 +10,7 @@ You'll need to create a [StepZen account](https://stepzen.com/signup) first. Onc
 
 ```bash
 git clone https://github.com/stepzen-dev/examples.git
-cd with-shopify-agility-cms
+cd examples/with-shopify-agility-cms
 ```
 
 ## Spinning Up the StepZen Endpoint
@@ -32,6 +32,8 @@ cp config.yaml.sample config.yaml
 And now edit the `config.yaml` file, inserting your API keys and credentials where appropriate:
 
 ```yaml
+# stepzen/config.yaml
+
 configurationset:
   - configuration:
       name: agility_config
@@ -53,7 +55,7 @@ The name for each of these configurationsets represents how they are referenced 
 
 Under `agility_config`, we enter configuration data that tells StepZen how to talk to the Agility CMS API
 
-- header.Apikey, which is where you’ll put your Agility CMS defaultpreview Apikey. Go to settings in your Agility CMS instance and copy the defaultpreview API key.
+- header.Apikey, which is where you’ll put your Agility CMS `defaultpreview` Apikey. Go to settings in your Agility CMS instance and copy the `defaultpreview` API key.
 - instance, specifying the Agility instance number. Go to settings and copy the Instance GUID under Global Security.
 
 ### Shopify REST API Configuration

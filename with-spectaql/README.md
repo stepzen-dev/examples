@@ -8,9 +8,9 @@ This project builds static documentation for your GraphQL API using the open-sou
 
 You'll need to create a [StepZen account](https://stepzen.com/signup) first. Once you've got that set up, [git clone](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-clone) this repository onto your machine and open the working directory:
 
-```
+```bash
 git clone https://github.com/stepzen-dev/examples.git
-cd with-spectaql
+cd examples/with-spectaql
 ```
 
 Before you can run this example, you need to have a GraphQL API deployed on StepZen. 
@@ -21,9 +21,11 @@ Before creating static documentation using SpectaQL you need to have a GraphQL A
 
 To deploy the GraphQL API, you need to run `stepzen start` from the directory of this project. Make sure you've followed the steps to log in to StepZen first. 
 
-The deployed endpoint for your StepZen GraphQL API needs to be added to the configuration file for SpectaQL, which is called `config.yml`. In this file, you need to replace `REPLACE_WITH_YOUR_GRAPHQL_ENDPOINT` with your StepZen endpoint and `REPLACE_WITH_YOUR_API_KEY` with your StepZen API key. You can find this key in [My StepZen](https://stepzen.com/account) or using the CLI (run `stepzen whoami --apikey`): 
+The deployed endpoint for your StepZen GraphQL API needs to be added to the configuration file for SpectaQL, which is called `config.yaml`. In this file, you need to replace `REPLACE_WITH_YOUR_GRAPHQL_ENDPOINT` with your StepZen endpoint and `REPLACE_WITH_YOUR_API_KEY` with your StepZen API key. You can find this key in [My StepZen](https://stepzen.com/account) or using the CLI (run `stepzen whoami --apikey`): 
 
 ```yaml
+# config.yaml
+
 spectaql:
   logoFile: ./logo.svg
 
@@ -51,16 +53,14 @@ servers:
 
 The library SpectaQL needs to be installed globally on your machine, which you can do with either npm or Yarn:
 
-```
+```bash
 npm install -g spectaql
-# OR
-yarn global add spectaql
 ```
 
 To generate the static documentation, you need to run:
 
-```
-npx spectaql config.yml
+```bash
+npx spectaql config.yaml
 ```
 
 By default, this will generate the documentation based on your StepZen GraphQL API in the `public` directory. You can either open the generated `index.html` file in your browser or add the `-D` flag and view your docs live by visiting `http://localhost:4400/` in the browser.

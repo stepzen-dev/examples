@@ -10,7 +10,7 @@ You'll need to create a StepZen account first. Once you've got that set up, git 
 
 ```bash
 git clone https://github.com/stepzen-dev/examples.git
-cd with-react-native
+cd examples/with-react-native
 ```
 
 To install Expo:
@@ -19,16 +19,11 @@ To install Expo:
 npm install -g expo-cli
 ```
 
-Then:
-
-```bash
-cd stepzen
-stepzen start
-```
-
-Manually add your admin key and uri in the App.tsx. Still working on adding .env variables to the build and development environments:
+Manually add your admin key and uri in the App.tsx. Still working on adding `.env` variables to the build and development environments:
 
 ```jsx
+// App.tsx
+
 const client = new ApolloClient({
 	link: createHttpLink({
 		credentials: "same-origin",
@@ -41,14 +36,13 @@ const client = new ApolloClient({
 });
 ```
 
-
 ## Install Dependencies and Start Development Server
 
 Install the dependencies:
 
 ```bash
-yarn
-yarn start
+npm i
+npm start
 ```
 
 Download the expo App on your phone and scan the QR code or open it in your browser
@@ -73,7 +67,7 @@ After you've installed the CLI and logged in, run:
 stepzen start
 ```
 
-In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example http://localhost:5001/api/with-react-native), which you can use to explore the GraphQL API.
+In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example `http://localhost:5001/api/with-react-native`), which you can use to explore the GraphQL API.
 
 ## Learn More
 

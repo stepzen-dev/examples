@@ -10,7 +10,7 @@ You'll need to create a [StepZen account](https://stepzen.com/signup) first. Onc
 
 ```bash
 git clone https://github.com/stepzen-dev/examples.git
-cd with-sveltekit
+cd examples/with-sveltekit
 ```
 
 Before you can run this example, you need to have a free DEV.to Communiy API Key, which you can find on [this page](https://dev.to/settings/account). This API Key is used to pull data from DEV.to that will be consumed by the example you're going to built.
@@ -24,6 +24,8 @@ mv stepzen/example.config.yaml stepzen/config.yaml
 And add your DEV.to Community API Key to it:
 
 ```yaml
+# stepzen/config.yaml
+
 configurationset:
   - configuration:
       name: devto_config
@@ -67,7 +69,7 @@ STEPZEN_ENDPOINT=
 STEPZEN_API_KEY=
 ```
 
-## Install Dependencies and Start Development Server
+### Install Dependencies and Start Development Server
 
 Install the dependencies using `npm` or Yarn:
 

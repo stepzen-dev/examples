@@ -1,4 +1,4 @@
 {
-  "endpoint": "api/with-prismjs-axios",
+  "endpoint": "api/with-airtable-prismjs-axios",
   "root": "stepzen"
 }

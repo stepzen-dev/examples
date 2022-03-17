@@ -10,18 +10,17 @@ You'll need to create a StepZen account first. Once you've got that set up, git 
 
 ```bash
 git clone https://github.com/stepzen-dev/examples.git
-cd with-python
+cd examples/with-python
 ```
 
 ## Install Dependencies and Start Development Server
 
 Once you've got your Python virtual environment set up and running, install these dependencies:
 
-```
+```bash
 pip3 install requests
 pip3 install dotenv import load_dotenv
 pip3 install os
-
 ```
 
 Your `.env` should look something like:
@@ -50,7 +49,7 @@ After you've installed the CLI and logged in, run:
 stepzen start
 ```
 
-In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example http://localhost:5001/api/with-google-analytics), which you can use to explore the GraphQL API.
+In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example `http://localhost:5001/api/with-python`), which you can use to explore the GraphQL API.
 
 ## Run Python
 

@@ -10,7 +10,7 @@ You'll need to create a [StepZen account](https://stepzen.com/request-invite) fi
 
 ```bash
 git clone https://github.com/stepzen-dev/examples.git
-cd with-rest
+cd examples/with-rest
 ```
 
 Before you can run this example, you need to have a REST API. In this example you can use the mocked REST API from StepZen [https://introspection.apis.stepzen.com](https://introspection.apis.stepzen.com) is used.

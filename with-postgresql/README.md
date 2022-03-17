@@ -12,7 +12,7 @@ You'll need to create a [StepZen account](https://stepzen.com/request-invite) fi
 
 ```bash
 git clone https://github.com/stepzen-dev/examples.git
-cd with-postgresql
+cd examples/with-postgresql
 ```
 
 Before you can run this example, you need to have a PostgreSQL database. Which you can either run in the cloud or set up locally with Docker.
@@ -33,7 +33,9 @@ If you don't have a database running in the cloud yet, you can try our read-only
 
 Or replace `config.yaml` with the following:
 
-```
+```yaml
+# config.yaml
+
 configurationset:
   - configuration:
       name: postgresql_config
@@ -52,7 +54,7 @@ Alternatively, you can create a local database using our Docker script. This req
 - [ngrok account](https://ngrok.com/)
 - [ngrok installed (Mac/Windows)](https://ngrok.com/download)
 
-Make sure you have an account for [ngrok](<(https://ngrok.com/)>) and have linked your authtoken by running:
+Make sure you have an account for [ngrok](<(https://ngrok.com/)>) and have linked your `authtoken` by running:
 
 ```bash
 ngrok authtoken [YOUR_AUTH_TOKEN]
@@ -77,6 +79,8 @@ Ngrok will return the forwarding address for the local PostgreSQL database, whic
 You need to add this to the file `./config.yaml` where you need to replace `{{ngrok_tunnel}}` with (in example) `0.tcp.ngrok.io:15650`:
 
 ```yaml
+# config.yaml
+
 configurationset:
   - configuration:
       name: postgresql_config

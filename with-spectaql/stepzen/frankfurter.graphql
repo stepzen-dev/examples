@@ -27,6 +27,7 @@ type Query {
     amount: Float
   ): Frankfurter_Latest_Rates
     @rest(endpoint: "https://api.frankfurter.app/latest")
+    
   frankfurter_historical_rates(
     from: String
     to: String
@@ -34,6 +35,7 @@ type Query {
     date: Date
   ): Frankfurter_Historical_Rates
     @rest(endpoint: "https://api.frankfurter.app/$date")
+    
   frankfurter_time_series(
     from: String
     to: String
@@ -42,6 +44,7 @@ type Query {
     end_date: Date
   ): Frankfurter_TimeSeries_Rates
     @rest(endpoint: "https://api.frankfurter.app/$start_date..$end_date")
+    
   frankfurter_currency_list: JSON
     @rest(endpoint: "https://api.frankfurter.app/currencies")
 }

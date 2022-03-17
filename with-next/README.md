@@ -10,7 +10,7 @@ You'll need to create a StepZen account first. Once you've got that set up, git 
 
 ```bash
 git clone https://github.com/stepzen-dev/examples.git
-cd with-next
+cd examples/with-next
 ```
 
 ## Install Dependencies and Start Development Server
@@ -51,7 +51,7 @@ NEXT_PUBLIC_STEPZEN_FOLDER={{ api/ your folder name }}
 NEXT_PUBLIC_STEPZEN_NAME={{ name of endpoint }}
 ```
 
-In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example http://localhost:5001/api/with-next), which you can use to explore the GraphQL API.
+In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example `http://localhost:5001/api/with-next`), which you can use to explore the GraphQL API.
 
 ## Learn More
 

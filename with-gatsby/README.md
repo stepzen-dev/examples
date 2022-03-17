@@ -10,7 +10,7 @@ You'll need to create a StepZen account first. Once you've got that set up, git 
 
 ```bash
 git clone https://github.com/stepzen-dev/examples.git
-cd with-gatsby
+cd examples/with-gatsby
 ```
 
 ## Install Dependencies and Start Development Server
@@ -42,7 +42,7 @@ After you've installed the CLI and logged in, run:
 stepzen start
 ```
 
-In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example http://localhost:5001/api/with-gatsby), which you can use to explore the GraphQL API.
+In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example `http://localhost:5001/api/with-gatsby`), which you can use to explore the GraphQL API.
 
 ## Learn More
 

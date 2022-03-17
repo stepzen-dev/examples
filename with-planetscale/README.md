@@ -22,12 +22,13 @@ To import a PlanetScale database, you need to run the command `stepzen import my
 **Important:** PlanetScale only allows access over SSL/TLS so in the file `config.yaml` you need to append `?tls=true` to the DSN configuration:
 
 ```yaml
+# config.yaml
+
 configurationset:
   - configuration:
       name: mysql_config
       dsn: REPLACE_WITH_YOUR_USERNAME:REPLACE_WITH_YOUR_PASSWORD@tcp(REPLACE_WITH_YOUR_HOST)/REPLACE_WITH_YOUR_DATABASE?tls=true
 ```
-
 
 > To get the database configuration, you need to open the PlanetScale dashboard and open the database you want to connect. Here you need to copy the connection details from the `main` branch by clicking "Connect" and selecting "Connect with General" in the dropdown.
 

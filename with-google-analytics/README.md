@@ -10,7 +10,7 @@ You'll need to create a StepZen account first. Once you've got that set up, git 
 
 ```bash
 git clone https://github.com/stepzen-dev/examples.git
-cd with-google-analytics
+cd examples/with-google-analytics
 ```
 
 ## Install Dependencies and Start Development Server
@@ -25,6 +25,8 @@ npm start
 You'll also need to add a `config.yaml` file inside the `/stepzen` folder with this information:
 
 ```yaml
+# stepzen/config.yaml
+
 configurationset:
   - configuration:
       name: amplitude_config
@@ -60,7 +62,7 @@ After you've installed the CLI and logged in, run:
 stepzen start
 ```
 
-In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example http://localhost:5001/api/with-google-analytics), which you can use to explore the GraphQL API.
+In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example `http://localhost:5001/api/with-google-analytics`), which you can use to explore the GraphQL API.
 
 ## Learn More
 

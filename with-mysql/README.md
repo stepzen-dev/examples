@@ -12,7 +12,7 @@ You'll need to create a [StepZen account](https://stepzen.com/request-invite) fi
 
 ```bash
 git clone https://github.com/stepzen-dev/examples.git
-cd with-mysql
+cd examples/with-mysql
 ```
 
 Before you can run this example, you need to have a MySQL database. Which you can either run in the cloud or set up locally with Docker.
@@ -33,7 +33,9 @@ If you don't have a database running in the cloud yet, you can try our read-only
 
 Or replace `config.yaml` with the following:
 
-```
+```yaml
+# config.yaml
+
 configurationset:
   - configuration:
       name: mysql_config
@@ -41,6 +43,7 @@ configurationset:
 ```
 
 </details>
+
 ## Creating a local database with Docker
 
 The best way to run this MySQL Database is by using our Docker script. This requires you to have Docker installed (no prior knowledge needed) and using ngrok to create a TCP tunnel so you can link it to StepZen.
@@ -53,7 +56,7 @@ The best way to run this MySQL Database is by using our Docker script. This requ
 
 ### Getting Started:
 
-Make sure you have an account for [ngrok](https://ngrok.com/) and have linked your authtoken by running:
+Make sure you have an account for [ngrok](https://ngrok.com/) and have linked your `authtoken` by running:
 
 ```bash
 ngrok authtoken [YOUR_AUTH_TOKEN]
@@ -76,6 +79,8 @@ ngrok tcp 3306
 You need to add this to the file `./config.yaml` where you need to replace `{{ngrok_tunnel}}` with (in example) `0.tcp.ngrok.io:15650`:
 
 ```yaml
+# config.yaml
+
 configurationset:
   - configuration:
       name: mysql_config

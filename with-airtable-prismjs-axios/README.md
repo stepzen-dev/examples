@@ -10,7 +10,7 @@ You'll need to create a StepZen account first. Once you've got that set up, git 
 
 ```bash
 git clone https://github.com/stepzen-dev/examples.git
-cd with-airtable-prismjs-axios
+cd examples/with-airtable-prismjs-axios
 ```
 
 ## Stickers Page
@@ -42,6 +42,8 @@ Both will run at <http://localhost:3000>
 Your `config.yaml` file inside the `./stepzen` folder will need to look like:
 
 ```yaml
+# stepzen/config.yaml
+
 configurationset:
   - configuration:
       name: airtable_config
@@ -70,7 +72,7 @@ After you've installed the CLI and logged in, run:
 stepzen start
 ```
 
-In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example http://localhost:5001/api/with-airtable-prismjs-axios), which you can use to explore the GraphQL API.
+In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example `http://localhost:5001/api/with-airtable-prismjs-axios`), which you can use to explore the GraphQL API.
 
 ## Learn More
 

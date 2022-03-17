@@ -10,7 +10,7 @@ You'll need to create a [StepZen account](https://stepzen.com/signup) first. Onc
 
 ```
 git clone https://github.com/stepzen-dev/examples.git
-cd with-mongodb-atlas
+cd examples/with-mongodb-atlas
 ```
 
 Before you can run this example, you need to have a MongoDB Atlas account. 
@@ -24,6 +24,8 @@ Once you have loaded the sample data, you need to create an API Key to use the D
 Open and edit the `./config.yaml` file, where you need to replace the value `REPLACE_WITH_YOUR_DATA_API_KEY` with the key you just created and copied, and `REPLACE_WITH_YOUR_DATA_API_APP_ID` with the Data API App ID, which should look something like `data-xqgfu` (yours will be different!). 
 
 ```yaml
+# config.yaml
+
 configurationset:
   - configuration:
       name: mongodb
@@ -54,8 +56,10 @@ query MyQuery($filter: MongoFilter) {
   }
 }
 ```
+
 with variables:
-```
+
+```json
 {
   "filter": {
     "address.market": "Istanbul"
