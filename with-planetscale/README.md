@@ -52,10 +52,10 @@ Setting up PlanetScale can be done in a few steps. First, you need to create an 
 We'll be seeding the database using `mysql` from our terminal. To connect to the PlanetScale database from your terminal, you need to copy the connection details from the `main` branch by clicking "Connect" and selecting "Connect with MySQL CLI" in the dropdown. After copying the connection string, you should append ` < init.sql` to it:
 
 ```bash
-mysql -h [PLANETSCALE_HOST] -u [PLANETSCALE_USERNAME] -p [PLANETSCALE_PASSWORD] --ssl-mode=VERIFY_IDENTITY --ssl-ca=/etc/ssl/cert.pem < init.sql
+mysql -h [PLANETSCALE_HOST] -u [PLANETSCALE_USERNAME] -p[PLANETSCALE_PASSWORD] --ssl-mode=VERIFY_IDENTITY --ssl-ca=/etc/ssl/cert.pem < init.sql
 ```
 
-> Alternatively, you can get the host, username, and password by clicking "Connect with General" and copying these values in the command above.
+> Alternatively, you can get the host, username, and password by clicking "Connect with General" and copying these values in the command above. Make sure to not leave a space in-between `-p` and the actual password.
 
 The database will now get seeded with the data from `init.sql`.
 
