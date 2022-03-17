@@ -34,4 +34,4 @@ yarn-error.log*
 # vercel
 .vercel
 # config
-/stepzen/config.yaml 
+config.yaml 

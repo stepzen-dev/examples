@@ -8,7 +8,7 @@ This project builds a GraphQL API using the [MongoDB Atlas Data API](https://doc
 
 You'll need to create a [StepZen account](https://stepzen.com/signup) first. Once you've got that set up, [git clone](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-clone) this repository onto your machine and open the working directory:
 
-```
+```bash
 git clone https://github.com/stepzen-dev/examples.git
 cd examples/with-mongodb-atlas
 ```
@@ -21,7 +21,7 @@ Follow the getting started documentation [here](https://docs.atlas.mongodb.com/?
 
 Once you have loaded the sample data, you need to create an API Key to use the Data API. In your MongoDB Atlas [console](https://cloud.mongodb.com/v2), click on **Data API** in the left hand nav, and click the **Create API Key** button. Copy and save your API Key, you will need it in the next step. Also copy the URL Endpoint, which will look like `https://data.mongodb-api.com/app/<app-id>/endpoint/data/beta`. You will also need the app-id portion of that URL in the next step. 
 
-Open and edit the `./config.yaml` file, where you need to replace the value `REPLACE_WITH_YOUR_DATA_API_KEY` with the key you just created and copied, and `REPLACE_WITH_YOUR_DATA_API_APP_ID` with the Data API App ID, which should look something like `data-xqgfu` (yours will be different!). 
+Create a `./config.yaml` file and replace the value `REPLACE_WITH_YOUR_DATA_API_KEY` with the key you just created and copied, and `REPLACE_WITH_YOUR_DATA_API_APP_ID` with the Data API App ID, which should look something like `data-xqgfu` (yours will be different!). 
 
 ```yaml
 # config.yaml

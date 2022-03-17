@@ -48,4 +48,4 @@ yarn-error.log*
 .env
 
 # stepzen
-/stepzen/config.yaml
+config.yaml

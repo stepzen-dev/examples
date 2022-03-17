@@ -31,7 +31,7 @@ If you don't have a database running in the cloud yet, you can try our read-only
 - username: `testUserIntrospection`
 - password: `HurricaneStartingSample1934`
 
-Or replace `config.yaml` with the following:
+Or create a `config.yaml` file with the following:
 
 ```yaml
 # config.yaml

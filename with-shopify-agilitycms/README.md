@@ -17,16 +17,16 @@ cd examples/with-shopify-agility-cms
 
 Add your AgilityCMS and Shopify Configurations to the `config.yaml` file. You should already have your products set up in AgilityCMS and Shopify. If you do not, refer to the blog, [Tutorial: Building an eCommerce Solution with AgilityCMS, Shopify, and StepZen. Part 2](https://agilitycms.com/resources/posts/tutorial-building-an-ecommerce-solution-with-agilitycms-shopify-and-stepzen).
 
-Reminder: Make sure config.yaml is in your .gitignore
+Reminder: Make sure config.yaml is in your `.gitignore`:
 
 ```
-/stepzen/config.yaml
+config.yaml
 ```
 
-Copy that sample to a new config.yaml like so:
+Copy the sample to a new `config.yaml` like so:
 
 ```bash
-cp config.yaml.sample config.yaml
+cp stepzen/sample.config.yaml stepzen/config.yaml
 ```
 
 And now edit the `config.yaml` file, inserting your API keys and credentials where appropriate:

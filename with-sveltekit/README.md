@@ -15,10 +15,10 @@ cd examples/with-sveltekit
 
 Before you can run this example, you need to have a free DEV.to Communiy API Key, which you can find on [this page](https://dev.to/settings/account). This API Key is used to pull data from DEV.to that will be consumed by the example you're going to built.
 
-You can copy the file `stepzen/example.config.yaml` as `stepzen/config.yaml`:
+You can copy the file `stepzen/sample.config.yaml` to a new `stepzen/config.yaml` file:
 
 ```bash
-mv stepzen/example.config.yaml stepzen/config.yaml
+cp stepzen/sample.config.yaml stepzen/config.yaml
 ```
 
 And add your DEV.to Community API Key to it:
@@ -59,7 +59,7 @@ A proxy of the GraphiQL playground becomes available at `http://localhost/5001` 
 Include your StepZen endpoint and API keys in `.env`, by copying then file `.env.example` to `.env`:
 
 ```bash
-mv .env.example .env
+cp .env.example .env
 ```
 
 And add the endpoint and API Key for Stepzen:

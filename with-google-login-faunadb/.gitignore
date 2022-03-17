@@ -15,4 +15,4 @@ web-build/
 # configs
 package-lock.json
 yarn.lock
-/stepzen/config.yaml
+config.yaml
