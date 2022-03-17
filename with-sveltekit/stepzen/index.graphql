@@ -1,10 +1,10 @@
 schema
   @sdl(
     files: [
-      "schema/user.graphql"
-      "schema/articles.graphql"
-      "schema/organization.graphql"
-      "schema/podcasts.graphql"
+      "user.graphql"
+      "articles.graphql"
+      "organization.graphql"
+      "podcasts.graphql"
     ]
   ) {
   query: Query

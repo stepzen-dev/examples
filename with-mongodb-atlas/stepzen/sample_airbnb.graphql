@@ -135,5 +135,3 @@ type Listing {
   summary: String
   transit: String
 }
-
-

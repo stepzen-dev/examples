@@ -1,0 +1,4 @@
+{
+  "endpoint": "api/with-mongodb-atlas",
+  "root": "stepzen"
+}

@@ -1,4 +1,4 @@
 configurationset:
   - configuration:
       name: fauna_config
-      Authorization: Basic {{token}}
+      Authorization: Basic MY_FAUNA_KEY

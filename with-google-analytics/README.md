@@ -1,4 +1,4 @@
-# StepZen Example: with-google-analytics
+# StepZen Example: `with-google-analytics`
 
 ## Introduction
 
@@ -22,7 +22,13 @@ npm i
 npm start
 ```
 
-You'll also need to add a `config.yaml` file inside the `/stepzen` folder with this information:
+You can copy the file `sample.config.yaml` to a new `config.yaml` file:
+
+```bash
+cp stepzen/sample.config.yaml stepzen/config.yaml
+```
+
+Include your own keys in the newly created `config.yaml` file:
 
 ```yaml
 # stepzen/config.yaml

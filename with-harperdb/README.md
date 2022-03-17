@@ -80,13 +80,13 @@ The instance url (without 'https://' and authentication header from HarperDB mus
 You can copy the file `sample.config.yaml` to a new `config.yaml` file:
 
 ```bash
-cp sample.config.yaml config.yaml
+cp stepzen/sample.config.yaml stepzen/config.yaml
 ```
 
 Replace the contents of `config.yaml` with your own instance configuration:
 
 ```yaml
-# config.yaml
+# stepzen/config.yaml
 
 configurationset:
   - configuration:

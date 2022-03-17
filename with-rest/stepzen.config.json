@@ -1,3 +1,4 @@
 {
-  "endpoint": "api/with-rest"
+  "endpoint": "api/with-rest",
+  "root": "stepzen"
 }

@@ -24,13 +24,13 @@ Once you have loaded the sample data, you need to create an API Key to use the D
 You can copy the file `sample.config.yaml` to a new `config.yaml` file:
 
 ```bash
-cp sample.config.yaml config.yaml
+cp stepzen/sample.config.yaml stepzen/config.yaml
 ```
 
 In the new `config.yaml` file, replace the value `REPLACE_WITH_YOUR_DATA_API_KEY` with the key you just created and copied, and `REPLACE_WITH_YOUR_DATA_API_APP_ID` with the Data API App ID, which should look something like `data-xqgfu` (yours will be different!). 
 
 ```yaml
-# config.yaml
+# stepzen/config.yaml
 
 configurationset:
   - configuration:
