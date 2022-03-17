@@ -1,4 +1,4 @@
-# StepZen Example: `with-shopify-agility-cms`
+# StepZen Example: `with-shopify-agilitycms`
 
 ## Introduction
 
@@ -10,7 +10,7 @@ You'll need to create a [StepZen account](https://stepzen.com/signup) first. Onc
 
 ```bash
 git clone https://github.com/stepzen-dev/examples.git
-cd examples/with-shopify-agility-cms
+cd examples/with-shopify-agilitycms
 ```
 
 ## Spinning Up the StepZen Endpoint
