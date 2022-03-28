@@ -1,0 +1,28 @@
+type Postman implements Echo {
+  args: JSON
+  headers: JSON
+  url: String
+}
+
+type Query {
+  postman: Postman @rest(endpoint: "https://postman-echo.com/get")
+
+  postmanIQ(provider: String!): Postman
+    @supplies(query: "echo")
+    @sequence(steps: [{ query: "filterPostman" }, { query: "postman" }])
+
+  filterPostman(provider: String!): [utility]
+    @rest(
+      endpoint: "stepzen:empty"
+      cel: """
+      function transformREST(s) {
+        let p = get("provider")
+        if (p === "postman") {
+          return JSON.stringify({provider: "postman"})
+        } else {
+          return ""
+        }
+      }
+      """
+    )
+}

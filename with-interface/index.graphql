@@ -1,0 +1,6 @@
+schema
+  @sdl(
+    files: ["postman/index.graphql", "httpbin/index.graphql", "echo.graphql"]
+  ) {
+  query: Query
+}
