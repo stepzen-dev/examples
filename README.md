@@ -4,7 +4,7 @@ Welcome to StepZen's samples repository! 😄
 
 This is where our quickstart examples of different tooling and stacks in combination with StepZen live. 
 
-Each repository has a README with instructions on how to get started.
+Each repository has a README with instructions on how to get started. If you get stuck, reach out to us in [Discord](https://discord.com/invite/9k2VdPn2FR) and we'd be happy to help!
 
 Here's a list of our current examples:
 - [with-airtable-prismjs-axios](https://github.com/stepzen-dev/examples/tree/main/with-airtable-prismjs-axios)
