@@ -1,0 +1,29 @@
+type Httpbin implements Echo {
+  args: JSON
+  headers: JSON
+  origin: String
+  url: String
+}
+
+type Query {
+  httpbin: Httpbin @rest(endpoint: "https://httpbin.org/get")
+
+  httpbinIQ(provider: String!): Httpbin
+    @supplies(query: "echo")
+    @sequence(steps: [{ query: "filterHttpbin" }, { query: "httpbin" }])
+
+  filterHttpbin(provider: String!): [utility]
+    @rest(
+      endpoint: "stepzen:empty"
+      cel: """
+      function transformREST(s) {
+        let p = get("provider")
+        if (p === "httpbin") {
+          return JSON.stringify({provider: "httpbin"})
+        } else {
+          return ""
+        }
+      }
+      """
+    )
+}

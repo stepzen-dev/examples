@@ -1,0 +1,13 @@
+interface Echo {
+  args: JSON
+  headers: JSON
+  url: String
+}
+
+type utility {
+  provider: String
+}
+
+type Query {
+  echo(provider: String!): Echo
+}
