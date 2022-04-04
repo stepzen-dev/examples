@@ -1,3 +1,0 @@
-schema @sdl(files: ["harperdb.graphql"]) {
-  query: Query
-}

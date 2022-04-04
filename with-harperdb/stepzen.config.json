@@ -1,4 +1,3 @@
 {
-  "endpoint": "api/with-harperdb",
-  "root": "stepzen"
+  "endpoint": "api/with-harperdb"
 }

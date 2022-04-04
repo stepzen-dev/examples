@@ -1,6 +1,4 @@
-type Listing {
-  __createdtime__: Int
-  __updatedtime__: Int
+type ListingEntry {
   accommodates: Int
   amenities: [String]
   availability_30: Int
@@ -15,17 +13,17 @@ type Listing {
   calculated_host_listings_count_entire_homes: Int
   calculated_host_listings_count_private_rooms: Int
   calculated_host_listings_count_shared_rooms: Int
-  calendar_last_scraped: String
+  calendar_last_scraped: Date
   calendar_updated: JSON
   description: String
-  first_review: String
-  has_availability: String
+  first_review: Date
+  has_availability: Boolean
   host_about: String
   host_acceptance_rate: String
-  host_has_profile_pic: String
+  host_has_profile_pic: Boolean
   host_id: Int
-  host_identity_verified: String
-  host_is_superhost: String
+  host_identity_verified: Boolean
+  host_is_superhost: Boolean
   host_listings_count: Int
   host_location: String
   host_name: String
@@ -33,15 +31,15 @@ type Listing {
   host_picture_url: String
   host_response_rate: String
   host_response_time: String
-  host_since: String
+  host_since: Date
   host_thumbnail_url: String
   host_total_listings_count: Int
   host_url: String
   host_verifications: String
   id: Int
-  instant_bookable: String
-  last_review: String
-  last_scraped: String
+  instant_bookable: Boolean
+  last_review: Date
+  last_scraped: Date
   latitude: Float
   license: String
   listing_url: String
@@ -49,11 +47,11 @@ type Listing {
   maximum_maximum_nights: Int
   maximum_minimum_nights: Int
   maximum_nights: Int
-  maximum_nights_avg_ntm: Int
+  maximum_nights_avg_ntm: Float
   minimum_maximum_nights: Int
   minimum_minimum_nights: Int
   minimum_nights: Int
-  minimum_nights_avg_ntm: Int
+  minimum_nights_avg_ntm: Float
   name: String
   neighborhood_overview: String
   neighbourhood: String
@@ -67,36 +65,44 @@ type Listing {
   property_type: String
   review_scores_accuracy: Float
   review_scores_checkin: Float
-  review_scores_cleanliness: Int
+  review_scores_cleanliness: Float
   review_scores_communication: Float
   review_scores_location: Float
   review_scores_rating: Float
   review_scores_value: Float
   reviews_per_month: Float
   room_type: String
-  scrape_id: Int
+  scrape_id: ID
 }
 
+type SearchEntry {
+  id: Int
+  name: String
+  room_type: String
+}
+
+scalar InputgetAttributes
+
 type Query {
-  listings(limit: Int = 20): [Listing]
+  queryHarperDB(operation: String, sql: String): [ListingEntry]
     @rest(
-      endpoint: "https://$instanceUrl"
-      headers: [{ name: "Authorization", value: "Basic $authHeader" }]
-      postbody: "{\"operation\": \"sql\", \"sql\": \"SELECT * FROM demo.listings LIMIT {{.Get \"limit\" }}\"}"
-      configuration: "harperdbcloud_config"
+      method: POST
+      endpoint: "https://$instance"
+      headers: [{ name: "authorization", value: "$authorization" }]
+      configuration: "curl_import_config"
     )
-  listingsByRoomType(roomType: String!): [Listing]
+  searchHarperDB(
+    get_attributes: InputgetAttributes
+    operation: String
+    schema: String
+    search_attribute: String
+    search_value: String
+    table: String
+  ): [SearchEntry]
     @rest(
-      endpoint: "https://$instanceUrl"
-      headers: [{ name: "Authorization", value: "Basic $authHeader" }]
-      postbody: "{\"operation\": \"search_by_value\", \"schema\": \"demo\", \"table\": \"listings\", \"search_attribute\": \"room_type\", \"search_value\": \"{{.Get \"roomType\" }}\", \"get_attributes\": [\"id\", \"name\", \"room_type\"]}"
-      configuration: "harperdbcloud_config"
-    )
-  roomTypes: [Listing]
-    @rest(
-      endpoint: "https://$instanceUrl"
-      headers: [{ name: "Authorization", value: "Basic $authHeader" }]
-      postbody: "{\"operation\": \"sql\", \"sql\": \"SELECT DISTINCT room_type FROM demo.listings\"}"
-      configuration: "harperdbcloud_config"
+      method: POST
+      endpoint: "https://$instance"
+      headers: [{ name: "authorization", value: "$authorization" }]
+      configuration: "curl_import_config"
     )
 }

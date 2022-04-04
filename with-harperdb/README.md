@@ -91,8 +91,8 @@ Replace the contents of `config.yaml` with your own instance configuration:
 configurationset:
   - configuration:
       name: harperdbcloud_config
-      instanceUrl: REPLACE_WITH_YOUR_INSTANCE_URL (without https://)
-      authHeader: REPLACE_WITH_YOUR_AUTH_HEADER
+      instance: REPLACE_WITH_YOUR_INSTANCE_URL (without https://)
+      authentication: REPLACE_WITH_YOUR_AUTH_HEADER
 ```
 
 ## Run StepZen
