@@ -1,0 +1,16 @@
+on: [push]
+
+jobs:
+    runs-on: ubuntu-latest
+    name: Deploy StepZen schema
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Deploy StepZen
+        uses: ddebrunner/hello-world-docker-action/actions/stepzen-deploy@1.2.1
+        id: deploy-schema
+        with:
+          account: ${{ secrets.SZ_ACCOUNT }}
+          adminkey: ${{ secrets.SZ_ADMIN_KEY }}
+          dir: with-stepzen-github-action/schema
+          endpoint: api/historical-ant

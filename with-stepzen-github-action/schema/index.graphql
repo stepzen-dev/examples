@@ -1,0 +1,28 @@
+type Address {
+  city: String
+  countryRegion: String
+  id: Int
+  postalCode: String
+  stateProvince: String
+  street: String
+}
+type OrdersEntry {
+  carrier: String
+  createdAt: Date
+  customerId: Int
+  id: Int
+  shippingCost: Int
+  trackingId: String
+}
+type RootEntry {
+  address: Address
+  email: String
+  id: Int
+  name: String
+  orders: [OrdersEntry]
+}
+
+type Query {
+  myQuery: [RootEntry]
+    @rest(endpoint: "https://introspection.apis.stepzen.com/customers")
+}
