@@ -1,0 +1,1360 @@
+type Query {
+  """
+  fetch data from the table: "users"
+  """
+  spacex_users(
+    """
+    distinct select on columns
+    """
+    distinct_on: [spacex_users_select_column!]
+    """
+    limit the nuber of rows returned
+    """
+    limit: Int
+    """
+    skip the first n rows. Use only with order_by
+    """
+    offset: Int
+    """
+    sort the rows by one or more columns
+    """
+    order_by: [spacex_users_order_by!]
+    """
+    filter the rows returned
+    """
+    where: spacex_users_bool_exp
+  ): [spacex_users!]!
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  """
+  fetch aggregated fields from the table: "users"
+  """
+  spacex_users_aggregate(
+    """
+    distinct select on columns
+    """
+    distinct_on: [spacex_users_select_column!]
+    """
+    limit the nuber of rows returned
+    """
+    limit: Int
+    """
+    skip the first n rows. Use only with order_by
+    """
+    offset: Int
+    """
+    sort the rows by one or more columns
+    """
+    order_by: [spacex_users_order_by!]
+    """
+    filter the rows returned
+    """
+    where: spacex_users_bool_exp
+  ): spacex_users_aggregate!
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  """
+  fetch data from the table: "users" using primary key columns
+  """
+  spacex_users_by_pk(id: spacex_uuid!): spacex_users
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_capsules(
+    find: spacex_CapsulesFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [spacex_Capsule]
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_capsulesPast(
+    find: spacex_CapsulesFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [spacex_Capsule]
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_capsulesUpcoming(
+    find: spacex_CapsulesFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [spacex_Capsule]
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_capsule(id: ID!): spacex_Capsule
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_company: spacex_Info
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_cores(
+    find: spacex_CoresFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [spacex_Core]
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_coresPast(
+    find: spacex_CoresFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [spacex_Core]
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_coresUpcoming(
+    find: spacex_CoresFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [spacex_Core]
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_core(id: ID!): spacex_Core
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_dragons(limit: Int, offset: Int): [spacex_Dragon]
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_dragon(id: ID!): spacex_Dragon
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_histories(
+    find: spacex_HistoryFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [spacex_History]
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_historiesResult(
+    find: spacex_HistoryFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): spacex_HistoriesResult
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_history(id: ID!): spacex_History
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_landpads(limit: Int, offset: Int): [spacex_Landpad]
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_landpad(id: ID!): spacex_Landpad
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_launches(
+    find: spacex_LaunchFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [spacex_Launch]
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_launchesPast(
+    find: spacex_LaunchFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [spacex_Launch]
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_launchesPastResult(
+    find: spacex_LaunchFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): spacex_LaunchesPastResult
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_launchesUpcoming(
+    find: spacex_LaunchFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [spacex_Launch]
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_launch(id: ID!): spacex_Launch
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_launchLatest(offset: Int): spacex_Launch
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_launchNext(offset: Int): spacex_Launch
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_launchpads(limit: Int, offset: Int): [spacex_Launchpad]
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_launchpad(id: ID!): spacex_Launchpad
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_missions(
+    find: spacex_MissionsFind
+    limit: Int
+    offset: Int
+  ): [spacex_Mission]
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_missionsResult(
+    find: spacex_MissionsFind
+    limit: Int
+    offset: Int
+  ): spacex_MissionResult
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_mission(id: ID!): spacex_Mission
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_payloads(
+    find: spacex_PayloadsFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [spacex_Payload]
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_payload(id: ID!): spacex_Payload
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_roadster: spacex_Roadster
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_rockets(limit: Int, offset: Int): [spacex_Rocket]
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_rocketsResult(limit: Int, offset: Int): spacex_RocketsResult
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_rocket(id: ID!): spacex_Rocket
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_ships(
+    find: spacex_ShipsFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): [spacex_Ship]
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_shipsResult(
+    find: spacex_ShipsFind
+    limit: Int
+    offset: Int
+    order: String
+    sort: String
+  ): spacex_ShipsResult
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  spacex_ship(id: ID!): spacex_Ship
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+}
+
+"""
+select columns of table "users"
+"""
+enum spacex_users_select_column {
+  """
+  column name
+  """
+  id
+  """
+  column name
+  """
+  name
+  """
+  column name
+  """
+  rocket
+  """
+  column name
+  """
+  timestamp
+  """
+  column name
+  """
+  twitter
+}
+
+"""
+ordering options when selecting data from "users"
+"""
+input spacex_users_order_by {
+  id: spacex_order_by
+  name: spacex_order_by
+  rocket: spacex_order_by
+  timestamp: spacex_order_by
+  twitter: spacex_order_by
+}
+
+"""
+column ordering options
+"""
+enum spacex_order_by {
+  """
+  in the ascending order, nulls last
+  """
+  asc
+  """
+  in the ascending order, nulls first
+  """
+  asc_nulls_first
+  """
+  in the ascending order, nulls last
+  """
+  asc_nulls_last
+  """
+  in the descending order, nulls first
+  """
+  desc
+  """
+  in the descending order, nulls first
+  """
+  desc_nulls_first
+  """
+  in the descending order, nulls last
+  """
+  desc_nulls_last
+}
+
+"""
+Boolean expression to filter rows from the table "users". All fields are combined with a logical 'AND'.
+"""
+input spacex_users_bool_exp {
+  _and: [spacex_users_bool_exp]
+  _not: spacex_users_bool_exp
+  _or: [spacex_users_bool_exp]
+  id: spacex_uuid_comparison_exp
+  name: spacex_String_comparison_exp
+  rocket: spacex_String_comparison_exp
+  timestamp: spacex_timestamptz_comparison_exp
+  twitter: spacex_String_comparison_exp
+}
+
+"""
+expression to compare columns of type uuid. All fields are combined with logical 'AND'.
+"""
+input spacex_uuid_comparison_exp {
+  _eq: spacex_uuid
+  _gt: spacex_uuid
+  _gte: spacex_uuid
+  _in: [spacex_uuid!]
+  _is_null: Boolean
+  _lt: spacex_uuid
+  _lte: spacex_uuid
+  _neq: spacex_uuid
+  _nin: [spacex_uuid!]
+}
+
+scalar spacex_uuid
+
+"""
+expression to compare columns of type String. All fields are combined with logical 'AND'.
+"""
+input spacex_String_comparison_exp {
+  _eq: String
+  _gt: String
+  _gte: String
+  _ilike: String
+  _in: [String!]
+  _is_null: Boolean
+  _like: String
+  _lt: String
+  _lte: String
+  _neq: String
+  _nilike: String
+  _nin: [String!]
+  _nlike: String
+  _nsimilar: String
+  _similar: String
+}
+
+"""
+expression to compare columns of type timestamptz. All fields are combined with logical 'AND'.
+"""
+input spacex_timestamptz_comparison_exp {
+  _eq: spacex_timestamptz
+  _gt: spacex_timestamptz
+  _gte: spacex_timestamptz
+  _in: [spacex_timestamptz!]
+  _is_null: Boolean
+  _lt: spacex_timestamptz
+  _lte: spacex_timestamptz
+  _neq: spacex_timestamptz
+  _nin: [spacex_timestamptz!]
+}
+
+scalar spacex_timestamptz
+
+"""
+columns and relationships of "users"
+"""
+type spacex_users {
+  id: spacex_uuid!
+  name: String
+  rocket: String
+  timestamp: spacex_timestamptz!
+  twitter: String
+}
+
+"""
+aggregated selection of "users"
+"""
+type spacex_users_aggregate {
+  aggregate: spacex_users_aggregate_fields
+  nodes: [spacex_users!]!
+}
+
+"""
+aggregate fields of "users"
+"""
+type spacex_users_aggregate_fields {
+  count(columns: [spacex_users_select_column!], distinct: Boolean): Int
+  max: spacex_users_max_fields
+  min: spacex_users_min_fields
+}
+
+"""
+aggregate max on columns
+"""
+type spacex_users_max_fields {
+  name: String
+  rocket: String
+  timestamp: spacex_timestamptz
+  twitter: String
+}
+
+"""
+aggregate min on columns
+"""
+type spacex_users_min_fields {
+  name: String
+  rocket: String
+  timestamp: spacex_timestamptz
+  twitter: String
+}
+
+input spacex_CapsulesFind {
+  id: ID
+  landings: Int
+  mission: String
+  original_launch: Date
+  reuse_count: Int
+  status: String
+  type: String
+}
+
+type spacex_Capsule {
+  id: ID
+  landings: Int
+  missions: [spacex_CapsuleMission]
+  original_launch: Date
+  reuse_count: Int
+  status: String
+  type: String
+  dragon: spacex_Dragon
+}
+
+type spacex_CapsuleMission {
+  flight: Int
+  name: String
+}
+
+type spacex_Dragon {
+  active: Boolean
+  crew_capacity: Int
+  description: String
+  diameter: spacex_Distance
+  dry_mass_kg: Int
+  dry_mass_lb: Int
+  first_flight: String
+  heat_shield: spacex_DragonHeatShield
+  height_w_trunk: spacex_Distance
+  id: ID
+  launch_payload_mass: spacex_Mass
+  launch_payload_vol: spacex_Volume
+  name: String
+  orbit_duration_yr: Int
+  pressurized_capsule: spacex_DragonPressurizedCapsule
+  return_payload_mass: spacex_Mass
+  return_payload_vol: spacex_Volume
+  sidewall_angle_deg: Float
+  thrusters: [spacex_DragonThrust]
+  trunk: spacex_DragonTrunk
+  type: String
+  wikipedia: String
+}
+
+type spacex_Distance {
+  feet: Float
+  meters: Float
+}
+
+type spacex_DragonHeatShield {
+  dev_partner: String
+  material: String
+  size_meters: Float
+  temp_degrees: Int
+}
+
+type spacex_Mass {
+  kg: Int
+  lb: Int
+}
+
+type spacex_Volume {
+  cubic_feet: Int
+  cubic_meters: Int
+}
+
+type spacex_DragonPressurizedCapsule {
+  payload_volume: spacex_Volume
+}
+
+type spacex_DragonThrust {
+  amount: Int
+  fuel_1: String
+  fuel_2: String
+  pods: Int
+  thrust: spacex_Force
+  type: String
+}
+
+type spacex_Force {
+  kN: Float
+  lbf: Float
+}
+
+type spacex_DragonTrunk {
+  cargo: spacex_DragonTrunkCargo
+  trunk_volume: spacex_Volume
+}
+
+type spacex_DragonTrunkCargo {
+  solar_array: Int
+  unpressurized_cargo: Boolean
+}
+
+type spacex_Info {
+  ceo: String
+  coo: String
+  cto_propulsion: String
+  cto: String
+  employees: Int
+  founded: Int
+  founder: String
+  headquarters: spacex_Address
+  launch_sites: Int
+  links: spacex_InfoLinks
+  name: String
+  summary: String
+  test_sites: Int
+  valuation: Float
+  vehicles: Int
+}
+
+type spacex_Address {
+  address: String
+  city: String
+  state: String
+}
+
+type spacex_InfoLinks {
+  elon_twitter: String
+  flickr: String
+  twitter: String
+  website: String
+}
+
+input spacex_CoresFind {
+  asds_attempts: Int
+  asds_landings: Int
+  block: Int
+  id: String
+  missions: String
+  original_launch: Date
+  reuse_count: Int
+  rtls_attempts: Int
+  rtls_landings: Int
+  status: String
+  water_landing: Boolean
+}
+
+type spacex_Core {
+  asds_attempts: Int
+  asds_landings: Int
+  block: Int
+  id: ID
+  missions: [spacex_CapsuleMission]
+  original_launch: Date
+  reuse_count: Int
+  rtls_attempts: Int
+  rtls_landings: Int
+  status: String
+  water_landing: Boolean
+}
+
+input spacex_HistoryFind {
+  end: Date
+  flight_number: Int
+  id: ID
+  start: Date
+}
+
+type spacex_History {
+  details: String
+  event_date_unix: Date
+  event_date_utc: Date
+  id: ID
+  links: spacex_Link
+  title: String
+  flight: spacex_Launch
+}
+
+type spacex_Link {
+  article: String
+  reddit: String
+  wikipedia: String
+}
+
+type spacex_Launch {
+  details: String
+  id: ID
+  is_tentative: Boolean
+  launch_date_local: Date
+  launch_date_unix: Date
+  launch_date_utc: Date
+  launch_site: spacex_LaunchSite
+  launch_success: Boolean
+  launch_year: String
+  links: spacex_LaunchLinks
+  mission_id: [String]
+  mission_name: String
+  rocket: spacex_LaunchRocket
+  static_fire_date_unix: Date
+  static_fire_date_utc: Date
+  telemetry: spacex_LaunchTelemetry
+  tentative_max_precision: String
+  upcoming: Boolean
+  ships: [spacex_Ship]
+}
+
+type spacex_LaunchSite {
+  site_id: String
+  site_name_long: String
+  site_name: String
+}
+
+type spacex_LaunchLinks {
+  article_link: String
+  flickr_images: [String]
+  mission_patch_small: String
+  mission_patch: String
+  presskit: String
+  reddit_campaign: String
+  reddit_launch: String
+  reddit_media: String
+  reddit_recovery: String
+  video_link: String
+  wikipedia: String
+}
+
+type spacex_LaunchRocket {
+  fairings: spacex_LaunchRocketFairings
+  first_stage: spacex_LaunchRocketFirstStage
+  rocket_name: String
+  rocket_type: String
+  rocket: [spacex_Rocket]
+  second_stage: spacex_LaunchRocketSecondStage
+}
+
+
+type spacex_LaunchRocketFairings {
+  recovered: Boolean
+  recovery_attempt: Boolean
+  reused: Boolean
+  ship: String
+}
+
+type spacex_LaunchRocketFirstStage {
+  cores: [spacex_LaunchRocketFirstStageCore]
+}
+
+type spacex_LaunchRocketFirstStageCore {
+  block: Int
+  core: spacex_Core
+  flight: Int
+  gridfins: Boolean
+  land_success: Boolean
+  landing_intent: Boolean
+  landing_type: String
+  landing_vehicle: String
+  legs: Boolean
+  reused: Boolean
+}
+
+type spacex_Rocket {
+  active: Boolean
+  boosters: Int
+  company: String
+  cost_per_launch: Int
+  country: String
+  description: String
+  diameter: spacex_Distance
+  engines: spacex_RocketEngines
+  first_flight: Date
+  first_stage: spacex_RocketFirstStage
+  height: spacex_Distance
+  id: ID
+  landing_legs: spacex_RocketLandingLegs
+  mass: spacex_Mass
+  name: String
+  payload_weights: [spacex_RocketPayloadWeight]
+  second_stage: spacex_RocketSecondStage
+  stages: Int
+  success_rate_pct: Int
+  type: String
+  wikipedia: String
+}
+
+type spacex_RocketEngines {
+  number: Int
+  type: String
+  version: String
+  layout: String
+  engine_loss_max: String
+  propellant_1: String
+  propellant_2: String
+  thrust_sea_level: spacex_Force
+  thrust_vacuum: spacex_Force
+  thrust_to_weight: Float
+}
+
+type spacex_RocketFirstStage {
+  burn_time_sec: Int
+  engines: Int
+  fuel_amount_tons: Float
+  reusable: Boolean
+  thrust_sea_level: spacex_Force
+  thrust_vacuum: spacex_Force
+}
+
+type spacex_RocketLandingLegs {
+  number: Int
+  material: String
+}
+
+type spacex_RocketPayloadWeight {
+  id: String
+  kg: Int
+  lb: Int
+  name: String
+}
+
+type spacex_RocketSecondStage {
+  burn_time_sec: Int
+  engines: Int
+  fuel_amount_tons: Float
+  payloads: spacex_RocketSecondStagePayloads
+  thrust: spacex_Force
+}
+
+type spacex_RocketSecondStagePayloads {
+  option_1: String
+  composite_fairing: spacex_RocketSecondStagePayloadCompositeFairing
+}
+
+type spacex_RocketSecondStagePayloadCompositeFairing {
+  height: spacex_Distance
+  diameter: spacex_Distance
+}
+
+type spacex_LaunchRocketSecondStage {
+  block: Int
+  payloads: [spacex_Payload]
+}
+
+type spacex_Payload {
+  customers: [String]
+  id: ID
+  manufacturer: String
+  nationality: String
+  norad_id: [Int]
+  orbit_params: spacex_PayloadOrbitParams
+  orbit: String
+  payload_mass_kg: Float
+  payload_mass_lbs: Float
+  payload_type: String
+  reused: Boolean
+}
+
+type spacex_PayloadOrbitParams {
+  apoapsis_km: Float
+  arg_of_pericenter: Float
+  eccentricity: Float
+  epoch: Date
+  inclination_deg: Float
+  lifespan_years: Float
+  longitude: Float
+  mean_anomaly: Float
+  mean_motion: Float
+  periapsis_km: Float
+  period_min: Float
+  raan: Float
+  reference_system: String
+  regime: String
+  semi_major_axis_km: Float
+}
+
+type spacex_LaunchTelemetry {
+  flight_club: String
+}
+
+type spacex_Ship {
+  abs: Int
+  active: Boolean
+  attempted_landings: Int
+  class: Int
+  course_deg: Int
+  home_port: String
+  id: ID
+  image: String
+  imo: Int
+  missions: [spacex_ShipMission]
+  mmsi: Int
+  model: String
+  name: String
+  position: spacex_ShipLocation
+  roles: [String]
+  speed_kn: Float
+  status: String
+  successful_landings: Int
+  type: String
+  url: String
+  weight_kg: Int
+  weight_lbs: Int
+  year_built: Int
+}
+
+type spacex_ShipMission {
+  flight: String
+  name: String
+}
+
+type spacex_ShipLocation {
+  latitude: Float
+  longitude: Float
+}
+
+type spacex_HistoriesResult {
+  result: spacex_Result
+  data: [spacex_History]
+}
+
+type spacex_Result {
+  totalCount: Int
+}
+
+type spacex_Landpad {
+  attempted_landings: String
+  details: String
+  full_name: String
+  id: ID
+  landing_type: String
+  location: spacex_Location
+  status: String
+  successful_landings: String
+  wikipedia: String
+}
+
+type spacex_Location {
+  latitude: Float
+  longitude: Float
+  name: String
+  region: String
+}
+
+input spacex_LaunchFind {
+  apoapsis_km: Float
+  block: Int
+  cap_serial: String
+  capsule_reuse: String
+  core_flight: Int
+  core_reuse: String
+  core_serial: String
+  customer: String
+  eccentricity: Float
+  end: Date
+  epoch: Date
+  fairings_recovered: String
+  fairings_recovery_attempt: String
+  fairings_reuse: String
+  fairings_reused: String
+  fairings_ship: String
+  gridfins: String
+  id: ID
+  inclination_deg: Float
+  land_success: String
+  landing_intent: String
+  landing_type: String
+  landing_vehicle: String
+  launch_date_local: Date
+  launch_date_utc: Date
+  launch_success: String
+  launch_year: String
+  legs: String
+  lifespan_years: Float
+  longitude: Float
+  manufacturer: String
+  mean_motion: Float
+  mission_id: String
+  mission_name: String
+  nationality: String
+  norad_id: Int
+  orbit: String
+  payload_id: String
+  payload_type: String
+  periapsis_km: Float
+  period_min: Float
+  raan: Float
+  reference_system: String
+  regime: String
+  reused: String
+  rocket_id: String
+  rocket_name: String
+  rocket_type: String
+  second_stage_block: String
+  semi_major_axis_km: Float
+  ship: String
+  side_core1_reuse: String
+  side_core2_reuse: String
+  site_id: String
+  site_name_long: String
+  site_name: String
+  start: Date
+  tbd: String
+  tentative_max_precision: String
+  tentative: String
+}
+
+type spacex_LaunchesPastResult {
+  result: spacex_Result
+  data: [spacex_Launch]
+}
+
+type spacex_Launchpad {
+  attempted_launches: Int
+  details: String
+  id: ID
+  location: spacex_Location
+  name: String
+  status: String
+  successful_launches: Int
+  vehicles_launched: [spacex_Rocket]
+  wikipedia: String
+}
+
+input spacex_MissionsFind {
+  id: ID
+  manufacturer: String
+  name: String
+  payload_id: String
+}
+
+type spacex_Mission {
+  description: String
+  id: ID
+  manufacturers: [String]
+  name: String
+  twitter: String
+  website: String
+  wikipedia: String
+  payloads: [spacex_Payload]
+}
+
+type spacex_MissionResult {
+  result: spacex_Result
+  data: [spacex_Mission]
+}
+
+input spacex_PayloadsFind {
+  apoapsis_km: Float
+  customer: String
+  eccentricity: Float
+  epoch: Date
+  inclination_deg: Float
+  lifespan_years: Float
+  longitude: Float
+  manufacturer: String
+  mean_motion: Float
+  nationality: String
+  norad_id: Int
+  orbit: String
+  payload_id: ID
+  payload_type: String
+  periapsis_km: Float
+  period_min: Float
+  raan: Float
+  reference_system: String
+  regime: String
+  reused: Boolean
+  semi_major_axis_km: Float
+}
+
+type spacex_Roadster {
+  apoapsis_au: Float
+  details: String
+  earth_distance_km: Float
+  earth_distance_mi: Float
+  eccentricity: Float
+  epoch_jd: Float
+  inclination: Float
+  launch_date_unix: Date
+  launch_date_utc: Date
+  launch_mass_kg: Int
+  launch_mass_lbs: Int
+  longitude: Float
+  mars_distance_km: Float
+  mars_distance_mi: Float
+  name: String
+  norad_id: Int
+  orbit_type: Float
+  periapsis_arg: Float
+  periapsis_au: Float
+  period_days: Float
+  semi_major_axis_au: Float
+  speed_kph: Float
+  speed_mph: Float
+  wikipedia: String
+}
+
+type spacex_RocketsResult {
+  result: spacex_Result
+  data: [spacex_Rocket]
+}
+
+input spacex_ShipsFind {
+  id: ID
+  name: String
+  model: String
+  type: String
+  role: String
+  active: Boolean
+  imo: Int
+  mmsi: Int
+  abs: Int
+  class: Int
+  weight_lbs: Int
+  weight_kg: Int
+  year_built: Int
+  home_port: String
+  status: String
+  speed_kn: Int
+  course_deg: Int
+  latitude: Float
+  longitude: Float
+  successful_landings: Int
+  attempted_landings: Int
+  mission: String
+}
+
+type spacex_ShipsResult {
+  result: spacex_Result
+  data: [spacex_Ship]
+}
+
+type Mutation {
+  """
+  delete data from the table: "users"
+  """
+  spacex_delete_users(
+    """
+    filter the rows which have to be deleted
+    """
+    where: spacex_users_bool_exp!
+  ): spacex_users_mutation_response
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  """
+  insert data into the table: "users"
+  """
+  spacex_insert_users(
+    """
+    the rows to be inserted
+    """
+    objects: [spacex_users_insert_input!]!
+    """
+    on conflict condition
+    """
+    on_conflict: spacex_users_on_conflict
+  ): spacex_users_mutation_response
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+  """
+  update data of the table: "users"
+  """
+  spacex_update_users(
+    """
+    sets the columns of the filtered rows to the given values
+    """
+    _set: spacex_users_set_input
+    """
+    filter the rows which have to be updated
+    """
+    where: spacex_users_bool_exp!
+  ): spacex_users_mutation_response
+    @graphql(
+      endpoint: "https://api.spacex.land/graphql"
+      prefix: { value: "spacex_", includeRootOperations: true }
+    )
+}
+
+"""
+response of any mutation on the table "users"
+"""
+type spacex_users_mutation_response {
+  """
+  number of affected rows by the mutation
+  """
+  affected_rows: Int!
+  """
+  data of the affected rows by the mutation
+  """
+  returning: [spacex_users!]!
+}
+
+"""
+input type for inserting data into table "users"
+"""
+input spacex_users_insert_input {
+  id: spacex_uuid
+  name: String
+  rocket: String
+  timestamp: spacex_timestamptz
+  twitter: String
+}
+
+"""
+on conflict condition type for table "users"
+"""
+input spacex_users_on_conflict {
+  constraint: spacex_users_constraint!
+  update_columns: [spacex_users_update_column!]!
+}
+
+"""
+unique or primary key constraints on table "users"
+"""
+enum spacex_users_constraint {
+  """
+  unique or primary key constraint
+  """
+  users_pkey
+}
+
+"""
+update columns of table "users"
+"""
+enum spacex_users_update_column {
+  """
+  column name
+  """
+  id
+  """
+  column name
+  """
+  name
+  """
+  column name
+  """
+  rocket
+  """
+  column name
+  """
+  timestamp
+  """
+  column name
+  """
+  twitter
+}
+
+"""
+input type for updating data in table "users"
+"""
+input spacex_users_set_input {
+  id: spacex_uuid
+  name: String
+  rocket: String
+  timestamp: spacex_timestamptz
+  twitter: String
+}
+
+"""
+conflict action
+"""
+enum spacex_conflict_action {
+  """
+  ignore the insert on this row
+  """
+  ignore
+  """
+  update the row with the given values
+  """
+  update
+}
+
+"""
+order by aggregate values of table "users"
+"""
+input spacex_users_aggregate_order_by {
+  count: spacex_order_by
+  max: spacex_users_max_order_by
+  min: spacex_users_min_order_by
+}
+
+"""
+order by max() on columns of table "users"
+"""
+input spacex_users_max_order_by {
+  name: spacex_order_by
+  rocket: spacex_order_by
+  timestamp: spacex_order_by
+  twitter: spacex_order_by
+}
+
+"""
+order by min() on columns of table "users"
+"""
+input spacex_users_min_order_by {
+  name: spacex_order_by
+  rocket: spacex_order_by
+  timestamp: spacex_order_by
+  twitter: spacex_order_by
+}
+
+"""
+input type for inserting array relation for remote table "users"
+"""
+input spacex_users_arr_rel_insert_input {
+  data: [spacex_users_insert_input!]!
+  on_conflict: spacex_users_on_conflict
+}
+
+"""
+input type for inserting object relation for remote table "users"
+"""
+input spacex_users_obj_rel_insert_input {
+  data: spacex_users_insert_input!
+  on_conflict: spacex_users_on_conflict
+}
+
+scalar spacex_ObjectID
+
+type spacex_CoreMission {
+  name: String
+  flight: Int
+}

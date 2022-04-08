@@ -1,0 +1,3 @@
+schema @sdl(files: ["graphql/api_spacex_land.graphql"]) {
+  query: Query
+}
