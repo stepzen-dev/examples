@@ -11,6 +11,7 @@ Here's a list of our current examples:
 - [with-gatsby](https://github.com/stepzen-dev/examples/tree/main/with-gatsby)
 - [with-google-analytics](https://github.com/stepzen-dev/examples/tree/main/with-google-analytics)
 - [with-google-login-faunadb](https://github.com/stepzen-dev/examples/tree/main/with-google-login-faunadb)
+- [with-graphql](https://github.com/stepzen-dev/examples/tree/main/with-graphql)
 - [with-harperdb](https://github.com/stepzen-dev/examples/tree/main/with-harperdb)
 - [with-mongodb-atlas](https://github.com/stepzen-dev/examples/tree/main/with-mongodb-atlas)
 - [with-mysql](https://github.com/stepzen-dev/examples/tree/main/with-mysql)
