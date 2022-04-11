@@ -280,7 +280,7 @@ type Query {
       endpoint: "https://api.spacex.land/graphql"
       prefix: { value: "spacex_", includeRootOperations: true }
     )
-  spacex_mission(id: ID!): spacex_Mission
+  spacex_mission(id: [String]): spacex_Mission
     @graphql(
       endpoint: "https://api.spacex.land/graphql"
       prefix: { value: "spacex_", includeRootOperations: true }
@@ -729,6 +729,8 @@ type spacex_Launch {
   launch_year: String
   links: spacex_LaunchLinks
   mission_id: [String]
+  related_mission: spacex_Mission
+    @materializer (query: "spacex_mission" arguments: [{ name: "id" field: "mission_id"}])
   mission_name: String
   rocket: spacex_LaunchRocket
   static_fire_date_unix: Date
@@ -738,7 +740,11 @@ type spacex_Launch {
   upcoming: Boolean
   ships: [spacex_Ship]
 }
-
+  # spacex_mission(id: ID!): spacex_Mission
+  #   @graphql(
+  #     endpoint: "https://api.spacex.land/graphql"
+  #     prefix: { value: "spacex_", includeRootOperations: true }
+  #   )
 type spacex_LaunchSite {
   site_id: String
   site_name_long: String
@@ -1055,7 +1061,7 @@ type spacex_Launchpad {
 }
 
 input spacex_MissionsFind {
-  id: ID
+  id: [String]
   manufacturer: String
   name: String
   payload_id: String
@@ -1063,7 +1069,7 @@ input spacex_MissionsFind {
 
 type spacex_Mission {
   description: String
-  id: ID
+  id: [String]
   manufacturers: [String]
   name: String
   twitter: String
