@@ -1,3 +1,4 @@
+# StepZen Example: `with-graphql` 
 ## Introduction
 
 This GraphQL schema was generated using the process outlined in [the StepZen documentation](https://stepzen.com/docs/connecting-backends/graphql-introspection) for importing GraphQL APIs. 
@@ -11,25 +12,11 @@ git clone https://github.com/stepzen-dev/examples.git
 cd examples/with-graphql
 ```
 
-Open your terminal and [install the StepZen CLI](https://stepzen.com/docs/quick-start/install-and-setup):
+## Run StepZen
 
-```bash
-npm install -g stepzen
-```
+Open your terminal and [install the StepZen CLI](https://stepzen.com/docs/quick-start). You need to login here using the command: `stepzen login`.
 
-You need to login here using the command:
-
-```bash
-stepzen login
-```
-
-After you've installed the CLI and logged in, run:
-
-```bash
-stepzen start
-```
-
-A proxy of the GraphiQL playground becomes available at `http://localhost/5001` (in example `http://localhost:5001/api/with-graphql`), which you can use to explore the GraphQL API. Also, the endpoint at which your GraphQL API is deployed gets logged in the terminal. You can query your GraphQL API from any application, browser, or IDE by providing the API Key linked to your account.
+Start the GraphQL by running `stepzen start`. After you've followed the prompts (you can accept the suggested endpoint name or add your own), a proxy of the GraphiQL playground becomes available at `http://localhost/5001` (in example `http://localhost:5001/api/with-[INSERT]` <!-- ADD YOUR OWN -->), which you can use to explore the GraphQL API. Also, the endpoint at which your GraphQL API is deployed gets logged in the terminal. You can query your GraphQL API from any application, browser, or IDE by providing the API Key linked to your account.
 
 ## Learn More
 
