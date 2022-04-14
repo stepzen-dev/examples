@@ -4,7 +4,7 @@
 
 This project builds a GraphQL API connected to your PostgreSQL database using StepZen. We will use the `@dbquery` directive to generate our GraphQL schema.
 
-For a step-by-step walkthrough of this example, please go to [Getting started with a PostgreSQL database](https://stepzen.com/docs/quick-start/with-database/postgresql) on StepZen.
+For a step-by-step walkthrough of this example, please go to [Getting started with a PostgreSQL database](https://stepzen.com/docs/quick-start/with-database-postgresql) on StepZen.
 
 ## Getting Started
 
