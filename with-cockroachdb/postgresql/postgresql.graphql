@@ -1,0 +1,110 @@
+type Customer {
+  email: String!
+  id: ID!
+  name: String!
+  rowid: ID!
+}
+
+type Order {
+  carrier: String
+  createdat: Date!
+  customerid: ID!
+  customer: [Customer]
+    @materializer(
+      query: "getCustomerById"
+      arguments: [{ name: "id", field: "customerid" }]
+    )
+  id: ID!
+  rowid: ID!
+  shippingcost: Float
+  trackingid: String
+}
+
+type Query {
+  getCustomerList: [Customer]
+    @dbquery(
+      type: "postgresql"
+      table: "customer"
+      configuration: "postgresql_config"
+    )
+  """
+  This query is an example of how to simply paginate your responses.
+  """
+  getPaginatedCustomerList(first: Int!, after: Int!): [Customer]
+    @dbquery(
+      type: "postgresql"
+      query: """
+      select * from "customer" limit $1 offset $2
+      """
+      configuration: "postgresql_config"
+    )
+  """
+  In this example, a single query parameter is passed. If the request to the DB will
+  return at most one value you can remove the square brackets from the result.
+  """
+  getCustomerById(id: ID!): [Customer]
+    @dbquery(
+      type: "postgresql"
+      query: """
+      select * from "customer" where "id" = $1
+      """
+      configuration: "postgresql_config"
+    )
+  """
+  In this example, two query parameters are passed. If the request to the DB will
+  return at most one value you can remove the square brackets from the result.
+  """
+  getCustomerByIdAndEmail(id: ID!, email: String!): [Customer]
+    @dbquery(
+      type: "postgresql"
+      query: """
+      select * from "customer" where "id" = $1 and "email" = $2
+      """
+      configuration: "postgresql_config"
+    )
+  getOrderList: [Order]
+    @dbquery(
+      type: "postgresql"
+      table: "order"
+      configuration: "postgresql_config"
+    )
+}
+
+type Mutation {
+  """
+  In this mutation example you can see how to do a mutation to insert data in the database.
+  """
+  insertOrder(
+    id: ID!
+    customerid: ID!
+    rowid: ID!
+    shippingcost: Float!
+    trackingid: String!
+    carrier: String!
+    createdat: Date!
+  ): Order
+    @dbquery(
+      type: "postgresql"
+      table: "order"
+      dml: INSERT
+      configuration: "postgresql_config"
+    )
+  """
+  In this mutation example you can see how to do a mutation to delete data from the database.
+  """
+  deleteOrder(
+    id: ID!
+    customerid: ID!
+    rowid: ID!
+    shippingcost: Float!
+    trackingid: String!
+    carrier: String!
+    createdat: Date!
+  ): Order
+    @dbquery(
+      type: "postgresql"
+      table: "order"
+      dml: DELETE
+      configuration: "postgresql_config"
+    )
+}
