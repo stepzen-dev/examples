@@ -11,16 +11,12 @@ type Customer {
   email: String!
   id: Int!
   name: String!
-  orders: [Order]
-    @materializer(
-      query: "getOrderListByCustomerId"
-      arguments: [{ name: "customerId", field: "id" }]
-    )
 }
 
-type CustomerAddress {
-  addressId: Int!
-  customerId: Int!
+type Customeraddress {
+  addressid: Int!
+  customerid: Int!
+  id: Int!
 }
 
 type Lineitem {
@@ -85,15 +81,7 @@ type Query {
     )
   getCustomerList: [Customer]
     @dbquery(type: "mysql", table: "customer", configuration: "mysql_config")
-  getPaginatedCustomerList(first: Int!, after: Int!): [Customer]
-    @dbquery(
-      type: "mysql"
-      query: """
-      select * from `customer` limit ? offset ?
-      """
-      configuration: "mysql_config"
-    )
-  getCustomerById(id: Int!): Customer
+  getCustomerById(id: Int!): [Customer]
     @dbquery(
       type: "mysql"
       query: """
@@ -101,32 +89,16 @@ type Query {
       """
       configuration: "mysql_config"
     )
-  getCustomerByEmailAndName(email: String!, name: String!): [Customer]
+  getCustomeraddressList: [Customeraddress]
     @dbquery(
       type: "mysql"
-      query: """
-      select * from `customer` where `email` = ? and `name` = ?
-      """
-      configuration: "mysql_config"
-    )
-  getCustomerAddressList: [CustomerAddress]
-    @dbquery(
-      type: "mysql"
-      table: "customerAddress"
+      table: "customeraddress"
       configuration: "mysql_config"
     )
   getLineitemList: [Lineitem]
     @dbquery(type: "mysql", table: "lineitem", configuration: "mysql_config")
   getOrderList: [Order]
     @dbquery(type: "mysql", table: "order", configuration: "mysql_config")
-  getOrderListByCustomerId(customerId: Int!): [Order]
-    @dbquery(
-      type: "mysql"
-      query: """
-      select * from `order` where `customerId` = ?
-      """
-      configuration: "mysql_config"
-    )
   getProductList: [Product]
     @dbquery(type: "mysql", table: "product", configuration: "mysql_config")
 }
@@ -136,12 +108,11 @@ type Mutation {
   In this mutation example you can see how to do a mutation to insert data in the database.
   """
   insertAddress(
-    postalCode: String!
     city: String!
-    stateProvince: String!
-    countryRegion: String!
     street: String!
-    id: Int!
+    postalcode: String!
+    stateprovince: String!
+    countryregion: String!
   ): Address
     @dbquery(
       type: "mysql"
@@ -153,34 +124,17 @@ type Mutation {
   In this mutation example you can see how to do a mutation to delete data from the database.
   """
   deleteAddress(
-    postalCode: String!
     city: String!
-    stateProvince: String!
-    countryRegion: String!
     street: String!
+    postalcode: String!
+    stateprovince: String!
+    countryregion: String!
     id: Int!
   ): Address
     @dbquery(
       type: "mysql"
       table: "address"
       dml: DELETE
-      configuration: "mysql_config"
-    )
-  insertCustomer(
-    creditCard: String = ""
-    label: String = ""
-    street: String = ""
-    city: String = ""
-    postalCode: String = ""
-    countryRegion: String = ""
-    stateProvince: String = ""
-    email: String!
-    name: String!
-  ): Customer
-    @dbquery(
-      type: "mysql"
-      table: "customer"
-      dml: INSERT
       configuration: "mysql_config"
     )
 }
