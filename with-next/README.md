@@ -2,57 +2,50 @@
 
 ## Introduction
 
-This project is a GraphQL API connected to StepZen within the Next framework.
+This project builds a NextJS app that consumes a GraphQL API selected from the [StepZen GraphQL Studio](https://graphql.stepzen.com/).
 
 ## Getting Started
 
-You'll need to create a StepZen account first. Once you've got that set up, git clone this repository onto your machine and open the working directory:
+You'll need to create a [StepZen account](https://stepzen.com/signup) first.
+
+Alternatively, you can login using `stepzen login --public` without signing up, but note that your API will be publicly accessible. 
+
+Once you've got that set up, [git clone](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-clone) this repository onto your machine and open the working directory:
+
+
 
 ```bash
 git clone https://github.com/stepzen-dev/examples.git
 cd examples/with-next
-```
-
-## Install Dependencies and Start Development Server
-
-Install the dependencies using `npm` or Yarn:
-
-```bash
-npm i
-npm run dev
+yarn dev
 ```
 
 ## Run StepZen
 
-Open your terminal and [install the StepZen CLI](https://stepzen.com/docs/quick-start):
+Open your terminal and [install the StepZen CLI](https://stepzen.com/docs/quick-start). You need to login here using the command: `stepzen login`.
 
-```bash
-npm install -g stepzen
-```
+Start the GraphQL API by running `stepzen start`. After you've followed the prompts (you can accept the suggested endpoint name or add your own), a proxy of the GraphiQL playground becomes available at `http://localhost/5001` (in example `http://localhost:5001/api/with-next`), which you can use to explore the GraphQL API. Also, the endpoint at which your GraphQL API is deployed gets logged in the terminal. You can query your GraphQL API from any application, browser, or IDE by providing the API Key linked to your account.
 
-You need to login here using the command:
+## Adding environment variables
 
-```bash
-stepzen login
-```
-
-After you've installed the CLI and logged in, run:
-
-```bash
-stepzen start
-```
-
-In order to see the data come in from StepZen, you'll also need a `.env.local`:
+You might need to use variables such as keys in your API. You can add them in the `.env` file like so:
 
 ```
-NEXT_PUBLIC_STEPZEN_ACCOUNT={{ your username }}
-NEXT_PUBLIC_STEPZEN_ADMIN_KEY={{ your admin key }}
-NEXT_PUBLIC_STEPZEN_FOLDER={{ api/ your folder name }}
-NEXT_PUBLIC_STEPZEN_NAME={{ name of endpoint }}
+NEXT_API_KEY=apikeyvaluehere
 ```
 
-In you terminal the endpoint at which your GraphQL API is deployed is logged. A proxy of the GraphiQL playground is available at your suggested endpoint (in example `http://localhost:5001/api/with-next`), which you can use to explore the GraphQL API.
+You'd then send the key in your graphql request in `pages/index.js` like this, in the `graphql` variable (I've removed the qeury body for brevity):
+
+```
+var graphql = JSON.stringify({
+    query: "query spacexdataQuery($id: String){\n    spacexdataQuery(id: $id){query_here}}",
+    variables: {id: "5eb87d42ffd86e000604b384"},
+    headers: {"Authorization": process.env.NEXT_API_KEY}
+})
+```
+
+Your request is secure since it's kept off the client with [NextJS  Server Side Rendering](https://nextjs.org/docs/basic-features/data-fetching/get-server-side-props). 
 
 ## Learn More
 
-You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.com/invite/9k2VdPn2FR) or [GitHub Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.
+You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.gg/9k2VdPn2FR) or [GitHub Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.
