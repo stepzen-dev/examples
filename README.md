@@ -13,6 +13,7 @@ Here's a list of our current examples:
 - [with-google-login-faunadb](https://github.com/stepzen-dev/examples/tree/main/with-google-login-faunadb)
 - [with-graphql](https://github.com/stepzen-dev/examples/tree/main/with-graphql)
 - [with-harperdb](https://github.com/stepzen-dev/examples/tree/main/with-harperdb)
+- [with-jsonplaceholder](https://github.com/stepzen-dev/examples/tree/main/with-jsonplaceholder)
 - [with-mongodb-atlas](https://github.com/stepzen-dev/examples/tree/main/with-mongodb-atlas)
 - [with-mysql](https://github.com/stepzen-dev/examples/tree/main/with-mysql)
 - [with-next](https://github.com/stepzen-dev/examples/tree/main/with-next)

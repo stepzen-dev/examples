@@ -1,0 +1,142 @@
+type Post {
+  id: ID!
+  userId: ID!
+  user: User
+    @materializer(
+      query: "getUser"
+      arguments: [{ name: "id", field: "userId" }]
+    )
+  title: String
+  body: String
+  comments: [Comment]
+    @materializer(
+      query: "getComments"
+      arguments: [{ name: "postId", field: "id" }]
+    )
+}
+
+type Comment {
+  id: ID!
+  postId: ID
+  name: String
+  email: String
+  body: String
+}
+
+type Album {
+  id: ID!
+  userId: ID!
+  user: User
+    @materializer(
+      query: "getUser"
+      arguments: [{ name: "id", field: "userId" }]
+    )
+  title: String
+  photos: [Photo]
+    @materializer(
+      query: "getAlbumPhotos"
+      arguments: [{ name: "albumId", field: "id" }]
+    )
+}
+
+type Photo {
+  id: ID!
+  albumId: ID!
+  title: String
+  url: String
+  thumbnailUrl: String
+}
+
+type Todo {
+  id: ID!
+  userId: ID!
+  user: User
+    @materializer(
+      query: "getUser"
+      arguments: [{ name: "id", field: "userId" }]
+    )
+  title: String
+  completed: Boolean
+}
+
+type User {
+  id: ID!
+  name: String
+  username: String
+  email: String
+  phone: String
+  website: String
+  address: Address @materializer(query: "getUserAddress")
+  company: Company @materializer(query: "getUserCompany")
+  posts: [Post]
+    @materializer(
+      query: "getUserPosts"
+      arguments: [{ name: "userId", field: "id" }]
+    )
+  todos: [Todo]
+    @materializer(
+      query: "getUserTodos"
+      arguments: [{ name: "userId", field: "id" }]
+    )
+  albums: [Album]
+    @materializer(
+      query: "getUserAlbums"
+      arguments: [{ name: "userId", field: "id" }]
+    )
+}
+
+type Address {
+  street: String
+  suite: String
+  city: String
+  zipcode: String
+  latitude: Float
+  longitude: Float
+}
+
+type Company {
+  name: String
+  catchPhrase: String
+  bs: String
+}
+
+type Query {
+  getUser(id: ID!): User
+    @rest(endpoint: "https://jsonplaceholder.typicode.com/users/$id")
+  getUserAddress(id: ID!): Address
+    @rest(
+      endpoint: "https://jsonplaceholder.typicode.com/users/$id"
+      resultroot: "address"
+      setters: [
+        { field: "latitude", path: "geo.lat" }
+        { field: "longitude", path: "geo.lng" }
+      ]
+    )
+  getUserCompany(id: ID!): Company
+    @rest(
+      endpoint: "https://jsonplaceholder.typicode.com/users/$id"
+      resultroot: "company"
+    )
+  getTodo(id: ID!): Todo
+    @rest(endpoint: "https://jsonplaceholder.typicode.com/todos/$id")
+  getUserTodos(userId: ID!): [Todo]
+    @rest(endpoint: "https://jsonplaceholder.typicode.com/users/$userId/todos")
+  getPosts: [Post]
+    @rest(endpoint: "https://jsonplaceholder.typicode.com/posts")
+  getPost(id: ID!): Post
+    @rest(endpoint: "https://jsonplaceholder.typicode.com/posts/$id")
+  getUserPosts(userId: ID!): [Post]
+    @rest(endpoint: "https://jsonplaceholder.typicode.com/users/$userId/posts")
+  getAlbum(id: ID!): Album
+    @rest(endpoint: "https://jsonplaceholder.typicode.com/albums/$id")
+  getUserAlbums(userId: ID!): [Album]
+    @rest(endpoint: "https://jsonplaceholder.typicode.com/users/$userId/albums")
+  getAlbumPhotos(albumId: ID!): [Photo]
+    @rest(
+      endpoint: "https://jsonplaceholder.typicode.com/albums/$albumId/photos"
+    )
+  getComments(postId: ID!): [Comment]
+    @rest(
+      endpoint: "https://jsonplaceholder.typicode.com/posts/$postId/comments"
+    )
+}

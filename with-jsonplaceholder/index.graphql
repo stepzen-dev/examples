@@ -1,0 +1,3 @@
+schema @sdl(files: ["jsonplaceholder/jsonplaceholder.graphql"]) {
+  query: Query
+}
