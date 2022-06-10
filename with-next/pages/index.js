@@ -1,35 +1,36 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
-
+import Head from "next/head";
+import Image from "next/image";
+import styles from "../styles/Home.module.css";
 
 // This gets called on every request
 export async function getServerSideProps() {
-
   let headers = {};
 
-headers["Content-Type"] = "application/json";
+  headers["Content-Type"] = "application/json";
 
-var graphql = JSON.stringify({
-    query: "query spacexdataQuery($id: String){\n    spacexdataQuery(id: $id){\n        auto_update\n        capsules\n        cores{\n            core\n            flight\n            gridfins\n            landing_attempt\n            landing_success\n            landing_type\n            landpad\n            legs\n            reused\n        }\n        crew{\n            crew\n            role\n        }\n        date_local\n        date_precision\n        date_unix\n        date_utc\n        details\n        failures{\n            altitude\n            reason\n            time\n        }\n        fairings{\n            recovered\n            recovery_attempt\n            reused\n            ships\n        }\n        flight_number\n        id\n        launch_library_id\n        launchpad\n        links{\n            article\n            flickr{\n                original\n                small\n            }\n            patch{\n                large\n                small\n            }\n            presskit\n            reddit{\n                campaign\n                launch\n                media\n                recovery\n            }\n            webcast\n            wikipedia\n            youtube_id\n        }\n        name\n        net\n        payloads\n        rocket\n        ships\n        static_fire_date_unix\n        static_fire_date_utc\n        success\n        tbd\n        upcoming\n        window\n    }\n}",
-    variables: {id: "5eb87d42ffd86e000604b384"}
-})
+  var graphql = JSON.stringify({
+    query:
+      "query spacexdataQuery($id: String){\n    spacexdataQuery(id: $id){\n        auto_update\n        capsules\n        cores{\n            core\n            flight\n            gridfins\n            landing_attempt\n            landing_success\n            landing_type\n            landpad\n            legs\n            reused\n        }\n        crew{\n            crew\n            role\n        }\n        date_local\n        date_precision\n        date_unix\n        date_utc\n        details\n        failures{\n            altitude\n            reason\n            time\n        }\n        fairings{\n            recovered\n            recovery_attempt\n            reused\n            ships\n        }\n        flight_number\n        id\n        launch_library_id\n        launchpad\n        links{\n            article\n            flickr{\n                original\n                small\n            }\n            patch{\n                large\n                small\n            }\n            presskit\n            reddit{\n                campaign\n                launch\n                media\n                recovery\n            }\n            webcast\n            wikipedia\n            youtube_id\n        }\n        name\n        net\n        payloads\n        rocket\n        ships\n        static_fire_date_unix\n        static_fire_date_utc\n        success\n        tbd\n        upcoming\n        window\n    }\n}",
+    variables: { id: "5eb87d42ffd86e000604b384" },
+  });
 
-var requestOptions = {
-method: 'POST',
-headers: headers,
-body: graphql
-};
+  var requestOptions = {
+    method: "POST",
+    headers: headers,
+    body: graphql,
+  };
 
-const res = await fetch("https://public6ff2fe39063e3b4f.stepzen.net/api/spacexdata/__graphql", requestOptions)
-.then(response => response.json())
-.then(res => res)
-.catch(error => console.log('error', error));
-return {props: {res}}
+  const res = await fetch(
+    "https://public6ff2fe39063e3b4f.stepzen.net/api/spacexdata/__graphql",
+    requestOptions
+  )
+    .then((response) => response.json())
+    .then((res) => res)
+    .catch((error) => console.log("error", error));
+  return { props: { res } };
 }
 
-
-export default function Home({res}) {
+export default function Home({ res }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -39,13 +40,10 @@ export default function Home({res}) {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          {res.data.spacexdataQuery[0].id}
-  
-        </h1>
+        <h1 className={styles.title}>{res.data.spacexdataQuery[0].id}</h1>
 
         <p className={styles.description}>
-          Get started by editing{' '}
+          Get started by editing{" "}
           <code className={styles.code}>pages/index.js</code>
         </p>
 
@@ -86,12 +84,12 @@ export default function Home({res}) {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
+          Powered by{" "}
           <span className={styles.logo}>
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
       </footer>
     </div>
-  )
+  );
 }
