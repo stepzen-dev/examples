@@ -6,7 +6,11 @@ This project builds a GraphQL API... <!-- ADD YOUR OWN -->
 
 ## Getting Started
 
-You'll need to create a [StepZen account](https://stepzen.com/signup) first. Once you've got that set up, [git clone](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-clone) this repository onto your machine and open the working directory:
+You'll need to create a [StepZen account](https://stepzen.com/signup) first. 
+
+Alternatively, you can login using `stepzen login --public` without signing up, but note that your API will be publicly accessible. 
+
+Once you've got that set up, [git clone](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-clone) this repository onto your machine and open the working directory:
 
 <!-- UPDATE THE DIRECTORY BELOW -->
 
