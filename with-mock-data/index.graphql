@@ -1,0 +1,3 @@
+schema @sdl(files: ["mocks.graphql"]) {
+  query: Query
+}
