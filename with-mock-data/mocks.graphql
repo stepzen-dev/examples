@@ -1,0 +1,19 @@
+type Customer @mock {
+  id: ID
+  name: String @mockfn(name: "FirstName")
+  email: String @mockfn(name: "Email")
+  address: Address
+}
+
+type Address @mock {
+  street: String @mockfn(name: "List", values: ["Street 1", "Street 2"])
+  country: String @mockfn(name: "Country")
+  zipcode: String @mockfn(name: "Zip")
+  city: String @mockfn(name: "City")
+}
+
+type Query {
+  getAllCustomers: [Customer] 
+    # @rest(endpoint: "https://introspection.apis.stepzen.com/customers")
+    @rest(endpoint: "")
+}
