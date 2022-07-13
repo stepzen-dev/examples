@@ -32,8 +32,7 @@ folder relative to the root of this repository.
 Deploy the `customers` subgraph into your StepZen account:
 
 ```
-cd customers
-stepzen start
+(cd customers ; stepzen deploy)
 ```
 
 This results in a StepZen deployed GraphQL customers endpoint at:
@@ -72,8 +71,7 @@ Now the same steps are repeated for the `returns` subgraph.`
 Deploy the `returns` subgraph into your StepZen account:
 
 ```
-cd returns
-stepzen start
+(cd returns ; stepzen start)
 ```
 
 This results in a StepZen deployed GraphQL `returns` endpoint at:
@@ -105,9 +103,9 @@ Please follow the instructions in [router/README.md](router/README.md).
 Once the router is running you can visit http://localhost:4000 to execute requests
 
 Execute this request to see the federation in action, where the customer
-is pulled from the `customers` subgraphs and the return stores from
+is pulled from the `customers` subgraph and the return stores from
 close to the customer's address from the `returns` subgraph.
-```
+```graphql
 {
   getCustomer(id: 1) {
     id
