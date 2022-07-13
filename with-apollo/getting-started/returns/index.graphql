@@ -1,0 +1,6 @@
+"""
+returns subgraph pulling mocked store information from a REST api
+"""
+schema @sdl(files: ["returnStores/index.graphql" "address.graphql"]) {
+  query: Query
+}

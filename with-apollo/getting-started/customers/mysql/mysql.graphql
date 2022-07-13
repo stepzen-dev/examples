@@ -1,0 +1,105 @@
+type Address {
+  city: String
+  countryRegion: String
+  id: Int!
+  postalCode: String
+  stateProvince: String
+  street: String
+}
+
+type Customer {
+  email: String!
+  id: Int!
+  name: String!
+}
+
+type Customeraddress {
+  addressid: Int!
+  customerid: Int!
+  id: Int!
+}
+
+type Lineitem {
+  orderId: Int!
+  productId: Int!
+  quantity: Int
+}
+
+type Order {
+  carrier: String!
+  createdAt: Date!
+  customerId: Int!
+  id: Int!
+  shippingCost: Float
+  trackingId: String!
+}
+
+type Product {
+  description: String
+  id: Int!
+  image: String
+  title: String
+}
+
+type Query {
+  getAddressList: [Address]
+    @dbquery(type: "mysql", table: "address", configuration: "mysql_config")
+  """
+  This query is an example of how to simply paginate your responses.
+  """
+  getPaginatedAddressList(first: Int!, after: Int!): [Address]
+    @dbquery(
+      type: "mysql"
+      query: """
+      select * from `address` limit ? offset ?
+      """
+      configuration: "mysql_config"
+    )
+  """
+  In this example, a single query parameter is passed. If the request to the DB will
+  return at most one value you can remove the square brackets from the result.
+  """
+  getAddressById(id: Int!): [Address]
+    @dbquery(
+      type: "mysql"
+      query: """
+      select * from `address` where `id` = ?
+      """
+      configuration: "mysql_config"
+    )
+  """
+  In this example, two query parameters are passed. If the request to the DB will
+  return at most one value you can remove the square brackets from the result.
+  """
+  getAddressByIdAndCity(id: Int!, city: String!): [Address]
+    @dbquery(
+      type: "mysql"
+      query: """
+      select * from `address` where `id` = ? and `city` = ?
+      """
+      configuration: "mysql_config"
+    )
+  getCustomerList: [Customer]
+    @dbquery(type: "mysql", table: "customer", configuration: "mysql_config")
+  getCustomerById(id: Int!): [Customer]
+    @dbquery(
+      type: "mysql"
+      query: """
+      select * from `customer` where `id` = ?
+      """
+      configuration: "mysql_config"
+    )
+  getCustomeraddressList: [Customeraddress]
+    @dbquery(
+      type: "mysql"
+      table: "customeraddress"
+      configuration: "mysql_config"
+    )
+  getLineitemList: [Lineitem]
+    @dbquery(type: "mysql", table: "lineitem", configuration: "mysql_config")
+  getOrderList: [Order]
+    @dbquery(type: "mysql", table: "order", configuration: "mysql_config")
+  getProductList: [Product]
+    @dbquery(type: "mysql", table: "product", configuration: "mysql_config")
+}
+

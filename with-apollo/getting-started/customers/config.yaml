@@ -1,0 +1,11 @@
+fieldbasedrules:
+  - rootoperationtype: Query
+    publicfields:
+      - _service
+      - _entities
+    privatefieldspredicate: true
+configurationset:
+  - configuration:
+      # Read-only mocked MySQL database in the cloud
+      name: mysql_config
+      dsn: testUserIntrospection:HurricaneStartingSample1934@tcp(db.introspection.stepzen.net)/introspection
