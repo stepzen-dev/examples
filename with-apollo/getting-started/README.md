@@ -9,7 +9,7 @@ For this example we are federating two subgraphs, both StepZen endpoints, that w
 
 Note, both subgraphs contain mocked up data.
 
-We will federate using Apollo Federation so that business' returns locations close to a customer's address can be requested.
+We will federate using Apollo Federation so that business' returns locations close to a customer's address can be requested. Managed federation will be used so that the supergraph's definition is maintained in your Apollo account.
 
 In each case the SDL and configuration for the subgraphs has already been setup, each subgraph's `README.md` provides information on how the subgraphs were easily created.
 
@@ -24,9 +24,12 @@ We assume that you are familiar with how [Apollo Federation[(https://www.apollog
 
 We also assume you have [signed up with](https://stepzen.com/signup) StepZen, [installed the StepZen CLI and are already logged into your account](https://stepzen.com/getting-started).
 
-## Customers subgraphpo
+Note all instructions are based starting at the `with-apollo/getting-started`
+folder relative to the root of this repository.
 
-Deploy the customers subgraph into your StepZen account:
+## Customers subgraph
+
+Deploy the `customers` subgraph into your StepZen account:
 
 ```
 cd customers
@@ -39,14 +42,14 @@ https://ACCOUNT.stepzen.net/subgraph/customers/__graphql
 ```
 with `ACCOUNT` replaced by your account.
 
-Introspect and publish the `customers` subgraph into your Apollo Federation supergraph.  Copy paste the commands from the 'Update Schema' button
-in Apollo Studio for your subgraph, and selecting the introspection tab.
+Introspect and publish the `customers` subgraph into your `lynx` Apollo Federation supergraph.  Copy paste the commands from the 'Update Schema' button
+in Apollo Studio for your `lynx` subgraph, and selecting the introspection tab.
 
 You will need to modify:
   - the introspect and `--routing-url` endpoints to be the deployed customers endpoint.
   - the subgraph `-name` to be `customers`
 
-For example, here our lynx's supergraph graph ID is `lynx-n321j` and we have masked our APOLLO_KEY:
+For example, here our `lynx`'s supergraph graph ID is `lynx-n321j` and we have masked our `APOLLO_KEY`:
 ```
 rover subgraph introspect \
   https://ACCOUNT.stepzen.net/subgraph/customers/__graphql | \
@@ -57,10 +60,10 @@ rover subgraph introspect \
 ```
 
 `rover subgraph introspect` pulls the subgraph's federation schema from
-the deployed customers endpoint.
+the deployed `customers` endpoint.
 
 `rover subgraph publish` publishes the definition of the `customers` subgraph
-into the super-graph's schema.
+into the `lynx` supergraph's schema.
 
 ## Returns subgraph
 
@@ -80,7 +83,8 @@ https://ACCOUNT.stepzen.net/subgraph/returns/__graphql
 with `ACCOUNT` replaced by your account.
 
 Introspect and publish the `returns` subgraph into your Apollo Federation
-supergraph, following the previous instructions for `customers` but using `returns` and its deployed endpoint.
+`lynx` supergraph, following the previous instructions for
+`customers` but using `returns` and its deployed endpoint.
 
 For example:
 ```
