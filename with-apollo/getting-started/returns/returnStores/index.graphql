@@ -7,5 +7,5 @@ type ReturnStoreEntry {
 
 type Query {
   returnStores(city: String): [ReturnStoreEntry]
-    @rest(endpoint: "https://json2api-returns-p2axj4bzta-uw.a.run.app/returns?cith+eq+$city")
+    @rest(endpoint: "https://json2api-returns-p2axj4bzta-uw.a.run.app/returns?q=city+eq+$city")
 }

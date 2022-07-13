@@ -1,11 +1,11 @@
 # Overview
 
-If you use Apollo Federation to federate subgraphs, you can use StepZen to build those subgraphs. With little effort, the StepZen created and deployed subgraphs are Apollo Federation ready. Let's walk you through how to get it done.
+If you use Apollo Federation to federate subgraphs, you can use StepZen to build those subgraphs. With little effort, StepZen created and deployed subgraphs are Apollo Federation ready. Let's walk you through how to get it done.
 
 For this example we are federating two subgraphs, both StepZen endpoints, that will be running in your account.
 
  - `customers` - provides customer information from a MySQL database
- - `returns` - provides returns locations for businesses
+ - `returns` - provides returns locations for businesses from a REST api
 
 Note, both subgraphs contain mocked up data.
 
@@ -46,7 +46,7 @@ You will need to modify:
   - the introspect and `--routing-url` endpoints to be the deployed customers endpoint.
   - the subgraph `-name` to be `customers`
 
-For example, here the lynx's supergraph graph ID is `lynx-n321j` and we have masked the APOLLO_KEY:
+For example, here our lynx's supergraph graph ID is `lynx-n321j` and we have masked our APOLLO_KEY:
 ```
 rover subgraph introspect \
   https://ACCOUNT.stepzen.net/subgraph/customers/__graphql | \
@@ -66,14 +66,14 @@ into the super-graph's schema.
 
 Now the same steps are repeated for the `returns` subgraph.`
 
-Deploy the customers subgraph into your StepZen account:
+Deploy the `returns` subgraph into your StepZen account:
 
 ```
 cd returns
 stepzen start
 ```
 
-This results in a StepZen deployed GraphQL customers endpoint at:
+This results in a StepZen deployed GraphQL `returns` endpoint at:
 ```
 https://ACCOUNT.stepzen.net/subgraph/returns/__graphql
 ```
@@ -92,17 +92,38 @@ rover subgraph introspect \
   --routing-url https://ACCOUNT.stepzen.net/subgraph/returns/__graphql
 ```
 
-## Supergraph in Apollo Studio
+## Run Apollo router
 
-stuff about looking at the supoer graph definition with managed federation.
+Now run the Apollo router to federate our two subgraphs, `customers` and `returns`. The router is run against the `lynx` supergraph definition we uploaded the subgraphs to, thus is using managed federation.
 
-## Run the federation server
+Please follow the instructions in [router/README.md](router/README.md).
 
-TODO
+Once the router is running you can visit http://localhost:4000 to execute requests
 
-## Run queries in Apollo Studio
-
-Running queries including with the merged types.
+Execute this request to see the federation in action, where the customer
+is pulled from the `customers` subgraphs and the return stores from
+close to the customer's address from the `returns` subgraph.
+```
+{
+  getCustomer(id: 1) {
+    id
+    name
+    email
+    address {
+      street
+      city
+      returnStores {
+        address
+        business
+      }
+    }
+  }
+}
+```
 
 ## How the StepZen subgraphs were extended(better word).
 
+explain what is going on.
+TODO
+
+## Next steps

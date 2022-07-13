@@ -1,6 +1,3 @@
-"""
-customers subgraph pulling mocked customer information from MySQL.
-"""
-schema @sdl(files: ["mysql/mysql.graphql" "address.graphql"]) {
+schema @sdl(files: ["mysql/index.graphql" "address.graphql"]) {
   query: Query
 }
