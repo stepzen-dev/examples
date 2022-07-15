@@ -126,7 +126,7 @@ close to the customer's address from the `returns` subgraph.
 # StepZen integration with Apollo Federation
 
 Here we describe how the StepZen schemas were modified
-to have the `returns` subgraph add value to the `customers` subgraph`
+to have the `returns` subgraph add value to the `customers` subgraph
 through Apollo Federation.
 
 ## customers
@@ -173,7 +173,8 @@ a common understanding of unique identifiers.
 
 `city` field is marked as `@external` which indicates to StepZen and Apollo Federation that this subgraph (`returns`) does not know how to resolve it, so the federation layer must provide a value if it is needed.
 
-`returnStores` is the field that this subgraph (`returns`) is adding into the `Address` type. It's value is resolved using the `returnStores` field of `Query` wich is defined to pull values from a REST API.
+`returnStores` is the field that this subgraph (`returns`) is adding into the `Address` type. Its value is resolved using the `returnStores` field of `Query`
+which is defined to pull values from a REST API.
 
 ```
 type Query {
@@ -185,6 +186,14 @@ type Query {
 StepZen automatically maps the `city` field in `Address` to the `city` argument of `Query.returnStores`.
 
 That's it again! A type is simply extended by this subgraph declaratively by adding fields that reference Query fields the subgraph already provides and indicating the primary key of the type and any external fields needed as arguments.
+
+## Authorization
+
+In this getting-started the StepZen endpoints are configured to be 
+open endpoints to simplify the setup for Apollo Federation.
+
+Please follow [](../with-authorization/README.md) for instructions
+on how to setup protected StepZen endpoint with Apollo Federation.
 
 # Next steps
 
