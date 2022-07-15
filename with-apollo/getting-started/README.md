@@ -123,13 +123,13 @@ close to the customer's address from the `returns` subgraph.
 }
 ```
 
-## StepZen integration with Apollo Federation
+# StepZen integration with Apollo Federation
 
 Here we describe how the StepZen schemas were modified
 to have the `returns` subgraph add value to the `customers` subgraph`
 through Apollo Federation.
 
-### customers
+## customers
 
 The `customers` subgraph was initially created using `stepzen import mysql`
 to create its GraphQL types and fields.
@@ -146,7 +146,7 @@ extend type Address @key(fields: "id")
 That's it, as StepZen defines GraphQL schemas declaratively,
 there is nothing more to do, no coding of reference resolvers.
 
-### returns
+## returns
 
 The `returns` subgraph was initially created using `stepzen import curl`
 to create its GraphQL types and fields from introspection of
@@ -186,6 +186,6 @@ StepZen automatically maps the `city` field in `Address` to the `city` argument 
 
 That's it again! A type is simply extended by this subgraph declaratively by adding fields that reference Query fields the subgraph already provides and indicating the primary key of the type and any external fields needed as arguments.
 
-## Next steps
+# Next steps
 
 TODO
