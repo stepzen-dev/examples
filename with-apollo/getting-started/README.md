@@ -2,7 +2,7 @@
 
 If you use Apollo Federation to federate subgraphs, you can use StepZen to build those subgraphs. With little effort, StepZen created and deployed subgraphs are Apollo Federation ready. Let's walk you through how to get it done.
 
-For this example we are federating two subgraphs, both StepZen endpoints, that will be running in your account.
+For this example we are federating two subgraphs, both StepZen endpoints, that will be running in your StepZen account.
 
  - `customers` - provides customer information from a MySQL database
  - `returns` - provides returns locations for businesses from a REST api
@@ -125,7 +125,63 @@ close to the customer's address from the `returns` subgraph.
 
 ## How the StepZen subgraphs were extended(better word).
 
-explain what is going on.
-TODO
+### customers
+
+The `customers` subgraph was initially created using `stepzen import mysql`
+to create its GraphQL types and fields.
+
+For federation [`address.graphql`](customers/address.graphql) was added
+to mark the `Address` type as a [federation entity](https://www.apollographql.com/docs/federation/entities/). This allows the `Address` type to have its fields resolved across multiple subgraphs, `customers` and `returns` in this case.
+
+`Address` was made into a entity by defining its `id` field as one that can uniquely identify and fetch an instance using `@key`.
+
+```
+extend type Address @key(fields: "id")
+```
+
+That's it, as StepZen defines GraphQL schemas declaratively,
+there is nothing more to do, no coding of reference resolvers.
+
+### returns
+
+The `returns` subgraph was initially created using `stepzen import curl`
+to create its GraphQL types and fields from introspection of
+a REST API endpoint.
+
+For federation `returns` adds value to the `Address` type by providing
+business returns locations based upon a city.
+
+`returns` adds the `returnStores` field to `Address` declaratively indicating
+how that field is resolved.
+
+
+```
+type Address @key(fields: "id") {
+  id: Int!
+  city: String @external
+  returnStores: [ReturnStoreEntry] @materializer(query: "returnStores")
+}
+```
+This is in the [`returns/address.graphql`](returns/address.graphql) file.
+
+Like `customers` `Address` is annotated with `@key` so the subgraphs have
+a common understanding of unique identifiers.
+
+`city` field is marked as `@external` which indicates to StepZen and Apollo Federation that this subgraph (`returns`) does not know how to resolve it, so the federation layer must provide a value if it is needed.
+
+`returnStores` is the field that this subgraph (`returns`) is adding into the `Address` type. It's value is resolved using the `returnStores` field of `Query` wich is defined to pull values from a REST API.
+
+```
+type Query {
+  returnStores(city: String): [ReturnStoreEntry]
+    @rest(endpoint: "https://json2api-returns-p2axj4bzta-uw.a.run.app/returns?q=city+eq+$city")
+}
+```
+
+StepZen automatically maps the `city` field in `Address` to the `city` argument of `Query.returnStores`.
+
+That's it again! A type is simply extended by this subgraph declaratively by adding fields that reference Query fields the subgraph already provides and indicating the primary key of the type and any external fields needed as arguments.
 
 ## Next steps
+
+TODO
