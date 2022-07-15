@@ -17,7 +17,7 @@ In each case the SDL and configuration for the subgraphs has already been setup,
 
 # Setup
 
-We assume that you are familiar with how [Apollo Federation[(https://www.apollographql.com/docs/federation/)] works. We will only cover the basics. We will be doing an Apollo Studio supergraph creation.
+We assume that you are familiar with how [Apollo Federation](https://www.apollographql.com/docs/federation/) works. We will only cover the basics. We will be doing an Apollo Studio supergraph creation.
   1. [Signup for Apollo Studio](https://studio.apollographql.com/signup?from=%2F&type=prod) 
   1. Create a supergraph in Apollo Studio named `lynx`, you can use any name but we use `lynx` to make it clear when you need to provide the supergraph Graph ID.
   1. [Install rover](https://www.apollographql.com/docs/rover/getting-started/)
@@ -71,7 +71,7 @@ Now the same steps are repeated for the `returns` subgraph.`
 Deploy the `returns` subgraph into your StepZen account:
 
 ```
-(cd returns ; stepzen start)
+(cd returns ; stepzen deploy)
 ```
 
 This results in a StepZen deployed GraphQL `returns` endpoint at:
