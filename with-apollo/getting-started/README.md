@@ -123,7 +123,11 @@ close to the customer's address from the `returns` subgraph.
 }
 ```
 
-## How the StepZen subgraphs were extended(better word).
+## StepZen integration with Apollo Federation
+
+Here we describe how the StepZen schemas were modified
+to have the `returns` subgraph add value to the `customers` subgraph`
+through Apollo Federation.
 
 ### customers
 
