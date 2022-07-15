@@ -66,7 +66,7 @@ into the `lynx` supergraph's schema.
 
 ## Returns subgraph
 
-Now the same steps are repeated for the `returns` subgraph.`
+Now the same steps are repeated for the `returns` subgraph.
 
 Deploy the `returns` subgraph into your StepZen account:
 
@@ -139,7 +139,7 @@ to mark the `Address` type as a [federation entity](https://www.apollographql.co
 
 `Address` was made into a entity by defining its `id` field as one that can uniquely identify and fetch an instance using `@key`.
 
-```
+```graphql
 extend type Address @key(fields: "id")
 ```
 
@@ -159,7 +159,7 @@ business returns locations based upon a city.
 how that field is resolved.
 
 
-```
+```graphql
 type Address @key(fields: "id") {
   id: Int!
   city: String @external
@@ -176,7 +176,7 @@ a common understanding of unique identifiers.
 `returnStores` is the field that this subgraph (`returns`) is adding into the `Address` type. Its value is resolved using the `returnStores` field of `Query`
 which is defined to pull values from a REST API.
 
-```
+```graphql
 type Query {
   returnStores(city: String): [ReturnStoreEntry]
     @rest(endpoint: "https://json2api-returns-p2axj4bzta-uw.a.run.app/returns?q=city+eq+$city")
