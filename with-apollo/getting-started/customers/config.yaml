@@ -1,8 +1,5 @@
 fieldbasedrules:
   - rootoperationtype: Query
-    publicfields:
-      - _service
-      - _entities
     privatefieldspredicate: true
 configurationset:
   - configuration:

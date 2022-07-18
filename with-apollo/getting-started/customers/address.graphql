@@ -1,4 +1,4 @@
 # Indicates the key field for Address is id.
-# This makes Address an entity type in Apollo federation
+# This makes Address an entity in Apollo federation
 # enabling it to be extended by other subgraphs.
-extend type Address @key(fields:"id")
+extend type Address @key(fields:"id") {}

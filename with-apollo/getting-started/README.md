@@ -189,7 +189,7 @@ That's it again! A type is simply extended by this subgraph declaratively by add
 
 ## Authorization
 
-In this getting-started the StepZen endpoints are configured to be 
+In this getting-started StepZen endpoints are configured to be 
 open endpoints to simplify the setup for Apollo Federation.
 
 Please follow [with-authorization](../with-authorization/README.md) for instructions
