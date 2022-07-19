@@ -1,0 +1,96 @@
+{
+  "customers": {
+    "-N6rOmxa7vOOTpZZSllL": {
+      "email": "lucas.bill@example.com",
+      "name": "Lucas Bill"
+    },
+    "-N6rQgCkbLPB1xElUchT": {
+      "email": "mandy.jones@example.com",
+      "name": "Mandy Jones"
+    },
+    "-N6rSJ4xI3_Cq7u58Wh_": {
+      "email": "salim.ali@example.com",
+      "name": "Salim Ali"
+    },
+    "-N6rSZB4AoMAwrDnm2jF": {
+      "email": "jane.xiu@example.com",
+      "name": "Jane Xiu"
+    },
+    "-N6rTRzW_JrkHQMdt5QA": {
+      "email": "john.doe@example.com",
+      "name": "John Doe"
+    }
+  },
+  "orders": {
+    "-N6rOvLXK2t39x-Bp0UP": {
+      "carrier": "ups",
+      "createdAt": "2022-08-04",
+      "customerId": "-N6rOmxa7vOOTpZZSllL",
+      "shippingCost": 2,
+      "trackingId": "1Z881F5V0397269080"
+    },
+    "-N6rQ_YDMNTjq_mCbhZN": {
+      "carrier": "ups",
+      "createdAt": "2022-08-01",
+      "customerId": "-N6rOmxa7vOOTpZZSllL",
+      "shippingCost": 1,
+      "trackingId": "1Z4V180W0324616505"
+    },
+    "-N6rQsEqX4vt-0cBA336": {
+      "carrier": "ups",
+      "createdAt": "2022-08-04",
+      "customerId": "-N6rQgCkbLPB1xElUchT",
+      "shippingCost": 3,
+      "trackingId": "1Z4V180W0324616505"
+    },
+    "-N6rQvnBSkz2kglMvr5H": {
+      "carrier": "ups",
+      "createdAt": "2022-08-01",
+      "customerId": "-N6rQgCkbLPB1xElUchT",
+      "shippingCost": 2,
+      "trackingId": "1Z4V180W0324616505"
+    },
+    "-N6rSQz62DlXFPbd32CD": {
+      "carrier": "ups",
+      "createdAt": "2022-08-01",
+      "customerId": "-N6rSJ4xI3_Cq7u58Wh_",
+      "shippingCost": 3,
+      "trackingId": "1Z4V180W0324616505"
+    },
+    "-N6rSUovwRodFSRC6dmy": {
+      "carrier": "ups",
+      "createdAt": "2022-03-05",
+      "customerId": "-N6rSJ4xI3_Cq7u58Wh_",
+      "shippingCost": 1,
+      "trackingId": "1Z881F5V0397269080"
+    },
+    "-N6rSfasf2I_pWotPZyt": {
+      "carrier": "ups",
+      "createdAt": "2022-05-08",
+      "customerId": "-N6rSZB4AoMAwrDnm2jF",
+      "shippingCost": 3,
+      "trackingId": "1Z881F5V0397269080"
+    },
+    "-N6rTggKhd8penxRp58B": {
+      "carrier": "ups",
+      "createdAt": "2020-08-06",
+      "customerId": "-N6rTRzW_JrkHQMdt5QA",
+      "shippingCost": 3,
+      "trackingId": "1Z881F5V0397269080"
+    },
+    "-N6rTjZXECB5qlbUsFrh": {
+      "carrier": "ups",
+      "createdAt": "2020-08-02",
+      "customerId": "-N6rTRzW_JrkHQMdt5QA",
+      "shippingCost": 2,
+      "trackingId": "1Z4V180W0324616505"
+    },
+    "-N6rTn0CZnFVyEAlVbb_": {
+      "carrier": "ups",
+      "createdAt": "2020-08-02",
+      "customerId": "-N6rTRzW_JrkHQMdt5QA",
+      "shippingCost": 3,
+      "trackingId": "1Z4V180W0324616505"
+    }
+  }
+}

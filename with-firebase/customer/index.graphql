@@ -1,0 +1,49 @@
+type Customer {
+  email: String
+  name: String
+}
+
+type CustomerList {
+  name: ID
+  value: Customer
+}
+
+type Query {
+  getCustomerById(id: ID!): Customer
+    @rest(
+      endpoint: "https://$project_id.firebaseio.com/customers/$id.json"
+      configuration: "firebase_config"
+    )
+  getCustomers: [CustomerList]
+    @rest(
+      endpoint: "https://$project_id.firebaseio.com/customers.json"
+      transforms: [{ pathpattern: [], editor: "objectToArray" }]
+      configuration: "firebase_config"
+    )
+}
+
+type Mutation {
+  insertCustomer(name: String!, email: String!): Customer
+    @rest(
+      endpoint: "https://$project_id.firebaseio.com/customers.json"
+      method: POST
+      postbody: """
+      {
+        "name": "{{.Get "name"}}",
+        "email": "{{.Get "email"}}"
+      }
+      """
+      configuration: "firebase_config"
+    )
+  updateCustomerName(id: ID!, name: String!): Customer
+    @rest(
+      endpoint: "https://$project_id.firebaseio.com/customers/$id.json"
+      method: PATCH
+      postbody: """
+      {
+        "name": "{{.Get "name"}}"
+      }
+      """
+      configuration: "firebase_config"
+    )
+}

@@ -1,0 +1,17 @@
+type Order {
+  carrier: String
+  createdAt: Date
+  customerId: String
+  customer: Customer
+    @materializer (query: "getCustomerById" arguments: [{ name: "id" field: "customerId"}])
+  shippingCost: Int
+  trackingId: String
+}
+
+type Query {
+  getOrderById(id: ID!): Order
+    @rest(
+      endpoint: "https://$project_id.firebaseio.com/orders/$id.json"
+      configuration: "firebase_config"
+    )
+}

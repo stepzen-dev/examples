@@ -1,0 +1,3 @@
+schema @sdl(files: ["rss/rss.graphql"]) {
+  query: Query
+}

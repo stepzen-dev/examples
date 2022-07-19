@@ -1,0 +1,37 @@
+type Image {
+  link: String
+  title: String
+  url: String
+}
+
+type OneItem {
+  category: [String]
+  creator: String
+  encoded: String
+  guid: JSON
+  link: String
+  pubDate: String
+  title: String
+  updated: DateTime
+}
+
+type GetPosts {
+  description: String
+  generator: String
+  image: Image
+  item: [OneItem]
+  lastBuildDate: String
+  link: JSON
+  title: String
+  webMaster: String
+}
+
+type Query {
+  getPosts(username: String!): GetPosts
+    @rest(
+      endpoint: "https://medium.com/feed/$username"
+      headers: [{ name: "Content-Type", value: "text/xml" }]
+      transforms: [{ pathpattern: "[]", editor: "xml2json" }]
+      resultroot: "rss.channel"
+    )
+}

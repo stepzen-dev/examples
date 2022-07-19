@@ -1,0 +1,4 @@
+configurationset:
+  - configuration:
+      name: firebase_config
+      project_id: "YOUR_FIREBASE_PROJECT_ID"
