@@ -13,10 +13,10 @@ We will federate them so that a business' returns locations close to a customer'
 
 We assume that you are familiar with how [Apollo Federation](https://www.apollographql.com/docs/federation/) works. We will only cover the basics. We will be doing an Apollo Studio supergraph creation.
   1. Signup for [Apollo Studio](https://studio.apollographql.com/signup?from=%2F&type=prod) 
-  1. Create a deployed supergraph in Apollo Studio named `lynx`. You can use any other name if you wish, but you will need to modify our examples to replace `lynx` with your chosen name whenever you need to provide the supergraph Graph ID.
   1. [Install rover](https://www.apollographql.com/docs/rover/getting-started/)
   1. Sign up with [StepZen](https://stepzen.com/signup). 
   1. Install the StepZen CLI and login to your StepZen account via the CLI as described [here](https://stepzen.com/getting-started).
+  1. Create a deployed supergraph in Apollo Studio named `lynx`. You can use any other name if you wish, but you will need to modify our examples to replace `lynx` with your chosen name whenever you need to provide the supergraph Graph ID.
 
 ## Deploy the Customers subgraph
 
@@ -62,7 +62,8 @@ into the `lynx` supergraph's schema.
 
 ## Do the same for the returns subgraph
 
-Deploy the `returns` subgraph into your StepZen account:
+Deploy the `returns` subgraph into your StepZen account, the code is in the 
+[returns]{./returns) folder.
 
 ```
 (cd returns ; stepzen deploy)
@@ -74,8 +75,9 @@ https://ACCOUNT.stepzen.net/subgraph/returns/__graphql
 ```
 with `ACCOUNT` replaced by your account.
 
-Introspect and publish the `returns` subgraph into your Apollo Federation,
-being careful to replace the same things as earlier.
+## Introspect and publish the `returns` subgraph.
+
+Be careful to replace the same things as earlier.
 
 For example:
 ```
