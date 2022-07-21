@@ -3,7 +3,10 @@ type Order {
   createdAt: Date
   customerId: String
   customer: Customer
-    @materializer (query: "getCustomerById" arguments: [{ name: "id" field: "customerId"}])
+    @materializer(
+      query: "getCustomerById"
+      arguments: [{ name: "id", field: "customerId" }]
+    )
   shippingCost: Int
   trackingId: String
 }

@@ -22,8 +22,12 @@ type Query {
     )
 }
 
+type Response {
+  name: ID
+}
+
 type Mutation {
-  insertCustomer(name: String!, email: String!): Customer
+  insertCustomer(name: String!, email: String!): Response
     @rest(
       endpoint: "https://$project_id.firebaseio.com/customers.json"
       method: POST
