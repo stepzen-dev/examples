@@ -1,0 +1,116 @@
+type Address {
+  city: String
+  countryRegion: String
+  id: Int!
+  postalCode: String
+  stateProvince: String
+  street: String
+}
+
+type Customer {
+  address: Address @materializer(query: "getAddressUsingCustomerAddress")
+  email: String!
+  id: Int!
+  name: String!
+  orders: [Order] @materializer(query: "getOrderUsingCustomerId")
+}
+
+type Lineitem {
+  order: Order
+    @materializer(
+      query: "getOrder"
+      arguments: [{ name: "id", field: "orderId" }]
+    )
+  orderId: Int!
+  product: Product
+    @materializer(
+      query: "getProduct"
+      arguments: [{ name: "id", field: "productId" }]
+    )
+  productId: Int!
+  quantity: Int
+}
+
+type Order {
+  carrier: String!
+  createdAt: Date!
+  customer: Customer
+    @materializer(
+      query: "getCustomer"
+      arguments: [{ name: "id", field: "customerId" }]
+    )
+  customerId: Int!
+  id: Int!
+  lineitemList: [Lineitem] @materializer(query: "getLineitemUsingOrderId")
+  shippingCost: Float
+  trackingId: String!
+}
+
+type Product {
+  description: String
+  id: Int!
+  image: String
+  lineitemList: [Lineitem] @materializer(query: "getLineitemUsingProductId")
+  title: String
+}
+
+"""
+These are some examples of queries generated from the schema. Feel free to modify them or add your own.
+"""
+type Query {
+  getCustomerList: [Customer]
+    @dbquery(type: "mysql", table: "customer", configuration: "mysql_config")
+  getCustomer(id: Int!): Customer
+    @dbquery(type: "mysql", table: "customer", configuration: "mysql_config")
+  getAddressUsingCustomerAddress(id: Int!): Address
+    @dbquery(
+      type: "mysql"
+      query: """
+      SELECT T.`city`, T.`countryRegion`, T.`id`, T.`postalCode`, T.`stateProvince`, T.`street`
+        FROM `address` T, `customerAddress` V
+        WHERE V.`customerId` = ?
+          AND V.`addressId` = T.`id`
+      """
+      configuration: "mysql_config"
+    )
+  getOrderUsingCustomerId(id: Int!): [Order]
+    @dbquery(
+      type: "mysql"
+      query: """
+      SELECT T.`carrier`, T.`createdAt`, T.`customerId`, T.`id`, T.`shippingCost`, T.`trackingId`
+        FROM `order` T
+        WHERE T.`customerId` = ?
+      """
+      configuration: "mysql_config"
+    )
+  getLineitemList: [Lineitem]
+    @dbquery(type: "mysql", table: "lineitem", configuration: "mysql_config")
+  getOrderList: [Order]
+    @dbquery(type: "mysql", table: "order", configuration: "mysql_config")
+  getOrder(id: Int!): Order
+    @dbquery(type: "mysql", table: "order", configuration: "mysql_config")
+  getLineitemUsingOrderId(id: Int!): [Lineitem]
+    @dbquery(
+      type: "mysql"
+      query: """
+      SELECT T.`orderId`, T.`productId`, T.`quantity`
+        FROM `lineitem` T
+        WHERE T.`orderId` = ?
+      """
+      configuration: "mysql_config"
+    )
+  getProductList: [Product]
+    @dbquery(type: "mysql", table: "product", configuration: "mysql_config")
+  getProduct(id: Int!): Product
+    @dbquery(type: "mysql", table: "product", configuration: "mysql_config")
+  getLineitemUsingProductId(id: Int!): [Lineitem]
+    @dbquery(
+      type: "mysql"
+      query: """
+      SELECT T.`orderId`, T.`productId`, T.`quantity`
+        FROM `lineitem` T
+        WHERE T.`productId` = ?
+      """
+      configuration: "mysql_config"
+    )
+}

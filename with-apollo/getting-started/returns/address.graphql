@@ -1,0 +1,5 @@
+type Address @key(fields: "id") {
+  id: Int!
+  city: String @external
+  returnStores: [ReturnStoreEntry] @materializer(query: "returnStores")
+}
