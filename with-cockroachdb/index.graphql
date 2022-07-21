@@ -1,0 +1,3 @@
+schema @sdl(files: ["cockroachdb/index.graphql"]) {
+  query: Query
+}

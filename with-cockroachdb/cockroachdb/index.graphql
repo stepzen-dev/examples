@@ -1,0 +1,58 @@
+type Customer {
+  email: String!
+  id: Int!
+  name: String!
+  orders: [Order]
+    @materializer(
+      query: "getOrderListByCustomerId"
+      arguments: [{ name: "customerId", field: "id" }]
+    )
+}
+
+type Order {
+  carrier: String
+  createdat: Date!
+  customerid: Int!
+  id: Int!
+  shippingcost: Float
+  trackingid: String
+}
+
+type Query {
+  getCustomerList: [Customer]
+    @dbquery(
+      type: "postgresql"
+      table: "customer"
+      configuration: "cockroachdb_config"
+    )
+  getCustomerById: [Customer]
+    @dbquery(
+      type: "postgresql"
+      query: """
+      select * from "customer" where "id" = $1
+      """
+      configuration: "cockroachdb_config"
+    )
+  getPaginatedCustomerList(first: Int!, after: Int!): [Customer]
+    @dbquery(
+      type: "postgresql"
+      query: """
+      select * from "customer" limit $1 offset $2
+      """
+      configuration: "cockroachdb_config"
+    )
+  getOrderList: [Order]
+    @dbquery(
+      type: "postgresql"
+      table: "order"
+      configuration: "cockroachdb_config"
+    )
+  getOrderListByCustomerId(customerId: Int!): [Order]
+    @dbquery(
+      type: "postgresql"
+      query: """
+      select * from "order" where "customerid" = $1
+      """
+      configuration: "cockroachdb_config"
+    )
+}
