@@ -1,54 +1,49 @@
 # Overview
 
-If you use Apollo Federation to federate subgraphs, you can use StepZen to build those subgraphs. With little effort, StepZen created and deployed subgraphs are Apollo Federation ready. Let's walk you through how to get it done.
+You can use [StepZen](https://www.stepzen.com) to create and deploy subgraphs  which with a little additional effort, are [Apollo Federation](https://www.apollographql.com/docs/federation/) ready. Let's walk you through how to get it done.
 
-For this example we are federating two subgraphs, both StepZen endpoints, that will be running in your StepZen account.
+For this example we are creating two subgraphs using mocked data. 
 
- - `customers` - provides customer information from a MySQL database
- - `returns` - provides returns locations for businesses from a REST api
+ - `customers` - provides customer information from a MySQL database (see [customer subgraph](./customer))
+ - `returns` - provides returns locations for businesses from a REST api (see [returns subgraph](./returns))
 
-Note, both subgraphs contain mocked up data.
-
-We will federate using Apollo Federation so that business' returns locations close to a customer's address can be requested. Managed federation will be used so that the supergraph's definition is maintained in your Apollo account.
-
-In each case the SDL and configuration for the subgraphs has already been setup, each subgraph's `README.md` provides information on how the subgraphs were easily created.
-
-# Running the example
+We will federate them so that a business' returns locations close to a customer's address can be requested. For this we will use Apollo's managed federation. This means that the  supergraph's definition is maintained within your Apollo account.
 
 # Setup
 
 We assume that you are familiar with how [Apollo Federation](https://www.apollographql.com/docs/federation/) works. We will only cover the basics. We will be doing an Apollo Studio supergraph creation.
-  1. [Signup for Apollo Studio](https://studio.apollographql.com/signup?from=%2F&type=prod) 
-  1. Create a "deployed" supergraph in Apollo Studio named `lynx`, you can use any name but we use `lynx` to make it clear when you need to provide the supergraph Graph ID.
+  1. Signup for [Apollo Studio](https://studio.apollographql.com/signup?from=%2F&type=prod) 
   1. [Install rover](https://www.apollographql.com/docs/rover/getting-started/)
+  1. Sign up with [StepZen](https://stepzen.com/signup). 
+  1. Install the StepZen CLI and login to your StepZen account via the CLI as described [here](https://stepzen.com/getting-started).
+  1. Create a deployed supergraph in Apollo Studio named `lynx`. You can use any other name if you wish, but you will need to modify our examples to replace `lynx` with your chosen name whenever you need to provide the supergraph Graph ID.
 
-We also assume you have [signed up with](https://stepzen.com/signup) StepZen, [installed the StepZen CLI and are already logged into your account](https://stepzen.com/getting-started).
+## Deploy the Customers subgraph
 
-Note all instructions are based starting at the `with-apollo/getting-started`
-folder relative to the root of this repository.
-
-## Customers subgraph
-
-Deploy the `customers` subgraph into your StepZen account:
+Deploy the `customers` subgraph into your StepZen account. The Code for this is in the 
+[customers](./customers) folder. Run the following command, this should work on most OS Shells.
 
 ```
 (cd customers ; stepzen deploy)
 ```
 
-This results in a StepZen deployed GraphQL customers endpoint at:
+This results in a StepZen deployed GraphQL `customers` endpoint at:
 ```
 https://ACCOUNT.stepzen.net/subgraph/customers/__graphql
 ```
-with `ACCOUNT` replaced by your account.
+with `ACCOUNT` replaced by the StepZen account you are logged into.
 
-Introspect and publish the `customers` subgraph into your `lynx` Apollo Federation supergraph.  Copy paste the commands from the 'Update Schema' button
+## Introspect and publish the customers subgraph into your Apollo Federation supergraph. 
+
+Copy paste the commands from the 'Update Schema' button
 in Apollo Studio for your `lynx` subgraph, and selecting the introspection tab.
 
-You will need to modify:
-  - the introspect and `--routing-url` endpoints to be the deployed customers endpoint.
-  - the subgraph `-name` to be `customers`
+You will need to:
+  1. choose the `--routing-url` to be the StepZen customers endpoint.
+  1. choose the subgraph `-name` to be `customers`
+  1. provide the appropriate supergraph ID to replace `lynx-n321j`
+  1. provide your `APOLLO_KEY` which we have masked here.
 
-For example, here our `lynx`'s supergraph graph ID is `lynx-n321j` and we have masked our `APOLLO_KEY`:
 ```
 rover subgraph introspect \
   https://ACCOUNT.stepzen.net/subgraph/customers/__graphql | \
@@ -58,17 +53,17 @@ rover subgraph introspect \
   --routing-url https://ACCOUNT.stepzen.net/subgraph/customers/__graphql
 ```
 
-`rover subgraph introspect` pulls the subgraph's federation schema from
-the deployed `customers` endpoint.
+This runs a sequence of two commands, 
 
-`rover subgraph publish` publishes the definition of the `customers` subgraph
+  1. `rover subgraph introspect` pulls the subgraph's federation schema from
+the deployed `customers` endpoint.
+  1. `rover subgraph publish` publishes the definition of the `customers` subgraph
 into the `lynx` supergraph's schema.
 
-## Returns subgraph
+## Do the same for the returns subgraph
 
-Now the same steps are repeated for the `returns` subgraph.
-
-Deploy the `returns` subgraph into your StepZen account:
+Deploy the `returns` subgraph into your StepZen account, the code is in the 
+[returns]{./returns) folder.
 
 ```
 (cd returns ; stepzen deploy)
@@ -80,9 +75,9 @@ https://ACCOUNT.stepzen.net/subgraph/returns/__graphql
 ```
 with `ACCOUNT` replaced by your account.
 
-Introspect and publish the `returns` subgraph into your Apollo Federation
-`lynx` supergraph, following the previous instructions for
-`customers` but using `returns` and its deployed endpoint.
+## Introspect and publish the `returns` subgraph.
+
+Be careful to replace the same things as earlier.
 
 For example:
 ```
