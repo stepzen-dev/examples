@@ -189,7 +189,3 @@ open endpoints to simplify the setup for Apollo Federation.
 
 Please follow [with-authorization](../with-authorization/README.md) for instructions
 on how to setup protected StepZen endpoint with Apollo Federation.
-
-# Next steps
-
-TODO
