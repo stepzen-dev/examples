@@ -1,8 +1,19 @@
-fieldbasedrules:
-  - rootoperationtype: Query
-    privatefieldspredicate: true
+access:
+  policies:
+    - type: Query
+      rules:
+        - condition: true
+          name: make customer fields public
+          fields: [getCustomerList, getCustomer]
+        - condition: true
+          name: federation
+          fields: [_service, _entities]
+        - condition: true
+          name: introspection
+          fields: [__schema, __type, __typename]
 configurationset:
   - configuration:
       # Read-only mocked MySQL database in the cloud
       name: mysql_config
       dsn: testUserIntrospection:HurricaneStartingSample1934@tcp(db.introspection.stepzen.net)/introspection
+
