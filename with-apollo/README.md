@@ -36,7 +36,7 @@ with `ACCOUNT` replaced by the StepZen account you are logged into.
 ## Introspect and publish the customers subgraph into your Apollo Federation supergraph. 
 
 Copy paste the commands from the 'Update Schema' button
-in Apollo Studio for your `lynx` subgraph, and selecting the introspection tab.
+in Apollo Studio for your `lynx` subgraph, and select the introspection tab.
 
 You will need to:
   1. choose the `--routing-url` to be the StepZen customers endpoint.
