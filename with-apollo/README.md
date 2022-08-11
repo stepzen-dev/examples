@@ -93,7 +93,7 @@ rover subgraph introspect \
 
 Now run the Apollo router to federate our two subgraphs, `customers` and `returns`. The router is run against the `lynx` supergraph definition we uploaded the subgraphs to, thus is using managed federation.
 
-Please follow the instructions in [router/README.md](router/README.md).
+Please follow the instructions in [ROUTER-README.md](ROUTER-README.md).
 
 Once the router is running you can visit http://localhost:4000 to execute requests
 
