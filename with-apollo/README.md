@@ -36,7 +36,7 @@ with `ACCOUNT` replaced by the StepZen account you are logged into.
 ## Introspect and publish the customers subgraph into your Apollo Federation supergraph. 
 
 Copy paste the commands from the 'Update Schema' button
-in Apollo Studio for your `lynx` subgraph, and selecting the introspection tab.
+in Apollo Studio for your `lynx` subgraph, and select the introspection tab.
 
 You will need to:
   1. choose the `--routing-url` to be the StepZen customers endpoint.
@@ -93,7 +93,7 @@ rover subgraph introspect \
 
 Now run the Apollo router to federate our two subgraphs, `customers` and `returns`. The router is run against the `lynx` supergraph definition we uploaded the subgraphs to, thus is using managed federation.
 
-Please follow the instructions in [router/README.md](router/README.md).
+Please follow the instructions in [ROUTER-README.md](ROUTER-README.md).
 
 Once the router is running you can visit http://localhost:4000 to execute requests
 
