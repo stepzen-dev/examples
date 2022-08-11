@@ -1,6 +1,13 @@
-fieldbasedrules:
-  - rootoperationtype: Query
-    publicfields:
-      - _service
-      - _entities
-    privatefieldspredicate: true
+access:
+  policies:
+    - type: Query
+      rules:
+        - condition: true
+          name: make subgraph fields public
+          fields: [returnStores]
+        - condition: true
+          name: federation
+          fields: [_service, _entities]
+        - condition: true
+          name: introspection
+          fields: [__schema, __type, __typename]
