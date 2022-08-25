@@ -1,0 +1,27 @@
+type AppNews {
+  appid: Int
+  count: Int
+  newsitems: [NewsitemsEntry]
+}
+
+type NewsitemsEntry {
+  appid: Int
+  author: String
+  contents: String
+  date: Int
+  feed_type: Int
+  feedlabel: String
+  feedname: String
+  gid: Float
+  is_external_url: Boolean
+  title: String
+  url: String
+}
+
+type Query {
+  getNewsForApp(appid: String, count: String): AppNews
+    @rest(
+      endpoint: "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/"
+      resultroot: "appnews"
+    )
+}

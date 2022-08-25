@@ -59,77 +59,7 @@ Your CockroachDB cluster is now available on the cloud provider you previously s
 
 ### Populate with data
 
-1. Open the console of the CockroachDB CLI, as shown in the last step of the previous section. In this console, you need to copy-paste the contents on the file `init.sql` from this repository.
-
-```sql
-CREATE TABLE "customer" (
-    email character(50) NOT NULL,
-    id integer NOT NULL,
-    name character(50) NOT NULL
-);
-
-CREATE TABLE "order" (
-    id integer NOT NULL,
-    createdat date NOT NULL,
-    shippingcost double precision,
-    customerid integer NOT NULL,
-    carrier character(20),
-    trackingid character(30)
-);
-
-INSERT INTO
-    customer (email, id, name)
-VALUES
-    ('lucas.bill@example.com', 1, 'Lucas Bill'),
-    /* other */
-
-INSERT INTO
-    "order" (
-        id,
-        createdat,
-        shippingcost,
-        customerid,
-        carrier,
-        trackingid
-    )
-VALUES
-    (1, '2020-08-05', 3, 4, NULL, NULL),
-    /* other */
-```
-
-2. You'll get a response from the CockroachDB CLI stating if your commands were successful:
-
-```bash
-CREATE TABLE
-
-Time: 37ms total (execution 10ms / network 27ms)
-
-CREATE TABLE
-
-Time: 37ms total (execution 10ms / network 27ms)
-
-INSERT 10
-
-Time: 48ms total (execution 18ms / network 30ms)
-
-INSERT 20
-
-Time: 42ms total (execution 14ms / network 29ms)
-```
-
-3. To get an overview of all the tables in your database, run the `SHOW TABLES;` command. This will respond with the following:
-
-```
-  schema_name | table_name | type  | owner      | estimated_row_count | locality
---------------+------------+-------+------------+---------------------+-----------
-  public      | customer   | table | <USERNAME> |                  10 | NULL
-  public      | order      | table | <USERNAME> |                  20 | NULL
-(2 rows)
-
-Time: 86ms total (execution 20ms / network 66ms)
-```
-
-With the data added to the CockroachDB database, you can set up a connection with StepZen to generate the GraphQL API.
+The CockroachDB database needs to be populated with the schema and data from the file `init.sql`. You can either import this data using the Cloud Console, CockroachDB Client or *psql*.
 
 ### Copy credentials
 
@@ -150,8 +80,8 @@ Replace the contents of `config.yaml` with your instance configuration:
 
 configurationset:
   - configuration:
-      name: cockroachdb_config
-      uri: <COCKROACHDB_CONNECTION_STRING>
+      name: postgresql_config
+      uri: YOUR_COCKROACHDB_DSN
 ```
 
 ## Run StepZen
