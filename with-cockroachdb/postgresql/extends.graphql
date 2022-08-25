@@ -1,0 +1,38 @@
+extend type Game {
+  news: AppNews
+    @materializer(
+      query: "getNewsForApp"
+      arguments: [{ name: "appid", field: "appid" }]
+    )
+  votes: VoteCount
+    @materializer(
+      query: "getVoteCountByAppid"
+      arguments: [{ name: "appid", field: "appid" }]
+    )
+}
+
+type VoteCount {
+  count: Int
+}
+
+type Query {
+  getVoteCountByAppid(appid: String!): VoteCount
+    @dbquery(
+      type: "postgresql"
+      query: """
+      select count(id) as count from "project"."vote" where "appid" = $1
+      """
+      configuration: "postgresql_config"
+    )
+}
+
+type Mutation {
+  insertVote(appid: String!): Vote
+    @dbquery(
+      type: "postgresql"
+      schema: "project"
+      table: "vote"
+      dml: INSERT
+      configuration: "postgresql_config"
+    )
+}

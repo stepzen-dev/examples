@@ -1,0 +1,10 @@
+schema
+  @sdl(
+    files: [
+      "postgresql/extends.graphql"
+      "postgresql/index.graphql"
+      "steam/index.graphql"
+    ]
+  ) {
+  query: Query
+}

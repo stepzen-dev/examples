@@ -1,0 +1,87 @@
+type Game {
+  appid: String!
+  id: ID!
+  title: String!
+}
+
+type Vote {
+  appid: String!
+  id: ID!
+}
+
+type Query {
+  getGameList: [Game]
+    @dbquery(
+      type: "postgresql"
+      schema: "project"
+      table: "game"
+      configuration: "postgresql_config"
+    )
+  """
+  This query is an example of how to simply paginate your responses.
+  """
+  getPaginatedGameList(first: Int!, after: Int!): [Game]
+    @dbquery(
+      type: "postgresql"
+      query: """
+      select * from "project"."game" limit $1 offset $2
+      """
+      configuration: "postgresql_config"
+    )
+  """
+  In this example, a single query parameter is passed. If the request to the DB will
+  return at most one value you can remove the square brackets from the result.
+  """
+  getGameByGameId(id: ID!): [Game]
+    @dbquery(
+      type: "postgresql"
+      query: """
+      select * from "project"."game" where "id" = $1
+      """
+      configuration: "postgresql_config"
+    )
+  """
+  In this example, two query parameters are passed. If the request to the DB will
+  return at most one value you can remove the square brackets from the result.
+  """
+  getGameByGameIdAndAppid(id: ID!, appid: String!): [Game]
+    @dbquery(
+      type: "postgresql"
+      query: """
+      select * from "project"."game" where "id" = $1 and "appid" = $2
+      """
+      configuration: "postgresql_config"
+    )
+  getVoteList: [Vote]
+    @dbquery(
+      type: "postgresql"
+      schema: "project"
+      table: "vote"
+      configuration: "postgresql_config"
+    )
+}
+
+type Mutation {
+  """
+  In this mutation example you can see how to do a mutation to insert data in the database.
+  """
+  insertGame(appid: String!, title: String!): Game
+    @dbquery(
+      type: "postgresql"
+      schema: "project"
+      table: "game"
+      dml: INSERT
+      configuration: "postgresql_config"
+    )
+  """
+  In this mutation example you can see how to do a mutation to delete data from the database.
+  """
+  deleteGame(id: ID!, appid: String!, title: String!): Game
+    @dbquery(
+      type: "postgresql"
+      schema: "project"
+      table: "game"
+      dml: DELETE
+      configuration: "postgresql_config"
+    )
+}
