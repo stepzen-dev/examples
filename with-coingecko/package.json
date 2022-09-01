@@ -1,0 +1,25 @@
+{
+    "name": "coingecko-graphql",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": {
+        "type": "git",
+        "url": "git+https://helloitsm3@gitlab.com/tuthub1/graphql/coingecko-graphql.git"
+    },
+    "author": "Sean <seanlengws@gmail.com>",
+    "license": "MIT",
+    "description": "Converting CoinGecko API to support GraphQL",
+    "bugs": {
+        "url": "https://gitlab.com/tuthub1/graphql/coingecko-graphql/issues"
+    },
+    "homepage": "https://gitlab.com/tuthub1/graphql/coingecko-graphql#readme",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "stepzen start"
+    },
+    "keywords": [],
+    "dependencies": {
+        "stepzen": "^0.20.1"
+    },
+    "devDependencies": {}
+}

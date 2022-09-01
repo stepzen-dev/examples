@@ -1,0 +1,42 @@
+type CategoriesEntry {
+  id: Int
+  name: String
+}
+
+type CoinsEntry {
+  api_symbol: String
+  id: String
+  large: String
+  market_cap_rank: Int
+  name: String
+  symbol: String
+  thumb: String
+}
+
+type ExchangesEntry {
+  id: String
+  large: String
+  market_type: String
+  name: String
+  thumb: String
+}
+
+type NftsEntry {
+  id: String
+  name: String
+  symbol: String
+  thumb: String
+}
+
+type Search {
+  categories: [CategoriesEntry]
+  coins: [CoinsEntry]
+  exchanges: [ExchangesEntry]
+  icos: [JSON]
+  nfts: [NftsEntry]
+}
+
+type Query {
+  search(query: String): Search
+    @rest(endpoint: "https://api.coingecko.com/api/v3/search")
+}

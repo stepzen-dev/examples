@@ -1,0 +1,23 @@
+type CompaniesEntry {
+  country: String
+  name: String
+  percentage_of_total_supply: Float
+  symbol: String
+  total_current_value_usd: Int
+  total_entry_value_usd: Int
+  total_holdings: Int
+}
+
+type Companies {
+  companies: [CompaniesEntry]
+  market_cap_dominance: Float
+  total_holdings: Float
+  total_value_usd: Float
+}
+
+type Query {
+  companies(coin_id: String!): Companies
+    @rest(
+      endpoint: "https://api.coingecko.com/api/v3/companies/public_treasury/$coin_id"
+    )
+}

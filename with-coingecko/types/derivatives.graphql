@@ -1,0 +1,93 @@
+# DERIVATIVE EXCHANGES
+type DerivativeExchanges {
+  id: String
+  name: String
+}
+
+# SPECIFIC DERIVATIVE
+type ConvertedLast {
+  btc: Float
+  eth: Float
+  usd: Float
+}
+
+type Derivative {
+  country: JSON
+  description: String
+  image: String
+  name: String
+  number_of_futures_pairs: Int
+  number_of_perpetual_pairs: Int
+  open_interest_btc: Float
+  tickers: [DerivativeTickersEntry]
+  trade_volume_24h_btc: Float
+  url: String
+  year_established: Int
+}
+
+type DerivativeTickersEntry {
+  base: String
+  bid_ask_spread: Float
+  contract_type: String
+  converted_last: ConvertedLast
+  converted_volume: ConvertedVolume
+  expired_at: Int
+  funding_rate: Float
+  h24_percentage_change: Float
+  h24_volume: Float
+  index: Float
+  index_basis_percentage: Float
+  last: Float
+  last_traded: Int
+  open_interest_usd: Float
+  symbol: String
+  target: String
+  trade_url: String
+}
+
+# EXCHANGES
+type DerivativesExchanges {
+  country: String
+  description: String
+  id: String
+  image: String
+  name: String
+  number_of_futures_pairs: Int
+  number_of_perpetual_pairs: Int
+  open_interest_btc: Float
+  trade_volume_24h_btc: Float
+  url: String
+  year_established: Int
+}
+
+# DERIVATIVES
+type Derivatives {
+  basis: Float
+  contract_type: String
+  expired_at: Int
+  funding_rate: Float
+  index: Float
+  index_id: String
+  last_traded_at: Int
+  market: String
+  open_interest: Float
+  price: Float
+  price_percentage_change_24h: Float
+  spread: Float
+  symbol: String
+  volume_24h: Float
+}
+
+type Query {
+    derivative_list: [DerivativeExchanges]
+        @rest(endpoint: "https://api.coingecko.com/api/v3/derivatives/exchanges/list"),
+
+    derivative(id: String, include_tickers: String): Derivative
+        @rest(endpoint: "https://api.coingecko.com/api/v3/derivatives/exchanges/$id"),
+
+    derivative_exchanges(order: String): [DerivativesExchanges]
+        @rest(endpoint: "https://api.coingecko.com/api/v3/derivatives/exchanges"),
+
+    derivatives(include_tickers: String): [Derivatives]
+        @rest(endpoint: "https://api.coingecko.com/api/v3/derivatives")
+}

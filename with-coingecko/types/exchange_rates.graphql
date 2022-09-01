@@ -1,0 +1,437 @@
+type Aed {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Ars {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Aud {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Bch {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Bdt {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Bhd {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Bits {
+  name: String
+  type: String
+  unit: String
+  value: Int
+}
+type Bmd {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Bnb {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Brl {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Btc {
+  name: String
+  type: String
+  unit: String
+  value: Int
+}
+type Cad {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Chf {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Clp {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Cny {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Czk {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Dkk {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Dot {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Eos {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Eth {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Eur {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Gbp {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Hkd {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Huf {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Idr {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Ils {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Inr {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Jpy {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Krw {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Kwd {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Link {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Lkr {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Ltc {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Mmk {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Mxn {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Myr {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Ngn {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Nok {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Nzd {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Php {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Pkr {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Pln {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Rates {
+  aed: Aed
+  ars: Ars
+  aud: Aud
+  bch: Bch
+  bdt: Bdt
+  bhd: Bhd
+  bits: Bits
+  bmd: Bmd
+  bnb: Bnb
+  brl: Brl
+  btc: Btc
+  cad: Cad
+  chf: Chf
+  clp: Clp
+  cny: Cny
+  czk: Czk
+  dkk: Dkk
+  dot: Dot
+  eos: Eos
+  eth: Eth
+  eur: Eur
+  gbp: Gbp
+  hkd: Hkd
+  huf: Huf
+  idr: Idr
+  ils: Ils
+  inr: Inr
+  jpy: Jpy
+  krw: Krw
+  kwd: Kwd
+  link: Link
+  lkr: Lkr
+  ltc: Ltc
+  mmk: Mmk
+  mxn: Mxn
+  myr: Myr
+  ngn: Ngn
+  nok: Nok
+  nzd: Nzd
+  php: Php
+  pkr: Pkr
+  pln: Pln
+  rub: Rub
+  sar: Sar
+  sats: Sats
+  sek: Sek
+  sgd: Sgd
+  thb: Thb
+  try: Try
+  twd: Twd
+  uah: Uah
+  usd: Usd
+  vef: Vef
+  vnd: Vnd
+  xag: Xag
+  xau: Xau
+  xdr: Xdr
+  xlm: Xlm
+  xrp: Xrp
+  yfi: Yfi
+  zar: Zar
+}
+type ExchangeRates {
+  rates: Rates
+}
+type Rub {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Sar {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Sats {
+  name: String
+  type: String
+  unit: String
+  value: Int
+}
+type Sek {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Sgd {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Thb {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Try {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Twd {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Uah {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Usd {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Vef {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Vnd {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Xag {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Xau {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Xdr {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Xlm {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Xrp {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Yfi {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+type Zar {
+  name: String
+  type: String
+  unit: String
+  value: Float
+}
+
+type Query {
+  exchange_rates: ExchangeRates
+    @rest(endpoint: "https://api.coingecko.com/api/v3/exchange_rates")
+}

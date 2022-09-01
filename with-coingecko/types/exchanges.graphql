@@ -1,0 +1,99 @@
+# EXCHANGE
+type Project {
+  id: String
+  image: Image
+  name: String
+  type: String
+}
+type Exchange {
+  alert_notice: String
+  centralized: Boolean
+  country: String
+  description: String
+  facebook_url: String
+  has_trading_incentive: Boolean
+  image: String
+  name: String
+  other_url_1: String
+  other_url_2: String
+  public_notice: String
+  reddit_url: String
+  slack_url: String
+  status_updates: [StatusUpdatesEntry]
+  telegram_url: String
+  tickers: [TickersEntry]
+  trade_volume_24h_btc: Float
+  trade_volume_24h_btc_normalized: Float
+  trust_score: Int
+  trust_score_rank: Int
+  twitter_handle: String
+  url: String
+  year_established: Int
+}
+type StatusUpdatesEntry {
+  category: String
+  created_at: DateTime
+  description: String
+  pin: Boolean
+  project: Project
+  user: String
+  user_title: String
+}
+
+type TickersEntry {
+  base: String
+  bid_ask_spread_percentage: Float
+  coin_id: String
+  converted_last: ConvertedLast
+  converted_volume: ConvertedVolume
+  is_anomaly: Boolean
+  is_stale: Boolean
+  last: Float
+  last_fetch_at: DateTime
+  last_traded_at: DateTime
+  market: Market
+  target: String
+  target_coin_id: String
+  timestamp: DateTime
+  token_info_url: JSON
+  trade_url: String
+  trust_score: String
+  volume: Float
+}
+
+# EXCHANGE LIST
+type ExchangeList {
+  id: String
+  name: String
+}
+
+# EXCHANGE 
+type Exchanges {
+  country: String
+  description: String
+  has_trading_incentive: Boolean
+  id: String
+  image: String
+  name: String
+  trade_volume_24h_btc: Float
+  trade_volume_24h_btc_normalized: Float
+  trust_score: Int
+  trust_score_rank: Int
+  url: String
+  year_established: Int
+}
+
+
+type Query {
+    volume_chart(id: String, days: String): [[Float]]
+        @rest(endpoint: "https://api.coingecko.com/api/v3/exchanges/$id/volume_chart"),
+
+    exchange: Exchange
+        @rest(endpoint: "https://api.coingecko.com/api/v3/exchanges/binance"),
+
+    exchanges_list: [ExchangeList]
+        @rest(endpoint: "https://api.coingecko.com/api/v3/exchanges/list"),
+
+    exchanges(page: String, per_page: String): [Exchanges]
+        @rest(endpoint: "https://api.coingecko.com/api/v3/exchanges")
+}

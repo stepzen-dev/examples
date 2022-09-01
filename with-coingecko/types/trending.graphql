@@ -1,0 +1,26 @@
+type TradingCoinsEntry {
+  item: Item
+}
+
+type Item {
+  coin_id: Int
+  id: String
+  large: String
+  market_cap_rank: Int
+  name: String
+  price_btc: Float
+  score: Int
+  slug: String
+  small: String
+  symbol: String
+  thumb: String
+}
+type Trending {
+  coins: [TradingCoinsEntry]
+  exchanges: [JSON]
+}
+
+type Query {
+  trending: Trending
+    @rest(endpoint: "https://api.coingecko.com/api/v3/search/trending")
+}
