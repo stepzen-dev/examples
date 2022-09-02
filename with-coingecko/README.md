@@ -1,8 +1,8 @@
-# StepZen Example: `with-firebase`
+# StepZen Example: `with-coingecko`
 
 ## Introduction
 
-This project builds a GraphQL API connected to CoinGecko's API using StepZen. We will use the `@rest` directive to generate our GraphQL schema.
+This project builds a GraphQL API connected to CoinGecko's API using StepZen. We will use the `@rest` directive to generate our GraphQL schema. You can refer to the documentation [here](https://www.coingecko.com/en/api/documentation)
 
 ## Getting Started
 

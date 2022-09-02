@@ -1,20 +1,20 @@
 schema
   @sdl(
     files: [
-      "types/assets.graphql"
-      "types/categories.graphql"
-      "types/coins.graphql"
-      "types/companies.graphql"
-      "types/contract.graphql"
-      "types/derivatives.graphql"
-      "types/exchange_rates.graphql"
-      "types/exchanges.graphql"
-      "types/global.graphql"
-      "types/indexes.graphql"
-      "types/ping.graphql"
-      "types/search.graphql"
-      "types/simple.graphql"
-      "types/trending.graphql"
+      "coingecko/assets.graphql"
+      "coingecko/categories.graphql"
+      "coingecko/coins.graphql"
+      "coingecko/companies.graphql"
+      "coingecko/contract.graphql"
+      "coingecko/derivatives.graphql"
+      "coingecko/exchange_rates.graphql"
+      "coingecko/exchanges.graphql"
+      "coingecko/global.graphql"
+      "coingecko/indexes.graphql"
+      "coingecko/ping.graphql"
+      "coingecko/search.graphql"
+      "coingecko/simple.graphql"
+      "coingecko/trending.graphql"
     ]
   ) {
   query: Query
