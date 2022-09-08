@@ -3,94 +3,17 @@ type Data {
   active_cryptocurrencies: Int
   ended_icos: Int
   market_cap_change_percentage_24h_usd: Float
-  market_cap_percentage: MarketCapPercentage
+  market_cap_percentage: JSON
   markets: Int
   ongoing_icos: Int
-  total_market_cap: TotalMarketCap
-  total_volume: TotalVolume
+  total_market_cap: Currencies
+  total_volume: Currencies
   upcoming_icos: Int
   updated_at: Int
 }
 
-type MarketCapPercentage {
-  ada: Float
-  bnb: Float
-  btc: Float
-  busd: Float
-  doge: Float
-  eth: Float
-  sol: Float
-  usdc: Float
-  usdt: Float
-  xrp: Float
-}
-
 type Global {
   data: Data
-}
-
-type TotalMarketCap {
-  aed: Float
-  ars: Float
-  aud: Float
-  bch: Float
-  bdt: Float
-  bhd: Float
-  bits: Float
-  bmd: Float
-  bnb: Float
-  brl: Float
-  btc: Float
-  cad: Float
-  chf: Float
-  clp: ID
-  cny: Float
-  czk: Float
-  dkk: Float
-  dot: Float
-  eos: Float
-  eth: Float
-  eur: Float
-  gbp: Float
-  hkd: Float
-  huf: Float
-  idr: ID
-  ils: Float
-  inr: Float
-  jpy: Float
-  krw: Float
-  kwd: Float
-  link: Float
-  lkr: Float
-  ltc: Float
-  mmk: ID
-  mxn: Float
-  myr: Float
-  ngn: Float
-  nok: Float
-  nzd: Float
-  php: Float
-  pkr: Float
-  pln: Float
-  rub: Float
-  sar: Float
-  sats: ID
-  sek: Float
-  sgd: Float
-  thb: Float
-  try: Float
-  twd: Float
-  uah: Float
-  usd: Float
-  vef: Float
-  vnd: ID
-  xag: Float
-  xau: Float
-  xdr: Float
-  xlm: Float
-  xrp: Float
-  yfi: Float
-  zar: Float
 }
 
 # DECENTRALIZED FINANCE DEFI TYPES

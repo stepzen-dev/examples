@@ -1,61 +1,3 @@
-type CurrentPrice {
-  aed: Float
-  ars: Float
-  aud: Float
-  bch: Float
-  bdt: Float
-  bhd: Float
-  bits: Int
-  bmd: Float
-  brl: Float
-  btc: Int
-  cad: Float
-  chf: Float
-  clp: Float
-  cny: Float
-  czk: Float
-  dkk: Float
-  eth: Float
-  eur: Float
-  gbp: Float
-  hkd: Float
-  huf: Float
-  idr: Float
-  ils: Float
-  inr: Float
-  jpy: Float
-  krw: Float
-  kwd: Float
-  link: Float
-  lkr: Float
-  ltc: Float
-  mmk: Float
-  mxn: Float
-  myr: Float
-  ngn: Float
-  nok: Float
-  nzd: Float
-  php: Float
-  pkr: Float
-  pln: Float
-  rub: Float
-  sar: Float
-  sats: Int
-  sek: Float
-  sgd: Float
-  thb: Float
-  try: Float
-  twd: Float
-  uah: Float
-  usd: Float
-  vef: Float
-  vnd: Float
-  xag: Float
-  xau: Float
-  xdr: Float
-  zar: Float
-}
-
 type Localization {
   ar: String
   bg: String
@@ -92,68 +34,10 @@ type Localization {
   zh: String
 }
 
-type MarketCap {
-  aed: Float
-  ars: Float
-  aud: Float
-  bch: Float
-  bdt: Float
-  bhd: Float
-  bits: ID
-  bmd: Float
-  brl: Float
-  btc: Int
-  cad: Float
-  chf: Float
-  clp: Float
-  cny: Float
-  czk: Float
-  dkk: Float
-  eth: Float
-  eur: Float
-  gbp: Float
-  hkd: Float
-  huf: Float
-  idr: ID
-  ils: Float
-  inr: Float
-  jpy: Float
-  krw: ID
-  kwd: Float
-  link: Float
-  lkr: Float
-  ltc: Float
-  mmk: Float
-  mxn: Float
-  myr: Float
-  ngn: Float
-  nok: Float
-  nzd: Float
-  php: Float
-  pkr: Float
-  pln: Float
-  rub: Float
-  sar: Float
-  sats: ID
-  sek: Float
-  sgd: Float
-  thb: Float
-  try: Float
-  twd: Float
-  uah: Float
-  usd: Float
-  vef: Float
-  vnd: ID
-  xag: Float
-  xau: Float
-  xdr: Float
-  zar: Float
-}
-
 type CoinsMarketData {
-  current_price: CurrentPrice
-  market_cap: MarketCap
-  total_volume: TotalVolume
+  current_price: Currencies
+  market_cap: Currencies
+  total_volume: Currencies
 }
 
 type CoinsPublicInterestStats {
@@ -171,64 +55,6 @@ type CoinHistory {
   name: String
   public_interest_stats: CoinsPublicInterestStats
   symbol: String
-}
-
-type TotalVolume {
-  aed: Float
-  ars: Float
-  aud: Float
-  bch: Float
-  bdt: Float
-  bhd: Float
-  bits: Float
-  bmd: Float
-  brl: Float
-  btc: Float
-  cad: Float
-  chf: Float
-  clp: Float
-  cny: Float
-  czk: Float
-  dkk: Float
-  eth: Float
-  eur: Float
-  gbp: Float
-  hkd: Float
-  huf: Float
-  idr: Float
-  ils: Float
-  inr: Float
-  jpy: Float
-  krw: Float
-  kwd: Float
-  link: Float
-  lkr: Float
-  ltc: Float
-  mmk: Float
-  mxn: Float
-  myr: Float
-  ngn: Float
-  nok: Float
-  nzd: Float
-  php: Float
-  pkr: Float
-  pln: Float
-  rub: Float
-  sar: Float
-  sats: Float
-  sek: Float
-  sgd: Float
-  thb: Float
-  try: Float
-  twd: Float
-  uah: Float
-  usd: Float
-  vef: Float
-  vnd: Float
-  xag: Float
-  xau: Float
-  xdr: Float
-  zar: Float
 }
 
 # TICKERS
@@ -250,7 +76,7 @@ type ConvertedVolume {
   usd: Float
 }
 
-type FullyDilutedValuation {
+type Currencies {
   aed: ID
   ars: ID
   aud: ID
@@ -259,9 +85,9 @@ type FullyDilutedValuation {
   bhd: ID
   bits: ID
   bmd: ID
-  bnb: Int
+  bnb: ID
   brl: ID
-  btc: Int
+  btc: ID
   cad: ID
   chf: ID
   clp: ID
@@ -270,7 +96,7 @@ type FullyDilutedValuation {
   dkk: ID
   dot: ID
   eos: ID
-  eth: Int
+  eth: ID
   eur: ID
   gbp: ID
   hkd: ID
@@ -306,11 +132,11 @@ type FullyDilutedValuation {
   vef: ID
   vnd: ID
   xag: ID
-  xau: Int
+  xau: ID
   xdr: ID
   xlm: ID
   xrp: ID
-  yfi: Int
+  yfi: ID
   zar: ID
 }
 
@@ -324,7 +150,7 @@ type CoinsData {
   community_data: CommunityData
   community_score: Float
   country_origin: String
-  description: Description
+  description: Localization
   developer_data: DeveloperData
   developer_score: Float
   genesis_date: Date
@@ -338,9 +164,6 @@ type CoinsData {
   market_cap_rank: Int
   market_data: MarketData
   name: String
-  """
-  Object typed as JSON since it has fields [""] that are invalid graphql identifiers
-  """
   platforms: JSON
   public_interest_score: Float
   public_interest_stats: PublicInterestStats
@@ -404,7 +227,11 @@ type Query {
     coin_market_chart(id: String, days: String, interval: String, vs_currency: String): HistoricalMarketData
         @rest(endpoint: "https://api.coingecko.com/api/v3/coins/$id/market_chart"),
 
-    coin_history(id: String, date: String, localization: String): CoinHistory
+    coin_history(
+        id: String = "bitcoin", 
+        date: String = "30-12-2017", 
+        localization: String = ""
+    ): CoinHistory
         @rest(endpoint: "https://api.coingecko.com/api/v3/coins/$id/history"),
 
     coins_tickers(id: String, depth: String, exchange_ids: String, order: String, page: String): CoinTickers
@@ -432,6 +259,6 @@ type Query {
     ): [CoinMarketData]
         @rest(endpoint: "https://api.coingecko.com/api/v3/coins/markets"),
 
-    coins_list(include_platform: String): [CoinsList]
+    coins_list(include_platform: Boolean = false): [CoinsList]
         @rest(endpoint: "https://api.coingecko.com/api/v3/coins/list")
 }

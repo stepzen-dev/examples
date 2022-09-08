@@ -44,7 +44,7 @@ type TickersEntry {
   base: String
   bid_ask_spread_percentage: Float
   coin_id: String
-  converted_last: ConvertedLast
+  converted_last: ConvertedVolume
   converted_volume: ConvertedVolume
   is_anomaly: Boolean
   is_stale: Boolean

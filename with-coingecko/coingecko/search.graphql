@@ -11,29 +11,15 @@ type CoinsEntry {
   name: String
   symbol: String
   thumb: String
-}
-
-type ExchangesEntry {
-  id: String
-  large: String
   market_type: String
-  name: String
-  thumb: String
-}
-
-type NftsEntry {
-  id: String
-  name: String
-  symbol: String
-  thumb: String
 }
 
 type Search {
   categories: [CategoriesEntry]
   coins: [CoinsEntry]
-  exchanges: [ExchangesEntry]
+  exchanges: [CoinsEntry]
   icos: [JSON]
-  nfts: [NftsEntry]
+  nfts: [CoinsEntry]
 }
 
 type Query {

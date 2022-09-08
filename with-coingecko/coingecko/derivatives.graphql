@@ -4,13 +4,6 @@ type DerivativeExchanges {
   name: String
 }
 
-# SPECIFIC DERIVATIVE
-type ConvertedLast {
-  btc: Float
-  eth: Float
-  usd: Float
-}
-
 type Derivative {
   country: JSON
   description: String
@@ -29,7 +22,7 @@ type DerivativeTickersEntry {
   base: String
   bid_ask_spread: Float
   contract_type: String
-  converted_last: ConvertedLast
+  converted_last: ConvertedVolume
   converted_volume: ConvertedVolume
   expired_at: Int
   funding_rate: Float
