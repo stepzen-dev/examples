@@ -5,6 +5,7 @@ type Project {
   name: String
   type: String
 }
+
 type Exchange {
   alert_notice: String
   centralized: Boolean
@@ -30,6 +31,7 @@ type Exchange {
   url: String
   year_established: Int
 }
+
 type StatusUpdatesEntry {
   category: String
   created_at: DateTime
@@ -61,12 +63,6 @@ type TickersEntry {
   volume: Float
 }
 
-# EXCHANGE LIST
-type ExchangeList {
-  id: String
-  name: String
-}
-
 # EXCHANGE 
 type Exchanges {
   country: String
@@ -91,7 +87,7 @@ type Query {
     exchange: Exchange
         @rest(endpoint: "https://api.coingecko.com/api/v3/exchanges/binance"),
 
-    exchanges_list: [ExchangeList]
+    exchanges_list: [IndexList]
         @rest(endpoint: "https://api.coingecko.com/api/v3/exchanges/list"),
 
     exchanges(page: String, per_page: String): [Exchanges]

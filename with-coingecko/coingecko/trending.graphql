@@ -15,6 +15,7 @@ type Item {
   symbol: String
   thumb: String
 }
+
 type Trending {
   coins: [TradingCoinsEntry]
   exchanges: [JSON]

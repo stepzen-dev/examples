@@ -1,9 +1,4 @@
 # DERIVATIVE EXCHANGES
-type DerivativeExchanges {
-  id: String
-  name: String
-}
-
 type Derivative {
   country: JSON
   description: String
@@ -38,21 +33,6 @@ type DerivativeTickersEntry {
   trade_url: String
 }
 
-# EXCHANGES
-type DerivativesExchanges {
-  country: String
-  description: String
-  id: String
-  image: String
-  name: String
-  number_of_futures_pairs: Int
-  number_of_perpetual_pairs: Int
-  open_interest_btc: Float
-  trade_volume_24h_btc: Float
-  url: String
-  year_established: Int
-}
-
 # DERIVATIVES
 type Derivatives {
   basis: Float
@@ -72,13 +52,13 @@ type Derivatives {
 }
 
 type Query {
-    derivative_list: [DerivativeExchanges]
+    derivative_list: [IndexList]
         @rest(endpoint: "https://api.coingecko.com/api/v3/derivatives/exchanges/list"),
 
     derivative(id: String, include_tickers: String): Derivative
         @rest(endpoint: "https://api.coingecko.com/api/v3/derivatives/exchanges/$id"),
 
-    derivative_exchanges(order: String): [DerivativesExchanges]
+    derivative_exchanges(order: String): [Derivative]
         @rest(endpoint: "https://api.coingecko.com/api/v3/derivatives/exchanges"),
 
     derivatives(include_tickers: String): [Derivatives]
