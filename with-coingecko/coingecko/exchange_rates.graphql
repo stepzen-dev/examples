@@ -1,0 +1,8 @@
+type ExchangeRates {
+  rates: Currencies
+}
+
+type Query {
+  exchange_rates: ExchangeRates
+    @rest(endpoint: "https://api.coingecko.com/api/v3/exchange_rates")
+}

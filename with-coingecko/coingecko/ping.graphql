@@ -1,0 +1,7 @@
+type PingType {
+  gecko_says: String
+}
+
+type Query {
+  ping: PingType @rest(endpoint: "https://api.coingecko.com/api/v3/ping")
+}

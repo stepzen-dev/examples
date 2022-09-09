@@ -1,0 +1,156 @@
+type HistoricalMarketData {
+  market_caps: [[Float]]
+  prices: [[Float]]
+  total_volumes: [[Float]]
+}
+
+type CodeAdditionsDeletions4Weeks {
+  additions: JSON
+  deletions: JSON
+}
+
+type CommunityData {
+  facebook_likes: JSON
+  reddit_accounts_active_48h: Int
+  reddit_average_comments_48h: Int
+  reddit_average_posts_48h: Int
+  reddit_subscribers: Int
+  telegram_channel_user_count: JSON
+  twitter_followers: Int
+}
+
+type DeveloperData {
+  closed_issues: Int
+  code_additions_deletions_4_weeks: CodeAdditionsDeletions4Weeks
+  commit_count_4_weeks: Int
+  forks: Int
+  last_4_weeks_commit_activity_series: [JSON]
+  pull_request_contributors: Int
+  pull_requests_merged: Int
+  stars: Int
+  subscribers: Int
+  total_issues: Int
+}
+
+type Image {
+  large: String
+  small: String
+  thumb: String
+}
+
+type Links {
+  announcement_url: [String]
+  bitcointalk_thread_identifier: JSON
+  blockchain_site: [String]
+  chat_url: [String]
+  facebook_username: String
+  homepage: [String]
+  official_forum_url: [String]
+  repos_url: ReposUrl
+  subreddit_url: JSON
+  telegram_channel_identifier: String
+  twitter_screen_name: String
+}
+
+type MarketData {
+  ath: Currencies
+  ath_change_percentage: Currencies
+  ath_date: Currencies
+  atl: Currencies
+  atl_change_percentage: Currencies
+  atl_date: Currencies
+  circulating_supply: Float
+  current_price: Currencies
+  fdv_to_tvl_ratio: JSON
+  fully_diluted_valuation: JSON
+  high_24h: Currencies
+  last_updated: DateTime
+  low_24h: Currencies
+  market_cap: Currencies
+  market_cap_change_24h: Float
+  market_cap_change_24h_in_currency: Currencies
+  market_cap_change_percentage_24h: Float
+  market_cap_change_percentage_24h_in_currency: Currencies
+  market_cap_rank: Int
+  max_supply: JSON
+  mcap_to_tvl_ratio: JSON
+  price_change_24h: Float
+  price_change_24h_in_currency: Currencies
+  price_change_percentage_14d: Float
+  price_change_percentage_14d_in_currency: Currencies
+  price_change_percentage_1h_in_currency: Currencies
+  price_change_percentage_1y: Float
+  price_change_percentage_1y_in_currency: Currencies
+  price_change_percentage_200d: Float
+  price_change_percentage_200d_in_currency: Currencies
+  price_change_percentage_24h: Float
+  price_change_percentage_24h_in_currency: Currencies
+  price_change_percentage_30d: Float
+  price_change_percentage_30d_in_currency: Currencies
+  price_change_percentage_60d: Float
+  price_change_percentage_60d_in_currency: Currencies
+  price_change_percentage_7d: Float
+  price_change_percentage_7d_in_currency: Currencies
+  roi: JSON
+  sparkline_7d: Sparkline7d
+  total_supply: Float
+  total_value_locked: JSON
+  total_volume: Currencies
+}
+
+type PublicInterestStats {
+  alexa_rank: Int
+  bing_matches: JSON
+}
+
+type ReposUrl {
+  bitbucket: [JSON]
+  github: [JSON]
+}
+
+type ContractData {
+  additional_notices: [JSON]
+  asset_platform_id: String
+  block_time_in_minutes: Int
+  categories: [String]
+  coingecko_rank: Int
+  coingecko_score: Float
+  community_data: CommunityData
+  community_score: Float
+  contract_address: String
+  country_origin: String
+  description: Localization
+  developer_data: DeveloperData
+  developer_score: Int
+  genesis_date: JSON
+  hashing_algorithm: JSON
+  id: String
+  image: Image
+  last_updated: DateTime
+  links: Links
+  liquidity_score: Float
+  localization: Localization
+  market_cap_rank: Int
+  market_data: MarketData
+  name: String
+  platforms: JSON
+  public_interest_score: Float
+  public_interest_stats: PublicInterestStats
+  public_notice: JSON
+  sentiment_votes_down_percentage: Float
+  sentiment_votes_up_percentage: Float
+  status_updates: [JSON]
+  symbol: String
+  tickers: [TickersEntry]
+}
+
+type Query {
+    market_chart_range(id: String, contract_address: String, from: String, to: String, vs_currency: String): HistoricalMarketData
+        @rest(endpoint: "https://api.coingecko.com/api/v3/coins/$id/contract/$contract_address/market_chart/range"),
+
+    market_chart(id: String, contract_address: String, days: String, vs_currency: String): HistoricalMarketData
+        @rest(endpoint: "https://api.coingecko.com/api/v3/coins/$id/contract/$contract_address/market_chart/"),
+
+    contract(id: String, contract_address: String): ContractData
+        @rest(endpoint: "https://api.coingecko.com/api/v3/coins/$id/contract/$contract_address")
+}

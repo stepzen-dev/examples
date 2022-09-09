@@ -1,0 +1,23 @@
+type Categories {
+  content: String
+  id: String
+  market_cap: Float
+  market_cap_change_24h: Float
+  name: String
+  top_3_coins: [String]
+  updated_at: DateTime
+  volume_24h: Float
+}
+
+type CategoriesList {
+  name: String
+  category_id: String
+}
+
+type Query {
+    categories(order: String): [Categories]
+        @rest(endpoint: "https://api.coingecko.com/api/v3/coins/categories"),
+
+    categories_list: [CategoriesList]
+        @rest(endpoint: "https://api.coingecko.com/api/v3/coins/categories/list")
+}

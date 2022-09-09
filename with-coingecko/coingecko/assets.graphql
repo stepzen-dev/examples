@@ -1,0 +1,11 @@
+type AssetPlatforms {
+  id: String
+  name: String
+  shortname: String
+  chain_identifier: Int
+}
+
+type Query {
+    asset_platforms: [AssetPlatforms]
+        @rest(endpoint: "https://api.coingecko.com/api/v3/asset_platforms")
+}

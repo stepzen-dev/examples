@@ -1,0 +1,33 @@
+# INDEXES LIST
+type IndexList {
+  id: String
+  name: String
+}
+
+# INDEXES MARKET
+type IndexMarket {
+  is_multi_asset_composite: Boolean
+  last: Float
+  market: String
+  name: String
+}
+
+# INDEXES
+type Indexes {
+  id: String
+  is_multi_asset_composite: JSON
+  last: Float
+  market: String
+  name: String
+}
+
+type Query {
+    indexes_list: [IndexList]
+        @rest(endpoint: "https://api.coingecko.com/api/v3/indexes/list"),
+
+    index_market: IndexMarket
+        @rest(endpoint: "https://api.coingecko.com/api/v3/indexes/ftx/FTT"),
+
+    indexes(page: String, per_page: String): [Indexes]
+        @rest(endpoint: "https://api.coingecko.com/api/v3/indexes")
+}
