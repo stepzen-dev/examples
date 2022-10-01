@@ -54,7 +54,7 @@ servers:
 The library SpectaQL needs to be installed globally on your machine, which you can do with either npm or Yarn:
 
 ```bash
-npm install -g spectaql
+npm install -g spectaql@1.5.4
 ```
 
 To generate the static documentation, you need to run:
