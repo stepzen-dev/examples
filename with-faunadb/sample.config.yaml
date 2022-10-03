@@ -1,0 +1,7 @@
+configurationset:
+  - configuration:
+      name: faunadb
+      authorization: Basic YOUR_API_KEY
+  - configuration:
+      name: github
+      authorization: Bearer YOUR_PERSONAL_ACCESS_TOKEN
