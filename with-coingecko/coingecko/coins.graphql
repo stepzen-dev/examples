@@ -1,0 +1,264 @@
+type Localization {
+  ar: String
+  bg: String
+  cs: String
+  da: String
+  de: String
+  el: String
+  en: String
+  es: String
+  fi: String
+  fr: String
+  he: String
+  hi: String
+  hr: String
+  hu: String
+  id: String
+  it: String
+  ja: String
+  ko: String
+  lt: String
+  nl: String
+  no: String
+  pl: String
+  pt: String
+  ro: String
+  ru: String
+  sk: String
+  sl: String
+  sv: String
+  th: String
+  tr: String
+  uk: String
+  vi: String
+  zh: String
+}
+
+type CoinsMarketData {
+  current_price: Currencies
+  market_cap: Currencies
+  total_volume: Currencies
+}
+
+type CoinsPublicInterestStats {
+  alexa_rank: JSON
+  bing_matches: JSON
+}
+
+type CoinHistory {
+  community_data: CommunityData
+  developer_data: DeveloperData
+  id: String
+  image: Image
+  localization: Localization
+  market_data: CoinsMarketData
+  name: String
+  public_interest_stats: CoinsPublicInterestStats
+  symbol: String
+}
+
+# TICKERS
+type Market {
+  has_trading_incentive: Boolean
+  identifier: String
+  name: String
+}
+
+type CoinTickers {
+  name: String
+  tickers: [TickersEntry]
+}
+
+# COINS 
+type ConvertedVolume {
+  btc: Float
+  eth: Float
+  usd: Float
+}
+
+type Currencies {
+  aed: ID
+  ars: ID
+  aud: ID
+  bch: ID
+  bdt: ID
+  bhd: ID
+  bits: ID
+  bmd: ID
+  bnb: ID
+  brl: ID
+  btc: ID
+  cad: ID
+  chf: ID
+  clp: ID
+  cny: ID
+  czk: ID
+  dkk: ID
+  dot: ID
+  eos: ID
+  eth: ID
+  eur: ID
+  gbp: ID
+  hkd: ID
+  huf: ID
+  idr: ID
+  ils: ID
+  inr: ID
+  jpy: ID
+  krw: ID
+  kwd: ID
+  link: ID
+  lkr: ID
+  ltc: ID
+  mmk: ID
+  mxn: ID
+  myr: ID
+  ngn: ID
+  nok: ID
+  nzd: ID
+  php: ID
+  pkr: ID
+  pln: ID
+  rub: ID
+  sar: ID
+  sats: ID
+  sek: ID
+  sgd: ID
+  thb: ID
+  try: ID
+  twd: ID
+  uah: ID
+  usd: ID
+  vef: ID
+  vnd: ID
+  xag: ID
+  xau: ID
+  xdr: ID
+  xlm: ID
+  xrp: ID
+  yfi: ID
+  zar: ID
+}
+
+type CoinsData {
+  additional_notices: [JSON]
+  asset_platform_id: JSON
+  block_time_in_minutes: Int
+  categories: [String]
+  coingecko_rank: Int
+  coingecko_score: Float
+  community_data: CommunityData
+  community_score: Float
+  country_origin: String
+  description: Localization
+  developer_data: DeveloperData
+  developer_score: Float
+  genesis_date: Date
+  hashing_algorithm: String
+  id: String
+  image: Image
+  last_updated: DateTime
+  links: Links
+  liquidity_score: Float
+  localization: Localization
+  market_cap_rank: Int
+  market_data: MarketData
+  name: String
+  platforms: JSON
+  public_interest_score: Float
+  public_interest_stats: PublicInterestStats
+  public_notice: JSON
+  sentiment_votes_down_percentage: Float
+  sentiment_votes_up_percentage: Float
+  status_updates: [JSON]
+  symbol: String
+  tickers: [TickersEntry]
+}
+
+type Sparkline7d {
+  price: [Float]
+}
+
+# MARKETS
+type CoinMarketData {
+  ath: Float
+  ath_change_percentage: Float
+  ath_date: DateTime
+  atl: Float
+  atl_change_percentage: Float
+  atl_date: DateTime
+  circulating_supply: Int
+  current_price: Float
+  fully_diluted_valuation: JSON
+  high_24h: Float
+  id: String
+  image: String
+  last_updated: DateTime
+  low_24h: Float
+  market_cap: Int
+  market_cap_change_24h: Int
+  market_cap_change_percentage_24h: Int
+  market_cap_rank: JSON
+  max_supply: JSON
+  name: String
+  price_change_24h: Float
+  price_change_percentage_24h: Float
+  price_change_percentage_7d_in_currency: Float
+  roi: JSON
+  sparkline_in_7d: Sparkline7d
+  symbol: String
+  total_supply: Float
+  total_volume: Float
+}
+
+type CoinsList {
+  id: String
+  name: String
+  symbol: String
+}
+
+type Query {
+    ohlc(id: String, days: String, vs_currency: String): [[Float]]
+        @rest(endpoint: "https://api.coingecko.com/api/v3/coins/$id/ohlc"),
+
+    coins_market_range(id: String, from: String, to: String, vs_currency: String): HistoricalMarketData
+        @rest(endpoint: "https://api.coingecko.com/api/v3/coins/$id/market_chart/range"),
+
+    coin_market_chart(id: String, days: String, interval: String, vs_currency: String): HistoricalMarketData
+        @rest(endpoint: "https://api.coingecko.com/api/v3/coins/$id/market_chart"),
+
+    coin_history(
+        id: String = "bitcoin", 
+        date: String = "30-12-2017", 
+        localization: String = ""
+    ): CoinHistory
+        @rest(endpoint: "https://api.coingecko.com/api/v3/coins/$id/history"),
+
+    coins_tickers(id: String, depth: String, exchange_ids: String, order: String, page: String): CoinTickers
+        @rest(endpoint: "https://api.coingecko.com/api/v3/coins/$id/tickers"),
+
+    coins(
+        id: String,
+        community_data: String
+        developer_data: String
+        localization: String
+        market_data: String
+        sparkline: String
+        tickers: String
+    ): CoinsData @rest(endpoint: "https://api.coingecko.com/api/v3/coins/$id"),
+
+    coins_market(
+        category: String
+        ids: String
+        order: String
+        page: String
+        per_page: String
+        price_change_percentage: String
+        sparkline: String
+        vs_currency: String
+    ): [CoinMarketData]
+        @rest(endpoint: "https://api.coingecko.com/api/v3/coins/markets"),
+
+    coins_list(include_platform: Boolean = false): [CoinsList]
+        @rest(endpoint: "https://api.coingecko.com/api/v3/coins/list")
+}

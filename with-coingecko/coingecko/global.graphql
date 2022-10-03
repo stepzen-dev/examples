@@ -1,0 +1,40 @@
+# GLOBAL TYPES
+type Data {
+  active_cryptocurrencies: Int
+  ended_icos: Int
+  market_cap_change_percentage_24h_usd: Float
+  market_cap_percentage: JSON
+  markets: Int
+  ongoing_icos: Int
+  total_market_cap: Currencies
+  total_volume: Currencies
+  upcoming_icos: Int
+  updated_at: Int
+}
+
+type Global {
+  data: Data
+}
+
+# DECENTRALIZED FINANCE DEFI TYPES
+type DefiData {
+  defi_dominance: Float
+  defi_market_cap: Float
+  defi_to_eth_ratio: Float
+  eth_market_cap: Float
+  top_coin_defi_dominance: Float
+  top_coin_name: String
+  trading_volume_24h: Float
+}
+
+type Defi {
+  data: DefiData
+}
+
+type Query {
+  global: Global @rest(endpoint: "https://api.coingecko.com/api/v3/global"),
+  defi: Defi
+    @rest(
+      endpoint: "https://api.coingecko.com/api/v3/global/decentralized_finance_defi"
+    )
+}

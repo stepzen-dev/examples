@@ -1,0 +1,24 @@
+type Query {
+    supported_currencies: [String]
+        @rest(endpoint: "https://api.coingecko.com/api/v3/simple/supported_vs_currencies"),
+
+    token_price(
+        id: String
+        contract_addresses: String
+        include_24hr_change: String
+        include_24hr_vol: String
+        include_last_updated_at: String
+        include_market_cap: String
+        vs_currencies: String
+    ): JSON
+        @rest(endpoint: "https://api.coingecko.com/api/v3/simple/token_price/$id"),
+
+    simple_price(
+        ids: String
+        include_24hr_change: String
+        include_24hr_vol: String
+        include_last_updated_at: String
+        include_market_cap: String
+        vs_currencies: String
+    ): JSON @rest(endpoint: "https://api.coingecko.com/api/v3/simple/price")
+}
