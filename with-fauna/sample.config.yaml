@@ -1,6 +1,6 @@
 configurationset:
   - configuration:
-      name: faunadb
+      name: fauna
       authorization: Basic YOUR_API_KEY
   - configuration:
       name: github

@@ -1,4 +1,4 @@
-extend type faunadb_Repository {
+extend type fauna_Repository {
   githubDetails: github_Repository
     @materializer(
       query: "github_repository"
