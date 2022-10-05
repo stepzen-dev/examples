@@ -5,79 +5,130 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>StepZen - Frankfurter GraphQL API</title>
     <link rel="stylesheet" href="stylesheets/spectaql.min.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600&display=swap" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="javascripts/spectaql.min.js"></script>
   </head>
-  <body id="spectacle">
-    <div id="page" class="drawer-layout drawer-slide-right-large">
+  <body id="spectaql">
+    <div id="page" class="drawer-layout">
       <div id="sidebar">
-        <button id="close-button" class="close-button" aria-label="Close menu" type="button" data-drawer-close>
-          <span aria-hidden="true">×</span>
-        </button>
-        <div id="logo">
-          <img src="images/logo.svg" title="StepZen - Frankfurter GraphQL API" /> </div>
+        <div class="sidebar-top-container">
+          <div id="logo">
+            <img src="images/logo.svg" title="StepZen - Frankfurter GraphQL API" /> </div>
+          <button class="close-button" type="button">
+            <span aria-hidden="true">×</span>
+            <span class="sr-only">Close menu</span>
+          </button>
+        </div>
         <nav id="nav" role="navigation">
-          <h5>Introduction</h5>
-          <a href="#introduction">Welcome</a>
-          <h5>Operations</h5>
-          <a href="#operation-frankfurter_currency_list-Queries"> frankfurter_currency_list </a>
-          <a href="#operation-frankfurter_historical_rates-Queries"> frankfurter_historical_rates </a>
-          <a href="#operation-frankfurter_latest_rates-Queries"> frankfurter_latest_rates </a>
-          <a href="#operation-frankfurter_time_series-Queries"> frankfurter_time_series </a>
-          <h5>Types</h5>
-          <a href="#definition-Boolean"> Boolean </a>
-          <a href="#definition-Date"> Date </a>
-          <a href="#definition-Float"> Float </a>
-          <a href="#definition-Frankfurter_Historical_Rates"> Frankfurter_Historical_Rates </a>
-          <a href="#definition-Frankfurter_Latest_Rates"> Frankfurter_Latest_Rates </a>
-          <a href="#definition-Frankfurter_TimeSeries_Rates"> Frankfurter_TimeSeries_Rates </a>
-          <a href="#definition-JSON"> JSON </a>
-          <a href="#definition-String"> String </a>
+          <div class="nav-group">
+            <h4 class="nav-group-title">Introduction</h4>
+            <ul class="nav-group-items">
+              <li>
+                <a href="#introduction">Welcome</a>
+              </li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <h4 class="nav-group-title">Operations</h4>
+            <ul class="nav-group-items">
+              <li class="nav-group-section">
+                <h5 class="nav-group-section-title">
+                  <a href="#group-Operations-Queries">Queries</a>
+                </h5>
+                <ul class="nav-group-section-items">
+                  <li>
+                    <a href="#query-frankfurter_currency_list">frankfurter_currency_list</a>
+                  </li>
+                  <li>
+                    <a href="#query-frankfurter_historical_rates">frankfurter_historical_rates</a>
+                  </li>
+                  <li>
+                    <a href="#query-frankfurter_latest_rates">frankfurter_latest_rates</a>
+                  </li>
+                  <li>
+                    <a href="#query-frankfurter_time_series">frankfurter_time_series</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <a href="#"></a>
+              </li>
+            </ul>
+          </div>
+          <div class="nav-group">
+            <h4 class="nav-group-title">Types</h4>
+            <ul class="nav-group-items">
+              <li>
+                <a href="#definition-Boolean">Boolean</a>
+              </li>
+              <li>
+                <a href="#definition-Date">Date</a>
+              </li>
+              <li>
+                <a href="#definition-Float">Float</a>
+              </li>
+              <li>
+                <a href="#definition-Frankfurter_Historical_Rates">Frankfurter_Historical_Rates</a>
+              </li>
+              <li>
+                <a href="#definition-Frankfurter_Latest_Rates">Frankfurter_Latest_Rates</a>
+              </li>
+              <li>
+                <a href="#definition-Frankfurter_TimeSeries_Rates">Frankfurter_TimeSeries_Rates</a>
+              </li>
+              <li>
+                <a href="#definition-JSON">JSON</a>
+              </li>
+              <li>
+                <a href="#definition-String">String</a>
+              </li>
+            </ul>
+          </div>
         </nav>
       </div>
-      <div id="docs" class="row collapse expanded drawer" data-drawer>
-        <button class="floating-menu-icon" type="button" data-drawer-slide="right">
-          <span class="hamburger"></span>
-        </button>
-        <div class="example-box doc-content"></div>
+      <div id="docs">
+        <div id="mobile-navbar">
+          <button class="sidebar-open-button" type="button">
+            <span class="hamburger"></span>
+            <span class="sr-only">All topics</span>
+          </button>
+        </div>
         <article id="content">
-          <h1 class="doc-title">StepZen - Frankfurter GraphQL API</h1>
+          <h1 class="doc-heading">StepZen - Frankfurter GraphQL API</h1>
           <div id="introduction" data-traverse-target="introduction">
-            <div class="doc-row">
+            <div id="welcome" class="doc-row">
               <div class="doc-copy">
                 <p>Frankfurter is an open-source API for current and historical foreign exchange rates published by the European Central Bank. Using GraphQL!
-                  <a href="https://demo.stepzen.net/api/with-spectaql/__graphql">View GraphiQL playground</a>
+                  <a href="https://publica1703e03faa4e8b6.stepzen.net/api/frankfurter/__graphql">View GraphiQL playground</a>
                 </p>
               </div>
               <div class="doc-examples">
-                <section>
+                <div class="example-section welcome-contact-section">
                   <h5>Contact</h5>
-                  <p> StepZen Support
-                    <br/>
+                  <p class="contact-name">StepZen Support</p>
+                  <p class="contact-email">
                     <a href="mailto:support@stepzen.com">support@stepzen.com</a>
                   </p>
-                  <h5>API Endpoints</h5> <pre><code>Production:
-https://demo.stepzen.net/api/with-spectaql/__graphql
-</code></pre> </section>
+                </div>
+                <div class="example-section welcome-api-endpoints-section example-section-is-code">
+                  <h5>API Endpoints</h5> <pre><code>https://publica1703e03faa4e8b6.stepzen.net/api/frankfurter/__graphql</code></pre> </div>
               </div>
             </div>
           </div>
-          <h1>Queries</h1>
-          <span id="path-frankfurter_currency_list"></span>
-          <div id="operation-frankfurter_currency_list-Queries" class="operation panel" data-traverse-target="operation-frankfurter_currency_list-Queries">
-            <h2 class="operation-name "> <code>frankfurter_currency_list</code> </h2>
+          <h1 id="group-Operations-Queries" class="group-heading" data-traverse-target="group-Operations-Queries">Queries</h1>
+          <section id="query-frankfurter_currency_list" class="operation operation-query" data-traverse-target="query-frankfurter_currency_list">
+            <h2 class="operation-heading "> <code>frankfurter_currency_list</code> </h2>
             <div class="doc-row">
               <div class="doc-copy">
-                <section class="swagger-request-body"> </section>
-                <section class="swagger-responses"> Returns a
-                  <a href="#definition-JSON"><code>JSON</code></a>
-                </section>
-                <br> </div>
+                <div class="operation-response doc-copy-section">
+                  <h5>Response</h5>
+                  <p> Returns a
+                    <a href="#definition-JSON"><code>JSON</code></a>
+                  </p>
+                </div>
+              </div>
               <div class="doc-examples">
-                <section>
-                  <h4>Example</h4>
+                <h4 class="example-heading">Example</h4>
+                <div class="example-section example-section-is-code operation-query-example">
                   <h5>Query</h5>
                   <html>
                   <head></head>
@@ -86,616 +137,731 @@ https://demo.stepzen.net/api/with-spectaql/__graphql
 }</span></span>
 </code></pre> </body>
                   </html>
-                </section>
-              </div>
-            </div>
-            <div class="doc-row">
-              <div class="doc-copy"> </div>
-              <div class="doc-examples">
-                <section>
-                  <h5>Response </h5>
+                </div>
+                <div class="example-section example-section-is-code operation-response-example">
+                  <h5>Response</h5>
                   <html>
                   <head></head>
-                  <body><pre><code class="hljs language-json">{<span class="hljs-attr">"data"</span>: {<span class="hljs-attr">"frankfurter_currency_list"</span>: <span class="hljs-string">{}</span>}}
+                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-attr">"frankfurter_currency_list"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">}</span>
 </code></pre> </body>
                   </html>
-                </section>
+                </div>
               </div>
             </div>
-          </div>
-          <span id="path-frankfurter_historical_rates"></span>
-          <div id="operation-frankfurter_historical_rates-Queries" class="operation panel" data-traverse-target="operation-frankfurter_historical_rates-Queries">
-            <h2 class="operation-name "> <code>frankfurter_historical_rates</code> </h2>
+          </section>
+          <section id="query-frankfurter_historical_rates" class="operation operation-query" data-traverse-target="query-frankfurter_historical_rates">
+            <div class="operation-group-name">
+              <a href="#group-Operations-Queries">Queries</a>
+            </div>
+            <h2 class="operation-heading "> <code>frankfurter_historical_rates</code> </h2>
             <div class="doc-row">
               <div class="doc-copy">
-                <section class="swagger-request-body"> </section>
-                <section class="swagger-responses"> Returns a
-                  <a href="#definition-Frankfurter_Historical_Rates"><code>Frankfurter_Historical_Rates</code></a>
-                </section>
-                <br>
-                <section class="swagger-request-params">
+                <div class="operation-response doc-copy-section">
+                  <h5>Response</h5>
+                  <p> Returns a
+                    <a href="#definition-Frankfurter_Historical_Rates"><code>Frankfurter_Historical_Rates</code></a>
+                  </p>
+                </div>
+                <div class="operation-arguments doc-copy-section">
+                  <h5>Arguments</h5>
                   <table>
-                    <tr>
-                      <th>Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr>
-                      <td><code>from</code> -
-                        <a href="#definition-String"><code>String</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
-                    <tr>
-                      <td><code>to</code> -
-                        <a href="#definition-String"><code>String</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
-                    <tr>
-                      <td><code>amount</code> -
-                        <a href="#definition-Float"><code>Float</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
-                    <tr>
-                      <td><code>date</code> -
-                        <a href="#definition-Date"><code>Date</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <span class="property-name"><code>amount</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-Float"><code>Float</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span class="property-name"><code>date</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-Date"><code>Date</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span class="property-name"><code>from</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-String"><code>String</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span class="property-name"><code>to</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-String"><code>String</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                    </tbody>
                   </table>
-                </section>
+                </div>
               </div>
               <div class="doc-examples">
-                <section>
-                  <h4>Example</h4>
+                <h4 class="example-heading">Example</h4>
+                <div class="example-section example-section-is-code operation-query-example">
                   <h5>Query</h5>
                   <html>
                   <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> frankfurter_historical_rates<span class="hljs-tag">(<span class="hljs-code">$from</span>:<span class="hljs-type"> String,</span> <span class="hljs-code">$to</span>:<span class="hljs-type"> String,</span> <span class="hljs-code">$amount</span>:<span class="hljs-type"> Float,</span> <span class="hljs-code">$date</span>:<span class="hljs-type"> Date)</span> {
-  frankfurter_historical_rates(from: <span class="hljs-code">$from</span>, to: <span class="hljs-code">$to</span>, amount: <span class="hljs-code">$amount</span>, date: <span class="hljs-code">$date</span>)</span> <span class="hljs-tag">{
+                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> frankfurter_historical_rates<span class="hljs-tag">(
+  <span class="hljs-code">$amount</span>:<span class="hljs-type"> Float,</span>
+  <span class="hljs-code">$date</span>:<span class="hljs-type"> Date,</span>
+  <span class="hljs-code">$from</span>:<span class="hljs-type"> String,</span>
+  <span class="hljs-code">$to</span>:<span class="hljs-type"> String
+</span>)</span> <span class="hljs-tag">{
+  <span class="hljs-symbol">frankfurter_historical_rates<span class="hljs-tag">(
+    amount: <span class="hljs-code">$amount</span>,
+    date: <span class="hljs-code">$date</span>,
+    from: <span class="hljs-code">$from</span>,
+    to: <span class="hljs-code">$to</span>
+  )</span> <span class="hljs-tag">{
     <span class="hljs-symbol">amount</span>
     <span class="hljs-symbol">base</span>
     <span class="hljs-symbol">date</span>
     <span class="hljs-symbol">rates</span>
   }</span></span>
-}
+}</span></span>
 </code></pre> </body>
                   </html>
+                </div>
+                <div class="example-section example-section-is-code operation-variables-example">
                   <h5>Variables</h5>
                   <html>
                   <head></head>
-                  <body><pre><code class="hljs language-json">{
-  <span class="hljs-attr">"from"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"to"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"amount"</span>: <span class="hljs-number">123.45</span>,
-  <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2022-02-28T18:52:04.796Z"</span>
-}
+                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"amount"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123.45</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"date"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2007-12-03"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"from"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"to"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
+<span class="hljs-punctuation">}</span>
 </code></pre> </body>
                   </html>
-                </section>
-              </div>
-            </div>
-            <div class="doc-row">
-              <div class="doc-copy"> </div>
-              <div class="doc-examples">
-                <section>
-                  <h5>Response </h5>
+                </div>
+                <div class="example-section example-section-is-code operation-response-example">
+                  <h5>Response</h5>
                   <html>
                   <head></head>
-                  <body><pre><code class="hljs language-json">{
-  <span class="hljs-attr">"data"</span>: {
-    <span class="hljs-attr">"frankfurter_historical_rates"</span>: {
-      <span class="hljs-attr">"amount"</span>: <span class="hljs-number">123.45</span>,
-      <span class="hljs-attr">"base"</span>: <span class="hljs-string">"xyz789"</span>,
-      <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2022-02-28T18:52:04.796Z"</span>,
-      <span class="hljs-attr">"rates"</span>: <span class="hljs-string">{}</span>
-    }
-  }
-}
+                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"frankfurter_historical_rates"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"amount"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987.65</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"base"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"date"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2007-12-03"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"rates"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
 </code></pre> </body>
                   </html>
-                </section>
+                </div>
               </div>
             </div>
-          </div>
-          <span id="path-frankfurter_latest_rates"></span>
-          <div id="operation-frankfurter_latest_rates-Queries" class="operation panel" data-traverse-target="operation-frankfurter_latest_rates-Queries">
-            <h2 class="operation-name "> <code>frankfurter_latest_rates</code> </h2>
+          </section>
+          <section id="query-frankfurter_latest_rates" class="operation operation-query" data-traverse-target="query-frankfurter_latest_rates">
+            <div class="operation-group-name">
+              <a href="#group-Operations-Queries">Queries</a>
+            </div>
+            <h2 class="operation-heading "> <code>frankfurter_latest_rates</code> </h2>
             <div class="doc-row">
               <div class="doc-copy">
-                <section class="swagger-request-body"> </section>
-                <section class="swagger-responses"> Returns a
-                  <a href="#definition-Frankfurter_Latest_Rates"><code>Frankfurter_Latest_Rates</code></a>
-                </section>
-                <br>
-                <section class="swagger-request-params">
+                <div class="operation-response doc-copy-section">
+                  <h5>Response</h5>
+                  <p> Returns a
+                    <a href="#definition-Frankfurter_Latest_Rates"><code>Frankfurter_Latest_Rates</code></a>
+                  </p>
+                </div>
+                <div class="operation-arguments doc-copy-section">
+                  <h5>Arguments</h5>
                   <table>
-                    <tr>
-                      <th>Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr>
-                      <td><code>from</code> -
-                        <a href="#definition-String"><code>String</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
-                    <tr>
-                      <td><code>to</code> -
-                        <a href="#definition-String"><code>String</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
-                    <tr>
-                      <td><code>amount</code> -
-                        <a href="#definition-Float"><code>Float</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <span class="property-name"><code>amount</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-Float"><code>Float</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span class="property-name"><code>from</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-String"><code>String</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span class="property-name"><code>to</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-String"><code>String</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                    </tbody>
                   </table>
-                </section>
+                </div>
               </div>
               <div class="doc-examples">
-                <section>
-                  <h4>Example</h4>
+                <h4 class="example-heading">Example</h4>
+                <div class="example-section example-section-is-code operation-query-example">
                   <h5>Query</h5>
                   <html>
                   <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> frankfurter_latest_rates<span class="hljs-tag">(<span class="hljs-code">$from</span>:<span class="hljs-type"> String,</span> <span class="hljs-code">$to</span>:<span class="hljs-type"> String,</span> <span class="hljs-code">$amount</span>:<span class="hljs-type"> Float)</span> {
-  frankfurter_latest_rates(from: <span class="hljs-code">$from</span>, to: <span class="hljs-code">$to</span>, amount: <span class="hljs-code">$amount</span>)</span> <span class="hljs-tag">{
+                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> frankfurter_latest_rates<span class="hljs-tag">(
+  <span class="hljs-code">$amount</span>:<span class="hljs-type"> Float,</span>
+  <span class="hljs-code">$from</span>:<span class="hljs-type"> String,</span>
+  <span class="hljs-code">$to</span>:<span class="hljs-type"> String
+</span>)</span> <span class="hljs-tag">{
+  <span class="hljs-symbol">frankfurter_latest_rates<span class="hljs-tag">(
+    amount: <span class="hljs-code">$amount</span>,
+    from: <span class="hljs-code">$from</span>,
+    to: <span class="hljs-code">$to</span>
+  )</span> <span class="hljs-tag">{
     <span class="hljs-symbol">amount</span>
     <span class="hljs-symbol">base</span>
     <span class="hljs-symbol">date</span>
     <span class="hljs-symbol">rates</span>
   }</span></span>
-}
+}</span></span>
 </code></pre> </body>
                   </html>
+                </div>
+                <div class="example-section example-section-is-code operation-variables-example">
                   <h5>Variables</h5>
                   <html>
                   <head></head>
-                  <body><pre><code class="hljs language-json">{<span class="hljs-attr">"from"</span>: <span class="hljs-string">"xyz789"</span>, <span class="hljs-attr">"to"</span>: <span class="hljs-string">"abc123"</span>, <span class="hljs-attr">"amount"</span>: <span class="hljs-number">123.45</span>}
+                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"amount"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987.65</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"from"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"to"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span>
+<span class="hljs-punctuation">}</span>
 </code></pre> </body>
                   </html>
-                </section>
-              </div>
-            </div>
-            <div class="doc-row">
-              <div class="doc-copy"> </div>
-              <div class="doc-examples">
-                <section>
-                  <h5>Response </h5>
+                </div>
+                <div class="example-section example-section-is-code operation-response-example">
+                  <h5>Response</h5>
                   <html>
                   <head></head>
-                  <body><pre><code class="hljs language-json">{
-  <span class="hljs-attr">"data"</span>: {
-    <span class="hljs-attr">"frankfurter_latest_rates"</span>: {
-      <span class="hljs-attr">"amount"</span>: <span class="hljs-number">987.65</span>,
-      <span class="hljs-attr">"base"</span>: <span class="hljs-string">"xyz789"</span>,
-      <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2022-02-28T18:52:04.796Z"</span>,
-      <span class="hljs-attr">"rates"</span>: <span class="hljs-string">{}</span>
-    }
-  }
-}
+                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"frankfurter_latest_rates"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"amount"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987.65</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"base"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"date"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2007-12-03"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"rates"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
 </code></pre> </body>
                   </html>
-                </section>
+                </div>
               </div>
             </div>
-          </div>
-          <span id="path-frankfurter_time_series"></span>
-          <div id="operation-frankfurter_time_series-Queries" class="operation panel" data-traverse-target="operation-frankfurter_time_series-Queries">
-            <h2 class="operation-name "> <code>frankfurter_time_series</code> </h2>
+          </section>
+          <section id="query-frankfurter_time_series" class="operation operation-query" data-traverse-target="query-frankfurter_time_series">
+            <div class="operation-group-name">
+              <a href="#group-Operations-Queries">Queries</a>
+            </div>
+            <h2 class="operation-heading "> <code>frankfurter_time_series</code> </h2>
             <div class="doc-row">
               <div class="doc-copy">
-                <section class="swagger-request-body"> </section>
-                <section class="swagger-responses"> Returns a
-                  <a href="#definition-Frankfurter_TimeSeries_Rates"><code>Frankfurter_TimeSeries_Rates</code></a>
-                </section>
-                <br>
-                <section class="swagger-request-params">
+                <div class="operation-response doc-copy-section">
+                  <h5>Response</h5>
+                  <p> Returns a
+                    <a href="#definition-Frankfurter_TimeSeries_Rates"><code>Frankfurter_TimeSeries_Rates</code></a>
+                  </p>
+                </div>
+                <div class="operation-arguments doc-copy-section">
+                  <h5>Arguments</h5>
                   <table>
-                    <tr>
-                      <th>Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr>
-                      <td><code>start_date</code> -
-                        <a href="#definition-Date"><code>Date</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
-                    <tr>
-                      <td><code>end_date</code> -
-                        <a href="#definition-Date"><code>Date</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
-                    <tr>
-                      <td><code>from</code> -
-                        <a href="#definition-String"><code>String</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
-                    <tr>
-                      <td><code>to</code> -
-                        <a href="#definition-String"><code>String</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
-                    <tr>
-                      <td><code>amount</code> -
-                        <a href="#definition-Float"><code>Float</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <span class="property-name"><code>amount</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-Float"><code>Float</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span class="property-name"><code>end_date</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-Date"><code>Date</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span class="property-name"><code>from</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-String"><code>String</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span class="property-name"><code>start_date</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-Date"><code>Date</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <span class="property-name"><code>to</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-String"><code>String</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                    </tbody>
                   </table>
-                </section>
+                </div>
               </div>
               <div class="doc-examples">
-                <section>
-                  <h4>Example</h4>
+                <h4 class="example-heading">Example</h4>
+                <div class="example-section example-section-is-code operation-query-example">
                   <h5>Query</h5>
                   <html>
                   <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> frankfurter_time_series<span class="hljs-tag">(<span class="hljs-code">$start_date</span>:<span class="hljs-type"> Date,</span> <span class="hljs-code">$end_date</span>:<span class="hljs-type"> Date,</span> <span class="hljs-code">$from</span>:<span class="hljs-type"> String,</span> <span class="hljs-code">$to</span>:<span class="hljs-type"> String,</span> <span class="hljs-code">$amount</span>:<span class="hljs-type"> Float)</span> {
-  frankfurter_time_series(start_date: <span class="hljs-code">$start_date</span>, end_date: <span class="hljs-code">$end_date</span>, from: <span class="hljs-code">$from</span>, to: <span class="hljs-code">$to</span>, amount: <span class="hljs-code">$amount</span>)</span> <span class="hljs-tag">{
+                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-keyword">query</span> frankfurter_time_series<span class="hljs-tag">(
+  <span class="hljs-code">$amount</span>:<span class="hljs-type"> Float,</span>
+  <span class="hljs-code">$end_date</span>:<span class="hljs-type"> Date,</span>
+  <span class="hljs-code">$from</span>:<span class="hljs-type"> String,</span>
+  <span class="hljs-code">$start_date</span>:<span class="hljs-type"> Date,</span>
+  <span class="hljs-code">$to</span>:<span class="hljs-type"> String
+</span>)</span> <span class="hljs-tag">{
+  <span class="hljs-symbol">frankfurter_time_series<span class="hljs-tag">(
+    amount: <span class="hljs-code">$amount</span>,
+    end_date: <span class="hljs-code">$end_date</span>,
+    from: <span class="hljs-code">$from</span>,
+    start_date: <span class="hljs-code">$start_date</span>,
+    to: <span class="hljs-code">$to</span>
+  )</span> <span class="hljs-tag">{
     <span class="hljs-symbol">amount</span>
     <span class="hljs-symbol">base</span>
     <span class="hljs-symbol">end_date</span>
     <span class="hljs-symbol">rates</span>
     <span class="hljs-symbol">start_date</span>
   }</span></span>
-}
+}</span></span>
 </code></pre> </body>
                   </html>
+                </div>
+                <div class="example-section example-section-is-code operation-variables-example">
                   <h5>Variables</h5>
                   <html>
                   <head></head>
-                  <body><pre><code class="hljs language-json">{
-  <span class="hljs-attr">"start_date"</span>: <span class="hljs-string">"2022-02-28T18:52:04.796Z"</span>,
-  <span class="hljs-attr">"end_date"</span>: <span class="hljs-string">"2022-02-28T18:52:04.796Z"</span>,
-  <span class="hljs-attr">"from"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"to"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"amount"</span>: <span class="hljs-number">987.65</span>
-}
+                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"amount"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987.65</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"end_date"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2007-12-03"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"from"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"start_date"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2007-12-03"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"to"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span>
+<span class="hljs-punctuation">}</span>
 </code></pre> </body>
                   </html>
-                </section>
-              </div>
-            </div>
-            <div class="doc-row">
-              <div class="doc-copy"> </div>
-              <div class="doc-examples">
-                <section>
-                  <h5>Response </h5>
+                </div>
+                <div class="example-section example-section-is-code operation-response-example">
+                  <h5>Response</h5>
                   <html>
                   <head></head>
-                  <body><pre><code class="hljs language-json">{
-  <span class="hljs-attr">"data"</span>: {
-    <span class="hljs-attr">"frankfurter_time_series"</span>: {
-      <span class="hljs-attr">"amount"</span>: <span class="hljs-number">987.65</span>,
-      <span class="hljs-attr">"base"</span>: <span class="hljs-string">"abc123"</span>,
-      <span class="hljs-attr">"end_date"</span>: <span class="hljs-string">"2021-08-28T17:52:04.796Z"</span>,
-      <span class="hljs-attr">"rates"</span>: <span class="hljs-string">{}</span>,
-      <span class="hljs-attr">"start_date"</span>: <span class="hljs-string">"2021-08-28T17:52:04.796Z"</span>
-    }
-  }
-}
+                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"data"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+    <span class="hljs-attr">"frankfurter_time_series"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span>
+      <span class="hljs-attr">"amount"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123.45</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"base"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"xyz789"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"end_date"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2007-12-03"</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"rates"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+      <span class="hljs-attr">"start_date"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2007-12-03"</span>
+    <span class="hljs-punctuation">}</span>
+  <span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
 </code></pre> </body>
                   </html>
-                </section>
+                </div>
               </div>
             </div>
-          </div>
-          <span id="tag-types"></span>
-          <h1>Types</h1>
-          <div id="definition-Boolean" class="definition panel" data-traverse-target="definition-Boolean">
-            <h2 class="panel-title">
-              <a name="/definitions/Boolean"></a>
-              <p><code>Boolean</code></p>
-            </h2>
+          </section>
+          <h1 id="group-Types" class="group-heading" data-traverse-target="group-Types">Types</h1>
+          <section id="definition-Boolean" class="definition definition-scalar" data-traverse-target="definition-Boolean">
+            <h2 class="definition-heading">Boolean</h2>
             <div class="doc-row">
               <div class="doc-copy">
-                <section class="json-schema-description">
+                <div class="definition-description doc-copy-section">
+                  <h5>Description</h5>
                   <p>The <code>Boolean</code> scalar type represents <code>true</code> or <code>false</code>.</p>
-                </section>
+                </div>
               </div>
-              <div class="doc-examples">
-                <section>
-                  <h5>Example</h5>
-                  <html>
-                  <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol"><span class="hljs-literal">false</span></span>
-</code></pre> </body>
-                  </html>
-                </section>
-              </div>
+              <div class="doc-examples"> </div>
             </div>
-          </div>
-          <div id="definition-Date" class="definition panel" data-traverse-target="definition-Date">
-            <div class="definition-tags">
-              <a class="label" href="#tag-types">Types</a>
+          </section>
+          <section id="definition-Date" class="definition definition-scalar" data-traverse-target="definition-Date">
+            <div class="definition-group-name">
+              <a href="#group-Types">Types</a>
             </div>
-            <h2 class="panel-title">
-              <a name="/definitions/Date"></a>
-              <p><code>Date</code></p>
-            </h2>
+            <h2 class="definition-heading">Date</h2>
             <div class="doc-row">
               <div class="doc-copy">
-                <section class="json-schema-description">
+                <div class="definition-description doc-copy-section">
+                  <h5>Description</h5>
                   <p><code>Date</code> scalar type represents a date. Date is serialized as an RFC 3339 section 5.6 full-date quoted string</p>
-                </section>
+                </div>
               </div>
               <div class="doc-examples">
-                <section>
+                <div class="example-section example-section-is-code">
                   <h5>Example</h5>
                   <html>
                   <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">2022-02-28T18:52:04.796Z</span>
+                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">"2007-12-03"</span>
 </code></pre> </body>
                   </html>
-                </section>
+                </div>
               </div>
             </div>
-          </div>
-          <div id="definition-Float" class="definition panel" data-traverse-target="definition-Float">
-            <div class="definition-tags">
-              <a class="label" href="#tag-types">Types</a>
+          </section>
+          <section id="definition-Float" class="definition definition-scalar" data-traverse-target="definition-Float">
+            <div class="definition-group-name">
+              <a href="#group-Types">Types</a>
             </div>
-            <h2 class="panel-title">
-              <a name="/definitions/Float"></a>
-              <p><code>Float</code></p>
-            </h2>
+            <h2 class="definition-heading">Float</h2>
             <div class="doc-row">
               <div class="doc-copy">
-                <section class="json-schema-description">
+                <div class="definition-description doc-copy-section">
+                  <h5>Description</h5>
                   <p>The <code>Float</code> scalar type represents signed double-precision fractional values as specified by
                     <a href="http://en.wikipedia.org/wiki/IEEE_floating_point">IEEE 754</a>. </p>
-                </section>
+                </div>
               </div>
               <div class="doc-examples">
-                <section>
+                <div class="example-section example-section-is-code">
                   <h5>Example</h5>
                   <html>
                   <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">987.65</span>
+                  <body><pre><code class="hljs language-json"><span class="hljs-number">123.45</span>
 </code></pre> </body>
                   </html>
-                </section>
+                </div>
               </div>
             </div>
-          </div>
-          <div id="definition-Frankfurter_Historical_Rates" class="definition panel" data-traverse-target="definition-Frankfurter_Historical_Rates">
-            <div class="definition-tags">
-              <a class="label" href="#tag-types">Types</a>
+          </section>
+          <section id="definition-Frankfurter_Historical_Rates" class="definition definition-object" data-traverse-target="definition-Frankfurter_Historical_Rates">
+            <div class="definition-group-name">
+              <a href="#group-Types">Types</a>
             </div>
-            <h2 class="panel-title">
-              <a name="/definitions/Frankfurter_Historical_Rates"></a>
-              <p><code>Frankfurter_Historical_Rates</code></p>
-            </h2>
+            <h2 class="definition-heading">Frankfurter_Historical_Rates</h2>
             <div class="doc-row">
               <div class="doc-copy">
-                <section class="json-schema-properties-blank">
+                <div class="definition-properties doc-copy-section">
+                  <h5>Fields</h5>
                   <table>
-                    <tr>
-                      <th>Field Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr>
-                      <td data-property-name="amount"> <code>amount</code> -
-                        <a href="#definition-Float"><code>Float</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
-                    <tr>
-                      <td data-property-name="base"> <code>base</code> -
-                        <a href="#definition-String"><code>String</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
-                    <tr>
-                      <td data-property-name="date"> <code>date</code> -
-                        <a href="#definition-Date"><code>Date</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
-                    <tr>
-                      <td data-property-name="rates"> <code>rates</code> -
-                        <a href="#definition-JSON"><code>JSON</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
+                    <thead>
+                      <tr>
+                        <th>Field Name</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td data-property-name="">
+                          <span class="property-name"><code>amount</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-Float"><code>Float</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                      <tr>
+                        <td data-property-name="">
+                          <span class="property-name"><code>base</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-String"><code>String</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                      <tr>
+                        <td data-property-name="">
+                          <span class="property-name"><code>date</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-Date"><code>Date</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                      <tr>
+                        <td data-property-name="">
+                          <span class="property-name"><code>rates</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-JSON"><code>JSON</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                    </tbody>
                   </table>
-                </section>
+                </div>
               </div>
               <div class="doc-examples">
-                <section>
+                <div class="example-section example-section-is-code">
                   <h5>Example</h5>
                   <html>
                   <head></head>
-                  <body><pre><code class="hljs language-json">{
-  <span class="hljs-attr">"amount"</span>: <span class="hljs-number">123.45</span>,
-  <span class="hljs-attr">"base"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2022-02-28T18:52:04.796Z"</span>,
-  <span class="hljs-attr">"rates"</span>: <span class="hljs-string">{}</span>
-}
+                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"amount"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">987.65</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"base"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"date"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2007-12-03"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"rates"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
 </code></pre> </body>
                   </html>
-                </section>
+                </div>
               </div>
             </div>
-          </div>
-          <div id="definition-Frankfurter_Latest_Rates" class="definition panel" data-traverse-target="definition-Frankfurter_Latest_Rates">
-            <div class="definition-tags">
-              <a class="label" href="#tag-types">Types</a>
+          </section>
+          <section id="definition-Frankfurter_Latest_Rates" class="definition definition-object" data-traverse-target="definition-Frankfurter_Latest_Rates">
+            <div class="definition-group-name">
+              <a href="#group-Types">Types</a>
             </div>
-            <h2 class="panel-title">
-              <a name="/definitions/Frankfurter_Latest_Rates"></a>
-              <p><code>Frankfurter_Latest_Rates</code></p>
-            </h2>
+            <h2 class="definition-heading">Frankfurter_Latest_Rates</h2>
             <div class="doc-row">
               <div class="doc-copy">
-                <section class="json-schema-properties-blank">
+                <div class="definition-properties doc-copy-section">
+                  <h5>Fields</h5>
                   <table>
-                    <tr>
-                      <th>Field Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr>
-                      <td data-property-name="amount"> <code>amount</code> -
-                        <a href="#definition-Float"><code>Float</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
-                    <tr>
-                      <td data-property-name="base"> <code>base</code> -
-                        <a href="#definition-String"><code>String</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
-                    <tr>
-                      <td data-property-name="date"> <code>date</code> -
-                        <a href="#definition-Date"><code>Date</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
-                    <tr>
-                      <td data-property-name="rates"> <code>rates</code> -
-                        <a href="#definition-JSON"><code>JSON</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
+                    <thead>
+                      <tr>
+                        <th>Field Name</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td data-property-name="">
+                          <span class="property-name"><code>amount</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-Float"><code>Float</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                      <tr>
+                        <td data-property-name="">
+                          <span class="property-name"><code>base</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-String"><code>String</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                      <tr>
+                        <td data-property-name="">
+                          <span class="property-name"><code>date</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-Date"><code>Date</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                      <tr>
+                        <td data-property-name="">
+                          <span class="property-name"><code>rates</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-JSON"><code>JSON</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                    </tbody>
                   </table>
-                </section>
+                </div>
               </div>
               <div class="doc-examples">
-                <section>
+                <div class="example-section example-section-is-code">
                   <h5>Example</h5>
                   <html>
                   <head></head>
-                  <body><pre><code class="hljs language-json">{
-  <span class="hljs-attr">"amount"</span>: <span class="hljs-number">123.45</span>,
-  <span class="hljs-attr">"base"</span>: <span class="hljs-string">"xyz789"</span>,
-  <span class="hljs-attr">"date"</span>: <span class="hljs-string">"2021-08-28T17:52:04.796Z"</span>,
-  <span class="hljs-attr">"rates"</span>: <span class="hljs-string">{}</span>
-}
+                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"amount"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123.45</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"base"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"date"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2007-12-03"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"rates"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span>
+<span class="hljs-punctuation">}</span>
 </code></pre> </body>
                   </html>
-                </section>
+                </div>
               </div>
             </div>
-          </div>
-          <div id="definition-Frankfurter_TimeSeries_Rates" class="definition panel" data-traverse-target="definition-Frankfurter_TimeSeries_Rates">
-            <div class="definition-tags">
-              <a class="label" href="#tag-types">Types</a>
+          </section>
+          <section id="definition-Frankfurter_TimeSeries_Rates" class="definition definition-object" data-traverse-target="definition-Frankfurter_TimeSeries_Rates">
+            <div class="definition-group-name">
+              <a href="#group-Types">Types</a>
             </div>
-            <h2 class="panel-title">
-              <a name="/definitions/Frankfurter_TimeSeries_Rates"></a>
-              <p><code>Frankfurter_TimeSeries_Rates</code></p>
-            </h2>
+            <h2 class="definition-heading">Frankfurter_TimeSeries_Rates</h2>
             <div class="doc-row">
               <div class="doc-copy">
-                <section class="json-schema-properties-blank">
+                <div class="definition-properties doc-copy-section">
+                  <h5>Fields</h5>
                   <table>
-                    <tr>
-                      <th>Field Name</th>
-                      <th>Description</th>
-                    </tr>
-                    <tr>
-                      <td data-property-name="amount"> <code>amount</code> -
-                        <a href="#definition-Float"><code>Float</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
-                    <tr>
-                      <td data-property-name="base"> <code>base</code> -
-                        <a href="#definition-String"><code>String</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
-                    <tr>
-                      <td data-property-name="end_date"> <code>end_date</code> -
-                        <a href="#definition-Date"><code>Date</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
-                    <tr>
-                      <td data-property-name="rates"> <code>rates</code> -
-                        <a href="#definition-JSON"><code>JSON</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
-                    <tr>
-                      <td data-property-name="start_date"> <code>start_date</code> -
-                        <a href="#definition-Date"><code>Date</code></a>
-                      </td>
-                      <td> </td>
-                    </tr>
+                    <thead>
+                      <tr>
+                        <th>Field Name</th>
+                        <th>Description</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td data-property-name="">
+                          <span class="property-name"><code>amount</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-Float"><code>Float</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                      <tr>
+                        <td data-property-name="">
+                          <span class="property-name"><code>base</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-String"><code>String</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                      <tr>
+                        <td data-property-name="">
+                          <span class="property-name"><code>end_date</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-Date"><code>Date</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                      <tr>
+                        <td data-property-name="">
+                          <span class="property-name"><code>rates</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-JSON"><code>JSON</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                      <tr>
+                        <td data-property-name="">
+                          <span class="property-name"><code>start_date</code></span> -
+                          <span class="property-type">
+                            <a href="#definition-Date"><code>Date</code></a>
+                          </span>
+                        </td>
+                        <td> </td>
+                      </tr>
+                    </tbody>
                   </table>
-                </section>
+                </div>
               </div>
               <div class="doc-examples">
-                <section>
+                <div class="example-section example-section-is-code">
                   <h5>Example</h5>
                   <html>
                   <head></head>
-                  <body><pre><code class="hljs language-json">{
-  <span class="hljs-attr">"amount"</span>: <span class="hljs-number">987.65</span>,
-  <span class="hljs-attr">"base"</span>: <span class="hljs-string">"abc123"</span>,
-  <span class="hljs-attr">"end_date"</span>: <span class="hljs-string">"2022-02-28T18:52:04.796Z"</span>,
-  <span class="hljs-attr">"rates"</span>: <span class="hljs-string">{}</span>,
-  <span class="hljs-attr">"start_date"</span>: <span class="hljs-string">"2022-02-28T18:52:04.796Z"</span>
-}
+                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span>
+  <span class="hljs-attr">"amount"</span><span class="hljs-punctuation">:</span> <span class="hljs-number">123.45</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"base"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"abc123"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"end_date"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2007-12-03"</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"rates"</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span><span class="hljs-punctuation">,</span>
+  <span class="hljs-attr">"start_date"</span><span class="hljs-punctuation">:</span> <span class="hljs-string">"2007-12-03"</span>
+<span class="hljs-punctuation">}</span>
 </code></pre> </body>
                   </html>
-                </section>
+                </div>
               </div>
             </div>
-          </div>
-          <div id="definition-JSON" class="definition panel" data-traverse-target="definition-JSON">
-            <div class="definition-tags">
-              <a class="label" href="#tag-types">Types</a>
+          </section>
+          <section id="definition-JSON" class="definition definition-scalar" data-traverse-target="definition-JSON">
+            <div class="definition-group-name">
+              <a href="#group-Types">Types</a>
             </div>
-            <h2 class="panel-title">
-              <a name="/definitions/JSON"></a>
-              <p><code>JSON</code></p>
-            </h2>
+            <h2 class="definition-heading">JSON</h2>
             <div class="doc-row">
               <div class="doc-copy">
-                <section class="json-schema-description">
+                <div class="definition-description doc-copy-section">
+                  <h5>Description</h5>
                   <p><code>JSON</code> scalar type represents an arbitrary JSON value.</p>
-                </section>
+                </div>
               </div>
               <div class="doc-examples">
-                <section>
+                <div class="example-section example-section-is-code">
                   <h5>Example</h5>
                   <html>
                   <head></head>
-                  <body><pre><code class="hljs language-gql"><span class="hljs-tag">{}</span>
+                  <body><pre><code class="hljs language-json"><span class="hljs-punctuation">{</span><span class="hljs-punctuation">}</span>
 </code></pre> </body>
                   </html>
-                </section>
+                </div>
               </div>
             </div>
-          </div>
-          <div id="definition-String" class="definition panel" data-traverse-target="definition-String">
-            <div class="definition-tags">
-              <a class="label" href="#tag-types">Types</a>
+          </section>
+          <section id="definition-String" class="definition definition-scalar" data-traverse-target="definition-String">
+            <div class="definition-group-name">
+              <a href="#group-Types">Types</a>
             </div>
-            <h2 class="panel-title">
-              <a name="/definitions/String"></a>
-              <p><code>String</code></p>
-            </h2>
+            <h2 class="definition-heading">String</h2>
             <div class="doc-row">
               <div class="doc-copy">
-                <section class="json-schema-description">
+                <div class="definition-description doc-copy-section">
+                  <h5>Description</h5>
                   <p>The <code>String</code> scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.</p>
-                </section>
+                </div>
+              </div>
+              <div class="doc-examples">
+                <div class="example-section example-section-is-code">
+                  <h5>Example</h5>
+                  <html>
+                  <head></head>
+                  <body><pre><code class="hljs language-gql"><span class="hljs-symbol">"abc123"</span>
+</code></pre> </body>
+                  </html>
+                </div>
               </div>
             </div>
-          </div>
+          </section>
           <div class="doc-row no-margin">
             <div class="doc-copy doc-separator">
               <a class="powered-by" href="https://github.com/anvilco/spectaql">Documentation by
@@ -704,6 +870,7 @@ https://demo.stepzen.net/api/with-spectaql/__graphql
             </div>
           </div>
         </article>
+        <div class="drawer-overlay"></div>
       </div>
     </div>
   </body>
