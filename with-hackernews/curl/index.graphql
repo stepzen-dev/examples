@@ -1,0 +1,47 @@
+type Item {
+  kids: [Int]
+  parts: [Int]
+
+  id: Int
+  time: Int
+  poll: Int
+  score: Int
+  parent: Int
+  descendants: Int
+
+  by: String
+  url: String
+  type: String
+  text: String
+  title: String
+}
+
+type User {
+  submitted: [Int]
+
+  id: String
+  about: String
+
+  karma: Int
+  created: Int
+}
+
+enum StoriesType {
+  topstories,
+  newstories,
+  beststories,
+  askstories,
+  showstories,
+  jobstories
+}
+
+type Query {
+  item(id: String = "1"): Item
+    @rest(endpoint: "https://hacker-news.firebaseio.com/v0/item/$id.json"),
+
+  user(username: String = "jl"): User
+    @rest(endpoint: "https://hacker-news.firebaseio.com/v0/user/$username.json")
+
+  stories(types: StoriesType! = topstories): [Int]
+    @rest(endpoint: "https://hacker-news.firebaseio.com/v0/$types.json")
+}

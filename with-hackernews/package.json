@@ -1,0 +1,17 @@
+{
+    "name": "hackernews-graphql",
+    "version": "1.0.0",
+    "main": "index.js",
+    "author": "Sean <seanlengws@gmail.com>",
+    "license": "MIT",
+    "description": "Converting HackerNews API to support GraphQL",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "stepzen start"
+    },
+    "keywords": [],
+    "dependencies": {
+        "stepzen": "^0.20.1"
+    },
+    "devDependencies": {}
+}
