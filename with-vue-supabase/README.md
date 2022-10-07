@@ -18,8 +18,16 @@ cd stepzen
 
 stepzen login
 
+stepzen init
+
+stepzen import postgresql
+
 stepzen start
 ```
+
+### Note:
+
+Provide Database details when requested during Postgresql import, which is available in Settings -> Database in Supabase
 
 ## Setup
 
