@@ -27,12 +27,12 @@ type User {
 }
 
 enum StoriesType {
-  TOP = "topstories",
-  NEW,
-  BEST,
-  ASK,
-  SHOW,
-  JOB
+  topstories,
+  newstories,
+  beststories,
+  askstories,
+  showstories,
+  jobstories
 }
 
 type Query {
@@ -42,24 +42,6 @@ type Query {
   user(username: String = "jl"): User
     @rest(endpoint: "https://hacker-news.firebaseio.com/v0/user/$username.json")
 
-  stories(types: StoriesType!): [Int]
+  stories(types: StoriesType! = topstories): [Int]
     @rest(endpoint: "https://hacker-news.firebaseio.com/v0/$types.json")
-
-  topstories: [Int]
-    @rest(endpoint: "https://hacker-news.firebaseio.com/v0/topstories.json")
-
-  newstories: [Int]
-    @rest(endpoint: "https://hacker-news.firebaseio.com/v0/newstories.json")
-
-  beststories: [Int]
-    @rest(endpoint: "https://hacker-news.firebaseio.com/v0/beststories.json")
-
-  askstories: [Int]
-    @rest(endpoint: "https://hacker-news.firebaseio.com/v0/askstories.json")
-
-  showstories: [Int]
-    @rest(endpoint: "https://hacker-news.firebaseio.com/v0/showstories.json")
-
-  jobstories: [Int]
-    @rest(endpoint: "https://hacker-news.firebaseio.com/v0/jobstories.json")
 }
