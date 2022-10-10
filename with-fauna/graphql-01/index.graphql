@@ -1,0 +1,225 @@
+"The `Long` scalar type represents non-fractional signed whole numeric values. Long can represent values between -(2^63) and 2^63 - 1."
+scalar fauna_Long
+
+scalar fauna_Time
+
+"'Highlight' input values"
+input fauna_HighlightInput {
+  repository: fauna_HighlightRepositoryRelation
+}
+
+"Allow manipulating the relationship between the types 'Highlight' and 'Repository' using the field 'Highlight.repository'."
+input fauna_HighlightRepositoryRelation {
+  "Create a document of type 'Repository' and associate it with the current document."
+  create: fauna_RepositoryInput
+  "Connect a document of type 'Repository' with the current document using its ID."
+  connect: ID
+}
+
+"'Highlight' input values"
+input fauna_PartialUpdateHighlightInput {
+  repository: fauna_HighlightRepositoryRelation
+}
+
+"'Repository' input values"
+input fauna_PartialUpdateRepositoryInput {
+  owner: String
+  name: String
+  coverImage: String
+  shortDescription: String
+}
+
+"'Repository' input values"
+input fauna_RepositoryInput {
+  owner: String!
+  name: String!
+  coverImage: String
+  shortDescription: String
+}
+
+type Mutation {
+  "Delete an existing document in the collection of 'Highlight'"
+  fauna_deleteHighlight(
+    "The 'Highlight' document's ID"
+    id: ID!
+  ): fauna_Highlight
+    @graphql(
+      endpoint: "https://graphql.us.fauna.com/graphql"
+      prefix: { includeRootOperations: true, value: "fauna_" }
+      headers: [{ name: "authorization", value: "$authorization;" }]
+      configuration: "fauna"
+    )
+  "Create a new document in the collection of 'Repository'"
+  fauna_createRepository(
+    "'Repository' input values"
+    data: fauna_RepositoryInput!
+  ): fauna_Repository!
+    @graphql(
+      endpoint: "https://graphql.us.fauna.com/graphql"
+      prefix: { includeRootOperations: true, value: "fauna_" }
+      headers: [{ name: "authorization", value: "$authorization;" }]
+      configuration: "fauna"
+    )
+  "Delete an existing document in the collection of 'Repository'"
+  fauna_deleteRepository(
+    "The 'Repository' document's ID"
+    id: ID!
+  ): fauna_Repository
+    @graphql(
+      endpoint: "https://graphql.us.fauna.com/graphql"
+      prefix: { includeRootOperations: true, value: "fauna_" }
+      headers: [{ name: "authorization", value: "$authorization;" }]
+      configuration: "fauna"
+    )
+  "Update an existing document in the collection of 'Highlight'"
+  fauna_updateHighlight(
+    "The 'Highlight' document's ID"
+    id: ID!
+    "'Highlight' input values"
+    data: fauna_HighlightInput!
+  ): fauna_Highlight
+    @graphql(
+      endpoint: "https://graphql.us.fauna.com/graphql"
+      prefix: { includeRootOperations: true, value: "fauna_" }
+      headers: [{ name: "authorization", value: "$authorization;" }]
+      configuration: "fauna"
+    )
+  "Create a new document in the collection of 'Highlight'"
+  fauna_createHighlight(
+    "'Highlight' input values"
+    data: fauna_HighlightInput!
+  ): fauna_Highlight!
+    @graphql(
+      endpoint: "https://graphql.us.fauna.com/graphql"
+      prefix: { includeRootOperations: true, value: "fauna_" }
+      headers: [{ name: "authorization", value: "$authorization;" }]
+      configuration: "fauna"
+    )
+  "Update an existing document in the collection of 'Repository'"
+  fauna_updateRepository(
+    "The 'Repository' document's ID"
+    id: ID!
+    "'Repository' input values"
+    data: fauna_RepositoryInput!
+  ): fauna_Repository
+    @graphql(
+      endpoint: "https://graphql.us.fauna.com/graphql"
+      prefix: { includeRootOperations: true, value: "fauna_" }
+      headers: [{ name: "authorization", value: "$authorization;" }]
+      configuration: "fauna"
+    )
+  "Partially updates an existing document in the collection of 'Repository'. It only modifies the values that are specified in the arguments. During execution, it verifies that required fields are not set to 'null'."
+  fauna_partialUpdateRepository(
+    "The 'Repository' document's ID"
+    id: ID!
+    "'Repository' input values"
+    data: fauna_PartialUpdateRepositoryInput!
+  ): fauna_Repository
+    @graphql(
+      endpoint: "https://graphql.us.fauna.com/graphql"
+      prefix: { includeRootOperations: true, value: "fauna_" }
+      headers: [{ name: "authorization", value: "$authorization;" }]
+      configuration: "fauna"
+    )
+  "Partially updates an existing document in the collection of 'Highlight'. It only modifies the values that are specified in the arguments. During execution, it verifies that required fields are not set to 'null'."
+  fauna_partialUpdateHighlight(
+    "The 'Highlight' document's ID"
+    id: ID!
+    "'Highlight' input values"
+    data: fauna_PartialUpdateHighlightInput!
+  ): fauna_Highlight
+    @graphql(
+      endpoint: "https://graphql.us.fauna.com/graphql"
+      prefix: { includeRootOperations: true, value: "fauna_" }
+      headers: [{ name: "authorization", value: "$authorization;" }]
+      configuration: "fauna"
+    )
+}
+
+type Query {
+  "Find a document from the collection of 'Repository' by its id."
+  fauna_findRepositoryByID(
+    "The 'Repository' document's ID"
+    id: ID!
+  ): fauna_Repository
+    @graphql(
+      endpoint: "https://graphql.us.fauna.com/graphql"
+      prefix: { includeRootOperations: true, value: "fauna_" }
+      headers: [{ name: "authorization", value: "$authorization;" }]
+      configuration: "fauna"
+    )
+  "Find a document from the collection of 'Highlight' by its id."
+  fauna_findHighlightByID(
+    "The 'Highlight' document's ID"
+    id: ID!
+  ): fauna_Highlight
+    @graphql(
+      endpoint: "https://graphql.us.fauna.com/graphql"
+      prefix: { includeRootOperations: true, value: "fauna_" }
+      headers: [{ name: "authorization", value: "$authorization;" }]
+      configuration: "fauna"
+    )
+  fauna_repositories(
+    "The number of items to return per page."
+    _size: Int
+    "The pagination cursor."
+    _cursor: String
+  ): fauna_RepositoryPage!
+    @graphql(
+      endpoint: "https://graphql.us.fauna.com/graphql"
+      prefix: { includeRootOperations: true, value: "fauna_" }
+      headers: [{ name: "authorization", value: "$authorization;" }]
+      configuration: "fauna"
+    )
+  fauna_highlights(
+    "The number of items to return per page."
+    _size: Int
+    "The pagination cursor."
+    _cursor: String
+  ): fauna_HighlightPage!
+    @graphql(
+      endpoint: "https://graphql.us.fauna.com/graphql"
+      prefix: { includeRootOperations: true, value: "fauna_" }
+      headers: [{ name: "authorization", value: "$authorization;" }]
+      configuration: "fauna"
+    )
+}
+
+type fauna_Highlight {
+  "The document's ID."
+  _id: ID!
+  "The document's timestamp."
+  _ts: fauna_Long!
+  repository: fauna_Repository!
+}
+
+"The pagination object for elements of type 'Highlight'."
+type fauna_HighlightPage {
+  "The elements of type 'Highlight' in this page."
+  data: [fauna_Highlight]!
+  "A cursor for elements coming after the current page."
+  after: String
+  "A cursor for elements coming before the current page."
+  before: String
+}
+
+type fauna_Repository {
+  name: String!
+  "The document's ID."
+  _id: ID!
+  shortDescription: String
+  coverImage: String
+  owner: String!
+  "The document's timestamp."
+  _ts: fauna_Long!
+}
+
+"The pagination object for elements of type 'Repository'."
+type fauna_RepositoryPage {
+  "The elements of type 'Repository' in this page."
+  data: [fauna_Repository]!
+  "A cursor for elements coming after the current page."
+  after: String
+  "A cursor for elements coming before the current page."
+  before: String
+}

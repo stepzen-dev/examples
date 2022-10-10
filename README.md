@@ -20,6 +20,7 @@ Here's a list of our current examples:
 - [with-apollo](./with-apollo)
 - [with-cockroachdb](./with-cockroachdb)
 - [with-firebase](./with-firebase)
+- [with-fauna](./with-fauna)
 - [with-gatsby](./with-gatsby)
 - [with-google-analytics](./with-google-analytics)
 - [with-google-login-faunadb](./with-google-login-faunadb)

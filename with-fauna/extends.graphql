@@ -1,0 +1,16 @@
+extend type fauna_Repository {
+  githubDetails: github_Repository
+    @materializer(
+      query: "github_repository"
+      arguments: [
+        { name: "owner", field: "owner" }
+        { name: "name", field: "name" }
+      ]
+    )
+}
+
+type HighlightedRepository {
+  name: String
+  coverImage: String
+  stargazerCount: Int
+}

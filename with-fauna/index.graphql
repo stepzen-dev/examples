@@ -1,0 +1,10 @@
+schema
+  @sdl(
+    files: [
+      "extends.graphql"
+      "graphql-01/index.graphql"
+      "graphql/index.graphql"
+    ]
+  ) {
+  query: Query
+}
