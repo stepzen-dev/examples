@@ -1,34 +1,51 @@
-# Welcome to Remix!
+# StepZen Example: `with-remix`
 
-- [Remix Docs](https://remix.run/docs)
+## Introduction
 
-## Deployment
+This project builds a Remix app that consumes a GraphQL API selected from the [StepZen GraphQL Studio](https://graphql.stepzen.com/).
 
-After having run the `create-remix` command and selected "Vercel" as a deployment target, you only need to [import your Git repository](https://vercel.com/new) into Vercel, and it will be deployed.
+## Getting Started
 
-If you'd like to avoid using a Git repository, you can also deploy the directory by running [Vercel CLI](https://vercel.com/cli):
+You'll need to create a [StepZen account](https://stepzen.com/signup) first.
 
-```sh
-npm i -g vercel
-vercel
-```
+Alternatively, you can login using `stepzen login --public` without signing up, but note that your API will be publicly accessible.
 
-It is generally recommended to use a Git repository, because future commits will then automatically be deployed by Vercel, through its [Git Integration](https://vercel.com/docs/concepts/git).
+Once you've got that set up, [git clone](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-clone) this repository onto your machine and open the working directory:
 
-## Development
-
-To run your Remix app locally, make sure your project's local dependencies are installed:
-
-```sh
-npm install
-```
-
-Afterwards, start the Remix development server like so:
-
-```sh
+```bash
+git clone https://github.com/stepzen-dev/examples.git
+cd examples/with-remix
 npm run dev
 ```
 
-Open up [http://localhost:3000](http://localhost:3000) and you should be ready to go!
+In this example we are consuming a publically available GraphQL api from [StepZen GraphQL Studio](https://graphql.stepzen.com/). Follow the below `Run StepZen` section to use your own GraphQL API the same way.
 
-If you're used to using the `vercel dev` command provided by [Vercel CLI](https://vercel.com/cli) instead, you can also use that, but it's not needed.
+Data fetching in remix is done by a loader function which is responsible for making a fetch request. loader function returns the data. Use `useLoaderData` hook to access data in your main component.
+
+## Run StepZen
+
+Open your terminal and [install the StepZen CLI](https://stepzen.com/docs/quick-start). You need to login here using the command: `stepzen login`.
+
+Start the GraphQL by running `stepzen start`. After you've followed the prompts (you can accept the suggested endpoint name or add your own), a proxy of the GraphiQL playground becomes available at `http://localhost/5001` (in example `http://localhost:5001/api/with-remix`), which you can use to explore the GraphQL API. Also, the endpoint at which your GraphQL API is deployed gets logged in the terminal. You can query your GraphQL API from any application, browser, or IDE by providing the API Key linked to your account.
+
+## Adding environment variables
+
+You might need to use variables such as keys in your API. You can add them in the `.env` file like so:
+
+```
+API_KEY=apikeyvaluehere
+```
+
+You'd then send the key in your graphql request in `app/routes/root.jsx` like this, in the `graphql` variable (I've removed the qeury body for brevity):
+
+```
+var graphql = JSON.stringify({
+    query: "query spacexdataQuery($id: String){\n    spacexdataQuery(id: $id){query_here}}",
+    variables: {id: "5eb87d42ffd86e000604b384"},
+    headers: {"Authorization": process.env.API_KEY}
+})
+```
+
+## Learn More
+
+You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.gg/9k2VdPn2FR) or [GitHub Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.
