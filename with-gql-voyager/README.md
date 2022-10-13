@@ -36,7 +36,7 @@
     ```
 
     ```
-    $ cp .env.example .env
+    $ cp .env.sample .env
     // paste your account key and endpoint from StepZen start into .env
     $ yarn or npm start
     ```
@@ -55,7 +55,7 @@
     ```
 
     ```
-    $ cp .env.example .env
+    $ cp .env.sample .env
     // paste your account key and endpoint from StepZen start into .env
     $ yarn or npm start
     ```

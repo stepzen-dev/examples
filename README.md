@@ -19,6 +19,7 @@ Here's a list of our current examples:
 - [with-airtable-prismjs-axios](./with-airtable-prismjs-axios)
 - [with-apollo](./with-apollo)
 - [with-cockroachdb](./with-cockroachdb)
+- [with-coingecko](./with-coingecko)
 - [with-firebase](./with-firebase)
 - [with-fauna](./with-fauna)
 - [with-gatsby](./with-gatsby)
@@ -27,7 +28,9 @@ Here's a list of our current examples:
 - [with-gql-voyager](./with-gql-voyager)
 - [with-graphql](./with-graphql)
 - [with-harperdb](./with-harperdb)
+- [with-interface](./with-interface)
 - [with-jsonplaceholder](./with-jsonplaceholder)
+- [with-mock-data](./with-mock-data)
 - [with-mongodb-atlas](./with-mongodb-atlas)
 - [with-mysql](./with-mysql)
 - [with-next](./with-next)
@@ -40,6 +43,7 @@ Here's a list of our current examples:
 - [with-rss](./with-rss)
 - [with-shopify-agilitycms](./with-shopify-agilitycms)
 - [with-spectaql](./with-spectaql)
+- [with-stepzen-github-action](./with-stepzen-github-action)
 - [with-sveltekit](./with-sveltekit)
 
 ## Contributing
