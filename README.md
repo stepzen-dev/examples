@@ -35,6 +35,7 @@ Here's a list of our current examples:
 - [with-postgresql](./with-postgresql)
 - [with-python](./with-python)
 - [with-react-native](./with-react-native)
+- [with-remix](./with-remix)
 - [with-rest](./with-rest)
 - [with-rss](./with-rss)
 - [with-shopify-agilitycms](./with-shopify-agilitycms)
