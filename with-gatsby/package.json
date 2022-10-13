@@ -17,8 +17,8 @@
     "@stepzen/sdk": "^0.9.29",
     "@stepzen/transpiler": "^0.0.12",
     "dotenv": "^8.2.0",
-    "gatsby": "^3.1.2",
-    "gatsby-source-graphql": "^3.14.0",
+    "gatsby": "^4.24.4",
+    "gatsby-source-graphql": "^4.24.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   }
