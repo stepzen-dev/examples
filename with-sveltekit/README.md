@@ -56,10 +56,10 @@ A proxy of the GraphiQL playground becomes available at `http://localhost/5001` 
 
 ## SvelteKit Setup
 
-Include your StepZen endpoint and API keys in `.env`, by copying then file `.env.example` to `.env`:
+Include your StepZen endpoint and API keys in `.env`, by copying then file `.env.sample` to `.env`:
 
 ```bash
-cp .env.example .env
+cp .env.sample .env
 ```
 
 And add the endpoint and API Key for Stepzen:
