@@ -63,7 +63,7 @@ into the `lynx` supergraph's schema.
 ## Do the same for the returns subgraph
 
 Deploy the `returns` subgraph into your StepZen account, the code is in the 
-[returns]{./returns) folder.
+[returns](./returns) folder.
 
 ```
 (cd returns ; stepzen deploy)

@@ -34,7 +34,7 @@ You might need to use variables such as keys in your API. You can add them in th
 NEXT_API_KEY=apikeyvaluehere
 ```
 
-You'd then send the key in your graphql request in `pages/index.js` like this, in the `graphql` variable (I've removed the qeury body for brevity):
+You'd then send the key in your graphql request in `pages/index.js` like this, in the `graphql` variable (I've removed the query body for brevity):
 
 ```
 var graphql = JSON.stringify({
