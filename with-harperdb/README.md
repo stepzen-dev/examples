@@ -75,7 +75,7 @@ When Successful, you'll get a message like this `{"message":"Starting job with i
 
 ### Copy credentials
 
-The instance url (without 'https://' and authentication header from HarperDB must be passed to StepZen. You can find these in you [Instance Configuration](https://harperdb.io/docs/harperdb-studio/instance-config/).
+The instance url (without 'https://') and authentication header from HarperDB must be passed to StepZen. You can find these in you [Instance Configuration](https://harperdb.io/docs/harperdb-studio/instance-config/).
 
 You can copy the file `sample.config.yaml` to a new `config.yaml` file:
 

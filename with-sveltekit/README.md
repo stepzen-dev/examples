@@ -13,7 +13,7 @@ git clone https://github.com/stepzen-dev/examples.git
 cd examples/with-sveltekit
 ```
 
-Before you can run this example, you need to have a free DEV.to Communiy API Key, which you can find on [this page](https://dev.to/settings/account). This API Key is used to pull data from DEV.to that will be consumed by the example you're going to built.
+Before you can run this example, you need to have a free DEV.to Community API Key, which you can find on [this page](https://dev.to/settings/account). This API Key is used to pull data from DEV.to that will be consumed by the example you're going to build.
 
 You can copy the file `stepzen/sample.config.yaml` to a new `stepzen/config.yaml` file:
 

@@ -17,7 +17,7 @@ UI hooks and data fetching methods built from the ground up for e-commerce appli
 
 1. Vendure does not ship with built-in wishlist functionality.
 2. Nor does it come with any kind of blog/page-building feature. Both of these can be created as Vendure plugins, however.
-3. The entire Vendure customer flow is carried out via its GraphQL API. This means that there is no external, pre-existing checkout flow. The checkout flow must be created as part of the Next.js app. See https://github.com/vercel/commerce/issues/64 for further discusion.
+3. The entire Vendure customer flow is carried out via its GraphQL API. This means that there is no external, pre-existing checkout flow. The checkout flow must be created as part of the Next.js app. See https://github.com/vercel/commerce/issues/64 for further discussion.
 4. By default, the sign-up flow in Vendure uses email verification. This means that using the existing "sign up" flow from this project will not grant a new user the ability to authenticate, since the new account must first be verified. Again, the necessary parts to support this flow can be created as part of the Next.js app.
 
 ## Code generation

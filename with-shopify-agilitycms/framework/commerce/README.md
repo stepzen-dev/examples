@@ -48,7 +48,7 @@ const { data, isLoading, error } = useCustomer({
 
 ### CommerceProvider
 
-This component adds the provider config and handlers to the context of your React tree for it's children. You can optionally pass the `locale` to it:
+This component adds the provider config and handlers to the context of your React tree for its children. You can optionally pass the `locale` to it:
 
 ```jsx
 import { CommerceProvider } from '@framework'

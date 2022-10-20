@@ -18,7 +18,7 @@ cd examples/with-remix
 npm run dev
 ```
 
-In this example we are consuming a publically available GraphQL api from [StepZen GraphQL Studio](https://graphql.stepzen.com/). Follow the below `Run StepZen` section to use your own GraphQL API the same way.
+In this example we are consuming a publicly available GraphQL api from [StepZen GraphQL Studio](https://graphql.stepzen.com/). Follow the below `Run StepZen` section to use your own GraphQL API the same way.
 
 Data fetching in remix is done by a loader function which is responsible for making a fetch request. loader function returns the data. Use `useLoaderData` hook to access data in your main component.
 
