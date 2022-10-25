@@ -55,6 +55,19 @@ In you terminal the endpoint at which your GraphQL API is deployed is logged. A 
 
 In your virtual environment and inside your `with-python` folder in your terminal, run ` /Users/YOUR_USERNAME_HERE/with-python/env/bin/python /Users/YOUR_USERNAME)HERE/with-python/main.py` to see the data coming back from your GraphQL API.
 
+## Another example - Integrating Weather API 
+- Please follow the above steps first of creating the stepzen account and cloning the repo.
+
+1. Create a new file called integration.py in your project's root directory.
+
+2. Import the requests library.
+
+3. Define a function called weather that takes two arguments: a city name and an API key.
+
+4. Make a GET request to the StepZen Weather API using the city name and API key.
+
+5. Parse the response JSON and return the current temperature in the city.
+
 ## Learn More
 
 You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.com/invite/9k2VdPn2FR) or [GitHub Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.
