@@ -55,6 +55,7 @@ In you terminal the endpoint at which your GraphQL API is deployed is logged. A 
 
 In your virtual environment and inside your `with-python` folder in your terminal, run ` /Users/YOUR_USERNAME_HERE/with-python/env/bin/python /Users/YOUR_USERNAME)HERE/with-python/main.py` to see the data coming back from your GraphQL API.
 
+
 ## Learn More
 
 You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.com/invite/9k2VdPn2FR) or [GitHub Discussions](https://github.com/stepzen-dev/examples/discussions) to ask questions.
