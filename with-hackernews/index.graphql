@@ -1,0 +1,3 @@
+schema @sdl(files: ["hackernews/index.graphql"]) {
+  query: Query
+}
