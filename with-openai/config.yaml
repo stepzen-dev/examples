@@ -1,0 +1,4 @@
+configurationset:
+  - configuration:
+      name: openai_config
+      openai_auth: Bearer STEPZEN_OPENAI_API_KEY

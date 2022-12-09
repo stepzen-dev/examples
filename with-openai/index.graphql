@@ -1,0 +1,3 @@
+schema @sdl(files: ["openai/image-generations.graphql"]) {
+  query: Query
+}
