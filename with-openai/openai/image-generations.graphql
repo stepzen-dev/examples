@@ -1,0 +1,18 @@
+type ImageData {
+  url: String
+}
+
+type GenerationResult {
+  created: Int
+  data: [ImageData]
+}
+
+type Query {
+  generations(prompt: String!, n: Int, size: String): GenerationResult
+    @rest(
+      method: POST
+      endpoint: "https://api.openai.com/v1/images/generations"
+      headers: [{ name: "Authorization", value: "$openai_auth;" }]
+      configuration: "openai_config"
+    )
+}
