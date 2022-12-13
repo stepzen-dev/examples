@@ -164,7 +164,7 @@ We can page through all employees using `Query.employees` and standard GraphQL p
 With StepZen using standard pagination allows clients to handle paging through results
 consistently regardless of if the backend is a database, REST api or another GraphQL API.
 
-First show how to page through all employees, starting with the first five:
+First we show how to page through all employees, starting with the first five:
 ```
 stepzen request 'query{employees(first:5){edges{node{FIRST_NAME LAST_NAME CITY}}pageInfo{endCursor hasNextPage}}}'
 ```
@@ -188,11 +188,11 @@ query {
 }
 ```
 
-With pagination we now take the opaque `endCursor` and use it as the value for after to get the next five.
+With pagination we now take the opaque `endCursor` and use it as the value for after to get the next five employees.
 ```
 stepzen request 'query{employees(after:"eyJjIjoiTDpRdWVyeTplbXBsb3llZXMiLCJvIjo0fQ==",first:5){edges{node{FIRST_NAME LAST_NAME CITY}}pageInfo{endCursor hasNextPage}}}'
 ```
-This has simply added the `after` argument:
+This has simply added the `after` argument, taken from `endCursor`:
 
 ```graphql
 query {
@@ -201,13 +201,59 @@ query {
   }
 }
 ```
-As an aside, typically an application would handle pagination using variables, for example an operation like,
+As an aside, typically an application would handle pagination using variables, for example an operation like this,
 which always uses a page size of five due to the default for `first`. The client then uses the empty string
 or no value for `$a` on the first request, and then the value from `endCursor` for each subsequent request.
 ```graphql
 query Employees($a:String)  {
   employees(after:$a) {
   # selection omitted
+  }
+}
+```
+
+Now we can add filtering to our request, here we add a filter to only select employees that
+live in a city before "Calatrava" alphabetically.
+
+```
+stepzen request 'query{employees(first:5,filter:{CITY:{lt:"Calatrava"}}){edges{node{FIRST_NAME LAST_NAME CITY}}pageInfo{endCursor hasNextPage}}}'
+```
+
+The request is still paginated, only paging through those requests that match the filter, in this case only three employees
+are returned, and you can see `hasNextPage` indicates there are no more employees.
+
+```json
+{
+  "data": {
+    "employees": {
+      "edges": [
+        {
+          "node": {
+            "FIRST_NAME": "Hollis",
+            "LAST_NAME": "Anneslie",
+            "CITY": "Aleysk"
+          }
+        },
+        {
+          "node": {
+            "FIRST_NAME": "Di",
+            "LAST_NAME": "McGowran",
+            "CITY": "Banjar Bengkelgede"
+          }
+        },
+        {
+          "node": {
+            "FIRST_NAME": "Ron",
+            "LAST_NAME": "Mattys",
+            "CITY": "Bayaguana"
+          }
+        }
+      ],
+      "pageInfo": {
+        "endCursor": "eyJjIjoiTDpRdWVyeTplbXBsb3llZXMiLCJvIjoyfQ==",
+        "hasNextPage": false
+      }
+    }
   }
 }
 ```
