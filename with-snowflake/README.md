@@ -68,13 +68,64 @@ stepzen deploy
 
 This creates a fully deployed managed GraphQL endpoint running in the cloud.
 
-## Make GraphQL Requests
+## SDL
+
+The full SDL is in `snowemp.graphql`, but here we extract the two `Query` field
+definitions that access data from Snowflake. This demostrates the ease of
+the declarative approach to connect to a backend system, in this case a Snowflake warehouse.
+
+First is `Query.employee`, a simple loookup for a single employee from an email address.
+
+```graphql
+extend type Query {
+  """
+  Looks up employee records by `EMAIL` in the Snowflake table `EMP_BASIC`.
+
+  The specific warehouse, database and schema for `EMP_BASIC` is defined
+  by a DSN in `config.yaml` in the `snowy` configuration.
+  """
+  employee(EMAIL: String!): Employee
+    @dbquery(type: "snowflake", table: "EMP_BASIC", configuration: "snowy")
+}
+```
+
+`Query.employees` uses an identical `@dbquery` but since it follows standard
+GraphQL pagination and has a `filter` argument StepZen automatically provides
+the rich functionality of pagination and filtering.
+
+```graphql
+extend type Query {
+  """
+  pages through employee records from `EMP_BASIC` with optional filtering.
+  Standard GraphQL pagination is used, thus executing `Query.employees`
+  returns a `EmployeeConnection` that contains standdard paging information
+  and the edges that match the filter with their node values and cursor information.
+
+  The specific warehouse, database and schema for `EMP_BASIC` is defined
+  by a DSN in `config.yaml` in the `snowy` configuration.
+  """
+  employees(
+    first: Int! = 5
+    after: String = ""
+    filter: EmployeeFilter
+  ): EmployeeConnection
+    @dbquery(type: "snowflake", table: "EMP_BASIC", configuration: "snowy")
+}
+```
+
+Now you can start to execute requests to see the power of StepZen and Snowflake.
+
+## GraphQL Requests
 
 You can now issue GraphQL requests against your endpoint using your favourite GraphQL client,
 the endpoint URL was displayed by `stepzen deploy` and will be of the form:
  * `https://account.stepzen.net/api/snowemp/__graphql`
 
-Here we will use `stepzen request` to make requests.
+Authentication is required (see ....)
+
+Here we will use `stepzen request` to make requests. `stepzen request` automatically uses
+the correct authentication headers and determines the endpoint from your account
+and the current directory.
 
 Execute this command:
 
@@ -84,11 +135,15 @@ stepzen request 'query{employee(EMAIL:"wsizeyf@sf_tuts.com"){FIRST_NAME LAST_NAM
 
 This execute this GraphQL query operation to find information about a single employee given an email address:
 ```graphql
-query {employee(EMAIL:"wsizeyf@sf_tuts.com") {
-   FIRST_NAME
-   LAST_NAME
-   CITY
-}} 
+query
+{
+  employee(EMAIL:"wsizeyf@sf_tuts.com")
+  {
+    FIRST_NAME
+    LAST_NAME
+    CITY
+  }
+} 
 ```
 (with `stepzen request` we have compressed the operation to simplify copying the command)
 
@@ -101,6 +156,58 @@ The response should be:
       "LAST_NAME": "Sizey",
       "CITY": "Taibao"
     }
+  }
+}
+```
+
+We can page through all employees using `Query.employees` and standard GraphQL pagination.
+With StepZen using standard pagination allows clients to handle paging through results
+consistently regardless of if the backend is a database, REST api or another GraphQL API.
+
+First show how to page through all employees, starting with the first five:
+```
+stepzen request 'query{employees(first:5){edges{node{FIRST_NAME LAST_NAME CITY}}pageInfo{endCursor hasNextPage}}}'
+```
+
+This executes:
+```graphql
+query {
+  employees(first: 5) {
+    edges {
+      node {
+        FIRST_NAME
+        LAST_NAME
+        CITY
+      }
+    }
+    pageInfo {
+      endCursor
+      hasNextPage
+    }
+  }
+}
+```
+
+With pagination we now take the opaque `endCursor` and use it as the value for after to get the next five.
+```
+stepzen request 'query{employees(after:"eyJjIjoiTDpRdWVyeTplbXBsb3llZXMiLCJvIjo0fQ==",first:5){edges{node{FIRST_NAME LAST_NAME CITY}}pageInfo{endCursor hasNextPage}}}'
+```
+This has simply added the `after` argument:
+
+```graphql
+query {
+  employees(after:"eyJjIjoiTDpRdWVyeTplbXBsb3llZXMiLCJvIjo0fQ==" first: 5) {
+  # selection omitted
+  }
+}
+```
+As an aside, typically an application would handle pagination using variables, for example an operation like,
+which always uses a page size of five due to the default for `first`. The client then uses the empty string
+or no value for `$a` on the first request, and then the value from `endCursor` for each subsequent request.
+```graphql
+query Employees($a:String)  {
+  employees(after:$a) {
+  # selection omitted
   }
 }
 ```
