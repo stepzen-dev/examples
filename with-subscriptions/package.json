@@ -1,0 +1,21 @@
+{
+  "name": "with-subscriptions",
+  "version": "1.0.0",
+  "description": "A basic example of subscriptions in StepZen.",
+  "main": "client/index.js",
+  "scripts": {
+    "stepzen": "stepzen start",
+    "start": "node client/index.js",
+    "start:all": "concurrently -n StepZen,Client \"npm run stepzen\" \"npm run start\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^7.6.0",
+    "dotenv": "^16.0.3",
+    "graphql": "^16.6.0",
+    "graphql-ws": "^5.11.2",
+    "ws": "^8.11.0"
+  }
+}
