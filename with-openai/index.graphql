@@ -1,3 +1,10 @@
-schema @sdl(files: ["openai/image-generations.graphql"]) {
+schema
+  @sdl(
+    files: [
+      "blog/index.graphql"
+      "openai/image-generations.graphql"
+      "openai/text-completion.graphql"
+    ]
+  ) {
   query: Query
 }

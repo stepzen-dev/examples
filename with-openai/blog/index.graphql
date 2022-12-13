@@ -1,0 +1,62 @@
+type BlogPost {
+  guid: ID
+  title: String
+  description: String
+  encoded: String
+  link: String
+  pubDate: String
+  summary: String
+    @materializer(
+      query: "summary"
+      arguments: [{ name: "fulltext", field: "encoded" }]
+    )
+}
+
+type Query {
+  feed(limit: Int! = 10): [BlogPost]
+    @rest(
+      endpoint: "https://stepzen.com/rss/feed.xml"
+      transforms: [
+        { editor: "xml2json" }
+        {
+          editor: """
+          jsonata:$filter(rss.channel.item, function($v, $i, $a) { $i < $get("limit") })
+          """
+        }
+      ]
+    )
+
+  summary(fulltext: String): String
+    @rest(
+      method: POST
+      endpoint: "https://api.openai.com/v1/completions"
+      headers: [{ name: "Authorization", value: "$openai_auth;" }]
+      configuration: "openai_config"
+      ecmascript: """
+      function bodyPOST(s) {
+        // Quick and dirty HTML-to-PlainText conversion
+        const plaintext = get("fulltext")
+          // goja does not support the dot-all regex flag, so instead of `.+` this regex uses `[\0-\uFFFF]+`
+          .replace(/\<pre\>\<code[\0-\uFFFF]+\<\/code\>\<\/pre\>/ig, '') // remove code blocks
+          .replace(/<[^>]+>/ig, '') // remove all HTML tags
+          .replace(/\n+/g, '\n') // merge newlines
+          .replace(/ +/g, ' ') // merge spaces
+
+        return JSON.stringify({
+          prompt: `Summarize this in a limerick:\n\n${plaintext}`,
+          frequency_penalty: 0,
+          max_tokens: 256,
+          model: 'text-davinci-003',
+          presence_penalty: 0,
+          temperature: 0.7,
+          top_p: 1
+        });
+      }
+
+      function transformREST(s) {
+        const response = JSON.parse(s)
+        return JSON.stringify(response.choices ? response.choices[0].text.trim() : null);
+      }
+      """
+    )
+}
