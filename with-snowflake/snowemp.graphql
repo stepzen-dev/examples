@@ -1,0 +1,87 @@
+"""
+`Employee` is a GraphQL object type that matches the table `EMP_BASIC`.
+
+StepZen requires that the GraphQL field names match the SQL column names
+when quoted, for example StepZen generates a query such as
+```
+SELECT "FIRST_NAME", "LAST_NAME" FROM "EMP_BASIC" WHERE "EMAIL" = ?
+```
+Snowflake upper-cases column names that are not quoted, which means
+the `create table` statement used in the tutorial results in a table
+name and column names that are upper-cased.
+"""
+type Employee {
+  FIRST_NAME: String
+  LAST_NAME: String
+  EMAIL: String
+  STREETADDRESS: String
+  CITY: String
+  START_DATE: Date
+}
+
+extend type Query {
+  """
+  Looks up employee records by `EMAIL` in the Snowflake table `EMP_BASIC`.
+
+  The specific warehouse, database and schema for `EMP_BASIC` is defined
+  by a DSN in `config.yaml` in the `snowy` configuration.
+  """
+  employee(EMAIL: String!): Employee
+    @dbquery(type: "snowflake", table: "EMP_BASIC", configuration: "snowy")
+}
+
+"""
+`StringFilter` allows filtering with predicates  `eq`, `lt` and `gt`
+against a `String` GraphQL field.
+"""
+input StringFilter {
+  eq: String
+  lt: String
+  gt: String
+}
+
+"""
+`EmployeeFilter` creates the filtering options for `Query.employees`
+supporting predicates against `FIRST_NAME`, `LAST_NAME`, `CITY` and `START_DATE`.
+"""
+input EmployeeFilter {
+  FIRST_NAME: StringFilter
+  LAST_NAME: StringFilter
+  CITY: StringFilter
+}
+
+"""
+`EmployeeConnection` provides the standard GraphQL connections type
+for paging through objects of type `Employee`.
+"""
+type EmployeeConnection {
+  edges: [EmployeeEdge]
+  pageInfo: PageInfo!
+}
+
+"""
+`EmployeeEdge` provides the standard GraphQL edge type
+for paging through objects of type `Employee`.
+"""
+type EmployeeEdge {
+  node: Employee
+  cursor: String
+}
+
+extend type Query {
+  """
+  pages through employee records from `EMP_BASIC` with optional filtering.
+  Standard GraphQL pagination is used, thus executing `Query.employees`
+  returns a `EmployeeConnection` that contains standdard paging information
+  and the edges that match the filter with their node values and cursor information.
+
+  The specific warehouse, database and schema for `EMP_BASIC` is defined
+  by a DSN in `config.yaml` in the `snowy` configuration.
+  """
+  employees(
+    first: Int! = 5
+    after: String = ""
+    filter: EmployeeFilter
+  ): EmployeeConnection
+    @dbquery(type: "snowflake", table: "EMP_BASIC", configuration: "snowy")
+}
