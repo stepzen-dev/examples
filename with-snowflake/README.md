@@ -121,10 +121,10 @@ You can now issue GraphQL requests against your endpoint using your favourite Gr
 the endpoint URL was displayed by `stepzen deploy` and will be of the form:
  * `https://account.stepzen.net/api/snowemp/__graphql`
 
-Authentication is required (see ....)
+Authentication is required (see https://stepzen.com/docs/connecting-frontends/connecting-to-stepzen )
 
 Here we will use `stepzen request` to make requests. `stepzen request` automatically uses
-the correct authentication headers and determines the endpoint from your account
+the correct authentication header and determines the endpoint from your account
 and the current directory.
 
 Execute this command:
@@ -190,6 +190,7 @@ query {
 
 The response should be similar to:
 ```json
+{
   "data": {
     "employees": {
       "edges": [
