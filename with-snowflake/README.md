@@ -119,7 +119,7 @@ Now you can start to execute requests to see the power of StepZen and Snowflake.
 
 You can now issue GraphQL requests against your endpoint using your favourite GraphQL client,
 the endpoint URL was displayed by `stepzen deploy` and will be of the form:
- * `https://account.stepzen.net/api/snowemp/__graphql`
+ * `https://account.stepzen.net/api/with-snowflake/__graphql`
 
 Authentication is required (see https://stepzen.com/docs/connecting-frontends/connecting-to-stepzen )
 
