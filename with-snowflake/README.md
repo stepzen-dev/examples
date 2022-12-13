@@ -71,7 +71,7 @@ This creates a fully deployed managed GraphQL endpoint running in the cloud.
 ## SDL
 
 The full SDL is in `snowemp.graphql`, but here we extract the two `Query` field
-definitions that access data from Snowflake. This demostrates the ease of
+definitions that access data from Snowflake. This demonstrates the ease of
 the declarative approach to connect to a backend system, in this case a Snowflake warehouse.
 
 First is `Query.employee`, a simple loookup for a single employee from an email address.
@@ -145,7 +145,7 @@ query
   }
 } 
 ```
-(with `stepzen request` we have compressed the operation to simplify copying the command)
+(with `stepzen request` we have compressed operations to simplify copying the command)
 
 The response should be:
 ```json
@@ -188,7 +188,58 @@ query {
 }
 ```
 
-With pagination we now take the opaque `endCursor` and use it as the value for after to get the next five employees.
+The response should be similar to:
+```json
+  "data": {
+    "employees": {
+      "edges": [
+        {
+          "node": {
+            "FIRST_NAME": "Hollis",
+            "LAST_NAME": "Anneslie",
+            "CITY": "Aleysk"
+          }
+        },
+        {
+          "node": {
+            "FIRST_NAME": "Di",
+            "LAST_NAME": "McGowran",
+            "CITY": "Banjar Bengkelgede"
+          }
+        },
+        {
+          "node": {
+            "FIRST_NAME": "Ron",
+            "LAST_NAME": "Mattys",
+            "CITY": "Bayaguana"
+          }
+        },
+        {
+          "node": {
+            "FIRST_NAME": "Althea",
+            "LAST_NAME": "Featherstone",
+            "CITY": "Calatrava"
+          }
+        },
+        {
+          "node": {
+            "FIRST_NAME": "Ivett",
+            "LAST_NAME": "Casemore",
+            "CITY": "Campina Grande"
+          }
+        }
+      ],
+      "pageInfo": {
+        "endCursor": "eyJjIjoiTDpRdWVyeTplbXBsb3llZXMiLCJvIjo0fQ==",
+        "hasNextPage": true
+      }
+    }
+  }
+}
+```
+
+Note that `pageInfo` contains information that is used to get the next page, `hasNextPage` indicates
+there is more data available. We now take the opaque `endCursor` and use it as the value for after to get the next five employees.
 ```
 stepzen request 'query{employees(after:"eyJjIjoiTDpRdWVyeTplbXBsb3llZXMiLCJvIjo0fQ==",first:5){edges{node{FIRST_NAME LAST_NAME CITY}}pageInfo{endCursor hasNextPage}}}'
 ```
@@ -216,7 +267,7 @@ Now we can add filtering to our request, here we add a filter to only select emp
 live in a city before "Calatrava" alphabetically.
 
 ```
-stepzen request 'query{employees(first:5,filter:{CITY:{lt:"Calatrava"}}){edges{node{FIRST_NAME LAST_NAME CITY}}pageInfo{endCursor hasNextPage}}}'
+stepzen request 'query{employees(filter:{CITY:{lt:"Calatrava"}}){edges{node{FIRST_NAME LAST_NAME CITY}}pageInfo{endCursor hasNextPage}}}'
 ```
 
 The request is still paginated, only paging through those requests that match the filter, in this case only three employees
