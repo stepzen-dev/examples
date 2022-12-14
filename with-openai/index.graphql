@@ -2,6 +2,7 @@ schema
   @sdl(
     files: [
       "blog/index.graphql"
+      "blog/extensions.graphql"
       "openai/image-generations.graphql"
       "openai/text-completion.graphql"
     ]
