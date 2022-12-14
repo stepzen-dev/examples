@@ -10,7 +10,7 @@ You'll need to create a [StepZen account](https://stepzen.com/request-invite) fi
 
 ```bash
 git clone https://github.com/stepzen-dev/examples.git
-cd examples/with-firebase
+cd examples/with-subscriptions
 ```
 
 ## Run the example
@@ -38,7 +38,7 @@ npm i
 npm run start:all
 ```
 
-This command deploys the GraphQL schemas in the `stepzen` directory to the StepZen Cloud and the websockets endpoint is `wss://ACCOUNT.stepzen.net/stepzen-subscriptions/api/with-subscriptions/__graphql`, which is used by the client app.
+This command deploys the GraphQL schema in the `stepzen` directory to the StepZen Cloud and the websockets endpoint is `wss://ACCOUNT.stepzen.net/stepzen-subscriptions/api/with-subscriptions/__graphql`, which is used by the client app.
 
 > You can also start the GraphQL server and client separately by running `npm run stepzen` and `npm run start` in separate terminals.
 
@@ -103,6 +103,6 @@ This will subscribe to the `binance` query and will return the `priceChange` fie
 
 ## Learn More
 
-Because any `Query` field can be exposed as a `Subscription`, you can set up subscription against databases, graphql endpoints, or any combination thereof. Try them for yourself.
+Because any `Query` field can be exposed as a `Subscription`, you can set up subscription against databases, GraphQL endpoints, or any combination thereof. Try them for yourself.
 
 You can learn more in the [StepZen documentation](https://stepzen.com/docs). Questions? Head over to [Discord](https://discord.gg/9k2VdPn2FR) or [GitHub Discussions](https://git$
