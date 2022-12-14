@@ -22,7 +22,7 @@ type Usage {
 
 type Query {
   textCompletion(
-    prompt: String
+    prompt: String!
     frequency_penalty: Float = 0
     max_tokens: Int = 256
     model: String = "text-davinci-003"
