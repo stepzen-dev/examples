@@ -1,0 +1,4 @@
+configurationset:
+  - configuration:
+      name: snowy
+      dsn: '{{username}}:{{password}}@{{account_identifier}/SF_TUTS/PUBLIC?warehouse=SF_TUTS_WH'

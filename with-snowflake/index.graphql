@@ -1,0 +1,21 @@
+"""
+StepZen GraphQL schema that exposes a Snowflake table as a GraphQL api.
+
+The table `EMP_BASIC` is from the getting started tutorial
+[Snowflake in 20 minutes](https://docs.snowflake.com/en/user-guide/getting-started-tutorial.html).
+
+Specifically the [table uses this DDL]https://docs.snowflake.com/en/user-guide/getting-started-tutorial-create-objects.html#creating-a-table):
+```
+create or replace table emp_basic (
+  first_name string ,
+  last_name string ,
+  email string ,
+  streetaddress string ,
+  city string ,
+  start_date date
+  );
+```
+"""
+schema @sdl(files: ["snowemp.graphql"]) {
+  query: Query
+}
