@@ -1,0 +1,115 @@
+extend type BlogPost {
+  plaintext: String
+    @materializer(
+      query: "plaintext"
+      arguments: [{ name: "htmltext", field: "encoded" }]
+    )
+  summary: TextCompletion
+    @materializer(
+      query: "summary"
+      arguments: [{ name: "fulltext", field: "plaintext" }]
+    )
+  image: GenerationResult
+    @materializer(
+      query: "image"
+      arguments: [{ name: "fulltext", field: "plaintext" }]
+    )
+}
+
+type Query {
+  plaintext(htmltext: String): String
+    @rest(
+      endpoint: "stepzen:empty"
+      ecmascript: """
+      function transformREST(s) {
+        // Quick and dirty HTML-to-PlainText conversion
+        const plaintext = get("htmltext")
+          // goja does not support the dot-all regex flag, so instead of `.+` this regex uses `[\0-\uFFFF]+`
+          .replace(/\<pre\>\<code[\0-\uFFFF]+\<\/code\>\<\/pre\>/ig, '') // remove code blocks
+          .replace(/<[^>]+>/ig, '') // remove all HTML tags
+          .replace(/\n+/g, '\n') // merge newlines
+          .replace(/ +/g, ' ') // merge spaces
+
+        return JSON.stringify(plaintext);
+      }
+      """
+    )
+
+  _summaryPrompt(fulltext: String): SummaryPrompt
+    @rest(
+      endpoint: "stepzen:empty"
+      ecmascript: """
+      function transformREST(s) {
+        return JSON.stringify({
+          prompt: `Summarize this in a limerick:\n\n${get("fulltext")}`
+        })
+      }
+      """
+    )
+
+  summary(fulltext: String): TextCompletion
+    @sequence(
+      steps: [
+        { query: "_summaryPrompt" }
+        {
+          query: "textCompletion"
+          arguments: [{ name: "prompt", field: "prompt" }]
+        }
+      ]
+    )
+
+  _imagePromptPrompt(fulltext: String): ImagePrompt
+    @rest(
+      endpoint: "stepzen:empty"
+      ecmascript: """
+      function transformREST(s) {
+        return JSON.stringify({
+          prompt: `Describe a cover image that could fit the blog post below. Only print the image description.\n\n${get("fulltext")}`,
+        })
+      }
+      """
+    )
+
+  _imagePrompt(rawPrompt: String): ImagePrompt
+    @rest(
+      endpoint: "stepzen:empty"
+      ecmascript: """
+      function transformREST(s) {
+        return JSON.stringify({
+          prompt: `A Dali style pencil and watercolour drawing that looks like ${get("rawPrompt")}`,
+        })
+      }
+      """
+    )
+
+  image(fulltext: String): GenerationResult
+    @sequence(
+      steps: [
+        { query: "_imagePromptPrompt" }
+        {
+          query: "textCompletion"
+          arguments: [{ name: "prompt", field: "prompt" }]
+        }
+        {
+          query: "_imagePrompt"
+          arguments: [{ name: "rawPrompt", field: "choices[0].text" }]
+        }
+        {
+          query: "generations"
+          arguments: [{ name: "prompt", field: "prompt" }]
+        }
+      ]
+    )
+}
+
+type SummaryPrompt {
+  prompt: String
+}
+
+type ImagePrompt {
+  prompt: String
+}
+
+type ImageUrl {
+  url: String
+}

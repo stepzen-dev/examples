@@ -1,0 +1,39 @@
+type CompletionChoice {
+  finish_reason: String
+  index: Int
+  logprobs: JSON
+  text: String
+}
+
+type TextCompletion {
+  choices: [CompletionChoice]
+  created: Int
+  id: String
+  model: String
+  object: String
+  usage: Usage
+}
+
+type Usage {
+  completion_tokens: Int
+  prompt_tokens: Int
+  total_tokens: Int
+}
+
+type Query {
+  textCompletion(
+    prompt: String!
+    frequency_penalty: Float = 0
+    max_tokens: Int = 256
+    model: String = "text-davinci-003"
+    presence_penalty: Float = 0
+    temperature: Float = 0.7
+    top_p: Float = 1
+  ): TextCompletion
+    @rest(
+      method: POST
+      endpoint: "https://api.openai.com/v1/completions"
+      headers: [{ name: "Authorization", value: "$openai_auth;" }]
+      configuration: "openai_config"
+    )
+}

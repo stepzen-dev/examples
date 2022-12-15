@@ -1,0 +1,23 @@
+type BlogPost {
+  guid: ID
+  title: String
+  description: String
+  encoded: String
+  link: String
+  pubDate: String
+}
+
+type Query {
+  feed(limit: Int! = 10): [BlogPost]
+    @rest(
+      endpoint: "https://stepzen.com/rss/feed.xml"
+      transforms: [
+        { editor: "xml2json" }
+        {
+          editor: """
+          jsonata:$filter(rss.channel.item, function($v, $i, $a) { $i < $get("limit") })
+          """
+        }
+      ]
+    )
+}
