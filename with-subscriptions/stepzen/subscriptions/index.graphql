@@ -1,0 +1,45 @@
+type Random {
+  number: Int
+}
+
+
+type Binance {
+  closeTime: ID
+  count: Int
+  firstId: Int
+  highPrice: Float
+  lastId: Int
+  lastPrice: Float
+  lowPrice: Float
+  openPrice: Float
+  openTime: ID
+  priceChange: Float
+  priceChangePercent: Float
+  quoteVolume: Float
+  symbol: String
+  volume: Float
+  weightedAvgPrice: Float
+}
+
+type Query {
+  random: Random
+    @rest(
+      endpoint: "stepzen:empty"
+      ecmascript: """
+      function transformREST(s) {
+          return ({
+            number: Math.floor(Math.random() * 999999)
+          });
+      }
+      """
+    )
+  """ https://api2.binance.com/api/v3/ticker may work better in your location """
+  binance(symbol: String windowSize:String!="10m"): Binance
+    @rest(endpoint: "https://api.binance.us/api/v3/ticker")
+}
+
+type Subscription {
+  random: Random @materializer(query: "random")
+  binance(symbol: String, windowSize: String): Binance
+    @materializer(query: "binance")
+}

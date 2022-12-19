@@ -1,0 +1,23 @@
+"""
+This is the index file for your StepZen project.
+It can contain schema directly or refer to other files using the '@sdl' directive.
+For example:
+schema
+  @sdl(
+    files: [
+      "./schema/user.graphql"
+      "customer.graphql"
+    ]
+  ) {
+  query: Query
+}
+Feel free to delete this comment block.
+"""
+schema
+  @sdl(
+    files: [
+      "subscriptions/index.graphql"
+    ]
+  ) {
+  query: Query
+}
