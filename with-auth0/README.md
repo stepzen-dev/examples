@@ -15,8 +15,8 @@ cd examples/with-auth0
 
 This project shows how to use Auth0 to authenticate users and authorize them to access data using OAuth 2.0, using two different flows:
 
-- [Authorization Code Flow](/authorization-jwt) - used for frontend applications
-- [Client Credentials Flow](/client-credentials) - used for machine-to-machine communication
+- [Authorization Code Flow](./authorization-jwt) - used for frontend applications
+- [Client Credentials Flow](./client-credentials) - used for machine-to-machine communication
 
 Open the `README.md` file in the `authorization-jwt` or `client-credentials` directory to learn how to set up Auth0 for that flow.
 

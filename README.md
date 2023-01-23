@@ -18,6 +18,7 @@ Here's a list of our current examples:
 
 - [with-airtable-prismjs-axios](./with-airtable-prismjs-axios)
 - [with-apollo](./with-apollo)
+- [with-auth0](./with-auth0)
 - [with-cockroachdb](./with-cockroachdb)
 - [with-coingecko](./with-coingecko)
 - [with-firebase](./with-firebase)
