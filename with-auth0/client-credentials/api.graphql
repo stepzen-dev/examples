@@ -1,0 +1,34 @@
+type User @mock {
+  firstName: String @mockfn(name: "FirstName")
+  lastName: String @mockfn(name: "LastName")
+  email: String @mockfn(name: "Email")
+}
+
+type Token {
+  access_token: String
+  token_type: String
+  expires_in: Int
+}
+
+type Query {
+  token: Token
+    @rest(
+      method: POST
+      endpoint: "https://YOUR_AUTH0_DOMAIN/oauth/token"
+      postbody: """
+      {
+        "client_id": "{{ .Get "client_id" }}",
+        "client_secret": "{{ .Get "client_secret" }}",
+        "audience": "{{ .Get "audience" }}",
+        "grant_type": "client_credentials"
+      }
+      """
+      configuration: "auth"
+    )
+  me(access_token: String!): User
+    @rest(
+      endpoint: ""
+      headers: [{ name: "Authorization", value: "Bearer $access_token" }]
+    )
+  profile: User @sequence(steps: [{ query: "token" }, { query: "me" }])
+}

@@ -1,0 +1,17 @@
+type User {
+  email: String
+  email_verified: Boolean
+  name: String
+  nickname: String
+  picture: String
+  sub: String
+  updated_at: DateTime
+}
+
+type Query {
+  me: User
+    @rest(
+      endpoint: "https://YOUR_AUTH0_DOMAIN/userinfo"
+      forwardheaders: ["Authorization"]
+    )
+}

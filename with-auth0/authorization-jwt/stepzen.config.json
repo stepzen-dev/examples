@@ -1,0 +1,4 @@
+{
+  "root": "stepzen",
+  "endpoint": "api/with-auth0-authorization-jwt"
+}

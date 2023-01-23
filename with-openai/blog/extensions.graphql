@@ -1,14 +1,4 @@
 extend type BlogPost {
-  plaintext: String
-    @materializer(
-      query: "plaintext"
-      arguments: [{ name: "htmltext", field: "encoded" }]
-    )
-  summary: TextCompletion
-    @materializer(
-      query: "summary"
-      arguments: [{ name: "fulltext", field: "plaintext" }]
-    )
   image: GenerationResult
     @materializer(
       query: "image"

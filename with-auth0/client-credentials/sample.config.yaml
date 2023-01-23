@@ -1,0 +1,22 @@
+# Add the JWKS endpoint
+deployment:
+  identity:
+    jwksendpoint: 'https://YOUR_AUTH0_DOMAIN/.well-known/jwks.json'
+
+# Set the policies
+access:
+  policies:
+    - type: Query
+      policyDefault:
+        condition: true
+      rules:
+        - condition: '?$jwt' # Require JWT
+          fields: [me] # Define fields that require JWT
+
+# Add the authorization server configuration
+configurationset:
+  - configuration:
+      name: auth
+      client_id: YOUR_CLIENT_ID
+      client_secret: YOUR_CLIENT_SECRET
+      audience: YOUR_AUDIENCE
