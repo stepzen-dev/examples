@@ -1,8 +1,18 @@
 extend type BlogPost {
+  plaintext: String
+    @materializer(
+      query: "plaintext"
+      arguments: [{ name: "htmltext", field: "encoded" }]
+    )
+  summary: TextCompletion
+    @materializer(
+      query: "summary"
+      arguments: [{ name: "htmltext", field: "encoded" }]
+    )
   image: GenerationResult
     @materializer(
       query: "image"
-      arguments: [{ name: "fulltext", field: "plaintext" }]
+      arguments: [{ name: "htmltext", field: "encoded" }]
     )
 }
 
@@ -37,9 +47,10 @@ type Query {
       """
     )
 
-  summary(fulltext: String): TextCompletion
+  summary(htmltext: String): TextCompletion
     @sequence(
       steps: [
+        { query: "plaintext" }
         { query: "_summaryPrompt" }
         {
           query: "textCompletion"
@@ -72,9 +83,10 @@ type Query {
       """
     )
 
-  image(fulltext: String): GenerationResult
+  image(htmltext: String): GenerationResult
     @sequence(
       steps: [
+        { query: "plaintext" }
         { query: "_imagePromptPrompt" }
         {
           query: "textCompletion"
