@@ -5,6 +5,16 @@ type BlogPost {
   encoded: String
   link: String
   pubDate: String
+  plaintext: String
+    @materializer(
+      query: "plaintext"
+      arguments: [{ name: "htmltext", field: "encoded" }]
+    )
+  summary: TextCompletion
+    @materializer(
+      query: "summary"
+      arguments: [{ name: "fulltext", field: "plaintext" }]
+    )
 }
 
 type Query {

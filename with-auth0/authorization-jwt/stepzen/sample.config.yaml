@@ -1,0 +1,11 @@
+deployment:
+  identity:
+    jwksendpoint: 'https://YOUR_AUTH0_DOMAIN/.well-known/jwks.json'
+access:
+  policies:
+    - type: Query
+      policyDefault:
+        condition: true
+      rules:
+        - condition: '?$jwt' # Require JWT
+          fields: [me] # Define fields that require JWT
