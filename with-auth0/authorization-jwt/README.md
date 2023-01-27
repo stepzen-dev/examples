@@ -18,13 +18,13 @@ Perform the following steps to set up your Auth0 client:​
 
 This API is used to represent your StepZen GraphQL API, and give it access to the Auth0 authorization server.
 
-- Log in to Auth0 dashboard.
 - Click the **Applications** link in the left navigation pane.
 - Click the **APIs`** link in the left navigation pane.
 - Click the **+ Create API** button.
-- Fill out the API fields:​
-  - Enter a name in the Name field to help you identify this client. For example: _My StepZen API_.
-  - For the _Identifier_ field, enter a unique value. For example: `https://my-stepzen-api.com`
+- On this page you need to fill out the following fields:​
+  - Enter a name in the _Name_ field to help you identify this client. For example: "My StepZen API".
+  - For the _Identifier_ field, enter a unique value. For example: "https://my-stepzen-api.com".
+- And click the **Create** button.
 
 **Create an Application**
 
@@ -32,16 +32,16 @@ This application is the authorization server that will be used to generate acces
 
 - Go Back to the **Applications** page.
 - Click the **+ Create Application** button.
-- Fill out the Application fields:​
-  - Enter a name in the Name field to help you identify this client. For example: _My StepZen App_.
+- Fill out the following fields:​
+  - Enter a name in the _Name_ field to help you identify this client. For example: "My StepZen App".
   - For application type, select _Single Page Web Applications_ (or _Regular Web Applications_).
 - Click the **Create** button.
-- Go the Settings tab to find the configuration needed to integrate with StepZen.​
+- Go the **Settings** tab to find the configuration needed to integrate with StepZen:
   - _Domain​_
   - _Client ID​_
   - _Client Secret​_
-- Scroll down to the **Allowed Callback URLs** field and add the following URL: `http://localhost:3000/api/auth/callback`
-- Go to the **API** tab to authorize the API we created earlier.​
+- Scroll down to the **Allowed Callback URLs** field:
+  - Add the following URL: "http://localhost:3000/api/auth/callback"
 
 > Read the Auth0 documentation for more information on how to [set up a Machine to Machine application](https://auth0.com/docs/get-started/auth0-overview/create-applications/machine-to-machine-apps).
 

@@ -247,3 +247,38 @@
     transform: rotate(0deg);
   }
 }
+
+.loginButton {
+  display: flex;
+  align-items: center;
+  background: #eb5424;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: larger;
+  color: white;
+}
+
+.auth0Logo {
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+  background: url('/auth0_icon.svg');
+}
+
+.profile {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.profile img {
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.profile a {
+  color: #eb5424;
+  text-decoration: underline;
+}
