@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useUser } from '@auth0/nextjs-auth0/client';
 import styles from '@/styles/Home.module.css';
-import Link from 'next/link';
 
 export default function Home() {
-  const { error, isLoading } = useUser();
-  const [userData, setUserData] = useState<null | { name: string }>(null);
+  const { isLoading } = useUser();
+
+  const [userData, setUserData] = useState<null | {
+    name: string;
+    picture: string;
+  }>(null);
 
   useEffect(() => {
     async function fetchData() {
@@ -17,7 +21,8 @@ export default function Home() {
           query: `
             query {
               me {
-                email
+                name
+                picture
               }
             }
           `,
@@ -30,9 +35,6 @@ export default function Home() {
 
     fetchData();
   }, [setUserData]);
-
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>{error.message}</div>;
 
   return (
     <>
@@ -58,7 +60,7 @@ export default function Home() {
               <Image
                 src='//stepzen.com/images/logo.svg'
                 alt='StepZen Logo'
-                className={styles.vercelLogo}
+                className={styles.stepzenLogo}
                 width={100}
                 height={24}
                 priority
@@ -67,18 +69,31 @@ export default function Home() {
           </div>
         </div>
 
-        <div className={styles.center}>
-          {isLoading && <span>Loading...</span>}
-          {error && <span>Something went wrong...</span>}
-
-          {userData ? (
-            <div>
-              Welcome {userData.email}! <a href='/api/auth/logout'>Logout</a>
-            </div>
-          ) : (
-            <Link href='/api/auth/login'>Login</Link>
-          )}
-        </div>
+        {isLoading ? (
+          <div className={styles.center}>Loading...</div>
+        ) : (
+          <div className={styles.center}>
+            {userData ? (
+              <div className={styles.profile}>
+                <img
+                  src={userData.picture}
+                  alt={`${userData.name}'s profile picture`}
+                  width={200}
+                  height={200}
+                />
+                <p>
+                  <strong>Welcome {userData?.name}!</strong>{' '}
+                  <a href='/api/auth/logout'>Logout</a>
+                </p>
+              </div>
+            ) : (
+              <Link href='/api/auth/login' className={styles.loginButton}>
+                <span className={styles.auth0Logo} />
+                Login with Auth0
+              </Link>
+            )}
+          </div>
+        )}
       </main>
     </>
   );

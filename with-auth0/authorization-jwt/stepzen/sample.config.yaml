@@ -1,6 +1,9 @@
+# Add the JWKS endpoint
 deployment:
   identity:
-    jwksendpoint: 'https://YOUR_AUTH0_DOMAIN/.well-known/jwks.json'
+    jwksendpoint: 'https://AUTH0_DOMAIN/.well-known/jwks.json'
+
+# Set the policies
 access:
   policies:
     - type: Query
