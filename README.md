@@ -1,8 +1,6 @@
 # StepZen examples
 
-![StepZen hacktoberfest challenge](https://res.cloudinary.com/stepzen/image/upload/v1663591382/covers/stepzen-hacktober-fest-header.png)
-
-> ### Join us for Hacktoberfest 2022! StepZen is participating with [Hacktoberfest](https://hacktoberfest.com/), meaning that any merged PR to this repository qualifies as a Hacktoberfest contribution. You can create a new PR request with a StepZen example, or scroll through the list of [issues](https://github.com/stepzen-dev/examples/issues). Make sure to read the contributing guidelines before creating a PR.
+![StepZen logo](https://stepzen.com/images/logo.jpg)
 
 [Website](https://stepzen.com)   •   [Docs](https://stepzen.com/docs)   •   [Blog](https://stepzen.com/blog)   •   [Discord](https://discord.com/invite/9k2VdPn2FR)   •   [Twitter](https://twitter.com/stepzen_dev)   •   [Demo videos](https://www.youtube.com/c/StepZen)
 
