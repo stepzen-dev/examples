@@ -1,0 +1,22 @@
+<div class="main">
+    <div *ngIf="error">
+        <p>Error: {{ error }}</p>
+    </div>
+
+    <form class="form" [formGroup]="searchForm" (ngSubmit)="searchPosts()">
+        <input class="input" type="text" name="username" placeholder="Enter username" formControlName="username" />
+        <br />
+        <button class="submit-button" [disabled]="searchForm.invalid">SUBMIT</button>
+    </form>
+
+    <div class="posts-container" *ngIf="posts">
+        <ul>
+            <li *ngFor="let post of posts">
+                <div class="post">
+                    <span class="post-title">{{ post.title }}</span>
+                    <span class="post-description">{{ post.description }}</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

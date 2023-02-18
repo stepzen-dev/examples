@@ -1,0 +1,34 @@
+type Post {
+  body_html: String
+  body_markdown: String
+  canonical_url: String
+  collection_id: JSON
+  comments_count: Int
+  cover_image: String
+  created_at: DateTime
+  crossposted_at: JSON
+  description: String
+  edited_at: DateTime
+  id: Int
+  last_comment_at: DateTime
+  organization: Organization
+  path: String
+  positive_reactions_count: Int
+  public_reactions_count: Int
+  published_at: DateTime
+  published_timestamp: DateTime
+  readable_publish_date: String
+  reading_time_minutes: Int
+  slug: String
+  social_image: String
+  tag_list: String
+  tags: [String]
+  title: String
+  type_of: String
+  url: String
+  user: User
+}
+
+type Query {
+  post: Post @rest(endpoint: "https://dev.to/api/articles/1366695")
+}
