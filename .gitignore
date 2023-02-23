@@ -2,3 +2,5 @@
 config.yaml
 .env
 node_modules
+.angular
+.vscode

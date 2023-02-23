@@ -1,0 +1,52 @@
+.main {
+    margin-top: 60px;
+}
+
+.posts-container ul {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.posts-container ul li {
+    padding: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.post {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.post-title {
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: 10px;
+}
+
+.post-description {
+    font-size: 14px;
+}
+
+form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+form input[type="text"] {
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+
+form button {
+    padding: 7px 12px;
+    border: 0px;
+    border-radius: 3px;
+    background: #E23237;
+    color: #FFF;
+}
