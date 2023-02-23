@@ -13,7 +13,7 @@ type BlogPost {
   summary: TextCompletion
     @materializer(
       query: "summary"
-      arguments: [{ name: "fulltext", field: "plaintext" }]
+      arguments: [{ name: "htmltext", field: "plaintext" }]
     )
 }
 
