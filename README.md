@@ -30,7 +30,7 @@
 - [Report Bug](https://github.com/stepzen-dev/examples/issues)
 - [Request example](https://github.com/stepzen-dev/examples/issues)
 - [Join our Discord Server](https://discord.com/invite/9k2VdPn2FR)
-  </p>
+</p>
 </div>
 
 Each repository has a README with instructions on how to get started. If you get stuck, reach out to us in [Discord](https://discord.com/invite/9k2VdPn2FR) and we'd love to help! The repo include the following examples:
