@@ -1,0 +1,30 @@
+type MovieReview {
+    byline: String
+    headline: String
+}
+
+type MoviewReviewLink {
+    url: String
+}
+
+extend type Movie {
+    reviews: [MovieReview]
+        @materializer(
+            query: "movieReviews", 
+            arguments: [
+                {name: "keyword", field: "title"}
+                {name: "released", field: "released"}
+            ]
+        )
+}
+
+type Query {
+  movieReviews(keyword: String!, released: BigInt!): [MovieReview]
+      @rest(  
+        endpoint: """
+             https://api.nytimes.com/svc/movies/v2/reviews/search.json?api-key={{.Get "apiKey"}}&query={{.Get "keyword"}}&opening-date={{.Get "released"}}-01-01:{{.Get "released"}}-31-12
+        """
+        resultroot: "results[]"
+        configuration: "nyt"
+      )
+}

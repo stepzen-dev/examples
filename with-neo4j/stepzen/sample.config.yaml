@@ -1,0 +1,4 @@
+configurationset:
+  - configuration:
+      name: nyt
+      apiKey: 
