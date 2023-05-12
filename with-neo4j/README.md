@@ -6,6 +6,22 @@ In this blog post, we will explore how developers can use StepZen and Neo4j to b
 
 ## Getting started with Neo4j and GraphQL
 
+Developers are increasingly wanting to consume databases through the cloud given the simplicity and the low-code set up required to spin up an API to connect applications and the data they need to run. There has been a clear consumer shift towards building great applications and deferring the management of backend infrastructures to cloud services. These cloud-first products are pervading the market and Neo4j is riding the way of this industry shift.  
+
+Having a solution that lets developers concentrate on the frontend, and takes care of backend hosting and persistence in a database, is appealing to many. Neo4j is the biggest graph database and pioneer in the industry category. Neo4j provides a GraphQL API library which is powerful because GraphQL can be mapped so neatly onto a graph database, and a graph database maps onto GraphQL nicely when they’re both implemented as graphs. 
+
+Using a "graphs all the way down" approach is not only more intuitive for developers to reason about application data, but using a graph database backend for your GraphQL service has performance advantages as graph databases are optimized for traversing graphs - exactly the type of traversals commonly found in GraphQL queries.
+
+### Using the Neo4j GraphQL library 
+
+The Neo4j GraphQL library is a Node.js library, Node.js is a popular backend language so having a batteries-included library on NPM is a big plus. The Neo4j GraphQL library works with any JavaScript GraphQL implementation, such as GraphQL.js and Apollo Server or GraphQL Yoga, and is designed to make it as easy as possible to build GraphQL APIs backed by a Neo4j database. By using the Neo4j GraphQL library it becomes very easy to build an API backed by Neo4j, where you don’t need to learn a new query language to interact with your database. In fact, the two main functions of the Neo4j GraphQL library are GraphQL schema generation and "GraphQL to Cypher" translation. 
+
+By mapping GraphQL type definitions to the property graph model used by Neo4j, the Neo4j GraphQL Library can generate a CRUD API backed by Neo4j. This means developers don’t even need to implement GraphQL resolver functions as the Neo4j GraphQL Library handles generating database queries from arbitrary GraphQL requests at query time. 
+
+Once you, as a developer, have a GraphQL schema, which contains its type definitions, the Neo4j GraphQL library does all the heavy lifting of making the actual backbone of the API. All you need to to bring is your schema (your source of truth for types when talking to the backend) and the Neo4j GraphQL library basically handles the backend for you. Your schema is the single source of truth for both the backend and the frontend.
+
+It becomes the documentation and the contract between them. And if you use TypeScript and build type definitions from that, the level of safety you get is really high - it will be really unlikely you can end up shipping bugs! You can find the documentation and other resources for the Neo4j GraphQL library at [neo4j.com/product/graphql-library/](https://neo4j.com/product/graphql-library/)
+
 ### Set up a Neo4j graph database
 
 First, we will set up a GraphQL API for Neo4j using a sandbox environment to generate a GraphQL API. A sandbox is a cloud-based development environment that allows us to experiment with Neo4j and build applications without installing anything on our local machine. In this section, we will outline the steps for setting up a Neo4j sandbox that we can use to generate a GraphQL API.
@@ -158,7 +174,9 @@ StepZen can help transform GraphQL APIs by simplifying the process of building a
 
 Another way that StepZen can transform GraphQL APIs is by helping to normalize data and restrict access to certain queries. With StepZen, developers can create consistent data models across multiple data sources, allowing for easier data integration and reducing the risk of errors or inconsistencies. Additionally, StepZen's access control features allow developers to define granular permissions for different queries, restricting access to sensitive data and preventing unauthorized access.
 
-We'll use StepZen to connect to the local Neo4j GraphQL API and transform some of its data.
+![Combining StepZen and Neo4j](./assets/stepzen-neo4js-graohql-layer.jpg)
+
+In the above diagram, you can see how we'll use StepZen to connect to the local Neo4j GraphQL API and transform some of its data.
 
 ### Setting up StepZen
 
