@@ -3,14 +3,14 @@ type Post {
   userId: ID!
   user: User
     @materializer(
-      query: "getUser"
+      query: "user"
       arguments: [{ name: "id", field: "userId" }]
     )
   title: String
   body: String
   comments: [Comment]
     @materializer(
-      query: "getComments"
+      query: "comments"
       arguments: [{ name: "postId", field: "id" }]
     )
 }
@@ -28,13 +28,13 @@ type Album {
   userId: ID!
   user: User
     @materializer(
-      query: "getUser"
+      query: "user"
       arguments: [{ name: "id", field: "userId" }]
     )
   title: String
   photos: [Photo]
     @materializer(
-      query: "getAlbumPhotos"
+      query: "albumPhotos"
       arguments: [{ name: "albumId", field: "id" }]
     )
 }
@@ -52,7 +52,7 @@ type Todo {
   userId: ID!
   user: User
     @materializer(
-      query: "getUser"
+      query: "user"
       arguments: [{ name: "id", field: "userId" }]
     )
   title: String
@@ -66,21 +66,21 @@ type User {
   email: String
   phone: String
   website: String
-  address: Address @materializer(query: "getUserAddress")
-  company: Company @materializer(query: "getUserCompany")
+  address: Address @materializer(query: "userAddress")
+  company: Company @materializer(query: "userCompany")
   posts: [Post]
     @materializer(
-      query: "getUserPosts"
+      query: "userPosts"
       arguments: [{ name: "userId", field: "id" }]
     )
   todos: [Todo]
     @materializer(
-      query: "getUserTodos"
+      query: "userTodos"
       arguments: [{ name: "userId", field: "id" }]
     )
   albums: [Album]
     @materializer(
-      query: "getUserAlbums"
+      query: "userAlbums"
       arguments: [{ name: "userId", field: "id" }]
     )
 }
@@ -101,9 +101,9 @@ type Company {
 }
 
 type Query {
-  getUser(id: ID!): User
+  user(id: ID!): User
     @rest(endpoint: "https://jsonplaceholder.typicode.com/users/$id")
-  getUserAddress(id: ID!): Address
+  userAddress(id: ID!): Address
     @rest(
       endpoint: "https://jsonplaceholder.typicode.com/users/$id"
       resultroot: "address"
@@ -112,30 +112,30 @@ type Query {
         { field: "longitude", path: "geo.lng" }
       ]
     )
-  getUserCompany(id: ID!): Company
+  userCompany(id: ID!): Company
     @rest(
       endpoint: "https://jsonplaceholder.typicode.com/users/$id"
       resultroot: "company"
     )
-  getTodo(id: ID!): Todo
+  todo(id: ID!): Todo
     @rest(endpoint: "https://jsonplaceholder.typicode.com/todos/$id")
-  getUserTodos(userId: ID!): [Todo]
+  userTodos(userId: ID!): [Todo]
     @rest(endpoint: "https://jsonplaceholder.typicode.com/users/$userId/todos")
-  getPosts: [Post]
+  posts: [Post]
     @rest(endpoint: "https://jsonplaceholder.typicode.com/posts")
-  getPost(id: ID!): Post
+  post(id: ID!): Post
     @rest(endpoint: "https://jsonplaceholder.typicode.com/posts/$id")
-  getUserPosts(userId: ID!): [Post]
+  userPosts(userId: ID!): [Post]
     @rest(endpoint: "https://jsonplaceholder.typicode.com/users/$userId/posts")
-  getAlbum(id: ID!): Album
+  album(id: ID!): Album
     @rest(endpoint: "https://jsonplaceholder.typicode.com/albums/$id")
-  getUserAlbums(userId: ID!): [Album]
+  userAlbums(userId: ID!): [Album]
     @rest(endpoint: "https://jsonplaceholder.typicode.com/users/$userId/albums")
-  getAlbumPhotos(albumId: ID!): [Photo]
+  albumPhotos(albumId: ID!): [Photo]
     @rest(
       endpoint: "https://jsonplaceholder.typicode.com/albums/$albumId/photos"
     )
-  getComments(postId: ID!): [Comment]
+  comments(postId: ID!): [Comment]
     @rest(
       endpoint: "https://jsonplaceholder.typicode.com/posts/$postId/comments"
     )
