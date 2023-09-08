@@ -4,8 +4,6 @@
 
 This project builds a GraphQL API using the free [JSONPlaceholder](https://jsonplaceholder.typicode.com/) REST API, a free fake API for testing and prototyping.
 
-[Try out the GraphQL API](https://public3b47822a17c9dda6.stepzen.net/api/with-jsonplaceholder)
-
 ## Getting Started
 
 You'll need to create a [StepZen account](https://stepzen.com/signup) first. Once you've got that set up, [git clone](https://www.atlassian.com/git/tutorials/setting-up-a-repository/git-clone) this repository onto your machine and open the working directory:
