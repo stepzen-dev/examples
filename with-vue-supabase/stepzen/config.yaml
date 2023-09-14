@@ -1,0 +1,4 @@
+configurationset:
+  - configuration:
+      name: YOUR-CONFIG-NAME
+      uri: YOUR-URI

@@ -1,0 +1,47 @@
+type Demo {
+  created_at: DateTime
+  id: ID!
+  name: String
+}
+
+"""
+These are some examples of queries generated from the schema. Feel free to modify them or add your own.
+"""
+type Query {
+  getDemoList: [Demo]
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "demo"
+      configuration: "postgresql_config"
+    )
+  getDemo(id: ID!): Demo
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "demo"
+      configuration: "postgresql_config"
+    )
+}
+
+"""
+These are some examples of mutations generated from the schema. Feel free to modify them or add your own.
+"""
+type Mutation {
+  insertDemo(created_at: DateTime!, name: String!): Demo
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "demo"
+      dml: INSERT
+      configuration: "postgresql_config"
+    )
+  deleteDemo(id: ID!): Demo
+    @dbquery(
+      type: "postgresql"
+      schema: "public"
+      table: "demo"
+      dml: DELETE
+      configuration: "postgresql_config"
+    )
+}
